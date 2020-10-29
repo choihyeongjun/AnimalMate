@@ -1,13 +1,13 @@
-package co.mongde.board.command;
+package co.animalMate.board.command;
 
 import java.sql.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.mongde.board.common.Action;
-import co.mongde.board.dao.MemberDao;
-import co.mongde.board.vo.MemberVO;
+import co.animalMate.board.dao.MemberDao;
+import co.animalMate.board.vo.MemberVO;
+import co.animalMate.common.Action;
 
 public class MemberInsertAction implements Action {
 

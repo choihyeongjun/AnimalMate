@@ -1,4 +1,4 @@
-package co.mongde.board.controller;
+package co.animalMate.common;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -10,14 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.mongde.board.command.LoginAction;
-import co.mongde.board.command.LoginForm;
-import co.mongde.board.command.LogoutAction;
-import co.mongde.board.command.MainAction;
-import co.mongde.board.command.MemberForm;
-import co.mongde.board.command.MemberInsertAction;
-import co.mongde.board.command.MemberListAction;
-import co.mongde.board.common.Action;
+import co.animalMate.board.command.LoginAction;
+import co.animalMate.board.command.LoginForm;
+import co.animalMate.board.command.LogoutAction;
+import co.animalMate.board.command.MainAction;
+import co.animalMate.board.command.MemberForm;
+import co.animalMate.board.command.MemberInsertAction;
+import co.animalMate.board.command.MemberListAction;
 
 
 public class FrontController extends HttpServlet {
@@ -30,6 +29,7 @@ public class FrontController extends HttpServlet {
 
 	public void init(ServletConfig config) throws ServletException { //init은 처음 실행할 때 한 번만 실행됨
 		// 요청들을 정의함
+		//상민		
 		map.put("/main.do", new MainAction()); //처음 들어오는 페이지 처리 index.jsp
 		map.put("/login.do", new LoginAction()); //로그인 메뉴를 처리하는 것
 		map.put("/loginForm.do", new LoginForm()); //로그인 폼 띄우기
@@ -37,10 +37,106 @@ public class FrontController extends HttpServlet {
 		map.put("/memberForm.do", new MemberForm()); //회원가입하면 호출
 		map.put("/memberInsert.do", new MemberInsertAction()); //회원입력
 		map.put("/logout.do", new LogoutAction());
-//		map.put("/loginForm.do", new LoginForm());
-//		map.put("/loginForm.do", new LoginForm());
-//		map.put("/loginForm.do", new LoginForm());
+
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//찬호
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//형준
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//선애
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//진구
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+
 	}
 	
 	//컨트롤러로 넘어오면 서비스 메소드 실행

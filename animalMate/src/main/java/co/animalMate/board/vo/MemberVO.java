@@ -1,4 +1,4 @@
-package co.mongde.board.vo;
+package co.animalMate.board.vo;
 
 import java.sql.Date;
 
