@@ -1,9 +1,9 @@
-package co.mongde.board.command;
+package co.animalMate.board.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.mongde.board.common.Action;
+import co.animalMate.common.Action;
 
 public class LoginForm implements Action {
 

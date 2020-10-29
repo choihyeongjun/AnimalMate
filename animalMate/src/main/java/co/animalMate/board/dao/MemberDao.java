@@ -1,4 +1,4 @@
-package co.mongde.board.dao;
+package co.animalMate.board.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -6,7 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.mongde.board.vo.MemberVO;
+import co.animalMate.board.vo.MemberVO;
+import co.animalMate.common.DAO;
 
 public class MemberDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행

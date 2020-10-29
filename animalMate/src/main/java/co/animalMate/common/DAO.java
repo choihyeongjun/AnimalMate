@@ -1,4 +1,4 @@
-package co.mongde.board.dao;
+package co.animalMate.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

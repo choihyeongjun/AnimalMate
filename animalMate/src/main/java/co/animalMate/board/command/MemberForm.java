@@ -1,15 +1,16 @@
-package co.mongde.board.command;
+package co.animalMate.board.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.mongde.board.common.Action;
+import co.animalMate.common.Action;
 
-public class MainAction implements Action {
+public class MemberForm implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		return "jsp/main/main.jsp";
+		// TODO 회원가입 폼 호출
+		return "jsp/member/memberForm.jsp";
 	}
 
 }

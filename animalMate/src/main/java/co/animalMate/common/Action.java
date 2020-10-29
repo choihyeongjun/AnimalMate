@@ -1,4 +1,4 @@
-package co.mongde.board.common;
+package co.animalMate.common;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
