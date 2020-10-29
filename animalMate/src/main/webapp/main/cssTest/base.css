@@ -1,0 +1,94 @@
+
+
+
+li{list-style:none}
+address{font-style:normal}
+a{box-sizing: border-box}
+a:link,a:visited{text-decoration:none;color:#666;}
+a:hover,a:focus,a:active{text-decoration:none;color:#666}
+
+	
+
+
+
+#footer {/*clear:both;*/width:100%;}
+
+#footer:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
+#footer {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
+
+/*
+#footer .footWrap_02 {}
+*/
+#footer .footWrap_02 {border-top:1px solid #e3e3e3;margin-top:38px}
+
+
+#footer .footWrap_02:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
+#footer .footWrap_02 {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
+#footer .footWrap_02 .footWrap_02_in {position:relative;margin:0 auto;padding:35px 22px;max-width:1200px;}
+
+#footer .footWrap_02 .footWrap_02_in:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
+#footer .footWrap_02 .footWrap_02_in {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
+
+
+#footer .footWrap_02 .footWrap_02_in > div.a {float:left;width:395px}
+#footer .footWrap_02 .footWrap_02_in > div.b {float:left;width:calc(100% - 395px)}
+#footer .footWrap_02 .footWrap_02_in > div.b > h6 {font-size:15px;color:#6c6c6c;margin-bottom:16px}
+
+#footer .footWrap_02 .footWrap_02_in > div.b > h6 > span {color:#ba8255}
+
+
+#footer .footWrap_02 .footWrap_02_in > div.b > address {font-size:10px;color:#9F9F9F;line-height:16px}
+
+#footer .footWrap_02 .footWrap_02_in > div.b > address > a {color:#9F9F9F;}
+
+
+#footer .footWrap_02 .footWrap_02_in > div.b > address > a > img {vertical-align:-2px}
+
+#footer .footWrap_02 .footWrap_02_in > div.b > address > a:hover {text-decoration:underline}
+
+/*
+#footer .footWrap_02 .footWrap_02_in > div.b > small {letter-spacing:0;display:block}
+*/
+#footer .footWrap_02 .footWrap_02_in > div.b > small {letter-spacing:0;display:block;font-size:10px;color:#9F9F9F;line-height:16px}
+
+
+#footer .footWrap_02 .footWrap_02_in > div.b > small > span {font-weight:600}
+
+
+
+
+
+.tyu:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
+.tyu {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
+.tyu {margin-bottom:12px;}
+.tyu > li {float:left;border-right:1px solid #ddd;margin-right:12px;padding-right:12px}
+
+.tyu > li:last-child {border-right:none;margin-right:0px;padding-right:0px}
+
+.tyu > li > a:hover {text-decoration:underline}
+
+
+.tyu2:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
+.tyu2 {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
+.tyu2 > li {float:left;;margin-right:6px;}
+.tyu2 > li:last-child {border-right:none;margin-right:0px;}
+
+.tyu_up {position:relative}
+.tyu_up:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
+.tyu_up {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
+
+.tyu2 {position:absolute;left:320px;top:-6px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
