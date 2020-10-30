@@ -31,7 +31,7 @@
 						<label for="male">Male</label><br>
 						<input type="radio" id="female" name="gender" value="female">
 						<label for="female">Female</label><br>
-						<input type="radio" id="other" name="gender" value="other">
+						<input type="radio" id="other" name="gender" value="other" checked>
 						<label for="other">Other</label><br><br>
 					</td>
 				</tr>
@@ -40,13 +40,13 @@
 					<td colspan=2>
 						<input type="radio" id="cutyes" name="cut" value="cutyes">
 						<label for="cutyes">예</label><br>
-						<input type="radio" id="cutno" name="cut" value="cutno">
+						<input type="radio" id="cutno" name="cut" value="cutno" checked>
 						<label for="cutno">아니오</label><br>
 					</td>
 				</tr>
 				<tr>
 					<th colspan=2>상세설명</th>
-					<td colspan=2><input type= "text" id = "pet" name="pet"></td>
+					<td colspan=2><textarea id="petcontent" name="petcontent" cols="40" rows="4"></textarea></td>
 				</tr>
 				<tr>
 					<td colspan =4 align=center>

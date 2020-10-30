@@ -15,13 +15,13 @@
 			<table class= "table">
 				<tr>
 					<th>이름</th>
-					<td><input type= "text" id = "petName" name="petName"></td>
+					<td><input type= "text" id = "petName" name="petName" value="DBvalue"></td>
 					<th rowspan = 2>펫사진</th>
 					<td rowspan = 2><input type= "file" id = "petImg" name="petImg"></td>
 				</tr>
 				<tr>
 					<th>펫나이</th>
-					<td><input type= "text" id = "petAge" name="petAge"></td>
+					<td><input type= "text" id = "petAge" name="petAge" value="DBvalue"></td>
 				</tr>
 				<tr>
 					<th colspan=2>펫성별</th>
@@ -45,7 +45,7 @@
 				</tr>
 				<tr>
 					<th colspan=2>상세설명</th>
-					<td colspan=2><input type= "text" id = "pet" name="pet"></td>
+					<td colspan=2><textarea id="petcontent" name="petcontent" cols="40" rows="4">DBvalue</textarea></td>
 				</tr>
 				<tr>
 					<td colspan =4 align=center>

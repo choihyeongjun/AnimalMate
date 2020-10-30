@@ -107,4 +107,9 @@ a:hover,a:focus,a:active{text-decoration:none;color:#666}
 	color: rgb(15, 162, 226);
 }
 
+.mypageTradeList dt{
+	width: 15%;
+}
+
+
 /* someone */
