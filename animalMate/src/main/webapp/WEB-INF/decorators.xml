@@ -6,5 +6,6 @@
 
 	<excludes>
 		<pattern>/index.jsp</pattern>
+		<pattern>/loginForm.jsp</pattern>
 	</excludes>
 </decorators>
