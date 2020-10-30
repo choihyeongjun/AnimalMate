@@ -78,9 +78,34 @@ a:hover,a:focus,a:active{text-decoration:none;color:#666}
 .tyu2 {position:absolute;left:320px;top:-6px}
 
 
+
 /* 주석으로 css 파일별로 구분해주세요 */
 
+[박진규] [오후 5:45] 
+/* JinGyu */
+.row { /* 이거 부트스트렙 공용이라 지워야하면 지워도됨 */
+   justify-content: center;
+   align-items: center;
+}
 
+.mypagebox {
+   padding: 40px;
+   border: 2px solid rgb(15, 162, 226);
+   margin: 40px;
+   box-shadow: 3px 3px 3px 3px rgb(15, 162, 226);
+   text-align: center;
+}
+
+.mypagebox h1 {
+   color: rgb(15, 162, 226);
+}
+
+.mypageTradeList dt{
+   width: 15%;
+}
+
+
+/* someone */
 
 
 
