@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/cssTest/base.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/main/cssTest/base.css">
 
 <title>Insert title here</title>
 <style>
@@ -58,21 +58,23 @@
 <decorator:head/>
 </head>
 <body class="container">
-	
+	<div align="right" style="margin-top: 50px">
+	<button>요청알림</button>
+	<button>쪽지</button>
+	<button>로그인</button>
+	</div>
+	<br>
 	<nav class="navbar">
 		<img id="bigcat" alt="사진이없어용" src="${pageContext.request.contextPath}/images/큰소리.png">
-  		<a class="navbar-brand" href="#" >Navbar</a>
-        <a class="navbar-brand" href="#">Home </a>
-        <a class="navbar-brand" href="#">Features</a>
-        <a class="navbar-brand" href="#">Pricing</a>
-        <a class="navbar-brand" href="#" >Disabled</a>
+  		<a class="navbar-brand" href="#" >공지사항</a>
+        <a class="navbar-brand" href="#">돌봐줄께요</a>
+        <a class="navbar-brand" href="#">돌봐주세요</a>
+        <a class="navbar-brand" href="#">마이페이지</a>
 	</nav>
     <hr />
     
     
-    
     <decorator:body />
-    
     
     
     <hr />
@@ -87,8 +89,6 @@
 					<li><a href="http://epetsitter.co.kr/04_description/des_06.php">이용약관</a></li>
 					<li><a href="http://epetsitter.co.kr/04_description/des_06_03.php">개인정보처리방침</a></li>
 					<li><a href="http://epetsitter.co.kr/04_description/des_03.php">안전보상프로그램</a></li>
-				</ul>
-				<ul class="tyu2">
 					<li><a href="http://www.facebook.com/epetsitter/" target="_blank"><img src="/img/common/fa_01.png"></a></li>
 					<li><a href="http://www.instagram.com/epetsitter/" target="_blank"><img src="/img/common/fa_03.png"></a></li>
 				</ul>
