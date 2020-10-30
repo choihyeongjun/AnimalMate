@@ -7,6 +7,6 @@
 <title>신고게시판</title>
 </head>
 <body>
-
+	
 </body>
 </html>

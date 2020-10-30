@@ -7,4 +7,7 @@
 	<excludes>
 		<pattern>/index.jsp</pattern>
 	</excludes>
+	<excludes>
+		<pattern>/jsp/admin/*</pattern>
+	</excludes>
 </decorators>
