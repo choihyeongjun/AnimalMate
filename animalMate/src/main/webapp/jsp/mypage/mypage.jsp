@@ -5,56 +5,28 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
-<style>
-	.row {
-		justify-content: center;
-		align-items: center;
-	}
-	
-	.mypagebox {
-		padding: 40px;
-		border: 2px solid rgb(15, 162, 226);
-		margin: 50px;
-		box-shadow: 3px 3px 3px 3px rgb(15, 162, 226);
-		text-align: center;
-	}
-	
-	.mypagebox h1 {
-		color: rgb(15, 162, 226);
-	}
-	
-	.mypagebox dt {
-		width: 40%;
-	}
-	
-	.mypagebox dd {
-		width: 60%;
-	}
-	
-	
-	.petlsit {
-		width: 20%
-	}
-</style>
+<link rel = "stylesheet" href = "${pageContext.request.contextPath}/css/mypage.css">
+
+
 </head>
 <body>
 	<div class="row">
 		<div class="col-lg-4 col-md-4 mypagebox" id="profile">
-			<dl class="row">
-				<dt><h1>프로필</h1></dt>
-				<dd><img src="https://pbs.twimg.com/media/CRSn98hUcAAryN7.jpg" width=50% height=50%></dd>
-			</dl>
-			<hr>
-			<dl class="row">
-				<dt>닉네임</dt>
-				<dd>규르르</dd>
-
-				<dt>전화번호</dt>
-				<dd>010-7777-9999</dd>
-
-				<dt>주소</dt>
-				<dd>대구광역시 동구 신천동 동대구역 3번 출구 구석</dd>
-			</dl>
+			<h1>프로필</h1>
+			<table class = "table">
+				<tr>
+					<th>이름</th>
+					<td>규르르</td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
+					<td>010-7777-9999</td>
+				</tr>
+				<tr>
+					<th>주소</th>
+					<td>대구광역시 동구 신천동 동대구역 3번 출구 구석</td>
+				</tr>
+			</table>
 
 			<a class="btn btn-outline-primary" href="#" role="button">수정</a>
 		</div>
