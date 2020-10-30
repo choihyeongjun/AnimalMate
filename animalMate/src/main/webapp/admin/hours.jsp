@@ -4,9 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>시간표</title>
 </head>
 <body>
-
+	<h1>Weekdays</h1>
+    <p>5:00pm - 10:00pm</p>
+    <p>Weekends</p>
+    <p>5:00pm - 10:00pm</p>
 </body>
 </html>
