@@ -9,6 +9,6 @@
 		<pattern>/loginForm.jsp</pattern>
 	</excludes>
 	<excludes>
-		<pattern>/jsp/admin/*</pattern>
+		<pattern>/jsp/admin/test/*</pattern>
 	</excludes>
 </decorators>
