@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/BBS/css/mainmenu.css">
+<link rel="stylesheet" href="/animalMate/css/mainmenu.css">
 </head>
 <body>
 <div align="center">
