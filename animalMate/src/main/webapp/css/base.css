@@ -1,5 +1,6 @@
+@charset "UTF-8";
 
-/* 메인 header, footer */
+/* base */
 
 li{list-style:none}
 address{font-style:normal}
