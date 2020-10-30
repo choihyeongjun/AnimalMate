@@ -1,5 +1,6 @@
+@charset "UTF-8";
 
-
+/* base */
 
 li{list-style:none}
 address{font-style:normal}
@@ -69,13 +70,13 @@ a:hover,a:focus,a:active{text-decoration:none;color:#666}
 
 
 .tyu2:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
-.tyu2 {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
+.tyu2 {*zoom:1;} 
 .tyu2 > li {float:left;;margin-right:6px;}
 .tyu2 > li:last-child {border-right:none;margin-right:0px;}
 
 .tyu_up {position:relative}
 .tyu_up:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
-.tyu_up {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
+.tyu_up {*zoom:1;}
 
 .tyu2 {position:absolute;left:320px;top:-6px}
 
@@ -88,7 +89,22 @@ a:hover,a:focus,a:active{text-decoration:none;color:#666}
 
 
 
+/* JinGyu */
+.row { /* 이거 부트스트렙 공용이라 지워야하면 지워도됨 */
+	justify-content: center;
+	align-items: center;
+}
 
+.mypagebox {
+	padding: 40px;
+	border: 2px solid rgb(15, 162, 226);
+	margin: 40px;
+	box-shadow: 3px 3px 3px 3px rgb(15, 162, 226);
+	text-align: center;
+}
 
+.mypagebox h1 {
+	color: rgb(15, 162, 226);
+}
 
-
+/* someone */
