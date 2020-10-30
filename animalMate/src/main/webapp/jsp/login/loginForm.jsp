@@ -21,19 +21,19 @@
 	</header>
 	<!-- 로그인 입력창 -->
 	<div class="login-main">
-		<form class="login_form" action="login.mate" method="post">
+		<form class="login_form" action="login.do" method="post">
 		<!-- 아이디 입력창 -->
-			<div class="id_input">
-				<span class="id_input-icon-label"></span>
-					<i class="id_input-sprite-id"></i>
+			<div class="id_input-wrap">
+				<span class="id_input-icon"></span>
+				<!-- 아이콘 추가해야함 -->
 				<span class="id_input-group">
 					<input type="text" class="id_input" name="id_input" id="id_input" placeholder="아이디를 입력하세요"> 
 				</span>
 			</div>
 			<!-- 비밀번호 입력창 -->
-				<div class="pw_input">
-				<span class="pw_input-icon-label"></span>
-					<i class="id_input-sprite-id"></i>
+				<div class="pw_input-wrap">
+				<span class="pw_input-icon"></span>
+					<!-- 아이콘 추가해야함 -->
 				<span class="pw_input-group">
 					<input type="text" class="pw_input" name="pw_input" id="pw_input" placeholder="비밀번호를 입력하세요"> 
 				</span>
