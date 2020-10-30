@@ -5,15 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>펫 등록하기</title>
-<style>
 
-	
-.row {
-		justify-content: center;
-		align-items: center;
-	}
-
-</style>
 </head>
 <body>
 	<br/>
