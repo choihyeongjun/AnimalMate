@@ -1,14 +1,11 @@
 
-
+/* 메인 header, footer */
 
 li{list-style:none}
 address{font-style:normal}
 a{box-sizing: border-box}
 a:link,a:visited{text-decoration:none;color:#666;}
 a:hover,a:focus,a:active{text-decoration:none;color:#666}
-
-	
-
 
 
 #footer {/*clear:both;*/width:100%;}
@@ -80,7 +77,7 @@ a:hover,a:focus,a:active{text-decoration:none;color:#666}
 .tyu2 {position:absolute;left:320px;top:-6px}
 
 
-
+/* 주석으로 css 파일별로 구분해주세요 */
 
 
 

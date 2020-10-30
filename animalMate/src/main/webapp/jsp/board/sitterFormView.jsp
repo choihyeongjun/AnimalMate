@@ -37,7 +37,7 @@ display: inline;
 </style>
 </head>
 <body>
-	<h5>돌봐줄게요 - 게시글 등록form</h5>
+	<h5>돌봐줄게요 - view form</h5>
 	
 	<div>
 		<p id="title">제목 : DBVALUE</p>
@@ -144,7 +144,7 @@ display: inline;
 	<div>
 		<button>쪽지보내기</button>
 		<button type="submit">지원하기</button>
-		<button type="submit">취소</button>
+		<button>취소</button>
 	</div>
 	
 
