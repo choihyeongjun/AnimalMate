@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>animal Mate</title>
+<title>신고게시판</title>
 </head>
 <body>
 
