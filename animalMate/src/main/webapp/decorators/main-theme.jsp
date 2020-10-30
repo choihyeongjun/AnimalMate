@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/jsp/main/cssTest/base.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
 
 <title>Insert title here</title>
 <style>
