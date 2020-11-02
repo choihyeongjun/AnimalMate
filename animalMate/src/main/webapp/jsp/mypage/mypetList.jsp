@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div><h1>회원목록 정보</h1></div>
+	<div><h1>펫 목록 정보</h1></div>
 	<div>
 		<table class="table">
 			<tr>

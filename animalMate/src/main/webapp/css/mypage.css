@@ -53,7 +53,7 @@
 
 /* ownerFormCheck 화면 */
 
-.checkPet img, .checkSitter img{
+.checkPet img, .checkSitter img, .profileUser img{
 	width: 200px;
 	heigth: 200px;
 	border : 1px solid black;
@@ -83,6 +83,11 @@
 	heigth: 150px;
 	margin: 20px 10px 20px 10px;
 }
+/* profile 화면 */
 
-
+.profileUser{
+	width: 80%;
+	heigth: 500px;
+	float: left;
+}
 
