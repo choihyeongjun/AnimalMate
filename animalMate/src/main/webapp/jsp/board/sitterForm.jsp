@@ -1,3 +1,4 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,7 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>돌봐줄게요(등록form)</title>
+        <title>돌봐줄게요(글등록form)</title>
 
         <!--파비콘 -->
         <!-- <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon"> -->
@@ -33,11 +34,9 @@
             
             <!-- s:title -->
             <div class="title">
-                <h1>돌봐줄게요</h1>
-                <p>
-                    ♥ 믿고 맡기는 베테랑 진규 시터의 돌봄 서비스♥
-                    <span>사랑으로 모십니다</span>
-                </p>
+                <h1>돌봐줄께요- (글등록 Form)</h1>
+                <input placeholder="제목을 입력하세요">
+                </input>
             </div>
             <!-- e:title -->
 
@@ -61,35 +60,35 @@
 
                                 <thead>
                                     <tr>
-                                        <th>정보</th>
-                                        <th>내용</th>
+                                        <th>펫 시터 정보</th>
+                                        <th>상세</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td>이름</td>
-                                        <td><input type="text" name="" value="" title=""></td>
+                                        <td>시터 이름</td>
+                                        <td>DBVALUE</td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>나이</td>
-                                        <td><input type="text" name="" value="" title=""></td>
+                                        <td>시터 나이</td>
+                                        <td>DBVALUE</td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>성별</td>
-                                        <td><input type="text" name="" value="" title=""></td>
+                                        <td>시터 성별</td>
+                                        <td>DBVALUE</td>
                                     </tr>
 
                                     <tr>
-                                        <td>평점</td>
-                                        <td><input type="text" name="" value="" title=""></td>
+                                        <td>시터 평점</td>
+                                        <td>DBVALUE</td>
                                     </tr>
 
                                     <tr>
-                                        <td>경력(돌봄횟수)</td>
-                                        <td><input type="text" name="" value="" title=""></td>
+                                        <td>시터 경력(돌봄횟수)</td>
+                                        <td>DBVALUE</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -116,13 +115,7 @@
                         <tbody>
                             <tr>
                                 <td>돌봄지역</td>
-                                <td>
-                                    <select>
-                                        <option>전체</option>
-                                        <option>대구</option>
-                                        <option>서울</option>
-                                    </select>
-                                </td>
+                                <td><input type="text" placeholder="돌봐주실 지역을 입력하세요"></td>
                             </tr>
                             
                             <tr>
@@ -130,9 +123,9 @@
                                 <td>
                                     <!-- jQuery datepicker 연결하면 됨-->
                                     <div class="calendar">
-                                        <input type="text" class="datepicker" name="" value="" placeholder="시작일" onchange="">
+                                        <input type="date" class="datepicker" name="" value="" placeholder="시작일" onchange="">
                                         <span>~</span>
-                                        <input type="text" class="datepicker" name="" value="" placeholder="종료일" onchange="">
+                                        <input type="date" class="datepicker" name="" value="" placeholder="종료일" onchange="">
                                     </div>
                                 </td>
                             </tr>
@@ -156,12 +149,12 @@
 
                             <tr>
                                 <td>거래금액</td>
-                                <td><input type="text" name="" value="20,000" class="txt-r" placeholder="거래금액을 입력하세요">원</td>
+                                <td><input type="text" name="" placeholder="돌봄서비스 금액을 입력하세요" class="txt-r" >원</td>
                             </tr>
 
                             <tr>
                                 <td>최대돌봄수</td>
-                                <td><input type="text" name="" value="2" class="txt-r" placeholder="최대 수용가능한 펫 수를 입력하세요">마리</td>
+                                <td><input type="text" name="" placeholder="최대 수용가능한 펫 수를 입력하세요" class="txt-r" >마리</td>
                             </tr>
                         </tbody>
                     </table>
@@ -209,8 +202,8 @@
 
 
                 <div class="btn_sumit">
-                    <button type="submit" class="btn_l c_blue">지원하기</button>
-                    <button type="reset" class="btn_l c_gray">취소</button>
+                    <button type="submit" class="btn_blue">지원하기</button>
+                    <button type="reset" class="btn_gray">취소</button>
                 </div>
 
             </div>
