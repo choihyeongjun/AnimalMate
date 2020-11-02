@@ -17,12 +17,21 @@ public class JoinInsertAction implements Action {
 		MemberDao dao = new MemberDao();
 		MemberVO vo = new MemberVO();
 		
-		vo.setId(request.getParameter("id")); //form객체의 name이 id인 것을 받음
+		vo.setId(request.getParameter("id"));
+		vo.setPw(request.getParameter("pw"));
 		vo.setName(request.getParameter("name"));
-		vo.setPassword(request.getParameter("password"));
-		vo.setAddress(request.getParameter("address"));
+		vo.setnName(request.getParameter("nName"));
 		vo.setTel(request.getParameter("tel"));
-		vo.setEnterdate(Date.valueOf(request.getParameter("enterdate"))); //String값을 날짜값으로 바꿔준다
+		vo.seteDate(Date.valueOf(request.getParameter("eDate")));
+		vo.setAuthor(request.getParameter("author"));
+		vo.setPoint(Integer.valueOf(request.getParameter("point")));
+		vo.setStatus(request.getParameter("status"));
+		vo.setLocation1(request.getParameter("location1"));
+		vo.setLocation2(request.getParameter("location2"));
+		vo.setEmail(request.getParameter("email"));
+		vo.setPic(request.getParameter("pic"));
+		vo.setZoomin1(Integer.valueOf(request.getParameter("zoomin1")));
+		vo.setZoomin2(Integer.valueOf(request.getParameter("zoomin2")));
 		
 		int n = dao.insert(vo); //insert하고 n값을 반환해준다.
 		String page;
