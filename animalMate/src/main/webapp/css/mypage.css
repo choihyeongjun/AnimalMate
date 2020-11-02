@@ -1,12 +1,11 @@
 @charset "UTF-8";
 
 /* JinGyu */
-.row { /* 이거 부트스트렙 공용이라 지워야하면 지워도됨 */
-   justify-content: center;
-   align-items: center;
-}
+
 
 .mypagebox {
+	justify-content: center;
+   align-items: center;
    padding: 40px;
    border: 2px solid rgb(15, 162, 226);
    margin: 30px;
@@ -31,10 +30,6 @@
       text-align: center;    
 }
 
-.petProfileImg{
-   
-}
-
 .mypageTrade {
    width: 70%;
    text-align: center;
@@ -55,4 +50,36 @@
    text-align: center;
    float: right;
 }
+
+/* ownerFormCheck 화면 */
+
+.checkPet img, .checkSitter img{
+	width: 200px;
+	heigth: 200px;
+	border : 1px solid black;
+	margin: 20px 10px 20px 10px;
+	border-radius: 50%;
+}
+
+.checkPet{
+	width: 40%;
+	heigth: 500px;
+	float: left;
+}
+
+.checkSitter{
+	width: 40%;
+	heigth: 500px;
+	float: right;
+}
+
+.checkDetail {
+	width:70%;
+}
+
+
+
+
+
+
 
