@@ -9,7 +9,7 @@ public class MainAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		return "jsp/main/main.jsp";
+		return "jsp/main/mainMenu.jsp";
 	}
 
 }

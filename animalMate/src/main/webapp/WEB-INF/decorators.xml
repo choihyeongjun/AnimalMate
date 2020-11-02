@@ -3,8 +3,9 @@
 	<decorator name="main-theme" page="main-theme.jsp">
 		<pattern>/*</pattern>
 	</decorator>
-
 	<excludes>
 		<pattern>/index.jsp</pattern>
+		<pattern>/loginForm.jsp</pattern>
+		<pattern>/jsp/admin/test/*</pattern>
 	</excludes>
 </decorators>
