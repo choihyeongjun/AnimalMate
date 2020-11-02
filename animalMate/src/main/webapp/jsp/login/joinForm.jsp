@@ -5,33 +5,35 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<link rel="stylesheet" href="../../css/join.css">
 </head>
 <body>
 <!--전체 회원가입 메뉴 감싸는 div -->
-<div class="join-wrapper" align="center">
+<div class="join-wrap" align="center">
 <!-- 회원가입창 상단로고 //클릭하면 메인페이지로 이동 -->
 	<header class="join-header">
+		<div class="join-warp">
 		<h1 class="join-logo">
 			<a href="#" class="join-logo-link">
 				<image src="#" 
 					 class="join-logo-img" alt="animalMate">
 				</image>
 			</a>
+		</div>
 		</h1>
 	</header>
 <!-- 회원가입 입력창 -->
-<div class="join-main">
+<div class="join-main-wrap" align="center">
 <form class="join_form" action="joinInsert.do" method="post">
 <!-- 버튼을 제외한 입력메뉴창 -->
 	<div class="join-content">
 		<!-- 아이디 입력창 -->
 		<div class="id_input-wrap">
-			<!-- <span class="id_input-icon"></span>
-				<!-- 아이콘 추가해야함 --> 
-				아이디 : 
-				<span class="id_input-group">
-					<input type="text" class="id_input" name="id_input" id="id_input" placeholder="아이디를 입력하세요"> 
+				<h3><label for="id">아이디</label></h3>
+				<span class="id_input-content">
+					<input type="text" class="id_input" name="id_input" id="id_input" placeholder="아이디를 입력하세요" maxlength="20"> 
 				</span>
+				<span class="error_box"></span>
 			<a class="id_input_check">중복확인</a>
 		</div> 	<!-- 아이디 입력창 끝-->
 		<!-- 비밀번호 입력창 -->
@@ -40,7 +42,7 @@
 					<!-- <span class="pw_input-icon"></span>
 						<!-- 아이콘 추가해야함 -->
 						비밀번호 :
-					<span class="pw_input-group">
+					<span class="pw_input-content">
 						<input type="password" class="pw_input" name="pw_input" id="pw_input" placeholder="비밀번호를 입력하세요"> 
 					</span>
 				</div>
