@@ -1,3 +1,4 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,20 +8,40 @@
 <title>돌봐줄게요 - 등록</title>
 <style>
 
-table {
-border : 1px solid black;
+body {
+	
+}
+.area {
+	margin : 20px 0 20px 0;
 }
 
-#userpic {
-width: 50px;
-heigth: 50px;
+h2 {
+	text-align: center;
+}
+#title {
+	width: 760px;
+	margin : 20px 0px 20px 0px;
 }
 
-#epic {
-width: 200px;
-height: 200px;
-border : 1px solid black;
+#petInfoTable img {
+	width: 200px;
+	heigth: 250px;
+	border : 1px solid black;
+	margin: 20px 10px 20px 10px;
+	border-radius: 50%;
 }
+
+#petInfoTable th {
+	width: 130px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+#petInfoTable td {
+	width: 200px;
+	padding-left: 10px;
+}
+
 
 #timetable {
 width: 500px;
@@ -28,25 +49,28 @@ height: 200px;
 border : 1px solid black;	
 }
 
-.check {
+
+#check {
 display: block;
 }
+
+
+
 </style>
 </head>
 <body>
-	<h5>돌봐주세요 - 게시글 등록form</h5>
-	
-	<div>
-		제목 :<input type="text" placeholder="제목을 입력하세요">
+	<h2>돌봐주세요 - 게시글 등록form</h2>
+	<form>
+	<div class="area">
+		<input id="title" type="text" placeholder="제목을 입력하세요">
 	</div>
+	
 	
 	<div>
 		<p><b>펫 정보</b></p>
-	</div>
-	<div>
-		<table>
+		<table id="petInfoTable">
 			<tr>
-				<td rowspan="5"><img id="userpic" src="${pageContext.request.contextPath}/images/user.png"></td>
+				<td rowspan="5"><img src="${pageContext.request.contextPath}/images/muncat.jpg"></td>
 				<th>펫 이름</th>
 				<td>
 					<select>
@@ -56,33 +80,36 @@ display: block;
 						<option>짠규몬</option>
 					</select>
 				</td>
+				<td rowspan="5" align="center">
+				<button>+</button>
+				</td>
 			</tr>
 			<tr>
 				<th>펫 나이</th>
-				<td><p>DBVALUE</p></td>
+				<td>DBVALUE</td>
 			</tr>
 			<tr>
 				<th>성별</th>
-				<td><p>DBVALUE</p></td>
+				<td>DBVALUE</td>
 			</tr>
 			<tr>
 				<th>종류</th>
-				<td><p>DBVALUE</p></td>
+				<td>DBVALUE</td>
 			</tr>
 			<tr>
 				<th>중성화 유무</th>
-				<td><p>DBVALUE</p></td>
+				<td>DBVALUE</td>	
 			</tr>
 		</table>
-		<button>-</button>
 	</div>
-	<button>+</button>
+
 	
 	
-	<div>
-		<p><b>세부조건</b></p>
-	</div>
-	<div>
+
+		
+
+	<div class="area">
+	<p><b>세부조건</b></p>
 		<table>
 			<tr>
 				<th>근무지역</th>
@@ -111,50 +138,24 @@ display: block;
 		</table>
 	</div>
 	
-	<div>
+	
+	
+	<div class="area">
 		<p><b>요청내용</b></p>
-	</div>
-	<div>
 		<textarea>dd</textarea>
 	</div>
 	
-	<div>
-		<p><b>체크리스트</b></p>
-	</div>
-	<div>
-	<div class="check">
-		<input placeholder="요청사항을 입력하세요">
-		<button>+</button>
-		<button>-</button>
-	</div>
-	<div class="check">
-		<input placeholder="요청사항을 입력하세요">
-		<button>+</button>
-		<button>-</button>
-	</div>
-	<div class="check">
-		<input placeholder="요청사항을 입력하세요">
-		<button>+</button>
-		<button>-</button>
-	</div>
-	<div class="check">
-		<input placeholder="요청사항을 입력하세요">
-		<button>+</button>
-		<button>-</button>
-	</div>
-	<div class="check">
-		<input placeholder="요청사항을 입력하세요">
-		<button>+</button>
-		<button>-</button>
-	</div>
-		
-		
-	</div>
-	
-	<div>
+
+		<div class="area" id="check">
+				<p><b>체크리스트</b></p>
+			<input placeholder="요청사항을 입력하세요">
+			<button>+</button>
+			<button>-</button>
+		</div>	
+	</form>
+
+	<div class="area">
 		<p><b>반려인 참고사항</b></p>
-	</div>
-	<div>
 		<p>○ 배드, 사료, 산책용품등은 반려인이 준비해주세요.</p>
 		<p>○ 특이사항(질병등)은 사전에 펫시터에게 공지해주세요.</p>
 		<p>○ 의뢰시 간단하게 계약서나 약정서를 작성하세요.</p>
@@ -165,7 +166,7 @@ display: block;
 	
 	<div>
 		<button type="submit">글 등록</button>
-		<button type="reset">취소</button>
+		<button action="ownerList.do">취소</button>
 	</div>
 	
 
