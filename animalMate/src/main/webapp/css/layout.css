@@ -38,3 +38,6 @@
 .sitter_info .cont_area .info_table{width:calc(100% - 150px - 60px);}
 .sitter_info .cont_area .info_table table{width:600px;}
 .addpic button {width: 150px; height: 150px; background-color: gray;}
+.btn_sumit .btn_blue {background-color: aqua;}
+.btn_sumit .btn_gray {background-color: gray;}
+.calendar .datepicker {display: inline-block; width: 200px;}

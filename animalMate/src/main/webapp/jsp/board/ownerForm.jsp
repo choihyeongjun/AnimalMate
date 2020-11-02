@@ -34,11 +34,9 @@
             
             <!-- s:title -->
             <div class="title">
-                <h1>돌봐줄게요</h1>
-                <p>
-                    ♥ 믿고 맡기는 베테랑 진규 시터의 돌봄 서비스♥
-                    <span>사랑으로 모십니다</span>
-                </p>
+                <h1>돌봐주세요- (글등록 Form)</h1>
+                <input placeholder="제목을 입력하세요">
+                </input>
             </div>
             <!-- e:title -->
 
@@ -46,7 +44,7 @@
             <div class="contents">
 
                 <div id="sec01" class="sitter_info">
-                    <h2 class="cont_tit">시터정보</h2>
+                    <h2 class="cont_tit">펫 정보</h2>
 
                     <div class="cont_area">
                         <div class="info_img">
@@ -62,35 +60,42 @@
 
                                 <thead>
                                     <tr>
-                                        <th>펫 시터 정보</th>
-                                        <th>상세</th>
+                                        <th>펫 정보</th>
+                                        <th>상세 내용</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td>시터 이름</td>
-                                        <td></td>
+                                        <td>펫 이름</td>
+                                        <td>
+                                        	<select>
+                                        		<option>내 펫 선택</option>
+                                        		<option>DBVALUE</option>
+                                        		<option>DBVALUE</option>
+                                        		<option>DBVALUE</option>
+                                        	</select>
+                                        </td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>시터 나이</td>
-                                        <td></td>
+                                        <td>나이</td>
+                                        <td>DBVALUE</td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>시터 성별</td>
-                                        <td></td>
+                                        <td>성별</td>
+                                        <td>DBVALUE</td>
                                     </tr>
 
                                     <tr>
-                                        <td>시터 평점</td>
-                                        <td></td>
+                                        <td>종류</td>
+                                        <td>DBVALUE</td>
                                     </tr>
 
                                     <tr>
-                                        <td>시터 경력(돌봄횟수)</td>
-                                        <td></td>
+                                        <td>중성화 유무</td>
+                                        <td>DBVALUE</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -116,30 +121,24 @@
 
                         <tbody>
                             <tr>
-                                <td>돌봄지역</td>
-                                <td>
-                                    <select>
-                                        <option>전체</option>
-                                        <option>대구</option>
-                                        <option>서울</option>
-                                    </select>
-                                </td>
+                                <td>근무지역</td>
+                              	<td><input type="text" placeholder="돌봄 지역을 입력하세요"></td>
                             </tr>
                             
                             <tr>
-                                <td>돌봄날짜</td>
+                                <td>근무날짜</td>
                                 <td>
                                     <!-- jQuery datepicker 연결하면 됨-->
                                     <div class="calendar">
-                                        <input type="text" class="datepicker" name="" value="" placeholder="시작일" onchange="">
+                                        <input type="date" class="datepicker" name="" value="" placeholder="시작일" onchange="">
                                         <span>~</span>
-                                        <input type="text" class="datepicker" name="" value="" placeholder="종료일" onchange="">
+                                        <input type="date" class="datepicker" name="" value="" placeholder="종료일" onchange="">
                                     </div>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>돌봄시간</td>
+                                <td>근무시간</td>
                                 <td>
                                     <div class="calendar">
                                         <select>
@@ -154,38 +153,23 @@
                                     </div>
                                 </td>
                             </tr>
-
-                            <tr>
+ <tr>
                                 <td>거래금액</td>
-                                <td><input type="text" name="" value="20,000" class="txt-r" >원</td>
+                                <td><input type="text" name="" placeholder="서비스 비용을 입력하세요" class="txt-r" >원</td>
                             </tr>
 
-                            <tr>
-                                <td>최대돌봄수</td>
-                                <td><input type="text" name="" value="2" class="txt-r" >마리</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div id="sec03" class="addpic">
-                    <h2 class="cont_tit">돌봄환경</h2>
+                
 
-                    <ul>
-                        <li>
-                            <div>
-                                <button type="button">사진추가</button>
-                            </div>
-                        </li>
-                        <li></li>
-                    </ul>
-                </div>
-
-                <div id="sec04" class="">
-                    <h2 class="cont_tit">스케쥴선택</h2>
-
+                    <div id="sec04" class="">
+                    <h2 class="cont_tit">체크리스트</h2>
                     <div>
-                        
+                        <input type="text" placeholder="업무 체크리스트를 입력해주세요">
+                        <button>+</button>
+                        <button>-</button>
                     </div>
                 </div>
 
@@ -210,9 +194,8 @@
 
 
                 <div class="btn_sumit">
-                <button type="submit" class="btn_l c_blue">쪽지보내기</button>
-                    <button type="submit" class="btn_l c_blue">지원하기</button>
-                    <button type="reset" class="btn_l c_gray">취소</button>
+                    <button type="submit" class="btn_blue">글등록</button>
+                    <button type="reset" class="btn_gray">취소</button>
                 </div>
 
             </div>

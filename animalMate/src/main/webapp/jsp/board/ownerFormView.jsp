@@ -1,3 +1,4 @@
+  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -33,11 +34,8 @@
             
             <!-- s:title -->
             <div class="title">
-                <h1>돌봐줄게요</h1>
-                <p>
-                    ♥ 믿고 맡기는 베테랑 진규 시터의 돌봄 서비스♥
-                    <span>사랑으로 모십니다</span>
-                </p>
+                <h1>돌봐주세요 - (예약page)</h1>
+                <p> 제목DBVALUE</p>
             </div>
             <!-- e:title -->
 
@@ -61,35 +59,35 @@
 
                                 <thead>
                                     <tr>
-                                        <th>정보</th>
-                                        <th>내용</th>
+                                        <th>펫 정보</th>
+                                        <th>상세 내용</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td>이름</td>
-                                        <td><input type="text" name="" value="" title=""></td>
+                                        <td>펫 이름</td>
+                                        <td>DBVALUE</td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>나이</td>
-                                        <td><input type="text" name="" value="" title=""></td>
+                                        <td>펫 나이</td>
+                                        <td>DBVALUE</td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>성별</td>
-                                        <td><input type="text" name="" value="" title=""></td>
+                                        <td>펫 성별</td>
+                                        <td>DBVALUE</td>
+                                    </tr>
+
+                                   <tr>
+                                        <td>펫 종류</td>
+                                        <td>DBVALUE</td>
                                     </tr>
 
                                     <tr>
-                                        <td>평점</td>
-                                        <td><input type="text" name="" value="" title=""></td>
-                                    </tr>
-
-                                    <tr>
-                                        <td>경력(돌봄횟수)</td>
-                                        <td><input type="text" name="" value="" title=""></td>
+                                        <td>중성화 유무</td>
+                                        <td>DBVALUE</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -98,7 +96,7 @@
                 </div>
 
                 <div id="sec02" class="">
-                    <h2 class="cont_tit">세부조건</h2>
+                    <h2 class="cont_tit">돌봄 세부조건</h2>
 
                     <table class="tbl_write__list">
                         <colgroup>
@@ -115,82 +113,58 @@
 
                         <tbody>
                             <tr>
-                                <td>돌봄지역</td>
-                                <td>
-                                    <select>
-                                        <option>전체</option>
-                                        <option>대구</option>
-                                        <option>서울</option>
-                                    </select>
-                                </td>
+                                <td>근무지역</td>
+                                <td>DBVALUE</td>
                             </tr>
                             
                             <tr>
-                                <td>돌봄날짜</td>
+                                <td>근무날짜</td>
                                 <td>
                                     <!-- jQuery datepicker 연결하면 됨-->
                                     <div class="calendar">
-                                        <input type="text" class="datepicker" name="" value="" placeholder="시작일" onchange="">
+                                        <span class="datepickerview" name="" value="" placeholder="시작일" onchange="">DBVALUE
                                         <span>~</span>
-                                        <input type="text" class="datepicker" name="" value="" placeholder="종료일" onchange="">
+                                        <span class="datepickerview" name="" value="" placeholder="종료일" onchange="">DBVALUE
                                     </div>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>돌봄시간</td>
+                                <td>근무시간</td>
                                 <td>
                                     <div class="calendar">
-                                        <select>
-                                            <option>12:00</option>
-                                            <option>13:00</option>
-                                        </select>
+                                      <span>DBVALUE</span>
                                         <span>~</span>
-                                        <select>
-                                            <option>12:00</option>
-                                            <option>13:00</option>
-                                        </select>
+                                        <span>DBVALUE</span>
                                     </div>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>거래금액</td>
-                                <td><input type="text" name="" value="20,000" class="txt-r" placeholder="거래금액을 입력하세요">원</td>
+                                <td>돌봄 요청 금액</td>
+                                <td>DBVALUE 원</td>
                             </tr>
 
                             <tr>
-                                <td>최대돌봄수</td>
-                                <td><input type="text" name="" value="2" class="txt-r" placeholder="최대 수용가능한 펫 수를 입력하세요">마리</td>
+                                <td>반려인</td>
+                                <td><button>프로필 상세보기</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div id="sec03" class="addpic">
-                    <h2 class="cont_tit">돌봄환경</h2>
-
-                    <ul>
-                        <li>
-                            <div>
-                                <button type="button">사진추가</button>
-                            </div>
-                        </li>
-                        <li></li>
-                    </ul>
-                </div>
-
-                <div id="sec04" class="">
-                    <h2 class="cont_tit">스케쥴선택</h2>
-
+                 <div id="sec04" class="">
+                    <h2 class="cont_tit">체크리스트</h2>
                     <div>
-                        
+                        <p>DBVALUE</p>
+                 		<p>DBVALUE</p>
+                 		<p>DBVALUE</p>
+                 		<p>DBVALUE</p>
                     </div>
                 </div>
 
                 <div id="sec05" class="">
                     <h2 class="cont_tit">세부내용</h2>
-
                     <textarea>
                     </textarea>
                 </div>
@@ -209,8 +183,9 @@
 
 
                 <div class="btn_sumit">
-                    <button type="submit" class="btn_l c_blue">지원하기</button>
-                    <button type="reset" class="btn_l c_gray">취소</button>
+                <button type="submit" class="btn_blue">쪽지보내기</button>
+                    <button type="submit" class="btn_blue">신청하기</button>
+                    <button type="reset" class="btn_gray">취소</button>
                 </div>
 
             </div>
