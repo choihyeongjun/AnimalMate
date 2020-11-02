@@ -2,19 +2,16 @@ package co.animalMate.board.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import co.animalMate.common.Action;
 
-public class LogoutAction implements Action {
+public class FindIdAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 로그아웃 시키기
-		HttpSession session = request.getSession(false);
-		session.invalidate();
-		
-		return "main/jsp/main/mainMenu.jsp";
+		// TODO 아이디찾기 결과 창으로 이동
+		return "main/webapp/jsp/login/findIdResult.jsp";
 	}
 
 }
+

@@ -31,34 +31,34 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">신고번호</th>
+					<th scope="col">게시글번호</th>
+					<th scope="col">작성일자</th>
 					<th scope="col">제목</th>
-					<th scope="col">신고자</th>
-					<th scope="col">피신고자</th>
-					<th scope="col">게시날짜</th>
+					<th scope="col">분류</th>
+					<th scope="col">조회수</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row">1</th>
-					<td>안녕하세요</td>
-					<td>김상민</td>
-					<td>김상민2</td>
-					<td>2020-10-30</td>
+					<td>1</td>
+					<th scope="row">2020-11-02</th>
+					<td>야~ 프로젝트하기 싫다~</td>
+					<td>공지사항</td>
+					<td>999</td>
 				</tr>
 				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-					<td>2020-10-30</td>
+					<td>2</td>
+					<th scope="row">2020-11-02</th>
+					<td>반값이벤트합니다!</td>
+					<td>이벤트</td>
+					<td>999</td>
 				</tr>
 				<tr>
-					<th scope="row">3</th>
-					<td>Larry</td>
-					<td>the Bird</td>
-					<td>@twitter</td>
-					<td>2020-10-30</td>
+					<td>3</td>
+					<th scope="row">2020-11-02</th>
+					<td>야~ 프로젝트하기 싫다~</td>
+					<td>공지사항</td>
+					<td>999</td>
 				</tr>
 			</tbody>
 		</table>
@@ -72,10 +72,9 @@
 			<a href="#">6</a>
 			<a href="#">&raquo;</a>
 		</div>
-		<br><br>
-		<div align="right">
-			<button>신고하기</button>
-		</div>
+	</div>
+	<div align="right">
+		<button>글쓰기</button>
 	</div>
 </body>
 </html>

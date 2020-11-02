@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+/*----------------------------------------------------- 공통 ---------------------------------*/
+/* 테이블 - write페이지에서 list*/
+.tbl_write__list thead th{height:30px; background:#f0f0f0;}
+.tbl_write__list tbody td{height:30px; padding:5px; border-bottom:1px solid #dadada;}
+.tbl_write__list thead tr th:nth-child(1),
+.tbl_write__list tbody tr td:nth-child(1){border-left:none !important;}
+.tbl_write__list thead tr th:last-child{border-right:none !important;}
+
+.tbl_write__list input{max-width:400px; text-align:center;}
+.tbl_write__list select{min-width:140px; max-width:100%;}
+
+
+
+
+
+
+
+
+/*----------------------------------------------------- 레이아웃 ---------------------------------*/
+.container{max-width:1400px; margin:50px auto 90px;}
+.title{text-align:center;}
+.title h1{font-size:38px; margin-bottom:37px;}
+.title p{font-size:17px; color:#525252;}
+.title p span{display:block; font-size:15px; color:inherit; margin-top:11px;}
+
+.cont_tit{font-size:19px; margin-bottom:20px;}
+
+
+
+/*----------------------------------------------------- 컨텐츠 ---------------------------------*/
+.sitter_info .cont_area{background:#f9f9f9; font-size:0; padding:20px 30px;}
+.sitter_info .cont_area .info_img,
+.sitter_info .cont_area .info_table{display:inline-block;}
+
+.sitter_info .cont_area .info_img{width:150px; height:150px; line-height:150px; text-align:center; border-radius:50%; background:#eaeaea; margin-right:60px;}
+.sitter_info .cont_area .info_table{width:calc(100% - 150px - 60px);}
+.sitter_info .cont_area .info_table table{width:600px;}
+.addpic button {width: 150px; height: 150px; background-color: gray;}
+.btn_sumit .btn_blue {background-color: aqua;}
+.btn_sumit .btn_gray {background-color: gray;}
+.calendar .datepicker {display: inline-block; width: 200px;}

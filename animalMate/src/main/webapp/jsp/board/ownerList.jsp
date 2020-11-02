@@ -95,6 +95,9 @@
 	</select>
 </div>
 
+<div>
+	<button>글 등록</button>
+</div>
 <div id="main">
 					<div class="inner">
 

@@ -10,13 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.animalMate.board.command.FindIdAction;
 import co.animalMate.board.command.LoginAction;
 import co.animalMate.board.command.LoginForm;
 import co.animalMate.board.command.LogoutAction;
 import co.animalMate.board.command.MainAction;
-import co.animalMate.board.command.MemberForm;
-import co.animalMate.board.command.MemberInsertAction;
+import co.animalMate.board.command.JoinForm;
+import co.animalMate.board.command.JoinInsertAction;
 import co.animalMate.board.command.MemberListAction;
+import co.animalMate.board.command.MypetInsertAction;
 
 
 public class FrontController extends HttpServlet {
@@ -34,8 +36,8 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginAction()); //로그인 메뉴를 처리하는 것
 		map.put("/loginForm.do", new LoginForm()); //로그인 폼 띄우기
 		map.put("/memberList.do", new MemberListAction()); //회원전체리스트
-		map.put("/memberForm.do", new MemberForm()); //회원가입하면 호출
-		map.put("/memberInsert.do", new MemberInsertAction()); //회원입력
+		map.put("/memberForm.do", new JoinForm()); //회원가입하면 호출
+		map.put("/memberInsert.do", new JoinInsertAction()); //회원입력
 		map.put("/logout.do", new LogoutAction());
 
 		
@@ -53,7 +55,12 @@ public class FrontController extends HttpServlet {
 		
 		//찬호
 		
-
+		map.put("/loginForm.do", new LoginForm()); //로그인 폼 띄우기
+		map.put("/login.do", new LoginAction()); //로그인 메뉴를 처리하는 것
+		map.put("/joinForm.do", new JoinForm()); //회원가입하면 호출
+		map.put("/memberInsert.do", new JoinInsertAction()); //회원입력
+		map.put("/logout.do", new LogoutAction()); //로그아웃 액션
+		map.put("/ld_find.do", new FindIdAction()); //로그아웃 액션
 		
 		
 		
@@ -121,7 +128,7 @@ public class FrontController extends HttpServlet {
 		
 		
 		//진구
-		
+		map.put("/mypetInsert.do", new MypetInsertAction());
 		
 		
 		

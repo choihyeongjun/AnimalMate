@@ -9,7 +9,7 @@ import co.animalMate.board.dao.MemberDao;
 import co.animalMate.board.vo.MemberVO;
 import co.animalMate.common.Action;
 
-public class MemberInsertAction implements Action {
+public class JoinInsertAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {

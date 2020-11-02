@@ -12,7 +12,7 @@
 	<br/>
 	<h1>펫 등록</h1>
 	<div class="row">
-		<form id = "frm" name = "frm" action="#.do" method="post" enctype="multipart/form-data">
+		<form id = "frm" name = "frm" action="mypetInsert.do" method="post" enctype="multipart/form-data">
 			<table class= "table">
 				<tr>
 					<th>이름</th>

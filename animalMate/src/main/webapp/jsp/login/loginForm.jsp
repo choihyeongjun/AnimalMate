@@ -24,20 +24,24 @@
 		<form class="login_form" action="login.do" method="post">
 		<!-- 아이디 입력창 -->
 			<div class="id_input-wrap">
-				<span class="id_input-icon"></span>
+				<!-- <span class="id_input-icon"></span>
 				<!-- 아이콘 추가해야함 -->
+				아이디 : 
 				<span class="id_input-group">
 					<input type="text" class="id_input" name="id_input" id="id_input" placeholder="아이디를 입력하세요"> 
 				</span>
 			</div>
+			<br/>
 			<!-- 비밀번호 입력창 -->
 				<div class="pw_input-wrap">
-				<span class="pw_input-icon"></span>
+				<!-- <span class="pw_input-icon"></span>
 					<!-- 아이콘 추가해야함 -->
+					비밀번호 : 
 				<span class="pw_input-group">
 					<input type="text" class="pw_input" name="pw_input" id="pw_input" placeholder="비밀번호를 입력하세요"> 
 				</span>
 			</div> <!-- 로그인 입력창 끝 -->
+			<br/>
 			<!-- 하단 메뉴 //아이디/비번찾기 (추가메뉴)-->
 			<div class="login_content_util">
 				<a href="#" class="id_find-link">
@@ -51,6 +55,7 @@
 				
 				</a>
 			</div><!-- 하단 메뉴 //아이디/비번찾기 (추가메뉴) 끝-->
+			<br/>
 			<!-- 로그인 / 회원가입 버튼-->
 			<div class="login_join-button">
 			<!-- 로그인 버튼 -->

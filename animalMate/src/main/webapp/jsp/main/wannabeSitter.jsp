@@ -98,7 +98,7 @@ input[type=submit]:hover {
   </div>
   <br>
   <div class="wannabeSitterSubmit" align="right">
-    <input type="submit" value="Submit">
+    <button>제출하기</button>
   </div>
   </form>
 </div>
