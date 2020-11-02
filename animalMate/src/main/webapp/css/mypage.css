@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+/* JinGyu */
+.row { /* 이거 부트스트렙 공용이라 지워야하면 지워도됨 */
+   justify-content: center;
+   align-items: center;
+}
+
+.mypagebox {
+   padding: 40px;
+   border: 2px solid rgb(15, 162, 226);
+   margin: 30px;
+   width: 40%;
+   box-shadow: 3px 3px 3px 3px rgb(15, 162, 226);
+   text-align: center;
+}
+
+.mypagebox h1 {
+   color: rgb(15, 162, 226);
+}
+
+.mypagebox th {
+   width: 35%;
+   
+}
+
+.petInsult{
+   background-color: #E0E0E0;
+   justify-content: center;
+      align-items: center;
+      text-align: center;    
+}
+
+.petProfileImg{
+   
+}
+
+.mypageTrade {
+   width: 70%;
+   text-align: center;
+   justify-content: center;
+   align-items: center;
+   margin: 50px;
+   float: right;
+}
+
+.mypageTrade div{
+   padding: 20px;
+   width: 25%;
+   background-color: #E0E0E0;
+}
+
+.mypageTradeList{
+   width: 90%;
+   text-align: center;
+   float: right;
+}
+
