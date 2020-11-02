@@ -17,6 +17,7 @@ import co.animalMate.board.command.MainAction;
 import co.animalMate.board.command.MemberForm;
 import co.animalMate.board.command.MemberInsertAction;
 import co.animalMate.board.command.MemberListAction;
+import co.animalMate.board.command.MypetInsertAction;
 
 
 public class FrontController extends HttpServlet {
@@ -119,7 +120,7 @@ public class FrontController extends HttpServlet {
 		
 		
 		//진구
-		
+		map.put("/mypetInsert.do", new MypetInsertAction());
 		
 		
 		
