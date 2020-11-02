@@ -14,9 +14,9 @@ public class MemberDao extends DAO {
 	private ResultSet rs; //select 후 결과셋 받기
 	private MemberVO vo;
 	
-	private final String SELECT_ALL = "SELECT * FROM MEMBER";
+	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
 	private final String SELECT = "SELECT * FROM MEMBER WHERE ID = ? AND PASSWORD=?";
-	private final String INSERT = "INSERT INTO MEMBER(ID, NAME, PASSWORD, ADDRESS, TEL, ENTERDATE) VALUES (?,?,?,?,?,?)";
+	private final String INSERT = "INSERT INTO MEMBER(ID, PASSWORD, NAME, ZOOMIN1,ZOOMIN2, TEL, LOCATION1,LOCATION2,EMAIL) VALUES (?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE = "UPDATE MEMBER SET NAME = ?, PASSWORD = ?, ADDRESS = ?, TEL = ?, ID = ?";
 	private final String DELETE = "DELETE FROM MEMBER WHERE ID = ?"; 
 	
@@ -29,12 +29,20 @@ public class MemberDao extends DAO {
 			while(rs.next()) {
 				vo = new MemberVO();
 				vo.setId(rs.getString("id"));
+				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
-				vo.setPassword(rs.getString("password"));
-				vo.setAddress(rs.getString("address"));
+				vo.setnName(rs.getString("nName"));
 				vo.setTel(rs.getString("tel"));
-				vo.setEnterdate(rs.getDate("enterdate"));
+				vo.seteDate(rs.getDate("eDate"));
 				vo.setAuthor(rs.getString("author"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setStatus(rs.getString("status"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setLocation2(rs.getString("location2"));
+				vo.setEmail(rs.getString("email"));
+				vo.setPic(rs.getString("pic"));
+				vo.setZoomin1(rs.getInt("zoomin1"));
+				vo.setZoomin2(rs.getInt("zoomin2"));
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -73,11 +81,15 @@ public class MemberDao extends DAO {
 		try {
 			psmt = conn.prepareStatement(INSERT);
 			psmt.setString(1, vo.getId());
-			psmt.setString(2, vo.getName());
-			psmt.setString(3, vo.getPassword());
-			psmt.setString(4, vo.getAddress());
-			psmt.setString(5, vo.getTel());
-			psmt.setDate(6, vo.getEnterdate());
+			psmt.setString(2, vo.getPw());
+			psmt.setString(3, vo.getName());
+			psmt.setString(4, vo.getTel() );
+			psmt.setInt(5, vo.getZoomin1());
+			psmt.setInt(6, vo.getZoomin2());
+			psmt.setString(7, vo.getLocation1());
+			psmt.setString(8, vo.getLocation2());
+			psmt.setString(9, vo.getEmail());
+			
 			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -57,10 +57,10 @@ public class FrontController extends HttpServlet {
 		
 		map.put("/loginForm.do", new LoginForm()); //로그인 폼 띄우기
 		map.put("/login.do", new LoginAction()); //로그인 메뉴를 처리하는 것
-		map.put("/joinForm.do", new JoinForm()); //회원가입하면 호출
-		map.put("/memberInsert.do", new JoinInsertAction()); //회원입력
+		map.put("/joinForm.do", new JoinForm()); //회원가입 폼 띄우기
+		map.put("/joinInsert.do", new JoinInsertAction()); //회원입력
 		map.put("/logout.do", new LogoutAction()); //로그아웃 액션
-		map.put("/ld_find.do", new FindIdAction()); //로그아웃 액션
+		map.put("/ld_find.do", new FindIdAction()); //아이디 찾기 액션
 		
 		
 		
