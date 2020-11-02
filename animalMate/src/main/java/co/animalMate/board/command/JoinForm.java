@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.common.Action;
 
-public class MemberForm implements Action {
+public class JoinForm implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {

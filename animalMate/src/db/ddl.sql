@@ -23,6 +23,7 @@ CREATE TABLE black
 	code number NOT NULL,
 	toUser varchar2(100) NOT NULL,
 	fromUser varchar2(100),
+	title varchar2(100),
 	comm varchar2(4000),
 	dtime date,
 	PRIMARY KEY (code)
@@ -35,6 +36,7 @@ CREATE TABLE comments
 	score number,
 	comm varchar2(100),
 	pic varchar2(100),
+	title varchar2(100),
 	PRIMARY KEY (code)
 );
 
@@ -45,7 +47,7 @@ CREATE TABLE joblist
 	comm varchar2(100),
 	pic varchar2(100),
 	confirm varchar2(10),
-	PRIMARY KEY (code)
+	CONSTRAINT joblist_key UNIQUE (code, comm)
 );
 
 
@@ -58,6 +60,7 @@ CREATE TABLE members
 	tel varchar2(100),
 	eDate date,
 	author varchar2(100),
+	money number,
 	point number,
 	status varchar2(100),
 	location1 varchar2(100),
@@ -77,6 +80,7 @@ CREATE TABLE message
 	receive varchar2(100) NOT NULL,
 	comm varchar2(4000),
 	status varchar2(100),
+	ttype varchar2(100),
 	PRIMARY KEY (id)
 );
 
@@ -135,6 +139,7 @@ CREATE TABLE trade
 	etime varchar2(100),
 	day varchar2(100),
 	id varchar2(100),
+	tmoney number,
 	PRIMARY KEY (code)
 );
 
@@ -148,12 +153,11 @@ CREATE TABLE tradeBoard
 	ttime date DEFAULT sysdate,
 	price number(20),
 	comm varchar2(200),
-	trade number,
 	status varchar2(100),
 	stime varchar2(100),
 	etime varchar2(100),
 	wtime number,
-	type varchar2(100),
+	ttype varchar2(100),
 	location1 varchar2(200),
 	location2 varchar2(200),
 	PRIMARY KEY (code)
@@ -170,13 +174,13 @@ ALTER TABLE black
 
 
 ALTER TABLE message
-	ADD FOREIGN KEY (receive)
+	ADD FOREIGN KEY (send)
 	REFERENCES members (id)
 ;
 
 
 ALTER TABLE message
-	ADD FOREIGN KEY (send)
+	ADD FOREIGN KEY (receive)
 	REFERENCES members (id)
 ;
 
@@ -195,13 +199,13 @@ ALTER TABLE sitter
 
 
 ALTER TABLE tradeBoard
-	ADD FOREIGN KEY (buyer)
+	ADD FOREIGN KEY (seller)
 	REFERENCES members (id)
 ;
 
 
 ALTER TABLE tradeBoard
-	ADD FOREIGN KEY (seller)
+	ADD FOREIGN KEY (buyer)
 	REFERENCES members (id)
 ;
 
@@ -237,6 +241,7 @@ COMMENT ON TABLE black IS '신고';
 COMMENT ON COLUMN black.code IS '신고게시글번호';
 COMMENT ON COLUMN black.toUser IS '신고하는사람';
 COMMENT ON COLUMN black.fromUser IS '신고당한사람';
+COMMENT ON COLUMN black.title IS '제목';
 COMMENT ON COLUMN black.comm IS '신고내용';
 COMMENT ON COLUMN black.dtime IS '신고일자';
 COMMENT ON TABLE comments IS '후기';
@@ -244,6 +249,7 @@ COMMENT ON COLUMN comments.code IS '거래번호';
 COMMENT ON COLUMN comments.score IS '별점';
 COMMENT ON COLUMN comments.comm IS '코멘트';
 COMMENT ON COLUMN comments.pic IS '사진';
+COMMENT ON COLUMN comments.title IS '제목';
 COMMENT ON TABLE joblist IS '업무리스트';
 COMMENT ON COLUMN joblist.code IS '거래번호';
 COMMENT ON COLUMN joblist.comm IS '업무';
@@ -257,6 +263,7 @@ COMMENT ON COLUMN members.nname IS '닉네임';
 COMMENT ON COLUMN members.tel IS '전화번호';
 COMMENT ON COLUMN members.eDate IS '가입일자';
 COMMENT ON COLUMN members.author IS '권한';
+COMMENT ON COLUMN members.money IS '돈';
 COMMENT ON COLUMN members.point IS '포인트';
 COMMENT ON COLUMN members.status IS '상태';
 COMMENT ON COLUMN members.location1 IS '주소';
@@ -271,6 +278,7 @@ COMMENT ON COLUMN message.send IS '보내는아이디';
 COMMENT ON COLUMN message.receive IS '받는아이디';
 COMMENT ON COLUMN message.comm IS '내용';
 COMMENT ON COLUMN message.status IS '상태';
+COMMENT ON COLUMN message.ttype IS '1대1문의분류';
 COMMENT ON TABLE notice IS '공지테이블';
 COMMENT ON COLUMN notice.code IS '게시글번호';
 COMMENT ON COLUMN notice.day IS '작성일자';
@@ -304,6 +312,7 @@ COMMENT ON COLUMN trade.stime IS '시작시간';
 COMMENT ON COLUMN trade.etime IS '종료시간';
 COMMENT ON COLUMN trade.day IS '요일';
 COMMENT ON COLUMN trade.id IS '아이디';
+COMMENT ON COLUMN trade.tmoney IS '거래머니';
 COMMENT ON TABLE tradeBoard IS '거래게시판';
 COMMENT ON COLUMN tradeBoard.code IS '거래번호';
 COMMENT ON COLUMN tradeBoard.buyer IS '위탁자아이디';
@@ -312,11 +321,13 @@ COMMENT ON COLUMN tradeBoard.title IS '제목';
 COMMENT ON COLUMN tradeBoard.ttime IS '거래시간';
 COMMENT ON COLUMN tradeBoard.price IS '거래가격';
 COMMENT ON COLUMN tradeBoard.comm IS '상세정보';
-COMMENT ON COLUMN tradeBoard.trade IS '거래';
 COMMENT ON COLUMN tradeBoard.status IS '거래상태';
 COMMENT ON COLUMN tradeBoard.stime IS '시작일자';
 COMMENT ON COLUMN tradeBoard.etime IS '종료일자';
 COMMENT ON COLUMN tradeBoard.wtime IS '근무시간';
-COMMENT ON COLUMN tradeBoard.type IS '분류';
+COMMENT ON COLUMN tradeBoard.ttype IS '돌봐줄께요/돌봐주세요';
 COMMENT ON COLUMN tradeBoard.location1 IS '근무지역';
 COMMENT ON COLUMN tradeBoard.location2 IS '상세근무지역';
+
+
+

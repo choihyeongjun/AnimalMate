@@ -4,14 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시터지원</title>
+<title>Insert title here</title>
 <style>
-* {
+	* {
   box-sizing: border-box;
 }
 
 input[type=text], select, textarea {
-  width: 100%;
+  width: 50%;
   padding: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -37,6 +37,12 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
 .col-25 {
   float: left;
   width: 25%;
@@ -47,10 +53,6 @@ input[type=submit]:hover {
   float: left;
   width: 75%;
   margin-top: 6px;
-}
-
-.wannabeSitterSubmit {
-	margin-bottom: 100px;
 }
 
 /* Clear floats after the columns */
@@ -71,34 +73,46 @@ input[type=submit]:hover {
 </head>
 <body>
 
-<div align="center"><h2>시터 지원하기</h2></div>
-<br>
-
 <div class="container">
   <form action="/action_page.php">
   <div class="row">
     <div class="col-25">
-      <label for="country">최대 돌봄 마리 수</label>
+      <label for="fname">아이디</label>
     </div>
     <div class="col-75">
-      <select id="country" name="country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+      <input type="text" id="fname" name="firstname" placeholder="아이디">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="lname">제목</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="lname" name="lastname" placeholder="제목">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="country">분류</label>
+    </div>
+    <div class="col-75">
+      <select id="category" name="category">
+        <option value="페이지">페이지문제</option>
+        <option value="반려인">반려인문제</option>
+        <option value="시터">시터</option>
       </select>
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-      <label for="subject">지원내용</label>
+      <label for="subject">내용</label>
     </div>
     <div class="col-75">
-      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+      <textarea id="subject" name="subject" placeholder="나문의내용.." style="height:200px"></textarea>
     </div>
   </div>
-  <br>
-  <div class="wannabeSitterSubmit" align="right">
-    <button>제출하기</button>
+  <div class="row">
+    <input type="submit" value="Submit">
   </div>
   </form>
 </div>

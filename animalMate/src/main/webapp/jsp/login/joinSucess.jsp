@@ -4,12 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시간표</title>
+<title>회원가입을 축하드립니다.</title>
 </head>
 <body>
-	<h1>Weekdays</h1>
-    <p>5:00pm - 10:00pm</p>
-    <p>Weekends</p>
-    <p>5:00pm - 10:00pm</p>
+	<div align="center">
+		<div><h1>${param.id}님 가입을 축하합니다.</h1></div>
+		<div>
 </body>
 </html>

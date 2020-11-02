@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>시터지원</title>
+<title>Insert title here</title>
 <style>
-* {
+	* {
   box-sizing: border-box;
 }
 
@@ -37,6 +37,12 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
 .col-25 {
   float: left;
   width: 25%;
@@ -49,10 +55,6 @@ input[type=submit]:hover {
   margin-top: 6px;
 }
 
-.wannabeSitterSubmit {
-	margin-bottom: 100px;
-}
-
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -61,9 +63,9 @@ input[type=submit]:hover {
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
   .col-25, .col-75, input[type=submit] {
-    width: 100%;
+    width: 30%;
     margin-top: 0;
   }
 }
@@ -71,34 +73,34 @@ input[type=submit]:hover {
 </head>
 <body>
 
-<div align="center"><h2>시터 지원하기</h2></div>
-<br>
-
 <div class="container">
   <form action="/action_page.php">
   <div class="row">
     <div class="col-25">
-      <label for="country">최대 돌봄 마리 수</label>
+      <label for="fname">번호</label>
     </div>
     <div class="col-75">
-      <select id="country" name="country">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
+      <input type="text" id="fname" name="firstname" placeholder="공지번호">
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-      <label for="subject">지원내용</label>
+      <label for="lname">제목</label>
     </div>
     <div class="col-75">
-      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+      <input type="text" id="lname" name="lastname" placeholder="제목">
     </div>
   </div>
-  <br>
-  <div class="wannabeSitterSubmit" align="right">
-    <button>제출하기</button>
+  <div class="row">
+    <div class="col-25">
+      <label for="subject">내용</label>
+    </div>
+    <div class="col-75">
+      <textarea id="subject" name="subject" placeholder="공지내용.." style="height:200px"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <input type="submit" value="Submit">
   </div>
   </form>
 </div>
