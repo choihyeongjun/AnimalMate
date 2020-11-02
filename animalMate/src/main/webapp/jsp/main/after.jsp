@@ -31,34 +31,34 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">신고번호</th>
+					<th scope="col">거래날짜</th>
 					<th scope="col">제목</th>
-					<th scope="col">신고자</th>
-					<th scope="col">피신고자</th>
-					<th scope="col">게시날짜</th>
+					<th scope="col">위탁자</th>
+					<th scope="col">시터</th>
+					<th scope="col">별점</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th scope="row">1</th>
-					<td>안녕하세요</td>
+					<th scope="row">2020-11-02</th>
+					<td>아 거래 개떡같네</td>
 					<td>김상민</td>
-					<td>김상민2</td>
-					<td>2020-10-30</td>
+					<td>노진구</td>
+					<td>★☆☆☆☆</td>
 				</tr>
 				<tr>
-					<th scope="row">2</th>
-					<td>Jacob</td>
-					<td>Thornton</td>
-					<td>@fat</td>
-					<td>2020-10-30</td>
+					<th scope="row">2020-11-02</th>
+					<td>아 거래 개떡같네</td>
+					<td>김상민</td>
+					<td>노진구</td>
+					<td>★☆☆☆☆</td>
 				</tr>
 				<tr>
-					<th scope="row">3</th>
-					<td>Larry</td>
-					<td>the Bird</td>
-					<td>@twitter</td>
-					<td>2020-10-30</td>
+					<th scope="row">2020-11-02</th>
+					<td>아 거래 개떡같네</td>
+					<td>김상민</td>
+					<td>노진구</td>
+					<td>★☆☆☆☆</td>
 				</tr>
 			</tbody>
 		</table>
