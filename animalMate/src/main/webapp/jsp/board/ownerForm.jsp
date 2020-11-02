@@ -15,7 +15,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>돌봐줄게요(등록form)</title>
-
+		<!-- jquery -->
+		<script src="js/jquery-3.5.1.min.js"></script>
+		
         <!--파비콘 -->
         <!-- <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon"> -->
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
@@ -24,8 +26,34 @@
 
         <!-- css -->
         <style>
-
         </style>
+            <script>
+            $(function() {
+            	
+            	// 버튼 add function
+            	$(document).on("click",".checkAddBtn",function(){
+            		var addDiv = $('<div/>',{'class':'checkList'});
+            		var $input = $('<input/>',{type:'text', placeholder:'업무 체크리스트를 입력해주세요.'});
+            		
+            		$(addDiv).append($input);
+            		$(addDiv).append($('<button/>').attr('class','checkAddBtn').text('+'));
+            		$(addDiv).append($('<button/>').attr('class','checkDelBtn').text('-'));
+            		$(".sec04").append(addDiv);
+
+            	});
+            	
+            	// 버튼 minus function
+            	$(document).on("click",".checkDelBtn",function(){
+            		//console.log($(this).parent());
+            		$(this).parent().remove();
+            		
+            		
+ 
+
+            	});
+            });
+        </script>
+      
     </head>
 
     <body>
@@ -164,12 +192,12 @@
 
                 
 
-                    <div id="sec04" class="">
+                    <div id="sec04" class="sec04">
                     <h2 class="cont_tit">체크리스트</h2>
-                    <div>
+                    <div class="checkList">
                         <input type="text" placeholder="업무 체크리스트를 입력해주세요">
-                        <button>+</button>
-                        <button>-</button>
+                        <button class="checkAddBtn">+</button>
+                        <button class="checkDelBtn">-</button>
                     </div>
                 </div>
 
@@ -202,5 +230,6 @@
             <!-- e:contents -->
         </div>
         <!-- s:container -->
+      
     </body>
 </html>
