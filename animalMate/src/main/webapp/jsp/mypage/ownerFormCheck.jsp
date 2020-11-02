@@ -13,6 +13,7 @@
 
 	<div class="row">
 		<div class="checkPet">
+			<h3>내 펫 정보</h3>
 			<table class="table">
 				<tr>
 					<td rowspan="5"><img
@@ -40,10 +41,10 @@
 		</div>
 		<div style="width: 15%;"></div>
 		<div class="checkSitter">
+			<h3>시터 정보</h3>
 			<table class="table">
 				<tr>
-					<td rowspan="5"><img id="userpic"
-						src="${pageContext.request.contextPath}/images/user.png"></td>
+					<td rowspan="5"><img id="userpic" src="${pageContext.request.contextPath}/images/user.png"></td>
 					<th>이름</th>
 					<td>DBVALUE</td>
 				</tr>
@@ -68,7 +69,6 @@
 	</div>
 
 	<div class="row">
-		<div style="width: 15%;"></div>
 		<div class="checkDetail">
 			<p>
 				<b>세부조건</b>
@@ -99,30 +99,29 @@
 	</div>
 
 	<div class="row">
-		<div style="width: 15%;"></div>
 		<button type="submit">거래 수락</button>
 		&nbsp;&nbsp;&nbsp;
 	</div>
 	
 	<div class="row">
-		<div style="width: 15%;"></div>
 		<div class="checkDetail">
 			<h3>체크리스트</h3>
 			<table class="table">
 				<tr>
 					<th>체크리스트1</th>
 					<td>멍뭉이 밥 123g만 주기</td>
+					<td><img src="${pageContext.request.contextPath}/images/user.png"></td>
 				</tr>
 				<tr>
 					<th>체크리스트2</th>
 					<td>산책 1시간 시키기</td>
+					<td><img src="${pageContext.request.contextPath}/images/user.png"></td>
 				</tr>
 			</table>
 		</div>
 	</div>
 
 	<div class="row">
-		<div style="width: 15%;"></div>
 		<button type="submit">거래완료</button>
 		&nbsp;&nbsp;&nbsp;
 	</div>
