@@ -6,18 +6,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-div{
-border:3px solid black;
-}
+
 </style>
 </head>
 <body>
 <jsp:include page="mainMenu.jsp"/>
 <div >
 	<div>
-		<table border="3">
+		<table border="1">
 			<tr>
-				<h1><p style="background-color:red;">안녕</p></h1>
+				<h1>관리자님 환영합니다</h1>
 				
 			</tr>
 		</table>

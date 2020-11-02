@@ -12,7 +12,7 @@
 <hr>
 <div align="center">
 	<div><h1>블랙리스트 정보</h1></div>
-		<div>
+	<div>
 		<table>
 			<tr>
 				<td><input class="search" type="text" value="홍길동"></td>
