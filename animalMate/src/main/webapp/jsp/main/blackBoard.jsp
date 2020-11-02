@@ -72,6 +72,10 @@
 			<a href="#">6</a>
 			<a href="#">&raquo;</a>
 		</div>
+		<br><br>
+		<div align="right">
+			<button>신고하기</button>
+		</div>
 	</div>
 </body>
 </html>

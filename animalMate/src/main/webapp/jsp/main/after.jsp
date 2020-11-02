@@ -72,6 +72,9 @@
 			<a href="#">6</a>
 			<a href="#">&raquo;</a>
 		</div>
+		<div align="right">
+			<button>후기쓰기</button>
+		</div>
 	</div>
 </body>
 </html>

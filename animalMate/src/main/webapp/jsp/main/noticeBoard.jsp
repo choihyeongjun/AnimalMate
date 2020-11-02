@@ -72,11 +72,9 @@
 			<a href="#">6</a>
 			<a href="#">&raquo;</a>
 		</div>
-		
 	</div>
-	<div class="howToSitterButtonDiv">
-			<button>신청하기</button>&nbsp;&nbsp;
-			<button>취소</button>
-		</div>
+	<div align="right">
+		<button>글쓰기</button>
+	</div>
 </body>
 </html>
