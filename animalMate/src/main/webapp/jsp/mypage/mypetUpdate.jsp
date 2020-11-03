@@ -51,7 +51,7 @@
 					<td colspan =4 align=center>
 						<input type="submit" value="펫 등록">&nbsp;&nbsp;
 						<input type="submit" value="삭	제">&nbsp;&nbsp;
-						<input type="reset" value="취	소">
+						<input type="reset" onclick="window.location.href='${pageContext.request.contextPath}/mypetList.do'" value="취	소">
 					</td>
 				</tr>
 			</table>

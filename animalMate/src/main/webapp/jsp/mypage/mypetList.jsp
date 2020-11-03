@@ -33,6 +33,7 @@
 		 		<td><img src="${pageContext.request.contextPath}/images/${member.imgs}"></td>
 		 	</tr>
 		</table>
+		<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/mypetForm.do" role="button">펫 등록</a>
 	</div>
 </body>
 </html>

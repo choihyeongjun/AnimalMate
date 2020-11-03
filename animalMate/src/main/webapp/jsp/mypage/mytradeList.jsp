@@ -39,7 +39,6 @@
          </dl>
       </div>
    </div>
-   
    <div class="row mypageTradeList">
       <table class="table">
          <tr>
@@ -57,7 +56,7 @@
             <td>예약대기</td>
          </tr>
          <tr>
-            <td>맡기기</td>
+			<td>맡기기</td>
             <td>김머리</td>
             <td>소형견/닥터훈스</td>
             <td>12000포인트</td>
