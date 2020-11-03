@@ -6,6 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
+import co.animalMate.vo.MemberVO;
+=======
+>>>>>>> branch 'main' of https://github.com/yhoo0094/animalMate.git
 import co.animalMate.common.DAO;
 import co.animalMate.vo.MemberVO;
 

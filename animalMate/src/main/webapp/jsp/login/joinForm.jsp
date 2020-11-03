@@ -5,165 +5,275 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<link rel="stylesheet" href="../../css/join.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+/*변수 선언*/
+
+
+var id = document.querySelector('#id');
+
+var pw1 = document.querySelector('#pswd1');
+var pwMsg = document.querySelector('#alertTxt');
+var pwImg1 = document.querySelector('#pswd1_img1');
+
+var pw2 = document.querySelector('#pswd2');
+var pwImg2 = document.querySelector('#pswd2_img1');
+var pwMsgArea = document.querySelector('.int_pass');
+
+var userName = document.querySelector('#name');
+
+var gender = document.querySelector('#gender');
+
+var email = document.querySelector('#email');
+
+var mobile = document.querySelector('#mobile');
+
+var error = document.querySelectorAll('.error_next_box');
+
+
+
+/*이벤트 핸들러 연결*/
+
+
+id.addEventListener("focusout", checkId);
+pw1.addEventListener("focusout", checkPw);
+pw2.addEventListener("focusout", comparePw);
+userName.addEventListener("focusout", checkName);
+gender.addEventListener("focusout", function() {
+    if(gender.value === "성별") {
+        error[5].style.display = "block";
+    } else {
+        error[5].style.display = "none";
+    }
+})
+email.addEventListener("focusout", isEmailCorrect);
+mobile.addEventListener("focusout", checkPhoneNum);
+
+
+
+
+
+/*콜백 함수*/
+
+
+function checkId() {
+    var idPattern = /[a-zA-Z0-9_-]{5,20}/;
+    if(id.value === "") {
+        error[0].innerHTML = "필수 정보입니다.";
+        error[0].style.display = "block";
+    } else if(!idPattern.test(id.value)) {
+        error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+        error[0].style.display = "block";
+    } else {
+        error[0].innerHTML = "멋진 아이디네요!";
+        error[0].style.color = "#08A600";
+        error[0].style.display = "block";
+    }
+}
+
+function checkPw() {
+    var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;
+    if(pw1.value === "") {
+        error[1].innerHTML = "필수 정보입니다.";
+        error[1].style.display = "block";
+    } else if(!pwPattern.test(pw1.value)) {
+        error[1].innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
+        pwMsg.innerHTML = "사용불가";
+        pwMsgArea.style.paddingRight = "93px";
+        error[1].style.display = "block";
+        
+        pwMsg.style.display = "block";
+        pwImg1.src = "m_icon_not_use.png";
+    } else {
+        error[1].style.display = "none";
+        pwMsg.innerHTML = "안전";
+        pwMsg.style.display = "block";
+        pwMsg.style.color = "#03c75a";
+        pwImg1.src = "m_icon_safe.png";
+    }
+}
+
+function comparePw() {
+    if(pw2.value === pw1.value && pw2.value != "") {
+        pwImg2.src = "m_icon_check_enable.png";
+        error[2].style.display = "none";
+    } else if(pw2.value !== pw1.value) {
+        pwImg2.src = "m_icon_check_disable.png";
+        error[2].innerHTML = "비밀번호가 일치하지 않습니다.";
+        error[2].style.display = "block";
+    } 
+
+    if(pw2.value === "") {
+        error[2].innerHTML = "필수 정보입니다.";
+        error[2].style.display = "block";
+    }
+}
+
+function checkName() {
+    var namePattern = /[a-zA-Z가-힣]/;
+    if(userName.value === "") {
+        error[3].innerHTML = "필수 정보입니다.";
+        error[3].style.display = "block";
+    } else if(!namePattern.test(userName.value) || userName.value.indexOf(" ") > -1) {
+        error[3].innerHTML = "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)";
+        error[3].style.display = "block";
+    } else {
+        error[3].style.display = "none";
+    }
+}
+
+function isEmailCorrect() {
+    var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/;
+
+    if(email.value === ""){ 
+        error[6].style.display = "none"; 
+    } else if(!emailPattern.test(email.value)) {
+        error[6].style.display = "block";
+    } else {
+        error[6].style.display = "none"; 
+    }
+
+}
+
+function checkPhoneNum() {
+    var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
+
+    if(mobile.value === "") {
+        error[7].innerHTML = "필수 정보입니다.";
+        error[7].style.display = "block";
+    } else if(!isPhoneNum.test(mobile.value)) {
+        error[7].innerHTML = "형식에 맞지 않는 번호입니다.";
+        error[7].style.display = "block";
+    } else {
+        error[7].style.display = "none";
+    }
+
+   
+}
+</script>
 </head>
 <body>
-<!--전체 회원가입 메뉴 감싸는 div -->
-<div class="join-wrapper" align="center">
 <!-- 회원가입창 상단로고 //클릭하면 메인페이지로 이동 -->
-	<header class="join-header">
-		<h1 class="join-logo">
-			<a href="#" class="join-logo-link">
-				<image src="#" 
-					 class="join-logo-img" alt="animalMate">
+	<header class="header">	
+			<a href="#" target"_blank">
+				<image src="#" id="logo" >
 				</image>
 			</a>
-		</h1>
 	</header>
 <!-- 회원가입 입력창 -->
-<div class="join-main">
-<form class="join_form" action="joinInsert.do" method="post">
-<!-- 버튼을 제외한 입력메뉴창 -->
-	<div class="join-content">
-		<!-- 아이디 입력창 -->
-		<div class="id_input-wrap">
-			<!-- <span class="id_input-icon"></span>
-				<!-- 아이콘 추가해야함 --> 
-				아이디 : 
-				<span class="id_input-group">
-					<input type="text" class="id_input" name="id_input" id="id_input" placeholder="아이디를 입력하세요"> 
-				</span>
-			<a class="id_input_check">중복확인</a>
-		</div> 	<!-- 아이디 입력창 끝-->
+
+<form class="join_form" action="${pageContext.request.contextPath}/joinInsert.do" method="post">
+
+	 <!-- wrapper -->
+        <div id="wrapper">
+	 <!-- content-->
+            	<div id="content">        	
+      <!-- ID -->
+				  <div>
+                    <h3 class="join_title">
+                        <label for="id">아이디</label>
+                    </h3>
+                    <span class="box int_id">
+                        <input type="text" id="id" class="int" maxlength="20">
+                        <span class="step_url"></span>
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
 		<!-- 비밀번호 입력창 -->
-			<div class="pw_input-wrap">
-				<div class="pw_input-area">
-					<!-- <span class="pw_input-icon"></span>
-						<!-- 아이콘 추가해야함 -->
-						비밀번호 :
-					<span class="pw_input-group">
-						<input type="password" class="pw_input" name="pw_input" id="pw_input" placeholder="비밀번호를 입력하세요"> 
-					</span>
-				</div>
-		<!-- 비밀번호 입력 가이드 -->
-			<div class="pw_input-guide-wrap">
-				<div class="pw_input-guide-area">
-					<div class="pw_input-guide-first-wrap">
-						<span class="pw_input-guide-first-icon"></span>
-						<!-- 아이콘 추가해야함 -->
-						<span>
-							영문/숫자/특수문자 2가지 이상 조합해주세요.
-						</span>
-					</div>
-					<div class="pw_input-guide-second-wrap">
-						<span class="pw_input-guide-second-icon"></span>
-						<!-- 아이콘 추가해야함 -->
-						<span>
-							3개 이상 연속되거나 동일한 문자/숫자 제외
-						</span>
-					</div>
-					<div class="pw_input-guide-third-wrap">
-						<span class="pw_input-guide-third-icon"></span>
-						<!-- 아이콘 추가해야함 -->
-						<span>
-							아이디 제외
-						</span>
-					</div>
-				</div>
-			</div>	<!-- 비밀번호 입력 가이드 끝-->
-		</div>	<!-- 비밀번호 입력창 끝 -->		 
-		<!-- 비밀번호 입력 확인창 -->
-		<div class="pw_input_check-wrap">
-			<div class="pw_input-area">
-				<!-- <span class="pw_input-icon"></span>
-						<!-- 아이콘 추가해야함 -->
-						비밀번호 확인 : 
-					<span class="pw_input_check-group">
-						<input type="password" class="pw_input_check" name="pw_input_check" id="pw_input_check" placeholder="비밀번호 확인"> 
-					</span>
-			</div>
-		</div> 
-		<!-- 비밀번호 입력 확인 가이드 -->
-			<div class="pw_input_check-guide-wrap">
-				<div class="pw_input_check-guide-area">
-						<span class="pw_input-guide-first-icon"></span>
-						<!-- 아이콘 추가해야함 -->
-						<span>
-							비밀번호 확인을 위해 비밀번호를 다시 입력하세요.
-						</span>
-				</div>
-			</div>	<!-- 비밀번호 입력 확인 가이드 끝 -->
-		<!-- 이름 입력창 -->
-		<div class="name_input-wrap">
-			<!-- <span class="name_input-icon"></span>
-				<!-- 아이콘 추가해야함 --> 이름 : 
-				<span class="name_input-group">
-					<input type="text" class="name_input" name="name_input" id="name_input" placeholder="이름을 입력하세요"> 
+			 <!-- PW1 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                    <span class="box int_pass">
+                        <input type="text" id="pswd1" class="int" maxlength="20">
+                        <span id="alertTxt">사용불가</span>
+                        <img src="m_icon_pass.png" id="pswd1_img1" class="pswdImg">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                
+		    <!-- PW2 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                    <span class="box int_pass_check">
+                        <input type="text" id="pswd2" class="int" maxlength="20">
+                        <img src="m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                
+                 <!-- NAME -->
+                <div>
+                    <h3 class="join_title"><label for="name">이름</label></h3>
+                    <span class="box int_name">
+                        <input type="text" id="name" class="int" maxlength="20">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+                
+            <!-- 주민등록번호 -->
+		<div>
+			 <h3 class="join_title"><label for="zoomin">주민등록번호 </label></h3>
+				<span class="box int_zoomin">
+					<input type="text" class="int" name="zoomin1" id="zoomin1" maxlength="6"> -
+					<input type="text" class="int" name="zoomin2" id="zoomin2" maxlength="7">
 				</span>
-		</div> 	<!-- 이름 입력창 끝-->
-		<!-- 주민등록번호 입력창 -->
-		<div class="jumin_input-wrap">
-		<!-- <span class="jumin_input-icon"></span>
-				<!-- 아이콘 추가해야함 -->
-				주민등록번호 : 
-				<span class="jumin_input-group">
-					<input type="text" class="jumin1_input" name="jumin1_input" id="jumin1_input"> -
-					<input type="text" class="jumin2_input" name="jumin2_input" id="jumin2_input">
-				</span>
-			<a href="#" class="jumin_input_check">실명인증</a>
-		</div> 	<!-- 주민등록번호 입력창 끝-->
-		<!-- 연락처 입력창 -->
-		<div class="tel_input-wrap">
-			<!-- <span class="tel_input-icon"></span>
-				<!-- 아이콘 추가해야함 -->
-				연락처 : 
-				<span class="tel_input-group">
-				<select class="tel_input_first">
-					<option value="010" selected>010</option>
-					<option value="011">011</option>
-					<option value="016">016</option>
-					<option value="017">017</option>
-				</select>
-				- <input type="text" class="tel1_input" name="tel1_input" id="tel1_input"> -
-				  <input type="text" class="tel2_input" name="tel2_input" id="tel2_input">
-				</span>
-			<a href="#" class="tel_input_check">휴대폰인증</a>
-		</div> 	<!-- 연락처 입력창 끝-->
+			<a href="#" class="zoomin">실명인증</a>
+		</div> 	
+		
+		<!-- GENDER -->
+                <div>
+                    <h3 class="join_title"><label for="gender">성별</label></h3>
+                    <span class="box gender_code">
+                        <select id="gender" class="sel">
+                            <option>성별</option>
+                            <option value="M">남자</option>
+                            <option value="F">여자</option>
+                        </select>                            
+                    </span>
+                    <span class="error_next_box">필수 정보입니다.</span>
+                </div>
+                
+                <!-- EMAIL -->
+                <div>
+                    <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
+                    <span class="box int_email">
+                        <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
+                    </span>
+                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
+                </div>
+                
+                <!-- MOBILE -->
+                <div>
+                    <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
+                    <span class="box int_mobile">
+                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                    </span>
+                    <span class="error_next_box"></span>    
+                </div>
+                
 		<!-- 주소 입력창 -->
-		<div class="adress_input-wrap">
-			<!-- <span class="adress_input-icon"></span>
-				<!-- 아이콘 추가해야함 -->
-				주소 : 
-				<span class="adress_input-group">
-					<input type="text" class="address1_input" name="address1_input" id="address1_input">
-					<a href="#" class="address_input_scan">검색</a><br/>
-					상세주소 : 
-					<input type="text" class="address2_input" name="address2_input" id="address2_input" placeholder="상세주소를 입력해주세요">
+		<div>
+			<h3 class="join_title">
+			 <label for="location">주소</label></h3>
+				<span class="box int_location">
+					<input type="text" id="location1" class="int" maxlength="100" placeholder="선택입력">
+					<input type="text" id="location2" class="int" maxlength="100"  placeholder="상세주소를 입력해주세요">
 				</span>
 		</div> 	<!-- 주소 입력창 끝-->
-		<!-- 이메일 입력창 -->
-		<div class="email_input-wrap">
-			<!-- <span class="email_input-icon"></span>
-				<!-- 아이콘 추가해야함 -->
-				이메일 : 
-				<span class="email_input-group">
-					<input type="text" class="email_input" name="email_input" id="email_input">@
-					<input type="text" list="email_input_second" placeholder="직접입력">
-						<datalist id="email_input_second">
-							<option value="gmail.com">지메일</option>
-							<option value="naver.com">네이버</option>
-							<option value="daum.net">다음</option>
-							<option value="kakao.com">카카오</option>
-						</datalist>
-				</span>
-		</div> 	<!-- 이메일 입력창 끝-->
-	</div> <!-- 버튼을 제외한 입력메뉴창 끝-->
+		<br/>
+		<br/>
 	<!-- 가입&취소 버튼 -->
-	<div class="join_button">
-		<button class="join_button-submit" type="submit">가입하기</button>&nbsp;&nbsp;&nbsp;
-		<a class="join_button-cancel" href="../main/mainMenu">취소</a> <!-- 메인페이지로 이동 -->
+	<div class="btn_area">
+		<button type="submit" id="btn">가입하기</button>&nbsp;&nbsp;&nbsp;
+		<button type="button" id="btn" onclick="window.location.href='${pageContext.request.contextPath}/">취소</button> <!-- 메인페이지로 이동 -->
 	</div><!-- 가입&취소 버튼 끝 -->
+
+	 		</div> 
+           <!-- content-->
+         </div> 
+        <!-- wrapper -->
 	</form>
-</div> <!-- 회원가입 입력창 끝-->
-</div>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-package co.animalMate.board.command;
+package co.animalMate.login.command;
 
 import java.sql.Date;
 
