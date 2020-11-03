@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.board.dao.PetDao;
-import co.animalMate.board.vo.PetVO;
 import co.animalMate.common.Action;
+import co.animalMate.vo.PetVO;
 
 public class MypetInsertAction implements Action {
 
