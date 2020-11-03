@@ -6,8 +6,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.animalMate.board.vo.MemberVO;
+
 import co.animalMate.common.DAO;
+import co.animalMate.vo.MemberVO;
 
 public class MemberDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
@@ -33,7 +34,7 @@ public class MemberDao extends DAO {
 				vo.setName(rs.getString("name"));
 				vo.setnName(rs.getString("nName"));
 				vo.setTel(rs.getString("tel"));
-				vo.seteDate(rs.getDate("eDate"));
+				vo.setDate(rs.getDate("eDate"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setPoint(rs.getInt("point"));
 				vo.setStatus(rs.getString("status"));
