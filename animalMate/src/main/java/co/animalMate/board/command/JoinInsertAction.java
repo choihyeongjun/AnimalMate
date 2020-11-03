@@ -22,7 +22,7 @@ public class JoinInsertAction implements Action {
 		vo.setName(request.getParameter("name"));
 		vo.setnName(request.getParameter("nName"));
 		vo.setTel(request.getParameter("tel"));
-		vo.seteDate(Date.valueOf(request.getParameter("eDate")));
+		vo.setDate(Date.valueOf(request.getParameter("eDate")));
 		vo.setAuthor(request.getParameter("author"));
 		vo.setPoint(Integer.valueOf(request.getParameter("point")));
 		vo.setStatus(request.getParameter("status"));
