@@ -12,8 +12,8 @@
 		<table border="1">
 			<h1>거래 관리</h1>
 			<select>
-			<option>진행건수:
-			<option>완료건수:
+			<option>진행건 
+			<option>완료건
 			</select>
 			<h2>상세 내역</h2>
 			<tr>

@@ -5,12 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.common.Action;
 
-public class JoinForm implements Action {
+public class SitterFormAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 회원가입 폼 호출
-		return "jsp/member/memberForm.jsp";
+
+		return  "jsp/board/sitterForm.jsp";
 	}
 
 }

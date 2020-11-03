@@ -67,7 +67,7 @@
 
 <body id="top">
 <div>
-	<h1>돌봐주세요 리스트</h1>
+	<h1>돌봐줄게용 리스트</h1>
 </div>
 <div>
 	<label>펫 종류</label>
@@ -96,7 +96,7 @@
 </div>
 
 <div>
-	<button onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글 등록</button>
+	<button onclick="window.location.href='${pageContext.request.contextPath}/sitterForm.do'">글 등록</button>
 </div>
 <div id="main">
 					<div class="inner">

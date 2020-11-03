@@ -222,7 +222,7 @@
 
                 <div class="btn_sumit">
                     <button type="submit" class="btn_blue">글등록</button>
-                    <button type="reset" class="btn_gray">취소</button>
+                    <button type="reset" class="btn_gray" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
                 </div>
 
             </div>
