@@ -4,10 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import co.animalMate.vo.PetVO;
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'main' of https://github.com/yhoo0094/animalMate.git
 
 
 public class PetDao {
