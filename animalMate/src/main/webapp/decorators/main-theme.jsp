@@ -40,18 +40,21 @@
 
 <script type="text/javascript">
 	$(()=> {
+		//로그인버튼
 		$("#loginBtn").on({
 			"click" : function() {
 				location.href="${pageContext.request.contextPath}/goLoginPage.do";
 			}
 		})
 		
-		$("#tradeListBtn").on({
+		//쪽지버튼
+		$("#messageListBtn").on({
 			"click" : function() {
-				location.href="${pageContext.request.contextPath}/gotradeListPage.do";
+				location.href="${pageContext.request.contextPath}/goMessageListPage.do";
 			}
 		})
 		
+		//요청알림버튼
 		$("#tradeListBtn").on({
 			"click" : function() {
 				location.href="${pageContext.request.contextPath}/gotradeListPage.do";
@@ -85,7 +88,7 @@
 <body class="container">
 	<div align="right" style="margin-top: 50px">
 	<button id="tradeListBtn">요청알림</button>
-	<button id="">쪽지</button>
+	<button id="messageListBtn">쪽지</button>
 	<button id="loginBtn">로그인</button>
 	</div>
 	<br>
