@@ -14,7 +14,7 @@
 <div align="center">
 	<div><h1>블랙리스트 정보</h1></div>
 	<div>
-		<form name="searchFrm">	
+		<form action="blackSearch.do">	
 				<input class="search" type="text" value="홍길동">
 				<input class="search" type="text" value="hong">
 				<button id="btn">검색</button>	
@@ -31,24 +31,23 @@
 				<th width="100">권 한 </th>
 				<th width="42.5">변경</th>
 			</tr>
+			<c:if test="${author eq 'black'}">
 			<c:forEach var="member" items="${members}">
 				<tr>
 					<td>${member.id}</td>
 					<td>${member.name}</td>
 					<td>${member.address}</td>
 					<td>${member.tel}</td>
-					<td>${member.enterdate}</td>
+					<td>${member.eDate}</td>
 					<td>${member.author}</td>
 					<td><input type="text" value="얄짤 ㄴㄴ">${member.author}</td>
 					<td><button>수정</button></td>
 				</tr>
 			</c:forEach>
+			</c:if>
 		</table>
 	</div>
-		<div>
-		<button colspan="2">전체 조회</button>&nbsp;&nbsp;&nbsp;
-		<button>수정</button>
-		</div>
+		
 </div>
 </body>
 </html>
