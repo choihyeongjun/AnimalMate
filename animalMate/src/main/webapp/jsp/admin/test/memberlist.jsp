@@ -38,21 +38,20 @@
 				<th width="100">권 한 </th>
 				<th width="42.5">변경</th>
 			</tr>
-			<%--<c:forEach var="member" items="${members}">--%>
+			<c:forEach var="member" items="${members}">
 				<tr>
-					<td><input type="text" value="12"></td>
-					<td><input type="text" value="홍길동">${member.name}</td>
-					<td><input type="text" value="경상북도      ">${member.address}</td>
-					<td><input type="text" value="010-00">${member.tel}</td>
-					<td><input type="text" value="9월1일">${member.enterdate}</td>
-					<td><input type="text" value="유저">${member.author}</td>
+					<td><input type="text"></td>
+					<td><input type="text">${member.name}</td>
+					<td><input type="text">${member.address}</td>
+					<td><input type="text">${member.tel}</td>
+					<td><input type="text">${member.enterdate}</td>
+					<td><input type="text">${member.author}</td>
 					<td><button>수정</button></td>
 				</tr>
-			<%--</c:forEach>--%>
+			</c:forEach>
 		</table>
 	</div>
-
-		
+	
 </div>
 </body>
 </html>

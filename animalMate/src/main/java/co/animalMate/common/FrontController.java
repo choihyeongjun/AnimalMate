@@ -11,16 +11,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.board.command.FindIdAction;
+import co.animalMate.board.command.JoinForm;
+import co.animalMate.board.command.JoinInsertAction;
 import co.animalMate.board.command.LoginAction;
 import co.animalMate.board.command.LoginForm;
 import co.animalMate.board.command.LogoutAction;
 import co.animalMate.board.command.MainAction;
-import co.animalMate.board.command.JoinForm;
-import co.animalMate.board.command.JoinInsertAction;
-import co.animalMate.board.command.MemberListAction;
-import co.animalMate.board.command.MypetInsertAction;
 import co.animalMate.main.command.GoLoginPageAction;
 import co.animalMate.main.command.GotradeListPageAction;
+import co.animalMate.mypage.command.MemberForm;
+import co.animalMate.mypage.command.MypetForm;
+import co.animalMate.mypage.command.MypetFormAction;
+import co.animalMate.mypage.command.MypetList;
+import co.animalMate.mypage.command.MypetUpdate;
+import co.animalMate.mypage.command.MypetUpdateAction;
+import co.animalMate.mypage.command.MytradeList;
+import co.animalMate.mypage.command.OwnerFormCheck;
+import co.animalMate.mypage.command.Profile;
+import co.animalMate.mypage.command.SitterFormCheck;
 
 
 public class FrontController extends HttpServlet {
@@ -125,17 +133,17 @@ public class FrontController extends HttpServlet {
 		
 		
 		//진구
-		map.put("/mypetInsert.do", new MypetInsertAction());
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		map.put("/mypetForm.do", new MypetForm()); //펫 등록 화면 호출
+		map.put("/mypetFormAction.do", new MypetFormAction()); //펫 등록 액션
+		map.put("/mypetList.do", new MypetList()); //펫 목록 화면 호출
+		map.put("/mypetUpdate.do", new MypetUpdate()); //펫 수정, 삭제 화면 호출       
+		map.put("/mypetUpdateAction.do", new MypetUpdateAction()); //펫 수정, 삭제 액션
+		//map.put("/mypetInsert.do", new MypetInsert()); //삭제 따로 만들어야 하나?
+		map.put("/mytradeList.do", new MytradeList()); //내 거래현황,내역 화면 호출
+		map.put("/ownerFormCheck.do", new OwnerFormCheck()); // 맡기기 화면 호출
+		map.put("/sitterFormCheck.do", new SitterFormCheck()); // 돌보기 화면 호출
+		map.put("/profile.do", new Profile()); //프로필 화면 호출
+		map.put("/memberForm.do", new MemberForm()); //회원 정보 수정
 		
 		
 		
