@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.animalMate.board.vo.MemberVO;
+import co.animalMate.vo.MemberVO;
 import co.animalMate.common.DAO;
 
 public class MemberDao extends DAO {
@@ -33,7 +33,7 @@ public class MemberDao extends DAO {
 				vo.setName(rs.getString("name"));
 				vo.setnName(rs.getString("nName"));
 				vo.setTel(rs.getString("tel"));
-				vo.seteDate(rs.getDate("eDate"));
+				vo.seteDate(rs.getString("eDate"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setPoint(rs.getInt("point"));
 				vo.setStatus(rs.getString("status"));
