@@ -1,4 +1,4 @@
-package co.animalMate.board.command;
+package co.animalMate.admin.command;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +10,21 @@ import co.animalMate.board.dao.MemberDao;
 import co.animalMate.common.Action;
 import co.animalMate.vo.MemberVO;
 
-public class MemberListAction implements Action {
+public class BlackListAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// TODO 회원리스트 보기 구현
+		
 		MemberDao dao = new MemberDao();
+		MemberVO vo=new MemberVO();
+		
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		
 		list = dao.selectAll();
 		request.setAttribute("members", list);
 		
-		return "jsp/member/memberList.jsp";
+		return "jsp/admin/test/blacklist.jsp";
 	}
 
 }

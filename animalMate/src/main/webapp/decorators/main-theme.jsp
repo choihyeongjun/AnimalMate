@@ -38,6 +38,32 @@
 	}
 </style>
 
+<script type="text/javascript">
+	$(()=> {
+		//로그인버튼
+		$("#loginBtn").on({
+			"click" : function() {
+				location.href="${pageContext.request.contextPath}/goLoginPage.do";
+			}
+		})
+		
+		//쪽지버튼
+		$("#messageListBtn").on({
+			"click" : function() {
+				location.href="${pageContext.request.contextPath}/goMessageListPage.do";
+			}
+		})
+		
+		//요청알림버튼
+		$("#tradeListBtn").on({
+			"click" : function() {
+				location.href="${pageContext.request.contextPath}/gotradeListPage.do";
+			}
+		})
+		
+	})
+</script>
+
 <!-- 부트스트랩 넣기 시작 -->
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
@@ -61,9 +87,9 @@
 </head>
 <body class="container">
 	<div align="right" style="margin-top: 50px">
-	<button>요청알림</button>
-	<button>쪽지</button>
-	<button>로그인</button>
+	<button id="tradeListBtn">요청알림</button>
+	<button id="messageListBtn">쪽지</button>
+	<button id="loginBtn">로그인</button>
 	</div>
 	<br>
 	<nav class="navbar">
@@ -73,7 +99,7 @@
         <a class="navbar-brand" href="#">돌봐주세요</a>
         <a class="navbar-brand" href="#">마이페이지</a>
 	</nav>
-    <hr />
+    <hr/>
     
     
     <decorator:body />

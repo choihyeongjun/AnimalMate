@@ -12,8 +12,8 @@
 		<table border="1">
 			<h1>거래 관리</h1>
 			<select>
-			<option>진행건수:
-			<option>완료건수:
+			<option>진행건 
+			<option>완료건
 			</select>
 			<h2>상세 내역</h2>
 			<tr>
@@ -64,6 +64,15 @@
 					<td><input type="text" name="price" value="10000"></td>
 					<td><button>수정</button></td>
 				</tr>
+		</table>
+	</div>
+	<div>
+		<h1>사이트 수입 내역</h1>
+		<table border="1">
+			<h2>총 수입:</h2>
+			<tr>
+				월별 수입
+			</tr>
 		</table>
 	</div>
 </div>

@@ -32,8 +32,7 @@
 			<h1>마이펫</h1>
 			<table class="table">
 				<tr>
-					<td rowspan=2 width=30%><img
-						src="https://pbs.twimg.com/media/CRSn98hUcAAryN7.jpg" width=70%
+					<td rowspan=2 width=30%><img src="https://pbs.twimg.com/media/CRSn98hUcAAryN7.jpg" width=70%
 						height=30%></td>
 					<td>뽀삐</td>
 					<td>7살</td>
@@ -54,8 +53,8 @@
 			</table>
 
 
-			<a class="btn btn-outline-primary" href="#" role="button">새 등록</a>&nbsp;&nbsp;
-			<a class="btn btn-outline-primary" href="#" role="button">목록</a>
+			<a class="btn btn-outline-primary" href="mypetForm.do" role="button">새 등록</a>&nbsp;&nbsp;
+			<a class="btn btn-outline-primary" href="mypetList.do" role="button">목록</a>
 		</div>
 	</div>
 

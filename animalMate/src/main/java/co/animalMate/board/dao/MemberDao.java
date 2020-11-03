@@ -6,8 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+<<<<<<< HEAD
 import co.animalMate.vo.MemberVO;
+=======
+>>>>>>> branch 'main' of https://github.com/yhoo0094/animalMate.git
 import co.animalMate.common.DAO;
+import co.animalMate.vo.MemberVO;
 
 public class MemberDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
@@ -15,12 +19,46 @@ public class MemberDao extends DAO {
 	private MemberVO vo;
 	
 	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
+	private final String SELECT_SEARCH="SELECT * FROM MEMBERS WHERE ID=? OR NAME=?";
 	private final String SELECT = "SELECT * FROM MEMBER WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO MEMBER(ID, PASSWORD, NAME, ZOOMIN1,ZOOMIN2, TEL, LOCATION1,LOCATION2,EMAIL) VALUES (?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE = "UPDATE MEMBER SET NAME = ?, PASSWORD = ?, ADDRESS = ?, TEL = ?, ID = ?";
 	private final String DELETE = "DELETE FROM MEMBER WHERE ID = ?"; 
 	
-	
+	public List<MemberVO> selectSearch(MemberVO vo){
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			psmt.setString(1, vo.getId());
+			psmt.setString(2,vo.getName());
+			psmt=conn.prepareStatement(SELECT_SEARCH);
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+				vo.setId(rs.getString("id"));
+				vo.setPw(rs.getString("pw"));
+				vo.setName(rs.getString("name"));
+				vo.setnName(rs.getString("nName"));
+				vo.setTel(rs.getString("tel"));
+				vo.seteDate(rs.getString("eDate"));
+				vo.setAuthor(rs.getString("author"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setStatus(rs.getString("status"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setLocation2(rs.getString("location2"));
+				vo.setEmail(rs.getString("email"));
+				vo.setPic(rs.getString("pic"));
+				vo.setZoomin1(rs.getInt("zoomin1"));
+				vo.setZoomin2(rs.getInt("zoomin2"));
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return list;
+	}
 	public List<MemberVO> selectAll(){ //멤버리스트 전체를 가져오는 메소드
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
@@ -58,13 +96,13 @@ public class MemberDao extends DAO {
 		try {
 			psmt = conn.prepareStatement(SELECT);
 			psmt.setString(1, vo.getId());
-			psmt.setString(2, vo.getPassword());
+			psmt.setString(2, vo.getPw());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				vo.setName(rs.getString("name"));
-				vo.setAddress(rs.getString("address"));
+				//vo.(rs.getString("address"));
 				vo.setTel(rs.getString("tel"));
-				vo.setEnterdate(rs.getDate("enterdate"));
+			//	vo.setEnterdate(rs.getDate("enterdate"));
 				vo.setAuthor(rs.getString("author"));
 			}
 		} catch (SQLException e) {

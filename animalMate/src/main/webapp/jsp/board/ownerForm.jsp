@@ -193,11 +193,10 @@
                 
 
                     <div id="sec04" class="sec04">
-                    <h2 class="cont_tit">체크리스트</h2>
+                    <h2 class="cont_tit">체크리스트(선택사항)</h2>
                     <div class="checkList">
                         <input type="text" placeholder="업무 체크리스트를 입력해주세요">
                         <button class="checkAddBtn">+</button>
-                        <button class="checkDelBtn">-</button>
                     </div>
                 </div>
 
@@ -223,7 +222,7 @@
 
                 <div class="btn_sumit">
                     <button type="submit" class="btn_blue">글등록</button>
-                    <button type="reset" class="btn_gray">취소</button>
+                    <button type="reset" class="btn_gray" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
                 </div>
 
             </div>

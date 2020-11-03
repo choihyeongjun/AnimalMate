@@ -1,9 +1,9 @@
-  
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
- <head>
+<!doctype html>
+
+<html lang="ko">
+
+    <head>
+        <meta charset="utf-8">
         <meta name="description" content="OOO 홈페이지 입니다.">
         <meta property="og:type" content="website">
         <meta property="og:title" content="OOO">
@@ -14,13 +14,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>돌봐줄게요(신청page)</title>
+        <title>돌봐줄게요(등록form)</title>
 
         <!--파비콘 -->
         <!-- <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon"> -->
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/css/reset.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/css/layout.css" rel="stylesheet">
+        <link href="assets/css/reset.css" rel="stylesheet">
+        <link href="assets/css/layout.css" rel="stylesheet">
 
         <!-- css -->
         <style>
@@ -34,8 +34,11 @@
             
             <!-- s:title -->
             <div class="title">
-                <h1>돌봐줄게요 (예약page)</h1>
-                <p> 제목DBVALUE</p>
+                <h1>돌봐줄게요</h1>
+                <p>
+                    ♥ 믿고 맡기는 베테랑 진규 시터의 돌봄 서비스♥
+                    <span>사랑으로 모십니다</span>
+                </p>
             </div>
             <!-- e:title -->
 
@@ -47,7 +50,7 @@
 
                     <div class="cont_area">
                         <div class="info_img">
-                            <img class="info_img" src="${pageContext.request.contextPath}/images/muncat.jpg" alt="시터 이미지" height="100px" width="100px">
+                            <img src="assets/images/no_img.png" alt="시터 이미지">
                         </div>
 
                         <div class="info_table">
@@ -59,35 +62,35 @@
 
                                 <thead>
                                     <tr>
-                                        <th>펫 시터 정보</th>
-                                        <th>상세</th>
+                                        <th>정보</th>
+                                        <th>내용</th>
                                     </tr>
                                 </thead>
 
                                 <tbody>
                                     <tr>
-                                        <td>시터 이름</td>
-                                        <td></td>
+                                        <td>이름</td>
+                                        <td><input type="text" name="" value="" title=""></td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>시터 나이</td>
-                                        <td></td>
+                                        <td>나이</td>
+                                        <td><input type="text" name="" value="" title=""></td>
                                     </tr>
                                     
                                     <tr>
-                                        <td>시터 성별</td>
-                                        <td></td>
+                                        <td>성별</td>
+                                        <td><input type="text" name="" value="" title=""></td>
                                     </tr>
 
                                     <tr>
-                                        <td>시터 평점</td>
-                                        <td></td>
+                                        <td>평점</td>
+                                        <td><input type="text" name="" value="" title=""></td>
                                     </tr>
 
                                     <tr>
-                                        <td>시터 경력(돌봄횟수)</td>
-                                        <td></td>
+                                        <td>경력(돌봄횟수)</td>
+                                        <td><input type="text" name="" value="" title=""></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -96,7 +99,7 @@
                 </div>
 
                 <div id="sec02" class="">
-                    <h2 class="cont_tit">돌봄 세부조건</h2>
+                    <h2 class="cont_tit">세부조건</h2>
 
                     <table class="tbl_write__list">
                         <colgroup>
@@ -114,7 +117,13 @@
                         <tbody>
                             <tr>
                                 <td>돌봄지역</td>
-                                <td>DBVALUE</td>
+                                <td>
+                                    <select>
+                                        <option>전체</option>
+                                        <option>대구</option>
+                                        <option>서울</option>
+                                    </select>
+                                </td>
                             </tr>
                             
                             <tr>
@@ -122,9 +131,9 @@
                                 <td>
                                     <!-- jQuery datepicker 연결하면 됨-->
                                     <div class="calendar">
-                                        <span type="text" class="datepickerview" name="" value="" placeholder="시작일" onchange="">DBVALUE
+                                        <input type="text" class="datepicker" name="" value="" placeholder="시작일" onchange="">
                                         <span>~</span>
-                                        <span type="text" class="datepickerview" name="" value="" placeholder="종료일" onchange="">DBVALUE
+                                        <input type="text" class="datepicker" name="" value="" placeholder="종료일" onchange="">
                                     </div>
                                 </td>
                             </tr>
@@ -133,32 +142,39 @@
                                 <td>돌봄시간</td>
                                 <td>
                                     <div class="calendar">
-                                      <span>DBVALUE</span>
+                                        <select>
+                                            <option>12:00</option>
+                                            <option>13:00</option>
+                                        </select>
                                         <span>~</span>
-                                        <span>DBVALUE</span>
+                                        <select>
+                                            <option>12:00</option>
+                                            <option>13:00</option>
+                                        </select>
                                     </div>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>거래금액</td>
-                                <td>DBVALUE 원</td>
+                                <td><input type="text" name="" value="20,000" class="txt-r">원</td>
                             </tr>
 
                             <tr>
                                 <td>최대돌봄수</td>
-                                <td>DBVALUE 마리</td>
+                                <td><input type="text" name="" value="2" class="txt-r">명</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
-                <div id="sec03" class="addpic">
+                <div id="sec03" class="">
                     <h2 class="cont_tit">돌봄환경</h2>
 
                     <ul>
                         <li>
                             <div>
+                                <img src="" alt="이미지없음">
                                 <button type="button">사진추가</button>
                             </div>
                         </li>
@@ -176,7 +192,9 @@
 
                 <div id="sec05" class="">
                     <h2 class="cont_tit">세부내용</h2>
+
                     <textarea>
+                        세부내용
                     </textarea>
                 </div>
 
@@ -184,19 +202,18 @@
                     <h2 class="cont_tit">유의사항</h2>
 
                     <ul>
-                      	<li>○ 배드, 사료, 산책용품등은 의뢰자께서 준비해주세요.</li>
-						<li>○ 특이사항(질병등)은 사전에 펫시터에게 공지해주세요.</li>
-						<li>○ 펫시터 신분증, 주민등록등본등을 미리 확인해주세요.</li>
-						<li>○ 의뢰시 간단하게 계약서나 약정서를 작성하세요.</li>
-						<li>○ 표준계약서는 '이용안내'에서 내려받을수 있습니다.</li>
+                        <li>유의사항 1</li>
+                        <li>유의사항 2</li>
+                        <li>유의사항 3</li>
+                        <li>유의사항 4</li>
+                        <li>유의사항 5</li>
                     </ul>
                 </div>
 
 
                 <div class="btn_sumit">
-                <button type="submit" class="btn_blue">쪽지보내기</button>
-                    <button type="submit" class="btn_blue">예약하기</button>
-                    <button type="reset" class="btn_gray" onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do'">취소</button>
+                    <button type="button" class="btn_l c_blue">지원하기</button>
+                    <button type="button" class="btn_l c_gray">취소</button>
                 </div>
 
             </div>
