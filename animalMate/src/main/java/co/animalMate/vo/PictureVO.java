@@ -1,4 +1,4 @@
-package co.animalMate.board.vo;
+package co.animalMate.vo;
 
 public class PictureVO {
 	private int code;

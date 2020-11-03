@@ -1,12 +1,13 @@
-package co.animalMate.board.vo;
+package co.animalMate.vo;
 
-public class JoblistVO {
+public class CommentsVO {
 	private int code;
+	private int score;
 	private String comm;
 	private String pic;
-	private String comfirm;
+	private String title;
 	
-	public JoblistVO() {}
+	public CommentsVO() {}
 
 	public int getCode() {
 		return code;
@@ -14,6 +15,14 @@ public class JoblistVO {
 
 	public void setCode(int code) {
 		this.code = code;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 	public String getComm() {
@@ -32,13 +41,15 @@ public class JoblistVO {
 		this.pic = pic;
 	}
 
-	public String getComfirm() {
-		return comfirm;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setComfirm(String comfirm) {
-		this.comfirm = comfirm;
+	public void setTitle(String title) {
+		this.title = title;
 	}
+	
+	
 	
 	
 }
