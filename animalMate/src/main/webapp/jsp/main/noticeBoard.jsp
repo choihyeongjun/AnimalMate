@@ -26,8 +26,8 @@
 </style>
 </head>
 <body>
-	<div align="center">
-
+	<div align="center"><br>
+	<hr/>
 		<table class="table">
 			<thead>
 				<tr>

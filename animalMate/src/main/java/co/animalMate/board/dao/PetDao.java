@@ -3,7 +3,7 @@ package co.animalMate.board.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import co.animalMate.board.vo.PetVO;
+import co.animalMate.vo.PetVO;
 
 
 public class PetDao {

@@ -6,8 +6,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.animalMate.board.vo.MemberVO;
 import co.animalMate.common.DAO;
+import co.animalMate.vo.MemberVO;
 
 public class MemberDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행

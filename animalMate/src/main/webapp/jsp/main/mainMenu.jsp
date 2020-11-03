@@ -7,7 +7,6 @@
 <title>메인</title>
 <style type="text/css">
 	.dd {
-		
 		width: 100%; 
 		height: 500px;
 	}
