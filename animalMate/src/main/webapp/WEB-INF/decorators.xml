@@ -7,5 +7,6 @@
 		<pattern>/index.jsp</pattern>
 		<pattern>/loginForm.jsp</pattern>
 		<pattern>/jsp/admin/test/*</pattern>
+		<pattern>*/ajax/*</pattern>
 	</excludes>
 </decorators>

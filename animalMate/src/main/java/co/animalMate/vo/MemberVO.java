@@ -1,4 +1,4 @@
-package co.animalMate.board.vo;
+package co.animalMate.vo;
 
 import java.sql.Date;
 
@@ -8,7 +8,7 @@ public class MemberVO {
 	private String name;
 	private String nName;
 	private String tel;
-	private Date eDate;
+	private String eDate;
 	private String author;
 	private int point;
 	private String status;
@@ -63,11 +63,11 @@ public class MemberVO {
 		this.tel = tel;
 	}
 
-	public Date geteDate() {
+	public String geteDate() {
 		return eDate;
 	}
 
-	public void seteDate(Date eDate) {
+	public void seteDate(String eDate) {
 		this.eDate = eDate;
 	}
 

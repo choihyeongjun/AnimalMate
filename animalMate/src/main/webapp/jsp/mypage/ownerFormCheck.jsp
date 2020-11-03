@@ -111,11 +111,13 @@
 					<th>체크리스트1</th>
 					<td>멍뭉이 밥 123g만 주기</td>
 					<td><img src="${pageContext.request.contextPath}/images/user.png"></td>
+					<td><button>완료</button></td>
 				</tr>
 				<tr>
 					<th>체크리스트2</th>
 					<td>산책 1시간 시키기</td>
 					<td><img src="${pageContext.request.contextPath}/images/user.png"></td>
+					<td><button>완료</button></td>
 				</tr>
 			</table>
 		</div>

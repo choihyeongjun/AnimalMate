@@ -15,20 +15,15 @@
 		<ul>
 			<c:if test="${id eq null }">
 			<li><a class="menuLink" href="loginForm.do">거래내역</a></li>
-			</c:if>
 			<li>|</li>
 			<li><a class="menuLink" href="#">공지사항 등록 및 수정</a></li>
 			<li>|</li>
 			<li><a class="menuLink" href="#">1:1문의내역</a></li>
-			<c:if test="${id eq null }">
 			<li>|</li>
 			<li><a class="menuLink" href="memberForm.do">블랙리스트</a></li>
-			</c:if>
-			<c:if test="${author eq 'admin'}">
+			<%--<c:if test="${author eq 'admin'}">--%>
 			<li>|</li>
 			<li><a class="menuLink" href="memberList.do">회원관리</a></li>
-			</c:if>
-			<c:if test="${id ne null }">
 			<li>|</li>
 			<li><a class="menuLink" href="logout.do">로그아웃</a></li>
 			</c:if>
