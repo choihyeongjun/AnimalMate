@@ -17,7 +17,8 @@ import co.animalMate.board.command.LoginAction;
 import co.animalMate.board.command.LoginForm;
 import co.animalMate.board.command.LogoutAction;
 import co.animalMate.board.command.MainAction;
-import co.animalMate.board.command.MemberListAction;
+import co.animalMate.main.command.GoLoginPageAction;
+import co.animalMate.main.command.GotradeListPageAction;
 import co.animalMate.mypage.command.MemberForm;
 import co.animalMate.mypage.command.MypetForm;
 import co.animalMate.mypage.command.MypetFormAction;
@@ -42,14 +43,9 @@ public class FrontController extends HttpServlet {
 		// 요청들을 정의함
 		//상민		
 		map.put("/main.do", new MainAction()); //처음 들어오는 페이지 처리 index.jsp
-		map.put("/login.do", new LoginAction()); //로그인 메뉴를 처리하는 것
-		map.put("/loginForm.do", new LoginForm()); //로그인 폼 띄우기
-		map.put("/memberList.do", new MemberListAction()); //회원전체리스트
-		map.put("/memberForm.do", new JoinForm()); //회원가입하면 호출
-		map.put("/memberInsert.do", new JoinInsertAction()); //회원입력
-		map.put("/logout.do", new LogoutAction());
+		map.put("/goLoginPage.do", new GoLoginPageAction()); //홈에서 로그인 버튼 눌렀을 때
+		map.put("/gotradeListPage.do", new GotradeListPageAction()); //홈에서 요청알림 버튼 눌렀을 때
 
-		
 		
 		
 		
