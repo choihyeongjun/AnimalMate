@@ -66,6 +66,15 @@
 				</tr>
 		</table>
 	</div>
+	<div>
+		<h1>사이트 수입 내역</h1>
+		<table border="1">
+			<h2>총 수입:</h2>
+			<tr>
+				월별 수입
+			</tr>
+		</table>
+	</div>
 </div>
 </body>
 </html>
