@@ -28,6 +28,10 @@ import co.animalMate.login.command.LoginForm;
 import co.animalMate.login.command.LogoutAction;
 import co.animalMate.main.command.GoLoginPageAction;
 import co.animalMate.main.command.GoMessageListPageAction;
+import co.animalMate.main.command.GoMypagePageAction;
+import co.animalMate.main.command.GoNoticeBoardPageAction;
+import co.animalMate.main.command.GoOwnerListPageAction;
+import co.animalMate.main.command.GoSitterListPageAction;
 import co.animalMate.main.command.GotradeListPageAction;
 import co.animalMate.mypage.command.MemberForm;
 import co.animalMate.mypage.command.MypetForm;
@@ -53,13 +57,13 @@ public class FrontController extends HttpServlet {
       // 요청들을 정의함
       //상민      
       map.put("/main.do", new MainAction()); //처음 들어오는 페이지 처리 index.jsp
-      map.put("/goLoginPage.do", new GoLoginPageAction()); //홈에서 로그인 버튼 눌렀을 때
-      map.put("/gotradeListPage.do", new GotradeListPageAction()); //홈에서 요청알림 버튼 눌렀을 때
-      map.put("/goMessageListPage.do", new GoMessageListPageAction()); //홈에서 쪽지 버튼 눌렀을 때
-
-      
-      
-      
+      map.put("/goLoginPage.do", new GoLoginPageAction()); //헤더에서 로그인 버튼 눌렀을 때
+      map.put("/gotradeListPage.do", new GotradeListPageAction()); //헤더에서 요청알림 버튼 눌렀을 때
+      map.put("/goMessageListPage.do", new GoMessageListPageAction()); //헤더에서 쪽지 버튼 눌렀을 때
+      map.put("/goNoticeBoardPage.do", new GoNoticeBoardPageAction()); //헤더에서 공지사항 메뉴 눌렀을 때
+      map.put("/goOwnerListPage.do", new GoOwnerListPageAction()); //헤더에서 돌봐주세요 메뉴 눌렀을 때
+      map.put("/goSitterListPage.do", new GoSitterListPageAction()); //헤더에서 돌봐줄께요 메뉴 눌렀을 때
+      map.put("/goMypagePage.do", new GoMypagePageAction()); //헤더에서 마이페이지 메뉴 눌렀을 때
       
       
       
