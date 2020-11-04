@@ -16,20 +16,21 @@ public class MemberDao extends DAO {
 	private MemberVO vo;
 	
 	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
-	private final String SELECT_SEARCH="SELECT * FROM MEMBERS WHERE ID=? OR NAME=?";
+	private final String SELECT_SEARCH="SELECT * FROM MEMBERS WHERE ID = ? ";
 	private final String SELECT = "SELECT * FROM MEMBER WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO MEMBER(ID, PASSWORD, NAME, ZOOMIN1,ZOOMIN2, TEL, LOCATION1,LOCATION2,EMAIL) VALUES (?,?,?,?,?,?,?,?,?)";
-//	private final String UPDATE = "UPDATE MEMBER SET NAME = ?, PASSWORD = ?, ADDRESS = ?, TEL = ?, ID = ?";
-	private final String DELETE = "DELETE FROM MEMBER WHERE ID = ?"; 
+	private final String UPDATE = "UPDATE MEMBER SET AUTHOR=? where ID=?";
+	private final String DELETE = "DELETE FROM MEMBERS WHERE ID = ?"; 
 	
 	public List<MemberVO> selectSearch(MemberVO vo){
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
-			psmt.setString(1, vo.getId());
-			psmt.setString(2,vo.getName());
+			
 			psmt=conn.prepareStatement(SELECT_SEARCH);
+			psmt.setString(1, vo.getId());
 			rs=psmt.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
+				vo = new MemberVO();
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
@@ -56,6 +57,8 @@ public class MemberDao extends DAO {
 		}
 		return list;
 	}
+	
+	
 	public List<MemberVO> selectAll(){ //멤버리스트 전체를 가져오는 메소드
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
@@ -135,32 +138,27 @@ public class MemberDao extends DAO {
 	}
 	
 	//업데이트
-	public int update(MemberVO vo) { 
-		int n = 0;
+	public void update(MemberVO vo) { 	
 		try {
 			psmt = conn.prepareStatement(UPDATE);
-			psmt.setString(1, vo.getName());
-
-			//psmt.setString(3, vo.getAddress());
-			psmt.setString(2, vo.getTel());
-			psmt.setString(3, vo.getId());
+			psmt.setString(1, vo.getAuthor());
+			psmt.setString(2, vo.getId());
+			psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return n;
 	}
 	
 	//딜리트
-	public int delete(MemberVO vo) { 
-		int n = 0;
+	public void delete(MemberVO vo) { 
 		try {
 			psmt = conn.prepareStatement(DELETE);
 			psmt.setString(1, vo.getId());
-			n = psmt.executeUpdate();
+			psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return n;
+	
 	}
 	
 	private void close() { //DB연결을 끊어준다
