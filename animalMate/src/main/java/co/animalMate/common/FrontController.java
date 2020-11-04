@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.animalMate.admin.command.BlackListAction;
+import co.animalMate.admin.command.BlackSearchAction;
+import co.animalMate.admin.command.MemberListAction;
+import co.animalMate.admin.command.MemberSearchAction;
+import co.animalMate.admin.command.tradeAction;
 import co.animalMate.board.command.MainAction;
 import co.animalMate.board.command.OwnerFormAction;
 import co.animalMate.board.command.OwnerInertAction;
@@ -95,15 +100,14 @@ public class FrontController extends HttpServlet {
       
       
       //형준
-<<<<<<< HEAD
       map.put("/memberSearch.do",new MemberSearchAction());//검색 하는 회원찾기
        map.put("/ajax/memberlist.do",new MemberListAction());
        map.put("/blackSearch.do",new BlackSearchAction());
        map.put("/blacklist.do",new BlackListAction());
        map.put("/tradelist.do",new tradeAction());
-=======
+
       
->>>>>>> branch 'main' of https://github.com/yhoo0094/animalMate.git
+
       
       
       
@@ -176,17 +180,13 @@ public class FrontController extends HttpServlet {
       
       Action command = map.get(path); //init메소드 값을 가져온다!
       String viewPage = command.exec(request, response); //명령어가 수행되고 나서 보여줄 페이지 선택
-<<<<<<< HEAD
+
 	  if (viewPage != null) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); // 선택한 페이지로 가기
 			dispatcher.forward(request, response);
 	  }	
 	}
 }
-=======
+
       
-      RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); //선택한 페이지로 가기
-      dispatcher.forward(request, response);
-   }
-}
->>>>>>> branch 'main' of https://github.com/yhoo0094/animalMate.git
+
