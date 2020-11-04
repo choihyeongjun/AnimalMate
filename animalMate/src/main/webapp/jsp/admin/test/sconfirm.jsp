@@ -37,12 +37,9 @@
 					</tr>
 					<tr>
 						<th width="150">가입일자 :</th>
-						<td><input type="date" id="enterdate" name="enterdate"></td>
+						<td><input type="text" id="enterdate" name="enterdate"></td>
 					</tr>
-					<tr>
-						<th width="150">사진 :</th>
-						<td><input type="file" id="img" name="img"></td>
-					</tr>
+					
 
 					<tr>
 						<td colspan="2" align="center"><input type="button"
