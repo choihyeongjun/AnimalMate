@@ -5,23 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>마이페이지</title>
-<script>
-$(()=> {
-	//펫 등록 화면 호출
-    $("#mypetFormView").on({
-       "click" : function() {
-          location.href="${pageContext.request.contextPath}/mypetForm.do";
-       }
-    })
-    
-    //펫 목록 화면 호출
-    $("#mypetListView").on({
-       "click" : function() {
-          location.href="${pageContext.request.contextPath}/mypetList.do";
-       }
-    })
- })
-</script>
 </head>
 <body>
 	<div class="row">
@@ -68,9 +51,10 @@ $(()=> {
 					<td colspan=2>대형견 시베리안 허스키</td>
 				</tr>
 			</table>
+			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/mypetForm.do" role="button">새 등록</a>&nbsp;&nbsp;
+			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/mypetList.do" role="button">목록</a>
+			
 
-			<button id="mypetFormView">새 등록</button>&nbsp;&nbsp;
-			<button id="mypetListView">목록</button>
 		</div>
 	</div>
 

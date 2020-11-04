@@ -44,7 +44,7 @@ import co.animalMate.mypage.command.SitterFormCheck;
 public class FrontController extends HttpServlet {
    private static final long serialVersionUID = 1L;
     private HashMap<String, Action> map = new HashMap<String, Action>();
-
+    
     public FrontController() {
         super();
     }
