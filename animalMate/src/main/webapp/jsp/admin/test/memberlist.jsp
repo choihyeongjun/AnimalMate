@@ -9,13 +9,18 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
 button{width: 50px;
 }
 </style>
+
 <script>
  $(function(){
+	 
  	userList();
+ 	userSelect();
+ 	userUpdate();
  });
  
  	function userList(){
@@ -26,11 +31,82 @@ button{width: 50px;
  				error:function(xhr,status,msg){
  						alert("상태값 :" + status + " Http에러메시지 :"+msg);
  				},
- 				success:function(){
- 				userList();
- 			}
- 		})
- 	}
+ 				success:userListResult
+ 		});
+ 	}//userList
+ 	function userListResult(data){
+		$("#search").empty();
+		$.each(data,function(idx,item){
+			$('<tr>')
+			.append($('<td>').html(item.id))
+			.append($('<td>').html(item.name))
+			.append($('<td>').html(item.location1))
+			.append($('<td>').html(item.role))
+			.append($('<td>').html(item.tel))
+			.append($('<td>').html(item.eDate))
+			.append($('<td>').html('<input type="text" id=\'author\' value='+item.author+'>'))
+			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
+			.append($('<td>').html('<button id=\'btnUpdate\'>수정</button>'))
+			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
+			.appendTo('#members');
+		});//each
+	}//userListResult
+	function userUpdate() {
+		//삭제 버튼 클릭
+		$('body').on('click','#btnUpdate',function(){
+			var userId = $(this).closest('tr').find('#hidden_userId').val();
+			var userAuthor = $(this).closest('tr').find('#author').val();
+			var result = confirm(userId +" 사용자를 업데이트 하시겠습니까?");
+			if(result) {
+				$.ajax({
+					url:'${pageContext.request.contextPath}/ajax/updateemember.do',
+					data : {id : userId,
+						author: userAuthor},
+					dataType:'json',
+					error:function(xhr,status,msg){
+						//console.log("상태값 :" + status + " Http에러메시지 :"+msg);
+						console.log("dddd");
+					}, success:function(xhr) {
+						userList();
+					}
+				});      }//if
+		}); //삭제 버튼 클릭
+	}//userDelete
+	function userSelect() {
+		//조회 버튼 클릭
+		$('body').on('click','#btnSelect',function(){
+			var userId = $(this).closest('tr').find('#hidden_userId').val();
+		
+			//특정 사용자 조회
+			$.ajax({
+				url:'${pageContext.request.contextPath}/ajax/memberSearch.do',
+				data : {id : userId},
+				dataType:'json',
+				error:function(xhr,status,msg){
+					alert("상태값 :" + status + " Http에러메시지 :"+msg);
+				},
+				success:userSelectResult
+			});
+		}); //조회 버튼 클릭
+	}//userSelect
+	function userSelectResult(data) {
+		$("#search").empty();
+		$.each(data,function(idx,item){
+			$('<tr>')
+			.append($('<td>').html(item.id))
+			.append($('<td>').html(item.name))
+			.append($('<td>').html(item.location1))
+			.append($('<td>').html(item.role))
+			.append($('<td>').html(item.tel))
+			.append($('<td>').html(item.eDate))
+			.append($('<td>').html('<input type="text" id=\'author\' value='+item.author+'>'))
+			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
+			.append($('<td>').html('<button id=\'btnupdate\'>수정</button>'))
+			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
+			.appendTo("#search");
+		});
+		
+	}//userSelectResult
  
 </script>
 
@@ -42,19 +118,37 @@ button{width: 50px;
 <div align="center">
 	<div><h1>회원목록 정보</h1></div>
 		<div>
-		<form action="memberSearch.do">
+		<form>
 		<table>
 			<tr>
-				<td><input class="search" type="text" value="hong"></td>
-				<td><input class="search" type="text" value="홍길동"></td>
-				<td><button id="btn">검색</button>
+				<th>아이디:</th><td><input id="hidden_userId" type="text" value=""></td>
+				<td><button type="button" id="btnSelect">검색</button>
 			</tr>
 		</table>
+		
+		<table>
+		</table>
 		</form>
+		<div class="container">
+		<table id="search" class="table text-center">
+			<thead>
+				<tr>
+					<th class="text-center">아이디</th>
+					<th class="text-center">이  름</th>
+					<th class="text-center">주  소</th>
+					<th class="text-center">전화번호</th>
+					<th class="text-center">가입일자</th>
+					<th class="text-center">권 한 </th>
+					<th class="text-center">변경</th>
+				</tr>
+			</thead>
+		</table>
+		</div>
 	</div>
 	<div class="container">
 	<h2>사용자 목록</h2>
 		<table class="table text-center">
+		<thead>
 			<tr>
 				<th class="text-center">아이디</th>
 				<th class="text-center">이  름</th>
@@ -64,18 +158,9 @@ button{width: 50px;
 				<th class="text-center">권 한 </th>
 				<th class="text-center">변경</th>
 			</tr>
-		
-				<tr>
-					<td class="text-center"><input type="text"></td>
-					<td class="text-center"><input type="text" value="안녕"></td>
-					<td class="text-center"><input type="text">${member.address}</td>
-					<td class="text-center"><input type="text">${member.tel}</td>
-					<td class="text-center"><input type="text">${member.eDate}</td>
-					<td class="text-center"><input type="text"></td>
-					<td><button>수 정</button></td>
-					<td><button>삭 제</button></td>
-				</tr>
-		
+		</thead>
+		<tbody id="members">
+		</tbody>
 		</table>
 	</div>
 	
