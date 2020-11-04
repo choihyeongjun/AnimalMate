@@ -9,7 +9,7 @@
 	$(() => {
 		$("#testBtn").on({
 			"click": function() {
-				history.back();
+				window.open("${pageContext.request.contextPath}/goLoginPage.do","aaa","width=350, height=400");
 			}
 		})
 	});
