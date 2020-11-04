@@ -11,8 +11,8 @@ a:hover,a:focus,a:active{text-decoration:none;color:#666}
 
 #footer {/*clear:both;*/width:100%;}
 
-#footer:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
-#footer {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
+#footer:after {content:" "; display:block; clear:both;}
+#footer {*zoom:1;}
 
 /*
 #footer .footWrap_02 {}
@@ -22,7 +22,7 @@ a:hover,a:focus,a:active{text-decoration:none;color:#666}
 
 #footer .footWrap_02:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
 #footer .footWrap_02 {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
-#footer .footWrap_02 .footWrap_02_in {position:relative;margin:0 auto;padding:35px 22px;max-width:1200px;}
+#footer .footWrap_02 .footWrap_02_in {position:relative;margin:0 auto;padding:35px 1px;max-width:1200px;}
 
 #footer .footWrap_02 .footWrap_02_in:after {content:" "; display:block; clear:both;} /* ��以�怨��� 釉��쇱�곗���� �������� float �댁���� 媛��� ��由щ㉫�몄�� ���� */
 #footer .footWrap_02 .footWrap_02_in {*zoom:1;} /* IE5.5~7 釉��쇱�곗�� ���� Hack */
@@ -44,11 +44,7 @@ a:hover,a:focus,a:active{text-decoration:none;color:#666}
 
 #footer .footWrap_02 .footWrap_02_in > div.b > address > a:hover {text-decoration:underline}
 
-/*
-#footer .footWrap_02 .footWrap_02_in > div.b > small {letter-spacing:0;display:block}
-*/
 #footer .footWrap_02 .footWrap_02_in > div.b > small {letter-spacing:0;display:block;font-size:10px;color:#9F9F9F;line-height:16px}
-
 
 #footer .footWrap_02 .footWrap_02_in > div.b > small > span {font-weight:600}
 
