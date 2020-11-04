@@ -120,7 +120,6 @@
     <decorator:body />
     
     
-    <hr />
    <footer id="footer">
 	<div class="footWrap_02">
 		<div class="footWrap_02_in">
