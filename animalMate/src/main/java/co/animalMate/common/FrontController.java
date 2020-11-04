@@ -105,7 +105,7 @@ public class FrontController extends HttpServlet {
       
       //형준
       map.put("/memberSearch.do",new MemberSearchAction());//검색 하는 회원찾기
-       map.put("/memberlist.do",new MemberListAction());
+       map.put("/ajax/memberlist.do",new MemberListAction());
        map.put("/blackSearch.do",new BlackSearchAction());
        map.put("/blacklist.do",new BlackListAction());
        map.put("/tradelist.do",new tradeAction());
@@ -184,8 +184,9 @@ public class FrontController extends HttpServlet {
       
       Action command = map.get(path); //init메소드 값을 가져온다!
       String viewPage = command.exec(request, response); //명령어가 수행되고 나서 보여줄 페이지 선택
-      
-      RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); //선택한 페이지로 가기
-      dispatcher.forward(request, response);
-   }
+	  if (viewPage != null) {
+			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); // 선택한 페이지로 가기
+			dispatcher.forward(request, response);
+	  }	
+	}
 }
