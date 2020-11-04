@@ -59,7 +59,7 @@ button{width: 50px;
 			var result = confirm(userId +" 사용자를 업데이트 하시겠습니까?");
 			if(result) {
 				$.ajax({
-					url:'${pageContext.request.contextPath}/ajax/updateemember.do',
+					url:'${pageContext.request.contextPath}/ajax/updatemember.do',
 					data : {id : userId,
 						author: userAuthor},
 					dataType:'json',
