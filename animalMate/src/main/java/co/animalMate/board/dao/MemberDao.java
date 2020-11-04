@@ -6,10 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
-import co.animalMate.vo.MemberVO;
-=======
->>>>>>> branch 'main' of https://github.com/yhoo0094/animalMate.git
+
 import co.animalMate.common.DAO;
 import co.animalMate.vo.MemberVO;
 
@@ -22,7 +19,7 @@ public class MemberDao extends DAO {
 	private final String SELECT_SEARCH="SELECT * FROM MEMBERS WHERE ID=? OR NAME=?";
 	private final String SELECT = "SELECT * FROM MEMBER WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO MEMBER(ID, PASSWORD, NAME, ZOOMIN1,ZOOMIN2, TEL, LOCATION1,LOCATION2,EMAIL) VALUES (?,?,?,?,?,?,?,?,?)";
-	private final String UPDATE = "UPDATE MEMBER SET NAME = ?, PASSWORD = ?, ADDRESS = ?, TEL = ?, ID = ?";
+//	private final String UPDATE = "UPDATE MEMBER SET NAME = ?, PASSWORD = ?, ADDRESS = ?, TEL = ?, ID = ?";
 	private final String DELETE = "DELETE FROM MEMBER WHERE ID = ?"; 
 	
 	public List<MemberVO> selectSearch(MemberVO vo){
@@ -143,10 +140,10 @@ public class MemberDao extends DAO {
 		try {
 			psmt = conn.prepareStatement(UPDATE);
 			psmt.setString(1, vo.getName());
-			psmt.setString(2, vo.getPassword());
-			psmt.setString(3, vo.getAddress());
-			psmt.setString(4, vo.getTel());
-			psmt.setString(5, vo.getId());
+
+			//psmt.setString(3, vo.getAddress());
+			psmt.setString(2, vo.getTel());
+			psmt.setString(3, vo.getId());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
