@@ -1,5 +1,7 @@
 package co.animalMate.login.command;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,22 +18,41 @@ public class LoginAction implements Action {
 		MemberDao dao = new MemberDao();
 		MemberVO vo = new MemberVO();
 		HttpSession session = request.getSession(false);
-
+		
 		
 		vo.setId(request.getParameter("id"));
-		vo.setPw(request.getParameter("pw"));
-		
+		String page;
+		String msg1 = "";
+		String msg2 = "";
 		vo = dao.select(vo); //MemberDao의 select메소드를 실행한다.
-		if(vo.getPw().equals(request.getParameter("pw")) ) {
-			//session에 값 담기
-			session.setAttribute("id", vo.getId());
-			session.setAttribute("pw", vo.getPw()); 
-			session.setAttribute("author", vo.getAuthor());
-			session.setAttribute("name", vo.getName());
-		} 
-	
+		
+		page =  "jsp/main/mainMenu.jsp";
+		if(vo==null ) {
+			msg1 = "아이디가 존재하지 않습니다.";
+			page = "jsp/login/loginForm.jsp";
+		}else {
+			if(vo.getPw().equals(request.getParameter("pw")) == false) {
+				msg2 = "비밀번호가 일치하지 않습니다.";
+				page = "jsp/login/loginForm.jsp";
+			}else {
+				session.setAttribute("id", vo.getId());
+				session.setAttribute("nName", vo.getnName());
+				session.setAttribute("name", vo.getName());
+				session.setAttribute("mvo", vo);
+				try {
+					response.sendRedirect(request.getContextPath() + "/main.do");
+					return null;
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} 
+		}
+		
+		request.setAttribute("msg1", msg1);
+		request.setAttribute("msg2", msg2);
 		request.setAttribute("vo", vo); //멤버를 실어서 보냄
-		return "jsp/main/loginResult.jsp";
+		return page;
+		}
 	}
 
-}

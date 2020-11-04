@@ -12,13 +12,14 @@
 <title>Insert title here</title>
 <style>
 	#bigcat {
-		width: 30px;
-		height: 30px;
+		float: left;
+		width: 150px;
+		height: 150px;
 	}
 	
 	#bigbigcat {
-		width: 100px;
-		height: 100px;
+		width: 300px;
+		height: 300px;
 		display: inline;
 		float: left;
 	}
@@ -29,17 +30,27 @@
 	}
 	
 	.navbar a {
-	color : rgb(15,162,226);
+	color : black;
 	}
 	
 	#footicon{
-		width: 100px;
-		height: 100px;
+		float: left;
+		width: 300px;
+		height: 300px;
+		margin-right: 90px; 
 	}
+	
+	button {
+	background-color: rgb(255,136,38);
+	font-weight: bold;
+	color : black;
+    border : none;
+	}
+	
 </style>
 
 <script type="text/javascript">
-	$(()=> {
+	$(())=> {
 		//로그인버튼
 		$("#loginBtn").on({
 			"click" : function() {
@@ -86,18 +97,20 @@
 <decorator:head/>
 </head>
 <body class="container">
+	<a class="logoImage" href="${pageContext.request.contextPath}/main.do">
+		<img id="bigcat" alt="사진이없어용" src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG">
+	</a>
 	<div align="right" style="margin-top: 50px">
-	<button id="tradeListBtn">요청알림</button>
-	<button id="messageListBtn">쪽지</button>
-	<button id="loginBtn">로그인</button>
+	<button id="tradeListBtn" class="">요청알림</button>
+	<button id="messageListBtn" class="">쪽지</button>
+	<button id="loginBtn" class="">로그인</button>
 	</div>
 	<br>
 	<nav class="navbar">
-		<img id="bigcat" alt="사진이없어용" src="${pageContext.request.contextPath}/images/큰소리.png">
-  		<a class="navbar-brand" href="#" >공지사항</a>
-        <a class="navbar-brand" href="#">돌봐줄께요</a>
-        <a class="navbar-brand" href="#">돌봐주세요</a>
-        <a class="navbar-brand" href="#">마이페이지</a>
+  		<a class="navbar-brand" href="${pageContext.request.contextPath}/goNoticeBoardPage.do"><b>공지사항</b></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/goSitterListPage.do"><b>돌봐줄께요</b></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/goOwnerListPage.do"><b>돌봐주세요</b></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/goMypagePage.do"><b>마이페이지</b></a>
 	</nav>
     <hr/>
     
@@ -109,9 +122,9 @@
    <footer id="footer">
 	<div class="footWrap_02">
 		<div class="footWrap_02_in">
-			<div class="a"><a href="http://epetsitter.co.kr"><img id ="footicon" src="${pageContext.request.contextPath}/images/큰소리.png"></a></div>
+			<img id ="footicon" src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG">
 			<div class="b">
-				<h6><span>이웃집펫시터</span>는 반려인과 이웃집의 펫시터를 연결하는 공유 플랫폼 서비스입니다.</h6>
+				<h6><span>애니멀메이트</span>는 반려인과 이웃집의 펫시터를 연결하는 공유 플랫폼 서비스입니다.</h6>
 				<div class="tyu_up">
 				<ul class="tyu">
 					<li><a href="http://epetsitter.co.kr/04_description/des_06.php">이용약관</a></li>

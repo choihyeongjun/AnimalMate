@@ -31,7 +31,6 @@ function id_input_check(){
 			alert("한글 및 특수문자는 아이디로 사용할 수 없습니다.");
 			return false;
 		}
-	
 }
 </script>
 </head>
@@ -66,7 +65,7 @@ function id_input_check(){
                 <div>
                     <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="text" id="pswd1" class="int" maxlength="20"  placeholder="비밀번호 입력">             
+                        <input type="text" id="pw1" class="int" maxlength="20"  placeholder="비밀번호 입력">             
                     </span>
                 </div>
                 
@@ -74,7 +73,7 @@ function id_input_check(){
                 <div>
                     <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
                     <span class="box int_pass_check">
-                        <input type="text" id="pswd2" class="int" maxlength="20"  placeholder="비밀번호 확인">
+                        <input type="text" id="pw2" class="int" maxlength="20"  placeholder="비밀번호 확인">
                     </span>
                 </div>
                 

@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import co.animalMate.common.DAO;
 import co.animalMate.vo.MemberVO;
 
@@ -15,7 +16,7 @@ public class MemberDao extends DAO {
 	private MemberVO vo;
 	
 	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
-	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ? AND PASSWORD=?";
+	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ? ";
 	private final String INSERT = "INSERT INTO MEMBERS(ID, PW, NAME, ZOOMIN1,ZOOMIN2, TEL, LOCATION1,LOCATION2,EMAIL) VALUES (?,?,?,?,?,?,?,?,?)";
 	private final String RESETPW = "UPDATE MEMBERS SET PW = ?";
 	private final String FINDID ="SELECT ID FROM MEMBERS WHERE NAME=? AND EMAIL=?";
@@ -55,17 +56,29 @@ public class MemberDao extends DAO {
 	}
 	
 	//한 행을 검색할 때
-	public MemberVO select(MemberVO vo) { 
+	public MemberVO select(MemberVO mvo) { 
+		MemberVO vo = null;
 		try {
 			psmt = conn.prepareStatement(SELECT);
-			psmt.setString(1, vo.getId());
-			psmt.setString(2, vo.getPw());
+			psmt.setString(1, mvo.getId());
 			rs = psmt.executeQuery();
 			if(rs.next()) {
+				vo = new MemberVO();
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
+				vo.setnName(rs.getString("nName"));
+				vo.setTel(rs.getString("tel"));
+				vo.seteDate(rs.getString("eDate"));
 				vo.setAuthor(rs.getString("author"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setStatus(rs.getString("status"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setLocation2(rs.getString("location2"));
+				vo.setEmail(rs.getString("email"));
+				vo.setPic(rs.getString("pic"));
+				vo.setZoomin1(rs.getInt("zoomin1"));
+				vo.setZoomin2(rs.getInt("zoomin2"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -105,6 +118,7 @@ public class MemberDao extends DAO {
 		try {
 			psmt = conn.prepareStatement(RESETPW);
 			psmt.setString(1, vo.getPw());
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
