@@ -15,10 +15,21 @@
 	</div>
 	<!-- 메인시작 -->
 	<div class="pw_reset-main" align="center">
-		<form class="pw_reset-form" action="pw_reset.do" method="post">
-			비밀번호 : <input type="password" class="pw_input" name="pw_input" id="pw_input" placeholder="새 비밀번호를 입력하세요"> <br/><br/>
-		비밀번호 확인 : <input type="password" class="pw_input_check" name="pw_input_check" id="pw_input_check" placeholder="비밀번호 확인">
-			</div> <!-- 메인 끝 -->
+		 <form class="join_form" action="${pageContext.request.contextPath}/resetPw.do" method="post">
+		  <!-- PW1 -->
+			 <div>
+                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                    <span class="box int_pass">
+                        <input type="text" id="pswd1" class="int" maxlength="20"  placeholder="비밀번호 입력">             
+                    </span>
+                </div> 
+		    <!-- PW2 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd2">비밀번호 확인</label></h3>
+                    <span class="box int_pass_check">
+                        <input type="text" id="pswd2" class="int" maxlength="20"  placeholder="비밀번호 확인">
+                    </span>
+                </div>
 			<!-- 버튼 시작 -->
 			<div class="pw_reset-footer" align="center">
 			<hr style="border-color: white;" align="left" noshade="noshade" size="1" />

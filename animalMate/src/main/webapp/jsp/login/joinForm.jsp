@@ -5,151 +5,33 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="../../css/join.css">
+<!-- <link rel="stylesheet" href="../../css/join.css"> -->
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-/*변수 선언*/
-
-
-var id = document.querySelector('#id');
-
-var pw1 = document.querySelector('#pswd1');
-var pwMsg = document.querySelector('#alertTxt');
-var pwImg1 = document.querySelector('#pswd1_img1');
-
-var pw2 = document.querySelector('#pswd2');
-var pwImg2 = document.querySelector('#pswd2_img1');
-var pwMsgArea = document.querySelector('.int_pass');
-
-var userName = document.querySelector('#name');
-
-var gender = document.querySelector('#gender');
-
-var email = document.querySelector('#email');
-
-var mobile = document.querySelector('#mobile');
-
-var error = document.querySelectorAll('.error_next_box');
-
-
-
-/*이벤트 핸들러 연결*/
-
-
-id.addEventListener("focusout", checkId);
-pw1.addEventListener("focusout", checkPw);
-pw2.addEventListener("focusout", comparePw);
-userName.addEventListener("focusout", checkName);
-gender.addEventListener("focusout", function() {
-    if(gender.value === "성별") {
-        error[5].style.display = "block";
-    } else {
-        error[5].style.display = "none";
-    }
-})
-email.addEventListener("focusout", isEmailCorrect);
-mobile.addEventListener("focusout", checkPhoneNum);
-
-
-
-
-
-/*콜백 함수*/
-
-
-function checkId() {
-    var idPattern = /[a-zA-Z0-9_-]{5,20}/;
-    if(id.value === "") {
-        error[0].innerHTML = "필수 정보입니다.";
-        error[0].style.display = "block";
-    } else if(!idPattern.test(id.value)) {
-        error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
-        error[0].style.display = "block";
-    } else {
-        error[0].innerHTML = "멋진 아이디네요!";
-        error[0].style.color = "#08A600";
-        error[0].style.display = "block";
-    }
-}
-
-function checkPw() {
-    var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;
-    if(pw1.value === "") {
-        error[1].innerHTML = "필수 정보입니다.";
-        error[1].style.display = "block";
-    } else if(!pwPattern.test(pw1.value)) {
-        error[1].innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
-        pwMsg.innerHTML = "사용불가";
-        pwMsgArea.style.paddingRight = "93px";
-        error[1].style.display = "block";
-        
-        pwMsg.style.display = "block";
-        pwImg1.src = "m_icon_not_use.png";
-    } else {
-        error[1].style.display = "none";
-        pwMsg.innerHTML = "안전";
-        pwMsg.style.display = "block";
-        pwMsg.style.color = "#03c75a";
-        pwImg1.src = "m_icon_safe.png";
-    }
-}
-
-function comparePw() {
-    if(pw2.value === pw1.value && pw2.value != "") {
-        pwImg2.src = "m_icon_check_enable.png";
-        error[2].style.display = "none";
-    } else if(pw2.value !== pw1.value) {
-        pwImg2.src = "m_icon_check_disable.png";
-        error[2].innerHTML = "비밀번호가 일치하지 않습니다.";
-        error[2].style.display = "block";
-    } 
-
-    if(pw2.value === "") {
-        error[2].innerHTML = "필수 정보입니다.";
-        error[2].style.display = "block";
-    }
-}
-
-function checkName() {
-    var namePattern = /[a-zA-Z가-힣]/;
-    if(userName.value === "") {
-        error[3].innerHTML = "필수 정보입니다.";
-        error[3].style.display = "block";
-    } else if(!namePattern.test(userName.value) || userName.value.indexOf(" ") > -1) {
-        error[3].innerHTML = "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)";
-        error[3].style.display = "block";
-    } else {
-        error[3].style.display = "none";
-    }
-}
-
-function isEmailCorrect() {
-    var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/;
-
-    if(email.value === ""){ 
-        error[6].style.display = "none"; 
-    } else if(!emailPattern.test(email.value)) {
-        error[6].style.display = "block";
-    } else {
-        error[6].style.display = "none"; 
-    }
-
-}
-
-function checkPhoneNum() {
-    var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
-
-    if(mobile.value === "") {
-        error[7].innerHTML = "필수 정보입니다.";
-        error[7].style.display = "block";
-    } else if(!isPhoneNum.test(mobile.value)) {
-        error[7].innerHTML = "형식에 맞지 않는 번호입니다.";
-        error[7].style.display = "block";
-    } else {
-        error[7].style.display = "none";
-    }
-
-   
+function id_input_check(){
+	$(".id_input_check").click(function(){
+		$("#id").attr("check_result", "fail");
+		})
+	
+		if($("#id").val() == ''){
+			alert("아이디를 입력해주세요.")
+			return;
+		}
+		if($("#id").val().length<8){
+			alert('아이디는 최소 8자리 이상 입력해주시길 바랍니다.');
+			return;
+			}
+		
+		if ($('#id').attr("check_result") == "fail"){
+			alert("아이디 중복확인을 해주시기 바랍니다.");
+			return false;
+		}
+		var notko = /[a-zA-Z0-9]/;
+		if($('#id').val() != notko){
+			alert("한글 및 특수문자는 아이디로 사용할 수 없습니다.");
+			return false;
+		}
+	
 }
 </script>
 </head>
@@ -175,31 +57,25 @@ function checkPhoneNum() {
                         <label for="id">아이디</label>
                     </h3>
                     <span class="box int_id">
-                        <input type="text" id="id" class="int" maxlength="20">
-                        <span class="step_url"></span>
+                        <input type="text" id="id" class="int" maxlength="20"  placeholder="아이디 입력" check_result="fail">
+                        <button type="button" class="id_input_check" onclick="id_input_check()">중복확인</button>
                     </span>
-                    <span class="error_next_box"></span>
                 </div>
 		<!-- 비밀번호 입력창 -->
 			 <!-- PW1 -->
                 <div>
                     <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="text" id="pswd1" class="int" maxlength="20">
-                        <span id="alertTxt">사용불가</span>
-                        <img src="m_icon_pass.png" id="pswd1_img1" class="pswdImg">
+                        <input type="text" id="pswd1" class="int" maxlength="20"  placeholder="비밀번호 입력">             
                     </span>
-                    <span class="error_next_box"></span>
                 </div>
                 
 		    <!-- PW2 -->
                 <div>
                     <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
                     <span class="box int_pass_check">
-                        <input type="text" id="pswd2" class="int" maxlength="20">
-                        <img src="m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
+                        <input type="text" id="pswd2" class="int" maxlength="20"  placeholder="비밀번호 확인">
                     </span>
-                    <span class="error_next_box"></span>
                 </div>
                 
                  <!-- NAME -->
@@ -208,9 +84,14 @@ function checkPhoneNum() {
                     <span class="box int_name">
                         <input type="text" id="name" class="int" maxlength="20">
                     </span>
-                    <span class="error_next_box"></span>
                 </div>
-                
+                  <!-- nick NAME -->
+                <div>
+                    <h3 class="join_title"><label for="name">닉네임</label></h3>
+                    <span class="box int_nname">
+                        <input type="text" id="nname" class="int" maxlength="20">
+                    </span>
+                </div>
             <!-- 주민등록번호 -->
 		<div>
 			 <h3 class="join_title"><label for="zoomin">주민등록번호 </label></h3>
@@ -220,47 +101,72 @@ function checkPhoneNum() {
 				</span>
 			<a href="#" class="zoomin">실명인증</a>
 		</div> 	
-		
-		<!-- GENDER -->
-                <div>
-                    <h3 class="join_title"><label for="gender">성별</label></h3>
-                    <span class="box gender_code">
-                        <select id="gender" class="sel">
-                            <option>성별</option>
-                            <option value="M">남자</option>
-                            <option value="F">여자</option>
-                        </select>                            
-                    </span>
-                    <span class="error_next_box">필수 정보입니다.</span>
-                </div>
-                
+              
                 <!-- EMAIL -->
                 <div>
                     <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
                     <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
+                        <input type="text" id="email" class="int" maxlength="100" placeholder="이메일 입력">
                     </span>
-                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
                 </div>
-                
-                <!-- MOBILE -->
+
+                <!-- tel -->
                 <div>
                     <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
                     <span class="box int_mobile">
                         <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
-                    </span>
-                    <span class="error_next_box"></span>    
+                    </span>   
                 </div>
-                
+    			 <!-- 우편 번호  
+		<div>
+			<h3 class="join_title">
+			 <label for="location">우편번호</label></h3>
+				<span class="box int_zipcode">
+					<input type="text" id="zipcode" class="int" maxlength="100" readonly>
+					<input type="button" value="주소찾기" onclick="DaumPostcode()">
+				</span>
+		</div> 	-->
 		<!-- 주소 입력창 -->
 		<div>
 			<h3 class="join_title">
 			 <label for="location">주소</label></h3>
 				<span class="box int_location">
-					<input type="text" id="location1" class="int" maxlength="100" placeholder="선택입력">
+					<input type="text" id="location1" class="int" maxlength="100" placeholder="주소 입력"><br>
+				</span>
+			<h3><label for="location">상세주소</label></h3>
+			 	<span class="box int_location">
 					<input type="text" id="location2" class="int" maxlength="100"  placeholder="상세주소를 입력해주세요">
 				</span>
-		</div> 	<!-- 주소 입력창 끝-->
+		</div>
+		<!-- 주소 api 모르겠다 
+		<div id="wrap" style="display:none;border:1px solid;width:500px;height:300px;margin:5px 110px;position:relative"> 
+		<img src="//i1.daumcdn.net/localimg/localimages/07/postcode/320/close.png" id="btnFoldWrap" 
+		style="cursor:pointer;position:absolute;right:0px;top:-1px;z-index:1" onclick="foldDaumPostcode()" alt="접기 버튼"> 
+		</div> 
+		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> 
+		<script> 
+		// 우편번호 찾기 화면을 넣을 element 
+		var element_wrap = document.getElementById('wrap'); 
+		function foldDaumPostcode() {
+			element_wrap.style.display = 'none'; } 
+		function DaumPostcode() {  
+				var currentScroll = Math.max(document.body.scrollTop, document.documentElement.scrollTop); 
+			new daum.Postcode({ oncomplete: function(data) { 
+				var fullAddr = data.address; 
+				var extraAddr = ''; 
+				if(data.addressType === 'R'){ 
+					if(data.bname !== ''){ extraAddr += data.bname; } 
+					if(data.buildingName !== ''){ extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName); }  
+					fullAddr += (extraAddr !== '' ? ' ('+ extraAddr +')' : ''); } . 
+					document.getElementById('zipcode').value = data.zonecode;
+					document.getElementById('address1').value = fullAddr; 
+					element_wrap.style.display = 'none';
+					document.body.scrollTop = currentScroll; 
+					$('#address2').focus(); }, 
+					onresize : function(size) { element_wrap.style.height = size.height+'px'; }, width : '100%', height : '100%' }).embed(element_wrap);  
+					element_wrap.style.display = 'block'; } 
+</script> <!-- ----- DAUM 우편번호 API 종료----- --> 
+
 		<br/>
 		<br/>
 	<!-- 가입&취소 버튼 -->

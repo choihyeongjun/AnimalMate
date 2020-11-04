@@ -14,7 +14,7 @@ public class LogoutAction implements Action {
 		HttpSession session = request.getSession(false);
 		session.invalidate();
 		
-		return "main/jsp/main/mainMenu.jsp";
+		return "jsp/main/mainMenu.jsp";
 	}
 
 }

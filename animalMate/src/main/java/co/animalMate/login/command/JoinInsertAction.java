@@ -22,7 +22,7 @@ public class JoinInsertAction implements Action {
 		vo.setName(request.getParameter("name"));
 		vo.setnName(request.getParameter("nName"));
 		vo.setTel(request.getParameter("tel"));
-		vo.setDate(Date.valueOf(request.getParameter("eDate")));
+		vo.seteDate(request.getParameter("eDate"));
 		vo.setAuthor(request.getParameter("author"));
 		vo.setPoint(Integer.valueOf(request.getParameter("point")));
 		vo.setStatus(request.getParameter("status"));
@@ -34,13 +34,8 @@ public class JoinInsertAction implements Action {
 		vo.setZoomin2(Integer.valueOf(request.getParameter("zoomin2")));
 		
 		int n = dao.insert(vo); //insert하고 n값을 반환해준다.
-		String page;
-		if(n != 0) {
-			page = "jsp/member/insertSucess.jsp";
-		} else {
-			page = "jsp/member/insertFail.jsp";
-		}
-		return page;
+	
+		return "jsp/login/loginForm.jsp";
 	}
 
 }
