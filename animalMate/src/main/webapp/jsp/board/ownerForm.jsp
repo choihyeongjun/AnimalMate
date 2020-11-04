@@ -59,7 +59,7 @@
     <body>
         <!-- s:container -->
         <div class="container">
-            
+           <form id="frm" name="frm" action="ownerInsert.do" method="post">
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐주세요- (글등록 Form)</h1>
@@ -70,7 +70,7 @@
 
             <!-- s:contents -->
             <div class="contents">
-
+				
                 <div id="sec01" class="sitter_info">
                     <h2 class="cont_tit">펫 정보</h2>
 
@@ -227,6 +227,7 @@
 
             </div>
             <!-- e:contents -->
+            </form>
         </div>
         <!-- s:container -->
       
