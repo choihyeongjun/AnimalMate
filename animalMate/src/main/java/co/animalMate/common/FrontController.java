@@ -131,7 +131,7 @@ public class FrontController extends HttpServlet {
       map.put("/sitterList.do", new SitterListAction()); //sitterList 화면 호출
       map.put("/sitterForm.do", new SitterFormAction()); //sitterForm 화면 호출
       map.put("/ownerForm.do", new OwnerFormAction()); //sitterForm 화면 호출
-      map.put("/ownerInsert.do", new OwnerInertAction()); //sitterForm 화면 호출
+      map.put("/ownerInsert.do", new OwnerInertAction()); //
       
       
       
