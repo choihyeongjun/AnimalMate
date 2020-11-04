@@ -31,7 +31,7 @@
     <body>
         <!-- s:container -->
         <div class="container">
-            
+            <form>
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐줄께요- (글등록 Form)</h1>
@@ -187,7 +187,7 @@
                     <textarea>
                     </textarea>
                 </div>
-
+	
                 <div id="sec06" class="">
                     <h2 class="cont_tit">유의사항</h2>
 
@@ -207,6 +207,7 @@
                 </div>
 
             </div>
+            </form>
             <!-- e:contents -->
         </div>
         <!-- s:container -->

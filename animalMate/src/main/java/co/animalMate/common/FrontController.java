@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.board.command.MainAction;
+import co.animalMate.board.command.OwnerFormAction;
+import co.animalMate.board.command.OwnerInertAction;
+import co.animalMate.board.command.OwnerListAction;
+import co.animalMate.board.command.SitterFormAction;
+import co.animalMate.board.command.SitterListAction;
 import co.animalMate.login.command.FindIdAction;
 import co.animalMate.login.command.JoinForm;
 import co.animalMate.login.command.JoinInsertAction;
@@ -110,11 +115,11 @@ public class FrontController extends HttpServlet {
       
       
       //선애
-      
-      
-      
-      
-      
+      map.put("/ownerList.do", new OwnerListAction()); //ownerList 화면 호출
+      map.put("/sitterList.do", new SitterListAction()); //sitterList 화면 호출
+      map.put("/sitterForm.do", new SitterFormAction()); //sitterForm 화면 호출
+      map.put("/ownerForm.do", new OwnerFormAction()); //sitterForm 화면 호출
+      map.put("/ownerInsert.do", new OwnerInertAction()); //sitterForm 화면 호출
       
       
       
