@@ -30,8 +30,8 @@ public class MypetFormAction implements Action {
 		vo.setDetailType(request.getParameter("detailType"));
 		vo.setCut(request.getParameter("cut"));
 		vo.setComm(request.getParameter("comm"));
-		vo.setId("id3");
 		// vo.setId((String)session.getAttribute("userId"));//세션 아이디받기
+		vo.setId("id3");
 		
 		// 현재 컨텍스트에  사진업로드하기
 		String appPath = request.getServletContext().getRealPath("/images");

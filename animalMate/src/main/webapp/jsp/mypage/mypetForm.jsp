@@ -29,12 +29,12 @@
 				<tr>
 					<th colspan=2>펫성별</th>
 					<td colspan=2>
-						<input type="radio" id="male" name="gender" value="M">
-						<label for="male">Male</label><br>
-						<input type="radio" id="female" name="gender" value="F">
-						<label for="female">Female</label><br>
-						<input type="radio" id="other" name="gender" value="O" checked>
-						<label for="other">Other</label><br><br>
+						<input type="radio" id="male" name="gender" value="남">
+						<label for="male">수컷</label><br>
+						<input type="radio" id="female" name="gender" value="여">
+						<label for="female">암컷</label><br>
+						<input type="radio" id="other" name="gender" value="기타" checked>
+						<label for="other">기타</label><br><br>
 					</td>
 				</tr>
 				<tr>
@@ -46,10 +46,10 @@
 				<tr>
 					<th colspan=2>중성화유무</th>
 					<td colspan=2>
-						<input type="radio" id="cutyes" name="cut" value="do">
-						<label for="cutyes">예</label><br>
-						<input type="radio" id="cutno" name="cut" value="no" checked>
-						<label for="cutno">아니오</label><br>
+						<input type="radio" id="do" name="cut" value="do">
+						<label for="do">예</label><br>
+						<input type="radio" id="no" name="cut" value="no" checked>
+						<label for="no">아니오</label><br>
 					</td>
 				</tr>
 				<tr>

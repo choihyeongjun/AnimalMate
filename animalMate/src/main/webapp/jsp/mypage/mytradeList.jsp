@@ -9,14 +9,14 @@
 <body>
 
    <div>
-      <h1>거래</h1>
+      <h1>${user.name}님의 거래</h1>
    </div>
    
    <div class="row mypageTrade">
       <div>
          <dl>
             <dt>포인트</dt>
-            <dd>DBvalue 포인트</dd>
+            <dd>${user.point}p</dd>
          </dl>
       </div>
       <div>

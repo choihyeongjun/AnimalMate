@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,47 +14,41 @@
 			<table class="table">
 				<tr>
 					<th>이름</th>
-					<td>규르르</td>
+					<td>${user.name}</td>
 				</tr>
 				<tr>
 					<th>전화번호</th>
-					<td>010-7777-9999</td>
+					<td>${user.tel}</td>
 				</tr>
 				<tr>
 					<th>주소</th>
-					<td>대구광역시 동구 신천동 동대구역 3번 출구 구석</td>
+					<td>${user.location1} ${user.location2}</td>
 				</tr>
 			</table>
-
-			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/memberForm.do" role="button">수정</a>
+			<a class="btn btn-outline-primary"
+				href="${pageContext.request.contextPath}/memberForm.do"
+				role="button">수정</a>
 		</div>
 
 		<div class="col-lg-4 col-md-4 mypagebox">
 			<h1>마이펫</h1>
 			<table class="table">
-				<tr>
-					<td rowspan=2 width=30%><img src="https://pbs.twimg.com/media/CRSn98hUcAAryN7.jpg" width=70%
-						height=30%></td>
-					<td>뽀삐</td>
-					<td>7살</td>
-				</tr>
-				<tr>
-					<td colspan=2>대형견 시베리안 허스키</td>
-				</tr>
-				<tr>
-					<td rowspan=2 width=30%><img
-						src="https://pbs.twimg.com/media/CRSn98hUcAAryN7.jpg" width=70%
-						height=30%></td>
-					<td>뽀삐</td>
-					<td>7살</td>
-				</tr>
-				<tr>
-					<td colspan=2>대형견 시베리안 허스키</td>
-				</tr>
+				<c:forEach var="pet" items="${pets}">
+					<tr>
+						<td rowspan=2 width=30%>
+						<img
+							src="${pageContext.request.contextPath}/images/${pet.pic}"
+							alt="사진을 넣어주세요" width=70% height=30%></td>
+						<td>${pet.name}</td>
+						<td>${pet.age}살</td>
+					</tr>
+					<tr>
+						<td colspan=2>${pet.type} ${pet.detailType}</td>
+					</tr>
+				</c:forEach>
 			</table>
-			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/mypetForm.do" role="button">새 등록</a>&nbsp;&nbsp;
+			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/mypetForm.do" role="button">새 등록</a>&nbsp;&nbsp; 
 			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/mypetList.do" role="button">목록</a>
-			
 
 		</div>
 	</div>
@@ -65,15 +60,18 @@
 			<table class="table">
 				<tr>
 					<th>남은 포인트</th>
-					<td>9000</td>
+					<td>${user.point}p</td>
 				</tr>
 				<tr>
 					<th>진행중인 거래</th>
-					<td><p>5건</p></a></td>
+					<td><p>5건</p>
+						</a></td>
 				</tr>
 				<tr>
 					<th>거래내역</th>
-					<td><a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/mytradeList.do" role="button">더보기</a></td>
+					<td><a class="btn btn-outline-primary"
+						href="${pageContext.request.contextPath}/mytradeList.do"
+						role="button">더보기</a></td>
 				</tr>
 			</table>
 		</div>
@@ -91,7 +89,8 @@
 					<td>김돌돌</td>
 					<td>32살</td>
 					<td>대구 동구 신천동</td>
-					<td><a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/profile.do" role="button">상세</a></td>
+					<td><a class="btn btn-outline-primary"
+						href="${pageContext.request.contextPath}/profile.do" role="button">상세</a></td>
 				</tr>
 			</table>
 		</div>
