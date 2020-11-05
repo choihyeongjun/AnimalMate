@@ -170,8 +170,8 @@ public class FrontController extends HttpServlet {
       map.put("/mypetFormAction.do", new MypetFormAction()); //펫 등록 액션
       map.put("/mypetList.do", new MypetList()); //펫 목록 화면 호출
       map.put("/mypetUpdate.do", new MypetUpdate()); //펫 수정, 삭제 화면 호출       
-      map.put("/mypetUpdateAction.do", new MypetUpdateAction()); //펫 수정, 삭제 액션
-      //map.put("/mypetInsert.do", new MypetInsert()); //삭제 따로 만들어야 하나?
+      map.put("/mypetUpdateAction.do", new MypetUpdateAction()); //펫 수정 액션
+      map.put("/mypetDeleteAction.do", new MypetDeleteAction()); //펫 삭제 액션
       map.put("/mytradeList.do", new MytradeList()); //내 거래현황,내역 화면 호출
       map.put("/ownerFormCheck.do", new OwnerFormCheck()); // 맡기기 화면 호출
       map.put("/sitterFormCheck.do", new SitterFormCheck()); // 돌보기 화면 호출

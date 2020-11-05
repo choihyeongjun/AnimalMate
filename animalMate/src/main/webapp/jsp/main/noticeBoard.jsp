@@ -1,34 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>신고게시판</title>
 <style>
-.pagination {
+.pagination, li.active, .pagination li {
   display: inline-block;
 }
 
-.pagination a {
+.pagination a, li.active {
   color: black;
-  float: left;
   padding: 8px 16px;
   text-decoration: none;
+  border: 1px solid #ddd;
 }
 
-.pagination a.active {
+<%-- active된 거에 색깔넣기 --%>
+.pagination li.active {
   background-color: #4CAF50;
   color: white;
+  border: 1px solid #4CAF50;
 }
 
+<%-- active안 된 거에 마우스 올리면 회색 --%>
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a, li.active {
+  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
 </style>
 </head>
 <body>
-	<div align="center"><br>
-	<hr/>
+	${paging}
+	<div align="center">
+		<br>
+		<hr />
 		<table class="table">
 			<thead>
 				<tr>
@@ -40,7 +51,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items ="${list}" var="l">
+				<c:forEach items="${members}" var="l">
 					<tr>
 						<td>${l.code}</td>
 						<td scope="row">${l.day}</td>
@@ -51,16 +62,13 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<div class="pagination">
-			<a href="#">&laquo;</a>
-			<a href="#">1</a>
-			<a class="active" href="#">2</a>
-			<a href="#">3</a>
-			<a href="#">4</a>
-			<a href="#">5</a>
-			<a href="#">6</a>
-			<a href="#">&raquo;</a>
-		</div>
+		<script>
+				function goPage(p) {
+					location.href="goNoticeBoardPage.do?p="+p;
+				}
+			</script>
+		<my:paging paging="${paging}" jsfunc="goPage" />
+		<br>
 	</div>
 	<div align="right">
 		<button>글쓰기</button>
