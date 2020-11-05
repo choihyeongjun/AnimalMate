@@ -2,42 +2,87 @@
 
 /*----------------------------------------------------- 공통 ---------------------------------*/
 /* 테이블 - write페이지에서 list*/
-.tbl_write__list thead th{height:30px; background:#f0f0f0;}
-.tbl_write__list tbody td{height:30px; padding:5px; border-bottom:1px solid #dadada;}
+.tbl_write__list thead th{height:35px; background:#f0f0f0; text-align:center; font-weight:400;}
+.tbl_write__list tbody td{height:35px; padding:5px 17px; border-bottom:1px solid #e6e6e6;}
 .tbl_write__list thead tr th:nth-child(1),
 .tbl_write__list tbody tr td:nth-child(1){border-left:none !important;}
 .tbl_write__list thead tr th:last-child{border-right:none !important;}
+.tbl_write__list tbody tr th{text-align:center; border-bottom:1px solid #e6e6e6;}
 
 .tbl_write__list input{max-width:400px; text-align:center;}
-.tbl_write__list select{min-width:140px; max-width:100%;}
 
 
+/* button */
+.btn_group{text-align:center;}
+.btn_submit{margin:70px 0 90px;}
 
 
+/* button size */
+.btn_l{font-size:0;}
+.btn_l button{width:200px; height:50px; line-height:49px; font-size:17px; margin:0 4px; letter-spacing:-0.9px; font-weight:normal;}
+.btn_xs{width:55px; height:26px; line-height:25px; font-size:13px; font-weight:400; text-align:center;}
 
+
+/* button color */
+.c_orange{background:#ff6a2e;}
+.c_gray{background:#eee;}
+.c_red{background:#dc3131; color:#fff;}
+.c_gray_line{border:1px solid #bbb;}
+
+
+/* 입력폼 */
+.check_input_2ea{font-size:0;}
+.check_input_2ea input[type="text"]{width:calc(100% - 55px - 10px); margin-right:10px;}
+
+
+/* 캘린더 */
+.calendar{font-size:0;}
+.calendar input, .calendar span{display: inline-block;}
+.calendar input,
+.calendar select{width:calc(100% / 2 - 20px / 2);}
+.calendar span{width:20px; text-align:center;}
+
+
+/* 금액 */
+.amount input{width:158px; text-align:right; vertical-align:baseline; margin-right:10px;}
 
 
 
 /*----------------------------------------------------- 레이아웃 ---------------------------------*/
-.container{max-width:1400px; margin:50px auto 90px;}
+.container{max-width:1140px; margin:50px auto 0;}
 .title{text-align:center;}
 .title h1{font-size:38px; margin-bottom:37px;}
 .title p{font-size:17px; color:#525252;}
 .title p span{display:block; font-size:15px; color:inherit; margin-top:11px;}
 
-.cont_tit{font-size:19px; margin-bottom:20px;}
+.cont_tit{font-size:19px; margin-bottom:13px;}
+
+
+/* 레이아웃 2개 */
+.layout_2ea{font-size:0;}
+.layout_2ea .layout__cont{display:inline-block; width:calc(100% / 2 - 20px / 2); margin-right:20px; vertical-align:top;}
+.layout_2ea .layout__cont:last-child{margin-right:0;}
 
 
 
 /*----------------------------------------------------- 컨텐츠 ---------------------------------*/
-.sitter_info .cont_area{background:#f9f9f9; font-size:0; padding:20px 30px;}
+.sitter > div{margin-bottom:30px;}
+.sitter > div:last-child{margin-bottom:0;}
+
+.sitter_info .cont_area{background:#f9f9f9; font-size:0; padding:30px 60px;}
 .sitter_info .cont_area .info_img,
 .sitter_info .cont_area .info_table{display:inline-block;}
 
-.sitter_info .cont_area .info_img{width:150px; height:150px; line-height:150px; text-align:center; border-radius:50%; background:#eaeaea; margin-right:60px;}
-.sitter_info .cont_area .info_table{width:calc(100% - 150px - 60px);}
-.sitter_info .cont_area .info_table table{width:600px;}
+.sitter_info .cont_area .info_img{width:150px; height:150px; line-height:150px; text-align:center; border-radius:50%; background:#eaeaea; margin-right:70px;}
+.sitter_info .cont_area .info_table{width:calc(100% - 150px - 70px);}
+.sitter_info .cont_area .info_table table{width:740px;}
 .addpic button {width: 150px; height: 150px; background-color: gray;}
 .btn_sumit .btn_blue {background-color: aqua;}
 .btn_sumit .btn_gray {background-color: gray;}
-.calendar .datepicker {display: inline-block; width: 200px;}
+
+.check_list > div{margin-bottom:10px;}
+
+.sitter_caution ul li{margin-bottom:9px; font-size:14px;}
+
+.checkList_2ea > h2{float:left;}
+.checkList_2ea > h2 + button{float:right;}

@@ -19,7 +19,7 @@ public class MemberDao extends DAO {
 	private final String SELECT_SEARCH="SELECT * FROM MEMBERS WHERE ID = ? ";
 	private final String SELECT = "SELECT * FROM MEMBER WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO MEMBER(ID, PASSWORD, NAME, ZOOMIN1,ZOOMIN2, TEL, LOCATION1,LOCATION2,EMAIL) VALUES (?,?,?,?,?,?,?,?,?)";
-	private final String UPDATE = "UPDATE MEMBER SET AUTHOR=? where ID=?";
+	private final String UPDATE = "UPDATE MEMBERS SET AUTHOR=? WHERE ID=?";
 	private final String DELETE = "DELETE FROM MEMBERS WHERE ID = ?"; 
 	
 	public List<MemberVO> selectSearch(MemberVO vo){
