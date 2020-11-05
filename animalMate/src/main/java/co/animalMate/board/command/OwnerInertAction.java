@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import co.animalMate.board.dao.BoardDao;
 import co.animalMate.board.dao.TradeDao;
 import co.animalMate.common.Action;
-import co.animalMate.vo.OwnerInsertVO;
-import co.animalMate.vo.OwnerListVO;
 import co.animalMate.vo.TradeBoardVO;
 import co.animalMate.vo.TradeVO;
 
@@ -18,12 +16,21 @@ public class OwnerInertAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-
-		BoardDao dao = new BoardDao();
-		OwnerInsertVO vo = new OwnerInsertVO();
 		
-		vo.setCode(Integer.parseInt(request.getParameter("code")));
-		vo.setBuyer(request.getParameter(name));
+		BoardDao boarddao = new BoardDao();
+		TradeBoardVO tradeBoardvo = new TradeBoardVO();
+		
+		
+		
+		tradeBoardvo.setTitle(request.getParameter("title"));//제목
+		tradeBoardvo.setPrice(Integer.parseInt(request.getParameter("price")));
+		tradeBoardvo.setComm(request.getParameter("comm"));
+		tradeBoardvo.setStatus(request.getParameter("status"));
+		tradeBoardvo.setStime(request.getParameter("stime"));
+		tradeBoardvo.setEtime(request.getParameter("etime"));
+		tradeBoardvo.setTtype(request.getParameter("ctype"));
+		tradeBoardvo.setLocation1(request.getParameter("loc1"));
+		tradeBoardvo.setLocation2(request.getParameter("loc2"));
 		
 		
 		TradeDao tradedao = new TradeDao();
@@ -36,10 +43,16 @@ public class OwnerInertAction implements Action {
 //		}
 		
 		
-
+		tradevo.setId(request.getParameter("id"));
+		tradevo.setName(request.getParameter("name"));
+		tradevo.setPassword(request.getParameter("password"));
+		tradevo.setAddress(request.getParameter("address"));
+		tradevo.setTel(request.getParameter("tel"));
+		tradevo.setEnterdate(Date.valueOf(request.getParameter("enterdate")));
 		
 		
-		return "jsp/board/ownerList.jsp";
+		
+		return "jsp/member/insertSuccess.jsp";
 	}
 
 }
