@@ -21,6 +21,7 @@ public class tempt extends DAO {
 	private final String UPDATE = "UPDATE MEMBER SET NAME = ?, PASSWORD = ?, ADDRESS = ?, TEL = ?, ID = ?";
 	private final String DELETE = "DELETE FROM MEMBER WHERE ID = ?"; 
 	
+	//부분선택
 	public List<MemberVO> selectSearch(MemberVO vo){
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
@@ -55,6 +56,8 @@ public class tempt extends DAO {
 		}
 		return list;
 	}
+	
+	//전체선택
 	public List<MemberVO> selectAll(){ //멤버리스트 전체를 가져오는 메소드
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
