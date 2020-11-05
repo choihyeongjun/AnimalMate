@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,27 +40,15 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<td>1</td>
-					<th scope="row">2020-11-02</th>
-					<td>야~ 프로젝트하기 싫다~</td>
-					<td>공지사항</td>
-					<td>999</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<th scope="row">2020-11-02</th>
-					<td>반값이벤트합니다!</td>
-					<td>이벤트</td>
-					<td>999</td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<th scope="row">2020-11-02</th>
-					<td>야~ 프로젝트하기 싫다~</td>
-					<td>공지사항</td>
-					<td>999</td>
-				</tr>
+				<c:forEach items ="${list}" var="l">
+					<tr>
+						<td>${l.code}</td>
+						<td scope="row">${l.day}</td>
+						<td>${l.title}</td>
+						<td>${l.type}</td>
+						<td>${l.count}</td>
+					</tr>
+				</c:forEach>
 			</tbody>
 		</table>
 		<div class="pagination">
