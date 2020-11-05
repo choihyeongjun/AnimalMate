@@ -17,6 +17,7 @@ public class DAO {
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, user, password);
+			System.out.println("DB연결 성공");
 		} catch (ClassNotFoundException | SQLException e) { //예외처리는 프로그램 오류가 아니다!!
 			e.printStackTrace(); //어떤 예외가 발생했는지 알 수 있다!!
 		}

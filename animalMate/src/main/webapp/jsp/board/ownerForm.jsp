@@ -29,16 +29,14 @@
         </style>
             <script>
             $(function() {
-            	
             	// 버튼 add function
             	$(document).on("click",".checkAddBtn",function(){
-            		var addDiv = $('<div/>',{'class':'checkList'});
+            		var addDiv = $('<div/>',{'class':'checkList1 check_input_2ea'});
             		var $input = $('<input/>',{type:'text', placeholder:'업무 체크리스트를 입력해주세요.'});
             		
             		$(addDiv).append($input);
-            		$(addDiv).append($('<button/>').attr('class','checkAddBtn').text('+'));
-            		$(addDiv).append($('<button/>').attr('class','checkDelBtn').text('-'));
-            		$(".check_list").append(addDiv);
+            		$(addDiv).append($('<button/>').attr('class','checkDelBtn btn_xs c_red').text('삭제'));
+            		$("#sec03").append(addDiv);
 
             	});
             	
@@ -58,7 +56,7 @@
     <body>
         <!-- s:container -->
         <div class="container">
-           <form id="frm" name="frm" action="ownerInsert.do" method="post">
+           <form id="frm" name="frm" action="${pageContext.request.contextPath}/ownerInsert.do" method="post">
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐주세요- (글등록 Form)</h1>
@@ -192,12 +190,12 @@
 	                <div id="sec03" class="check_list layout__cont">
 		                <div class="checkList_2ea">
 		                    <h2 class="cont_tit">체크리스트(선택사항)</h2>
-		                    <button class="checkAddBtn btn_xs c_gray_line">추가</button>
+		                    <button class="checkAddBtn btn_xs c_gray_line" type="button">추가</button>
 	                    </div>
 	                    
-	                    <div class="checkList check_input_2ea">
+	                    <div class="checkList1 check_input_2ea">
 	                        <input type="text" placeholder="업무 체크리스트를 입력해주세요">
-	                        <button class="checkAddBtn btn_xs c_red">삭제</button><!-- class명 바꿔야함 삭제로(checkAddBtn) -->
+	                        <button class="checkDelBtn btn_xs c_red" type="button">삭제</button><!-- class명 바꿔야함 삭제로(checkAddBtn) -->
 	                    </div>
 	                </div>
                 </div>
