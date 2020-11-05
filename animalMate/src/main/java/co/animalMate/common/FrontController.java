@@ -116,11 +116,13 @@ public class FrontController extends HttpServlet {
       
       //형준
 	  map.put("/ajax/memberSearch.do",new MemberSearchAction());//검색 하는 회원찾기
-      map.put("/ajax/memberlist.do",new MemberListAction());
-      map.put("/blackSearch.do",new BlackSearchAction());
-      map.put("/blacklist.do",new BlackListAction());
-      map.put("/tradelist.do",new tradeAction());
-      map.put("/ajax/updatemember.do", new MemberUpdateAction());//지우기
+	  map.put("/ajax/memberlist.do",new MemberListAction());
+	  map.put("/ajax/blackSearch.do",new BlackSearchAction());
+	  map.put("/ajax/updateblack.do",new BlackUpdateAction());
+	  map.put("/ajax/blacklist.do",new BlackListAction());
+	  map.put("/tradelist.do",new tradeAction());
+	  map.put("/ajax/updatemember.do", new MemberUpdateAction());//업데이트
+	  map.put("/submitQuestion.do",new SubmitQuestionAction());
 
       
 

@@ -16,11 +16,98 @@ public class MemberDao extends DAO {
 	private MemberVO vo;
 	
 	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
+	private final String BLACK_SEARCH="SELECT * FROM MEMBERS WHERE AUTHOR = ? ";
 	private final String SELECT_SEARCH="SELECT * FROM MEMBERS WHERE ID = ? ";
 	private final String SELECT = "SELECT * FROM MEMBER WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO MEMBER(ID, PASSWORD, NAME, ZOOMIN1,ZOOMIN2, TEL, LOCATION1,LOCATION2,EMAIL) VALUES (?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE = "UPDATE MEMBERS SET AUTHOR=? WHERE ID=?";
+	private final String UPDATE_BLACK = "UPDATE MEMBERS SET AUTHOR=? WHERE ID=? AND AUTHOR='black'";
 	private final String DELETE = "DELETE FROM MEMBERS WHERE ID = ?"; 
+	private final String SELECT_BLACK="SELECT * FROM MEMBERS WHERE AUTHOR=? AND ID=?";
+	//업데이트
+		public void updateBlack(MemberVO vo) { 	
+			try {
+				psmt = conn.prepareStatement(UPDATE_BLACK);
+				psmt.setString(1, vo.getAuthor());
+				psmt.setString(2, vo.getId());
+				psmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	
+	public List<MemberVO> selectBlack(MemberVO vo){
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			
+			psmt=conn.prepareStatement(SELECT_BLACK);
+			psmt.setString(1, vo.getAuthor());
+			psmt.setString(2, vo.getId());
+			rs=psmt.executeQuery();
+			while(rs.next()) {
+				vo = new MemberVO();
+				vo.setId(rs.getString("id"));
+				vo.setPw(rs.getString("pw"));
+				vo.setName(rs.getString("name"));
+				vo.setnName(rs.getString("nName"));
+				vo.setTel(rs.getString("tel"));
+				vo.seteDate(rs.getString("eDate"));
+				vo.setAuthor(rs.getString("author"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setStatus(rs.getString("status"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setLocation2(rs.getString("location2"));
+				vo.setEmail(rs.getString("email"));
+				vo.setPic(rs.getString("pic"));
+				vo.setZoomin1(rs.getInt("zoomin1"));
+				vo.setZoomin2(rs.getInt("zoomin2"));
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return list;
+	}
+	public List<MemberVO> selectAllBlack(MemberVO vo){
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			
+			psmt=conn.prepareStatement(BLACK_SEARCH);
+			psmt.setString(1, vo.getAuthor());
+			rs=psmt.executeQuery();
+			while(rs.next()) {
+				vo = new MemberVO();
+				vo.setId(rs.getString("id"));
+				vo.setPw(rs.getString("pw"));
+				vo.setName(rs.getString("name"));
+				vo.setnName(rs.getString("nName"));
+				vo.setTel(rs.getString("tel"));
+				vo.seteDate(rs.getString("eDate"));
+				vo.setAuthor(rs.getString("author"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setStatus(rs.getString("status"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setLocation2(rs.getString("location2"));
+				vo.setEmail(rs.getString("email"));
+				vo.setPic(rs.getString("pic"));
+				vo.setZoomin1(rs.getInt("zoomin1"));
+				vo.setZoomin2(rs.getInt("zoomin2"));
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return list;
+	}
+	
 	
 	public List<MemberVO> selectSearch(MemberVO vo){
 		List<MemberVO> list = new ArrayList<MemberVO>();
