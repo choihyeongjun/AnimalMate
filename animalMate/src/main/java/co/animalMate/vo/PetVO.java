@@ -1,7 +1,7 @@
 package co.animalMate.vo;
 
 public class PetVO {
-	private int code;
+	private String code;
 	private String name;
 	private int age;
 	private String gender;
@@ -16,10 +16,10 @@ public class PetVO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getName() {

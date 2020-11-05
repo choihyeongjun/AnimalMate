@@ -12,8 +12,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.admin.command.BlackListAction;
 import co.animalMate.admin.command.BlackSearchAction;
+import co.animalMate.admin.command.BlackUpdateAction;
 import co.animalMate.admin.command.MemberListAction;
 import co.animalMate.admin.command.MemberSearchAction;
+import co.animalMate.admin.command.MemberUpdateAction;
+import co.animalMate.admin.command.SubmitQuestionAction;
 import co.animalMate.admin.command.tradeAction;
 import co.animalMate.board.command.MainAction;
 import co.animalMate.board.command.OwnerFormAction;
@@ -27,6 +30,7 @@ import co.animalMate.login.command.JoinInsertAction;
 import co.animalMate.login.command.LoginAction;
 import co.animalMate.login.command.LoginForm;
 import co.animalMate.login.command.LogoutAction;
+import co.animalMate.main.command.GoBlackBoardPageAction;
 import co.animalMate.main.command.GoLoginPageAction;
 import co.animalMate.main.command.GoMessageListPageAction;
 import co.animalMate.main.command.GoMypagePageAction;
@@ -36,6 +40,7 @@ import co.animalMate.main.command.GoSitterListPageAction;
 import co.animalMate.main.command.GotradeListPageAction;
 import co.animalMate.main.command.SubmitReportAction;
 import co.animalMate.mypage.command.MemberForm;
+import co.animalMate.mypage.command.MypetDeleteAction;
 import co.animalMate.mypage.command.MypetForm;
 import co.animalMate.mypage.command.MypetFormAction;
 import co.animalMate.mypage.command.MypetList;
@@ -66,6 +71,7 @@ public class FrontController extends HttpServlet {
 		map.put("/goOwnerListPage.do", new GoOwnerListPageAction()); // 헤더에서 돌봐주세요 메뉴 눌렀을 때
 		map.put("/goSitterListPage.do", new GoSitterListPageAction()); // 헤더에서 돌봐줄께요 메뉴 눌렀을 때
 		map.put("/goMypagePage.do", new GoMypagePageAction()); // 헤더에서 마이페이지 메뉴 눌렀을 때
+		map.put("/goBlackBoardPage.do", new GoBlackBoardPageAction()); // 신고하기 폼에서 제출하기 버튼을 눌렀을 때 
 		map.put("/submitReport.do", new SubmitReportAction()); // 신고페이지에서 제출버튼 눌렀을 때
 
       
@@ -87,7 +93,7 @@ public class FrontController extends HttpServlet {
 	  map.put("/joinInsert.do", new JoinInsertAction()); //회원입력
 	  map.put("/logout.do", new LogoutAction()); //로그아웃 액션
 	  map.put("/ld_find.do", new FindIdAction()); //아이디 찾기 액션
-	  map.put("/resetPw.do", new ResetPwAction()); //비밀번호 찾기 액션
+	  //map.put("/resetPw.do", new ResetPwAction()); //비밀번호 찾기 액션
       
       
       
@@ -113,11 +119,13 @@ public class FrontController extends HttpServlet {
       
       //형준
 	  map.put("/ajax/memberSearch.do",new MemberSearchAction());//검색 하는 회원찾기
-      map.put("/ajax/memberlist.do",new MemberListAction());
-      map.put("/blackSearch.do",new BlackSearchAction());
-      map.put("/blacklist.do",new BlackListAction());
-      map.put("/tradelist.do",new tradeAction());
-      map.put("/ajax/updatemember.do", new MemberUpdateAction());//지우기
+	  map.put("/ajax/memberlist.do",new MemberListAction());
+	  map.put("/ajax/blackSearch.do",new BlackSearchAction());
+	  map.put("/ajax/updateblack.do",new BlackUpdateAction());
+	  map.put("/ajax/blacklist.do",new BlackListAction());
+	  map.put("/tradelist.do",new tradeAction());
+	  map.put("/ajax/updatemember.do", new MemberUpdateAction());//업데이트
+	  map.put("/submitQuestion.do",new SubmitQuestionAction());
 
       
 
@@ -167,8 +175,8 @@ public class FrontController extends HttpServlet {
       map.put("/mypetFormAction.do", new MypetFormAction()); //펫 등록 액션
       map.put("/mypetList.do", new MypetList()); //펫 목록 화면 호출
       map.put("/mypetUpdate.do", new MypetUpdate()); //펫 수정, 삭제 화면 호출       
-      map.put("/mypetUpdateAction.do", new MypetUpdateAction()); //펫 수정, 삭제 액션
-      //map.put("/mypetInsert.do", new MypetInsert()); //삭제 따로 만들어야 하나?
+      map.put("/mypetUpdateAction.do", new MypetUpdateAction()); //펫 수정 액션
+      map.put("/mypetDeleteAction.do", new MypetDeleteAction()); //펫 삭제 액션
       map.put("/mytradeList.do", new MytradeList()); //내 거래현황,내역 화면 호출
       map.put("/ownerFormCheck.do", new OwnerFormCheck()); // 맡기기 화면 호출
       map.put("/sitterFormCheck.do", new SitterFormCheck()); // 돌보기 화면 호출

@@ -29,12 +29,13 @@ public class SubmitReportAction implements Action {
 		dao.insert(vo);
 		
 		try {
-			response.getWriter().print(new JSONObject(vo));
+			response.sendRedirect(request.getContextPath() + "/goBlackBoardPage.do");
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return "/jsp/main/blackBoard.jsp";
+		return null;
 	}
 
 }
