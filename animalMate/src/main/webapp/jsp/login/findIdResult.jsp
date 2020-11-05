@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,7 +20,7 @@
       </Strong>입니다</h6>
       </div>
       <div class="id_find_result-footer">
-         <button type="button" class="id_find_result-cancel">확인/닫기</button>
+        <a href="#" onclick="javascript:window.close()">창닫기</a>
       </div>
    </div>
 </body>

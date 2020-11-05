@@ -97,8 +97,6 @@ public class FrontController extends HttpServlet {
       
       
       
-      
-      
       //형준
       map.put("/memberSearch.do",new MemberSearchAction());//검색 하는 회원찾기
        map.put("/ajax/memberlist.do",new MemberListAction());
