@@ -1,4 +1,7 @@
-create or replace view sitterList as 
-select P.pic, P.detailType, T.location2, T.wtime, T.price
-from pet P, tradeboard T
-where P.id = T.seller;
+--유저 생성 및 권한 부여
+conn system
+password: oracle
+
+create user mongde identified by 1234;
+grant connect, resource, create sequence to mongde;
+ 
