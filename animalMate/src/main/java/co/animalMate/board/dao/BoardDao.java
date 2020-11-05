@@ -14,7 +14,7 @@ import co.animalMate.vo.TradeVO;
 public class BoardDao extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
 	private ResultSet rs; // select 후 결과셋 받기
-	private TradeBoardVO vo = new TradeBoardVO();;
+	private TradeBoardVO vo = new TradeBoardVO();
 
 	private final String SELECT = "SELECT * FROM TRADEBOARD";
 

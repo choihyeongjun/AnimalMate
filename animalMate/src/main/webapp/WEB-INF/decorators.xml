@@ -4,9 +4,11 @@
 		<pattern>/*</pattern>
 	</decorator>
 	<excludes>
+		
 		<pattern>/index.jsp</pattern>
 		<pattern>/jsp/login/*</pattern>
 		<pattern>/jsp/admin/test/*</pattern>
+		<pattern>/submitQuestion.do</pattern>
 		<pattern>*/ajax/*</pattern>
 	</excludes>
 </decorators>

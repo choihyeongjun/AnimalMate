@@ -41,9 +41,8 @@ button{width: 50px;
 			.append($('<td>').html(item.id))
 			.append($('<td>').html(item.name))
 			.append($('<td>').html(item.location1))
-			.append($('<td>').html(item.role))
 			.append($('<td>').html(item.tel))
-			.append($('<td>').html(item.eDate))
+			.append($('<td>').html(item.edate))
 			.append($('<td>').html('<input type="text" id=\'author\' value='+item.author+'>'))
 			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
 			.append($('<td>').html('<button id=\'btnUpdate\'>수정</button>'))
@@ -52,7 +51,7 @@ button{width: 50px;
 		});//each
 	}//userListResult
 	function userUpdate() {
-		//삭제 버튼 클릭
+		//업데이트 버튼 클릭
 		$('body').on('click','#btnUpdate',function(){
 			var userId = $(this).closest('tr').find('#hidden_userId').val();
 			var userAuthor = $(this).closest('tr').find('#author').val();
@@ -70,8 +69,8 @@ button{width: 50px;
 						userList();
 					}
 				});      }//if
-		}); //삭제 버튼 클릭
-	}//userDelete
+		}); //업데이트 버튼 클릭
+	}//userupdate
 	function userSelect() {
 		//조회 버튼 클릭
 		$('body').on('click','#btnSelect',function(){
@@ -96,12 +95,11 @@ button{width: 50px;
 			.append($('<td>').html(item.id))
 			.append($('<td>').html(item.name))
 			.append($('<td>').html(item.location1))
-			.append($('<td>').html(item.role))
 			.append($('<td>').html(item.tel))
-			.append($('<td>').html(item.eDate))
+			.append($('<td>').html(item.edate))
 			.append($('<td>').html('<input type="text" id=\'author\' value='+item.author+'>'))
 			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
-			.append($('<td>').html('<button id=\'btnupdate\'>수정</button>'))
+			.append($('<td>').html('<button id=\'btnUpdate\'>수정</button>'))
 			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
 			.appendTo("#search");
 		});
@@ -117,7 +115,7 @@ button{width: 50px;
 <hr>
 <div align="center">
 	<div><h1>회원목록 정보</h1></div>
-		<div>
+	<div>
 		<form>
 		<table>
 			<tr>
@@ -125,10 +123,9 @@ button{width: 50px;
 				<td><button type="button" id="btnSelect">검색</button>
 			</tr>
 		</table>
-		
-		<table>
-		</table>
 		</form>
+	</div>
+	<div>
 		<div class="container">
 		<table id="search" class="table text-center">
 			<thead>
