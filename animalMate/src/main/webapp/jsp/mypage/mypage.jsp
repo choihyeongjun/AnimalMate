@@ -8,10 +8,17 @@
 <title>마이페이지</title>
 </head>
 <body>
+<br>
+<h1>마이페이지</h1>
 	<div class="row">
-		<div class="col-lg-4 col-md-4 mypagebox" id="profile">
+		<div class="mypagebox">
 			<h1>프로필</h1>
 			<table class="table">
+				<tr>
+					<td colspan=2 height="200px"><img
+						src="${pageContext.request.contextPath}/images/${pet.pic}"
+						alt="사진을 넣어주세요" width="100px" height="100px"></td>
+				</tr>
 				<tr>
 					<th>이름</th>
 					<td>${user.name}</td>
@@ -25,20 +32,17 @@
 					<td>${user.location1} ${user.location2}</td>
 				</tr>
 			</table>
-			<a class="btn btn-outline-primary"
-				href="${pageContext.request.contextPath}/memberForm.do"
-				role="button">수정</a>
+			<button onclick="window.location.href='${pageContext.request.contextPath}/memberForm.do'">수정</button>
 		</div>
 
-		<div class="col-lg-4 col-md-4 mypagebox">
+		<div class="mypagebox">
 			<h1>마이펫</h1>
 			<table class="table">
-				<c:forEach var="pet" items="${pets}">
+				<c:forEach var="pet" items="${pets}" end="2">
 					<tr>
-						<td rowspan=2 width=30%>
-						<img
+						<td rowspan=2 width=30%><img
 							src="${pageContext.request.contextPath}/images/${pet.pic}"
-							alt="사진을 넣어주세요" width=70% height=30%></td>
+							alt="사진을 넣어주세요" width=100px height=100px></td>
 						<td>${pet.name}</td>
 						<td>${pet.age}살</td>
 					</tr>
@@ -47,14 +51,14 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/mypetForm.do" role="button">새 등록</a>&nbsp;&nbsp; 
-			<a class="btn btn-outline-primary" href="${pageContext.request.contextPath}/mypetList.do" role="button">목록</a>
-
+			<button onclick="window.location.href='${pageContext.request.contextPath}/mypetForm.do'">새등록</button>
+			&nbsp;&nbsp;
+			<button onclick="window.location.href='${pageContext.request.contextPath}/mypetList.do'">더보기</button>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-lg-4 col-md-4 mypagebox">
+		<div class="mypagebox">
 			<h1>거래내역</h1>
 
 			<table class="table">
@@ -63,20 +67,17 @@
 					<td>${user.point}p</td>
 				</tr>
 				<tr>
-					<th>진행중인 거래</th>
-					<td><p>5건</p>
-						</a></td>
+					<th>진행중인<br>거래</th>
+					<td>${tcount.code}건</td>
 				</tr>
 				<tr>
 					<th>거래내역</th>
-					<td><a class="btn btn-outline-primary"
-						href="${pageContext.request.contextPath}/mytradeList.do"
-						role="button">더보기</a></td>
+					<td><button onclick="window.location.href='${pageContext.request.contextPath}/mytradeList.do'">더보기</button></td>
 				</tr>
 			</table>
 		</div>
 
-		<div class="col-lg-4 col-md-4 mypagebox">
+		<div class="mypagebox">
 			<h1>즐겨찾기</h1>
 			<table class="table">
 				<tr>
@@ -89,11 +90,11 @@
 					<td>김돌돌</td>
 					<td>32살</td>
 					<td>대구 동구 신천동</td>
-					<td><a class="btn btn-outline-primary"
-						href="${pageContext.request.contextPath}/profile.do" role="button">상세</a></td>
+					<td><button onclick="window.location.href='${pageContext.request.contextPath}/profile.do'">더보기</button></td>	
 				</tr>
 			</table>
 		</div>
 	</div>
+	
 </body>
 </html>
