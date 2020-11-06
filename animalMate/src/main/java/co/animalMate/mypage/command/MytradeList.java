@@ -32,6 +32,7 @@ public class MytradeList implements Action {
 		memVo = myDao.userInfo(memVo);
 		
 		// User 거래정보 출력
+		myDao = new MypageDao();
 		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
 		tbVo.setBuyer("id3");
 		list = myDao.selectUserTrades(tbVo);

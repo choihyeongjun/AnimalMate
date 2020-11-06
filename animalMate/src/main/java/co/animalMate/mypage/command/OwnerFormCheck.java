@@ -20,6 +20,7 @@ public class OwnerFormCheck implements Action {
 		memVo = myDao.userInfo(memVo);
 		
 		// User 거래정보 출력
+		myDao = new MypageDao();
 		tbVo.setCode(3);
 		tbVo = myDao.selectUserTrade(tbVo);
 
