@@ -1,10 +1,13 @@
 package co.animalMate.admin.command;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONArray;
 
 import co.animalMate.board.dao.MemberDao;
 import co.animalMate.common.Action;
@@ -19,13 +22,18 @@ public class BlackSearchAction implements Action {
 		MemberDao dao = new MemberDao();
 		MemberVO vo=new MemberVO();
 		vo.setId(request.getParameter("id"));
-		vo.setName(request.getParameter("name"));
+		vo.setAuthor("black");
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		
 		list = dao.selectSearch(vo);
-		request.setAttribute("members", list);
 		
-		return "jsp/admin/test/blacklist.jsp";
+		try {
+			response.getWriter().print(new JSONArray(list));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

@@ -1,4 +1,4 @@
-package co.animalMate.board.dao;
+package co.animalMate.login.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import co.animalMate.board.dao.MemberDao;
 import co.animalMate.common.Action;
+import co.animalMate.login.dao.MemberDao;
 import co.animalMate.vo.MemberVO;
 
 public class GoLoginPageAction implements Action {

@@ -29,22 +29,19 @@
         </style>
             <script>
             $(function() {
-            	
             	// 버튼 add function
             	$(document).on("click",".checkAddBtn",function(){
-            		var addDiv = $('<div/>',{'class':'checkList'});
+            		var addDiv = $('<div/>',{'class':'checkList1 check_input_2ea'});
             		var $input = $('<input/>',{type:'text', placeholder:'업무 체크리스트를 입력해주세요.'});
             		
             		$(addDiv).append($input);
-            		$(addDiv).append($('<button/>').attr('class','checkAddBtn').text('+'));
-            		$(addDiv).append($('<button/>').attr('class','checkDelBtn').text('-'));
-            		$(".sec04").append(addDiv);
+            		$(addDiv).append($('<button/>').attr('class','checkDelBtn btn_xs c_red').text('삭제'));
+            		$("#sec03").append(addDiv);
 
             	});
             	
             	// 버튼 minus function
             	$(document).on("click",".checkDelBtn",function(){
-            		//console.log($(this).parent());
             		$(this).parent().remove();
             		
             		
@@ -59,18 +56,17 @@
     <body>
         <!-- s:container -->
         <div class="container">
-            
+           <form id="frm" name="frm" action="${pageContext.request.contextPath}/ownerInsert.do" method="post">
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐주세요- (글등록 Form)</h1>
-                <input placeholder="제목을 입력하세요">
-                </input>
+                <input type="text" placeholder="제목을 입력하세요">
             </div>
             <!-- e:title -->
 
             <!-- s:contents -->
-            <div class="contents">
-
+            <div class="contents sitter">
+				
                 <div id="sec01" class="sitter_info">
                     <h2 class="cont_tit">펫 정보</h2>
 
@@ -131,83 +127,86 @@
                     </div>
                 </div>
 
-                <div id="sec02" class="">
-                    <h2 class="cont_tit">세부조건</h2>
-
-                    <table class="tbl_write__list">
-                        <colgroup>
-                            <col width="40%">
-                            <col width="60%">
-                        </colgroup>
-
-                        <thead>
-                            <tr>
-                                <th>조건</th>
-                                <th>내용</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <td>근무지역</td>
-                              	<td><input type="text" placeholder="돌봄 지역을 입력하세요"></td>
-                            </tr>
-                            
-                            <tr>
-                                <td>근무날짜</td>
-                                <td>
-                                    <!-- jQuery datepicker 연결하면 됨-->
-                                    <div class="calendar">
-                                        <input type="date" class="datepicker" name="" value="" placeholder="시작일" onchange="">
-                                        <span>~</span>
-                                        <input type="date" class="datepicker" name="" value="" placeholder="종료일" onchange="">
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td>근무시간</td>
-                                <td>
-                                    <div class="calendar">
-                                        <select>
-                                            <option>12:00</option>
-                                            <option>13:00</option>
-                                        </select>
-                                        <span>~</span>
-                                        <select>
-                                            <option>12:00</option>
-                                            <option>13:00</option>
-                                        </select>
-                                    </div>
-                                </td>
-                            </tr>
- <tr>
-                                <td>거래금액</td>
-                                <td><input type="text" name="" placeholder="서비스 비용을 입력하세요" class="txt-r" >원</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-
-                
-
-                    <div id="sec04" class="sec04">
-                    <h2 class="cont_tit">체크리스트(선택사항)</h2>
-                    <div class="checkList">
-                        <input type="text" placeholder="업무 체크리스트를 입력해주세요">
-                        <button class="checkAddBtn">+</button>
+                <div id="sec02" class="layout_2ea">
+	                <div class="layout__cont">
+	                    <h2 class="cont_tit">세부조건</h2>
+	
+	                    <table class="tbl_write__list">
+	                        <colgroup>
+	                            <col width="30%">
+	                            <col width="70%">
+	                        </colgroup>
+	
+	                        <thead>
+	                            <tr>
+	                                <th>조건</th>
+	                                <th>내용</th>
+	                            </tr>
+	                        </thead>
+	
+	                        <tbody>
+	                            <tr>
+	                                <th>근무지역</th>
+	                              	<td><input type="text" placeholder="돌봄 지역을 입력하세요"></td>
+	                            </tr>
+	                            
+	                            <tr>
+	                                <th>근무날짜</th>
+	                                <td>
+	                                    <!-- jQuery datepicker 연결하면 됨-->
+	                                    <div class="calendar">
+	                                        <input type="date" name="" value="" placeholder="시작일" onchange="">
+	                                        <span>~</span>
+	                                        <input type="date" name="" value="" placeholder="종료일" onchange="">
+	                                    </div>
+	                                </td>
+	                            </tr>
+	
+	                            <tr>
+	                                <th>근무시간</th>
+	                                <td>
+	                                    <div class="calendar">
+	                                        <select>
+	                                            <option>12:00</option>
+	                                            <option>13:00</option>
+	                                        </select>
+	                                        <span>~</span>
+	                                        <select>
+	                                            <option>12:00</option>
+	                                            <option>13:00</option>
+	                                        </select>
+	                                    </div>
+	                                </td>
+	                            </tr>
+	                            
+	                            <tr>
+	                                <th>거래금액</th>
+	                                <td class="amount"><input type="text" name="" placeholder="서비스 비용을 입력하세요">원</td>
+	                            </tr>
+	                        </tbody>
+	                    </table>
                     </div>
+
+	                <div id="sec03" class="check_list layout__cont">
+		                <div class="checkList_2ea">
+		                    <h2 class="cont_tit">체크리스트(선택사항)</h2>
+		                    <button class="checkAddBtn btn_xs c_gray_line" type="button">추가</button>
+	                    </div>
+	                    
+	                    <div class="checkList1 check_input_2ea">
+	                        <input type="text" placeholder="업무 체크리스트를 입력해주세요">
+	                        <button class="checkDelBtn btn_xs c_red" type="button">삭제</button><!-- class명 바꿔야함 삭제로(checkAddBtn) -->
+	                    </div>
+	                </div>
                 </div>
 
                 <div id="sec05" class="">
                     <h2 class="cont_tit">세부내용</h2>
 
-                    <textarea>
-                    </textarea>
+                    <textarea placeholder="세부내용을 입력해 주세요"></textarea>
                 </div>
 
-                <div id="sec06" class="">
+                <div id="sec06" class="sitter_caution">
                     <h2 class="cont_tit">유의사항</h2>
 
                     <ul>
@@ -218,15 +217,14 @@
 						<li>○ 표준계약서는 '이용안내'에서 내려받을수 있습니다.</li>
                     </ul>
                 </div>
-
-
-                <div class="btn_sumit">
-                    <button type="submit" class="btn_blue">글등록</button>
-                    <button type="reset" class="btn_gray" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
-                </div>
-
             </div>
             <!-- e:contents -->
+
+            <div class="btn_group btn_submit btn_l">
+                <button type="submit" class="c_orange">글등록</button>
+                <button type="reset" class="c_gray" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
+            </div>
+            </form>
         </div>
         <!-- s:container -->
       

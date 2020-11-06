@@ -3,8 +3,8 @@ package co.animalMate.login.command;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.animalMate.board.dao.MemberDao;
 import co.animalMate.common.Action;
+import co.animalMate.login.dao.MemberDao;
 import co.animalMate.vo.MemberVO;
 
 public class JoinInsertAction implements Action {

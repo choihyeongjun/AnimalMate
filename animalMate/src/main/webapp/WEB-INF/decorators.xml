@@ -14,6 +14,7 @@
 		<pattern>/resetPw.do</pattern>
 		<pattern>/loginForm.do</pattern>
 		<pattern>/jsp/admin/test/*</pattern>
+		<pattern>/submitQuestion.do</pattern>
 		<pattern>*/ajax/*</pattern>
 	</excludes>
 </decorators>
