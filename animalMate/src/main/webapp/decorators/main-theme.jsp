@@ -63,6 +63,13 @@
 			}
 		})
 		
+		//로그아웃
+		$("#logoutBtn").on({
+			"click" : function() {
+				location.href="${pageContext.request.contextPath}/logout.do";
+			}
+		})
+		
 		//쪽지버튼
 		$("#messageListBtn").on({
 			"click" : function() {
@@ -76,6 +83,7 @@
 				location.href="${pageContext.request.contextPath}/gotradeListPage.do";
 			}
 		})
+		
 	})
 		
 		
@@ -110,7 +118,12 @@
 	<div align="right" style="margin-top: 50px">
 	<button id="tradeListBtn" class="">요청알림</button>
 	<button id="messageListBtn" class="">쪽지</button>
-	<button id="loginBtn" class="">로그인</button>
+	<c:if test="${sessionScope.id eq null}">
+		<button id="loginBtn" class="">로그인</button>
+	</c:if>
+	<c:if test="${sessionScope.id ne null}">
+		<button id="logoutBtn" class="">로그아웃</button>
+	</c:if>
 	</div>
 	<br>
 	<nav class="navbar">
