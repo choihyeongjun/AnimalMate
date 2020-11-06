@@ -127,7 +127,7 @@
 	</div>
 	<br>
 	<nav class="navbar">
-  		<a class="navbar-brand" href="${pageContext.request.contextPath}/goNoticeBoardPage.do"><b>공지사항</b></a>
+  		<a class="navbar-brand" href="${pageContext.request.contextPath}/goNoticeBoardPage.do?p=1"><b>공지사항</b></a>
         <a class="navbar-brand" href="${pageContext.request.contextPath}/sitterList.do"><b>돌봐줄께요</b></a>
         <a class="navbar-brand" href="${pageContext.request.contextPath}/ownerList.do"><b>돌봐주세요</b></a>
         <a class="navbar-brand" href="${pageContext.request.contextPath}/goMypagePage.do"><b>마이페이지</b></a>
