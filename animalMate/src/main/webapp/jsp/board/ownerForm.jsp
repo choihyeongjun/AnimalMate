@@ -60,7 +60,7 @@
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐주세요- (글등록 Form)</h1>
-                <input type="text" placeholder="제목을 입력하세요">
+                <input type="text" name="title" placeholder="제목을 입력하세요">
             </div>
             <!-- e:title -->
 
@@ -147,7 +147,7 @@
 	                        <tbody>
 	                            <tr>
 	                                <th>근무지역</th>
-	                              	<td><input type="text" placeholder="돌봄 지역을 입력하세요"></td>
+	                              	<td><input type="text" name="location2" placeholder="돌봄 지역을 입력하세요"></td>
 	                            </tr>
 	                            
 	                            <tr>
@@ -155,9 +155,9 @@
 	                                <td>
 	                                    <!-- jQuery datepicker 연결하면 됨-->
 	                                    <div class="calendar">
-	                                        <input type="date" name="" value="" placeholder="시작일" onchange="">
+	                                        <input type="date" name="stime" placeholder="시작일" >
 	                                        <span>~</span>
-	                                        <input type="date" name="" value="" placeholder="종료일" onchange="">
+	                                        <input type="date" name="etime" placeholder="종료일" >
 	                                    </div>
 	                                </td>
 	                            </tr>
@@ -181,7 +181,7 @@
 	                            
 	                            <tr>
 	                                <th>거래금액</th>
-	                                <td class="amount"><input type="text" name="" placeholder="서비스 비용을 입력하세요">원</td>
+	                                <td class="amount"><input type="text" name="price" placeholder="서비스 비용을 입력하세요">원</td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
@@ -203,7 +203,7 @@
                 <div id="sec05" class="">
                     <h2 class="cont_tit">세부내용</h2>
 
-                    <textarea placeholder="세부내용을 입력해 주세요"></textarea>
+                    <textarea name="comm" placeholder="세부내용을 입력해 주세요"></textarea>
                 </div>
 
                 <div id="sec06" class="sitter_caution">

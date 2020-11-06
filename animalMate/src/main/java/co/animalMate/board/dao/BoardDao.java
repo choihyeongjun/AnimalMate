@@ -16,15 +16,15 @@ public class BoardDao extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
 	private ResultSet rs; // select 후 결과셋 받기
 	private OwnerListVO vo;
-
+	private OwnerInsertVO insertvo;
 	
 	private final String SELECT =  "SELECT A.PRICE, A.WTIME, A.LOCATION2 , A.STATUS, B.TYPE, B.PIC"
 									+ " FROM TRADEBOARD A"
 									+ " INNER JOIN PET B  "
 									+ "ON A.BUYER = B.ID ";
 	
-	private final String INSERT;
-	
+	private final String INSERT = "INSERT INTO TRADEBOARD"
+									+ " VALUES(TRADEBOARD_SEQ.NEXTVAL,?,?,?,SYSDATE,?,?,'예약가능',?,?,2,'OWNER','대구',?)";
 	//거래게시판 
 	public List<OwnerListVO> selectAll() {
 		List<OwnerListVO> list = new ArrayList<OwnerListVO>();
@@ -48,27 +48,31 @@ public class BoardDao extends DAO {
 		}
 		return list;
 	}
-
-	//게시판 INSRET
-	public int insert(OwnerInsertVO vo) {//memberVO에 insert 하는것
-		int n =0;
+	
+	public int insert(OwnerInsertVO insertvo) {
+		int n = 0;
 		try {
-			psmt = conn.prepareStatement(INSERT);
-			psmt.setString(1, vo.getId());
-			psmt.setString(2, vo.getName());
-			psmt.setString(3, vo.getPassword());
-			psmt.setString(4, vo.getAddress());
-			psmt.setString(5, vo.getTel());
-			psmt.setDate(6, vo.getEnterdate());
-			n = psmt.executeUpdate();
-			
-		}catch(SQLException e) {
+		psmt = conn.prepareStatement(INSERT);
+		psmt.setString(1,insertvo.getBuyer());
+		psmt.setString(2,insertvo.getSeller());
+		psmt.setString(3,insertvo.getTitle());
+		psmt.setInt(4,insertvo.getPrice());
+		psmt.setString(5,insertvo.getComm());
+		psmt.setString(5,insertvo.getComm());
+		psmt.setString(4,insertvo.getStime());
+		psmt.setString(5,insertvo.getTtime());
+		psmt.setString(6, insertvo.getLocation2());
+		
+		
+		n = psmt.executeUpdate();
+		} catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
 			close();
 		}
-		return  n; //정수를 반환해줌 ex)n 행이 반환되었습니다
-	} 
+		return n;
+	}
+
 	
 	
 	// DB자원해제
