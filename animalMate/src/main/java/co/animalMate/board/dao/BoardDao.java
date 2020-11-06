@@ -23,8 +23,7 @@ public class BoardDao extends DAO {
 									+ " INNER JOIN PET B  "
 									+ "ON A.BUYER = B.ID ";
 	
-	private final String INSERT = "INSERT INTO TRADEBOARD"
-									+ " VALUES(TRADEBOARD_SEQ.NEXTVAL,?,?,?,SYSDATE,?,?,'예약가능',?,?,2,'OWNER','대구',?)";
+
 	//거래게시판 
 	public List<OwnerListVO> selectAll() {
 		List<OwnerListVO> list = new ArrayList<OwnerListVO>();
@@ -49,19 +48,30 @@ public class BoardDao extends DAO {
 		return list;
 	}
 	
+	
+	private final String INSERT = "INSERT INTO TRADEBOARD "
+			+ "(CODE,BUYER,TITLE,TTIME,PRICE,COMM,STATUS,"
+			+ "STIME,ETIME,WTIME,TTYPE,LOCATION2) "
+			+ "VALUES "
+			+ "(BOARD_SEQ.NEXTVAL, ?,?,SYSDATE,?,?,?,"
+			+ "?,?,?,?,?)";
+
 	public int insert(OwnerInsertVO insertvo) {
 		int n = 0;
 		try {
 		psmt = conn.prepareStatement(INSERT);
 		psmt.setString(1,insertvo.getBuyer());
-		psmt.setString(2,insertvo.getSeller());
-		psmt.setString(3,insertvo.getTitle());
-		psmt.setInt(4,insertvo.getPrice());
-		psmt.setString(5,insertvo.getComm());
-		psmt.setString(5,insertvo.getComm());
-		psmt.setString(4,insertvo.getStime());
-		psmt.setString(5,insertvo.getTtime());
-		psmt.setString(6, insertvo.getLocation2());
+		psmt.setString(2,insertvo.getTitle());
+		psmt.setInt(3, insertvo.getPrice());
+		psmt.setString(4,insertvo.getComm());
+		psmt.setString(5, insertvo.getStatus());
+		psmt.setString(6, insertvo.getStime());
+		psmt.setString(7, insertvo.getEtime());
+		psmt.setInt(8, insertvo.getWtime());
+		psmt.setString(9, insertvo.getTtype());
+		psmt.setString(10, insertvo.getLocation2());
+		
+
 		
 		
 		n = psmt.executeUpdate();

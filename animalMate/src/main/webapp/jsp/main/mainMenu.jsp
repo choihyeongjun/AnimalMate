@@ -10,13 +10,18 @@
 	.dd {
 		width: 100%; 
 		height: auto;
-		height: 500px;
+	
 	}
+	
+
 </style>
+<script>
+	document.getElementById("video").play();	
+</script>
 </head>
 <body>
 	<img class="dd" alt="이미지 없어!" src="${pageContext.request.contextPath}/jsp/main/images/mainMenuImage2.png">
-	<video class="dd" controls="controls">
+	<video class="dd" id="video" loop="loop" autoplay="autoplay" muted="muted">
 		<source class="dd" src="${pageContext.request.contextPath}/jsp/main/video/mainVideo.mp4" type="video/mp4">
 	</video>
 </body>
