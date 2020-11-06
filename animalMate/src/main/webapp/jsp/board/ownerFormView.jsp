@@ -35,7 +35,7 @@
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐주세요 - (예약page)</h1>
-                <p> 제목DBVALUE</p>
+                <p>{param.title}</p>
             </div>
             <!-- e:title -->
 
@@ -114,7 +114,7 @@
                         <tbody>
                             <tr>
                                 <td>근무지역</td>
-                                <td>DBVALUE</td>
+                                <td>{param.location2}</td>
                             </tr>
                             
                             <tr>
@@ -122,9 +122,9 @@
                                 <td>
                                     <!-- jQuery datepicker 연결하면 됨-->
                                     <div class="calendar">
-                                        <span class="datepickerview" name="" value="" placeholder="시작일" onchange="">DBVALUE
+                                        <span class="datepickerview"  placeholder="시작일">{param.stime}
                                         <span>~</span>
-                                        <span class="datepickerview" name="" value="" placeholder="종료일" onchange="">DBVALUE
+                                        <span class="datepickerview"  placeholder="종료일" >{param.etime}
                                     </div>
                                 </td>
                             </tr>
@@ -142,7 +142,7 @@
 
                             <tr>
                                 <td>돌봄 요청 금액</td>
-                                <td>DBVALUE 원</td>
+                                <td>{param.price} 원</td>
                             </tr>
 
                             <tr>
@@ -164,7 +164,7 @@
                 </div>
 
                 <div id="sec05" class="">
-                    <h2 class="cont_tit">세부내용</h2>
+                    <h2 class="cont_tit">{param.comm}</h2>
                     <textarea>
                     </textarea>
                 </div>
