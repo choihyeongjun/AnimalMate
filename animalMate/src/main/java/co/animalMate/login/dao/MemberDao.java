@@ -156,10 +156,7 @@ public class MemberDao extends DAO {
 	         psmt.setString(3, vo.getEmail());
 	         rs = psmt.executeQuery();
 	         if(rs.next()) {
-	            vo.setId(rs.getString("id"));
 	            vo.setPw(rs.getString("pw"));
-	            vo.setName(rs.getString("name"));
-	            vo.setEmail(rs.getString("email"));
 	         }
 	      } catch (SQLException e) {
 	         e.printStackTrace();

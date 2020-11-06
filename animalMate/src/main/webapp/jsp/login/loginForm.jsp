@@ -8,11 +8,11 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 function FindId(){
-	window.open("findId.jsp", "아이디 찾기", "width=600, height=400"); 
+	window.open("${pageContext.request.contextPath}/jsp/login/findId.jsp", "아이디 찾기", "width=600, height=400"); 
 }
 
 function FindPw(){
-	window.open("findPw.jsp", "비밀번호 찾기", "width=600, height=400"); 
+	window.open("${pageContext.request.contextPath}/jsp/login/findPw.jsp", "비밀번호 찾기", "width=600, height=400"); 
 }
 
 function formCheck() {
