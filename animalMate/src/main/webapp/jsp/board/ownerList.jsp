@@ -59,57 +59,60 @@
 	<div>
 		<h1>돌봐주세요 리스트</h1>
 	</div>
+	
+	<form id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerListSearch.do">
 	<div>
 		<label>펫 종류</label> 
 		<select id="petType" name="petType">
 			<option>선택하세요</option>
-			<option value="cat">고양이</option>
-			<option value="big">대형견</option>
-			<option value="middle">중형견</option>
-			<option value="small">소형견</option>
+			<option value="고양이">고양이</option>
+			<option value="대형견">대형견</option>
+			<option value="중형견">중형견</option>
+			<option value="소형견">소형견</option>
 		</select> 
 		<label>시작시간</label> 
 		<select id="sTime" name="sTime">
 			<option>선택하세요</option>
-			<option>07:00</option>
-			<option>08:00</option>
-			<option>09:00</option>
-			<option>10:00</option>
-			<option>11:00</option>
-			<option>12:00</option>
-			<option>13:00</option>
-			<option>14:00</option>
-			<option>15:00</option>
-			<option>16:00</option>
-			<option>17:00</option>
-			<option>18:00</option>
-			<option>19:00</option>
-			<option>20:00</option>
-			<option>21:00</option>
-			<option>22:00</option>
+			<option value="07:00">07:00</option>
+			<option value="08:00">08:00</option>
+			<option value="09:00">09:00</option>
+			<option value="10:00">10:00</option>
+			<option value="11:00">11:00</option>
+			<option value="12:00">12:00</option>
+			<option value="13:00">13:00</option>
+			<option value="14:00">14:00</option>
+			<option value="15:00">15:00</option>
+			<option value="16:00">16:00</option>
+			<option value="17:00">17:00</option>
+			<option value="18:00">18:00</option>
+			<option value="19:00">19:00</option>
+			<option value="20:00">20:00</option>
+			<option value="21:00">21:00</option>
+			<option value="22:00">22:00</option>
 		</select>
 		 <label>끝 시간</label> 
 		 <select id="eTime" name="eTime">
-			<option>선택하세요</option>
-			<option>07:00</option>
-			<option>08:00</option>
-			<option>09:00</option>
-			<option>10:00</option>
-			<option>11:00</option>
-			<option>12:00</option>
-			<option>13:00</option>
-			<option>14:00</option>
-			<option>15:00</option>
-			<option>16:00</option>
-			<option>17:00</option>
-			<option>18:00</option>
-			<option>19:00</option>
-			<option>20:00</option>
-			<option>21:00</option>
-			<option>22:00</option>
+			<option value="07:00">07:00</option>
+			<option value="08:00">08:00</option>
+			<option value="09:00">09:00</option>
+			<option value="10:00">10:00</option>
+			<option value="11:00">11:00</option>
+			<option value="12:00">12:00</option>
+			<option value="13:00">13:00</option>
+			<option value="14:00">14:00</option>
+			<option value="15:00">15:00</option>
+			<option value="16:00">16:00</option>
+			<option value="17:00">17:00</option>
+			<option value="18:00">18:00</option>
+			<option value="19:00">19:00</option>
+			<option value="20:00">20:00</option>
+			<option value="21:00">21:00</option>
+			<option value="22:00">22:00</option>
 		</select>
-		<button>검색</button>
+		<button type="submit">검색</button>
 	</div>
+</form>
+
 
 	<div>
 		<button
