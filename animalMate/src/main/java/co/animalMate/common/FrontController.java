@@ -30,11 +30,8 @@ import co.animalMate.login.command.JoinInsertAction;
 import co.animalMate.login.command.LoginAction;
 import co.animalMate.login.command.LoginForm;
 import co.animalMate.login.command.LogoutAction;
-<<<<<<< HEAD
 import co.animalMate.login.command.ResetPwAction;
-=======
 import co.animalMate.main.command.GoBlackBoardPageAction;
->>>>>>> branch 'main' of https://github.com/yhoo0094/animalMate.git
 import co.animalMate.main.command.GoLoginPageAction;
 import co.animalMate.main.command.GoMessageListPageAction;
 import co.animalMate.main.command.GoMypagePageAction;
