@@ -22,6 +22,7 @@ import co.animalMate.board.command.MainAction;
 import co.animalMate.board.command.OwnerFormAction;
 import co.animalMate.board.command.OwnerInertAction;
 import co.animalMate.board.command.OwnerListAction;
+import co.animalMate.board.command.OwnerListSearhAction;
 import co.animalMate.board.command.SitterFormAction;
 import co.animalMate.board.command.SitterListAction;
 import co.animalMate.login.command.FindIdAction;
@@ -66,16 +67,16 @@ public class FrontController extends HttpServlet {
    public void init(ServletConfig config) throws ServletException { //init은 처음 실행할 때 한 번만 실행됨
       // 요청들을 정의함
       //상민      
-	   map.put("/main.do", new MainAction()); // 처음 들어오는 페이지 처리 index.jsp
-		map.put("/goLoginPage.do", new GoLoginPageAction()); // 헤더에서 로그인 버튼 눌렀을 때
-		map.put("/gotradeListPage.do", new GotradeListPageAction()); // 헤더에서 요청알림 버튼 눌렀을 때
-		map.put("/goMessageListPage.do", new GoMessageListPageAction()); // 헤더에서 쪽지 버튼 눌렀을 때
-		map.put("/goNoticeBoardPage.do", new GoNoticeBoardPageAction()); // 헤더에서 공지사항 메뉴 눌렀을 때
-		map.put("/goOwnerListPage.do", new GoOwnerListPageAction()); // 헤더에서 돌봐주세요 메뉴 눌렀을 때
-		map.put("/goSitterListPage.do", new GoSitterListPageAction()); // 헤더에서 돌봐줄께요 메뉴 눌렀을 때
-		map.put("/goMypagePage.do", new GoMypagePageAction()); // 헤더에서 마이페이지 메뉴 눌렀을 때
-		map.put("/goBlackBoardPage.do", new GoBlackBoardPageAction()); // 신고하기 폼에서 제출하기 버튼을 눌렀을 때 
-		map.put("/submitReport.do", new SubmitReportAction()); // 신고페이지에서 제출버튼 눌렀을 때
+      map.put("/main.do", new MainAction()); // 처음 들어오는 페이지 처리 index.jsp
+      map.put("/goLoginPage.do", new GoLoginPageAction()); // 헤더에서 로그인 버튼 눌렀을 때
+      map.put("/gotradeListPage.do", new GotradeListPageAction()); // 헤더에서 요청알림 버튼 눌렀을 때
+      map.put("/goMessageListPage.do", new GoMessageListPageAction()); // 헤더에서 쪽지 버튼 눌렀을 때
+      map.put("/goNoticeBoardPage.do", new GoNoticeBoardPageAction()); // 헤더에서 공지사항 메뉴 눌렀을 때
+      map.put("/goOwnerListPage.do", new GoOwnerListPageAction()); // 헤더에서 돌봐주세요 메뉴 눌렀을 때
+      map.put("/goSitterListPage.do", new GoSitterListPageAction()); // 헤더에서 돌봐줄께요 메뉴 눌렀을 때
+      map.put("/goMypagePage.do", new GoMypagePageAction()); // 헤더에서 마이페이지 메뉴 눌렀을 때
+      map.put("/goBlackBoardPage.do", new GoBlackBoardPageAction()); // 신고하기 폼에서 제출하기 버튼을 눌렀을 때 
+      map.put("/submitReport.do", new SubmitReportAction()); // 신고페이지에서 제출버튼 눌렀을 때
 
       
       
@@ -90,17 +91,18 @@ public class FrontController extends HttpServlet {
       
       
       //찬호
-
-      
-      map.put("/loginForm.do", new LoginForm()); //로그인 폼 띄우기
-      map.put("/login.do", new LoginAction()); //로그인 메뉴를 처리하는 것
-      map.put("/joinForm.do", new JoinForm()); //회원가입 폼 띄우기
+     map.put("/loginForm.do", new LoginForm()); //로그인 폼 띄우기
+     map.put("/login.do", new LoginAction()); //로그인 메뉴를 처리하는 것
+     map.put("/joinForm.do", new JoinForm()); //회원가입 폼 띄우기
       map.put("/joinInsert.do", new JoinInsertAction()); //회원입력
-      map.put("/logout.do", new LogoutAction()); //로그아웃 액션
-      map.put("/id_find.do", new FindIdAction()); //아이디 찾기 액션
-      map.put("/findpw.do", new FindPwAction()); //비밀번호 찾기 액션
-      map.put("/resetPw.do", new ResetPwAction()); //비밀번호 찾기 액션
-      map.put("/idoverlapcheck.do", new idOverlapCheck()); //비밀번호 찾기 액션
+     map.put("/logout.do", new LogoutAction()); //로그아웃 액션
+     map.put("/id_find.do", new FindIdAction()); //아이디 찾기 액션
+     map.put("/findpw.do", new FindPwAction()); //비밀번호 찾기 액션
+     map.put("/resetPw.do", new ResetPwAction()); //비밀번호 변경 액션
+     map.put("/idoverlapcheck.do", new idOverlapCheck()); //아이디중복확인 찾기 액션
+      
+   
+
       
       
       
@@ -119,15 +121,16 @@ public class FrontController extends HttpServlet {
       
       
       //형준
-	  map.put("/ajax/memberSearch.do",new MemberSearchAction());//검색 하는 회원찾기
-	  map.put("/ajax/memberlist.do",new MemberListAction());
-	  map.put("/ajax/blackSearch.do",new BlackSearchAction());
-	  map.put("/ajax/updateblack.do",new BlackUpdateAction());
-	  map.put("/ajax/blacklist.do",new BlackListAction());
-	  map.put("/tradelist.do",new tradeAction());
-	  map.put("/ajax/updatemember.do", new MemberUpdateAction());//업데이트
-	  map.put("/submitQuestion.do",new SubmitQuestionAction());
-
+     map.put("/ajax/memberSearch.do",new MemberSearchAction());//검색 하는 회원찾기
+     map.put("/ajax/memberlist.do",new MemberListAction());
+     map.put("/ajax/blackSearch.do",new BlackSearchAction());
+     map.put("/ajax/updateblack.do",new BlackUpdateAction());
+     map.put("/ajax/blacklist.do",new BlackListAction());
+     map.put("/tradelist.do",new tradeAction());
+     map.put("/ajax/updatemember.do", new MemberUpdateAction());//업데이트
+     map.put("/submitQuestion.do",new SubmitQuestionAction());
+     map.put("/ajax/sitterlist.do",new SitterlistAction());
+     
       
 
       
@@ -149,11 +152,12 @@ public class FrontController extends HttpServlet {
       
       
       //선애
-      map.put("/ownerList.do", new OwnerListAction()); //ownerList 화면 호출
+     map.put("/ownerList.do", new OwnerListAction()); //ownerList 화면 호출
       map.put("/sitterList.do", new SitterListAction()); //sitterList 화면 호출
       map.put("/sitterForm.do", new SitterFormAction()); //sitterForm 화면 호출
       map.put("/ownerForm.do", new OwnerFormAction()); //sitterForm 화면 호출
       map.put("/ownerInsert.do", new OwnerInertAction()); //
+      map.put("/ownerListSearch.do", new OwnerListSearhAction()); //
       
       
       
@@ -203,12 +207,11 @@ public class FrontController extends HttpServlet {
       Action command = map.get(path); //init메소드 값을 가져온다!
       String viewPage = command.exec(request, response); //명령어가 수행되고 나서 보여줄 페이지 선택
 
-	  if (viewPage != null) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); // 선택한 페이지로 가기
-			dispatcher.forward(request, response);
-	  }	
-	}
+     if (viewPage != null) {
+         RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); // 선택한 페이지로 가기
+         dispatcher.forward(request, response);
+     }   
+   }
 }
 
       
-
