@@ -17,15 +17,14 @@ public class OwnerInertAction implements Action {
 		BoardDao dao = new BoardDao();
 		OwnerInsertVO vo = new OwnerInsertVO();
 		
-		
+		vo.setBuyer("id21");
 		vo.setTitle(request.getParameter("title"));
-		vo.setPrice(Integer.parseInt(request.getParameter("price")));
-		vo.setComm(request.getParameter("comm"));
+		vo.setLocation2(request.getParameter("location2"));
 		vo.setStime(request.getParameter("stime"));
 		vo.setEtime(request.getParameter("etime"));
-		vo.setLocation2(request.getParameter("location2"));
-		vo.setBuyer("id1");
-		vo.setSeller("id2");
+		vo.setPrice(Integer.parseInt(request.getParameter("price")));
+		vo.setComm(request.getParameter("comm"));
+		
 		vo.setStatus("예약가능");
 		vo.setWtime(2);
 		vo.setTtype("owner");

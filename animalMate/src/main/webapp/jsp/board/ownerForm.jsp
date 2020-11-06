@@ -14,7 +14,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>돌봐줄게요(등록form)</title>
+        <title>돌봐주세요(등록form)</title>
 		<!-- jquery -->
 		<script src="js/jquery-3.5.1.min.js"></script>
 		

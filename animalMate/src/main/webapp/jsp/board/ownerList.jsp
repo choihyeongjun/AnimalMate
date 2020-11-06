@@ -108,6 +108,7 @@
 			<option>21:00</option>
 			<option>22:00</option>
 		</select>
+		<button>검색</button>
 	</div>
 
 	<div>
