@@ -25,12 +25,14 @@ import co.animalMate.board.command.OwnerListAction;
 import co.animalMate.board.command.SitterFormAction;
 import co.animalMate.board.command.SitterListAction;
 import co.animalMate.login.command.FindIdAction;
+import co.animalMate.login.command.FindPwAction;
 import co.animalMate.login.command.JoinForm;
 import co.animalMate.login.command.JoinInsertAction;
 import co.animalMate.login.command.LoginAction;
 import co.animalMate.login.command.LoginForm;
 import co.animalMate.login.command.LogoutAction;
 import co.animalMate.login.command.ResetPwAction;
+import co.animalMate.login.command.idOverlapCheck;
 import co.animalMate.main.command.GoBlackBoardPageAction;
 import co.animalMate.main.command.GoLoginPageAction;
 import co.animalMate.main.command.GoMessageListPageAction;
@@ -95,9 +97,10 @@ public class FrontController extends HttpServlet {
       map.put("/joinForm.do", new JoinForm()); //회원가입 폼 띄우기
       map.put("/joinInsert.do", new JoinInsertAction()); //회원입력
       map.put("/logout.do", new LogoutAction()); //로그아웃 액션
-      map.put("/ld_find.do", new FindIdAction()); //아이디 찾기 액션
+      map.put("/id_find.do", new FindIdAction()); //아이디 찾기 액션
+      map.put("/findpw.do", new FindPwAction()); //비밀번호 찾기 액션
       map.put("/resetPw.do", new ResetPwAction()); //비밀번호 찾기 액션
-
+      map.put("/idoverlapcheck.do", new idOverlapCheck()); //비밀번호 찾기 액션
       
       
       

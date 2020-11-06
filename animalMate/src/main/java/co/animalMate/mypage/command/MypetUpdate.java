@@ -1,15 +1,10 @@
 package co.animalMate.mypage.command;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.animalMate.board.dao.MypageDao;
 import co.animalMate.board.dao.PetDao;
 import co.animalMate.common.Action;
-import co.animalMate.vo.MemberVO;
 import co.animalMate.vo.PetVO;
 
 public class MypetUpdate implements Action {
@@ -19,7 +14,6 @@ public class MypetUpdate implements Action {
 		// 펫 수정, 삭제 화면 호출
 		PetDao petDao = new PetDao();
 		PetVO petVo = new PetVO();
-		List<PetVO> list = new ArrayList<PetVO>();
 
 		// 세션 아이디 정보
 //		HttpSession session = request.getSession(false);

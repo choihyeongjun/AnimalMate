@@ -41,14 +41,14 @@ function overlap_id_check(){
 
 	<div class="overlap_id_check-wrapper" align="center">
 	<h3>아이디 중복 확인</h3>
-		<form method="post" action ="overlapIdCheckResult.jsp" onsubmit="return overlap_id_check()">
+		<form method="GET" action ="${pageContext.request.contextPath}/idoverlapcheck.do" onsubmit="return overlap_id_check()">
 		<!-- ID -->
 				  <div>
                     <h3 class="join_title">
                         <label for="id">아이디</label>
                     </h3>
                     <span class="box int_id">
-                        <input type="text" id="id" class="int" maxlength="20"  placeholder="아이디 입력" autofocus>
+                        <input type="text" id="id" class="int" maxlength="20" name="id" placeholder="아이디 입력" autofocus>
                         <imput type="hidden" class="overlapIdCheckResult" name="overlapIdCheckResult" id="overlapIdCheckResult" value="0"/>
                         <button type="submit">중복확인</button>
                     </span>

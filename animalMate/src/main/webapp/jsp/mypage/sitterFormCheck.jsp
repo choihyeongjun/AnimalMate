@@ -9,6 +9,8 @@
 </style>
 </head>
 <body>
+<br>
+
 	<div>
 		<h1>돌보기 상세화면</h1>
 	</div>

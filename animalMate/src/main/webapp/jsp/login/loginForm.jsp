@@ -8,11 +8,11 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 function FindId(){
-	window.open("findId.jsp", "아이디 찾기", "width=800, height=550"); 
+	window.open("findId.jsp", "아이디 찾기", "width=600, height=400"); 
 }
 
 function FindPw(){
-	window.open("findPw.jsp", "비밀번호 찾기", "width=800, height=550"); 
+	window.open("findPw.jsp", "비밀번호 찾기", "width=600, height=400"); 
 }
 
 function formCheck() {
@@ -71,6 +71,9 @@ function formCheck() {
 			<br/>
 			<!-- 하단 메뉴 //아이디/비번찾기 (추가메뉴)-->
 			<div class="login_content_util">
+						<!-- 로그인 버튼 -->
+				<button class="login_button-submit" type="submit">로그인</button>
+				<hr> 
 				<button onclick="FindId()" class="findid" style="border:0; outline:0; background-color:white; text-decoration: underline;">
 				
 					아이디 찾기
@@ -85,9 +88,7 @@ function formCheck() {
 			<br/>
 			<!-- 로그인 / 회원가입 버튼-->
 			<div class="login_join-button">
-			<!-- 로그인 버튼 -->
-				<button class="login_button-submit" type="submit">로그인</button>
-				<hr> 
+
 			<!-- 회원가입버튼 -->
 				<button type="button" class="join_button-joinlink" 
 				onclick="location.href='${pageContext.request.contextPath}/joinForm.do'">회원가입</button>

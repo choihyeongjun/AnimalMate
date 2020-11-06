@@ -18,7 +18,7 @@ public class NoticeDAO extends DAO {
 
 	private final String SELECT_ALL = "SELECT * FROM NOTICE";
 	private final String SELECT_ALL2 = "select * from(select a.*, rownum rn from ("
-			+ "SELECT * FROM NOTICE order by code"
+			+ "SELECT * FROM NOTICE order by code desc"
 			+ ") a ) b where rn between ? and ?";
 
 	// 전체선택
@@ -48,10 +48,23 @@ public class NoticeDAO extends DAO {
 	// 전체선택(페이징)
 		public List<NoticeVO> selectAll(NoticeVO nvo) { // 멤버리스트 전체를 가져오는 메소드
 			List<NoticeVO> list = new ArrayList<NoticeVO>();
+			String whereCondition = " where 1 = 1 ";
+			if(nvo.getType() != null && !nvo.getType().equals("")) {
+				whereCondition += " and type = ?";
+			}
 			try {
-				psmt = conn.prepareStatement(SELECT_ALL2);
-				psmt.setInt(1, nvo.getFirst());
-				psmt.setInt(2, nvo.getLast());
+				psmt = conn.prepareStatement("select * from(select a.*, rownum rn from ("
+						+ "SELECT * FROM NOTICE"
+						+ whereCondition
+						+ " order by code desc"
+						+ ") a ) b where rn between ? and ?");
+				int pos =1;
+				if(nvo.getType() != null && !nvo.getType().equals("")) {
+					psmt.setString(pos++, nvo.getType());
+				}
+				psmt.setInt(pos++, nvo.getFirst());
+				psmt.setInt(pos++, nvo.getLast());
+				 
 				rs = psmt.executeQuery();
 				while (rs.next()) {
 					vo = new NoticeVO();
@@ -72,11 +85,19 @@ public class NoticeDAO extends DAO {
 		}
 
 	// 게시판 태그 관련
-	public int count(NoticeVO vo) {
+	public int count(NoticeVO nvo) {
 		int cnt = 0;
+		String whereCondition = " where 1 = 1 ";
+		if(nvo.getType() != null && !nvo.getType().equals("")) {
+			whereCondition += " and type = ?";
+		}
 		try {
-			String sql = "select count(*) from notice";
+			String sql = "select count(*) from notice"+ whereCondition;
 			psmt = conn.prepareStatement(sql);
+			int pos =1;
+			if(nvo.getType() != null && !nvo.getType().equals("")) {
+				psmt.setString(pos++, nvo.getType());
+			}
 			rs = psmt.executeQuery();
 			rs.next();
 			cnt = rs.getInt(1);

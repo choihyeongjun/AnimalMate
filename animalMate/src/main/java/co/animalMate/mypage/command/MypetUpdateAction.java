@@ -22,9 +22,6 @@ public class MypetUpdateAction implements Action {
 		PetDao dao = new PetDao();
 		PetVO vo = new PetVO();
 		
-		System.out.println(request.getParameter("code"));
-
-		
 		vo.setName(request.getParameter("name"));
 		vo.setAge(Integer.parseInt(request.getParameter("age")));
 		vo.setGender(request.getParameter("gender"));
@@ -32,10 +29,8 @@ public class MypetUpdateAction implements Action {
 		vo.setDetailType(request.getParameter("detailType"));
 		vo.setCut(request.getParameter("cut"));
 		vo.setComm(request.getParameter("comm"));
-		vo.setComm(request.getParameter("pic"));
-		vo.setName(request.getParameter("code"));
-		// vo.setId((String)session.getAttribute("userId"));//세션 아이디받기
-		//vo.setId("id3");
+		vo.setPic(request.getParameter("pic"));
+		vo.setCode(request.getParameter("code"));
 
 		// 현재 컨텍스트에 사진업로드하기
 		String appPath = request.getServletContext().getRealPath("/images");

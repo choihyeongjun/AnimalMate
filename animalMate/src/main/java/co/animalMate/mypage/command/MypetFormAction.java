@@ -58,7 +58,7 @@ public class MypetFormAction implements Action {
 		String page; // 돌려보내 줄 페이지 변수
 
 		if (n != 0) {
-			page = "jsp/mypage/mypetList.jsp";
+			page = "mypetList.do";
 		} else {
 			page = "jsp/mypage/mypetForm.jsp";
 		}

@@ -2,91 +2,123 @@
 
 /* JinGyu */
 
+/* mypage.view */
 
 .mypagebox {
-	justify-content: center;
-   align-items: center;
-   padding: 40px;
-   border: 2px solid rgb(15, 162, 226);
-   margin: 30px;
-   width: 40%;
-   box-shadow: 3px 3px 3px 3px rgb(15, 162, 226);
-   text-align: center;
+	padding: 40px;
+	border: 2px solid rgb(255, 136, 38);
+	margin: 30px auto;
+	width: 40%;
+	box-shadow: 3px 3px 3px 3px rgb(255, 136, 38);
+	text-align: center;
 }
 
-.mypagebox h1 {
-   color: rgb(15, 162, 226);
+.mypagebox img{
+	border-radius: 40%;
+	opacity: 0.9;
 }
 
 .mypagebox th {
-   width: 35%;
-   
+	width: 35%;
 }
 
-.petInsult{
-   background-color: #E0E0E0;
-   justify-content: center;
-      align-items: center;
-      text-align: center;    
+/* mypetForm */
+.mypetFormView {
+	margin: 30px auto;
 }
 
+/* mypetList */
+.mypetListView {
+	width: 100%;
+	margin: 30px auto;
+	text-align: center;
+}
+
+.mypetListButton{
+	float: left;
+	margin: 1px;
+}
+
+.mypetListView img{
+	border-radius: 40%;
+	opacity: 0.9;
+}
+
+.mypetListView th{
+	background-color: #f0f0f0;
+	
+}
+.mypetListView td{
+	background-color: #f9f9f9;
+}
+
+
+/* mypetUpdate */
+.mypetUpdateView {
+	margin: 30px auto;
+}
+
+/*mytradeList */
 .mypageTrade {
-   width: 70%;
-   text-align: center;
-   justify-content: center;
-   align-items: center;
-   margin: 50px;
-   float: right;
+	width: 70%;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	margin: 50px auto;
+	float: right;
 }
 
-.mypageTrade div{
-   padding: 20px;
-   width: 25%;
-   background-color: #E0E0E0;
+.mypageTrade div {
+	padding: 20px;
+	width: 25%;
+	background-color: #f0f0f0;
+	float: right;
+}
+.mypageTradeList {
+	width: 100%;
+	text-align: center;
 }
 
-.mypageTradeList{
-   width: 90%;
-   text-align: center;
-   float: right;
+.mypageTradeList th{
+	background-color: #f0f0f0;
+}
+.mypageTradeList td{
+	background-color: #f9f9f9;
 }
 
 /* ownerFormCheck 화면 */
-
-.checkPet img, .checkSitter img, .profileUser img{
+.checkPet img, .checkSitter img, .profileUser img {
 	width: 200px;
 	heigth: 200px;
-	border : 1px solid black;
+	border: 1px solid black;
 	margin: 20px 10px 20px 10px;
 	border-radius: 50%;
 }
 
-.checkPet{
+.checkPet {
 	width: 40%;
 	heigth: 500px;
 	float: left;
 }
 
-.checkSitter{
+.checkSitter {
 	width: 40%;
 	heigth: 500px;
 	float: right;
 }
 
 .checkDetail {
-	width:100%;
+	width: 100%;
 }
 
-.checkDetail img{
+.checkDetail img {
 	width: 150px;
 	heigth: 150px;
 	margin: 20px 10px 20px 10px;
 }
 /* profile 화면 */
-
-.profileUser{
+.profileUser {
 	width: 80%;
 	heigth: 500px;
 	float: left;
 }
-

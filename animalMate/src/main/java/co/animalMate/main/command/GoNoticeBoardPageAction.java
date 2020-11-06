@@ -23,7 +23,11 @@ public class GoNoticeBoardPageAction implements Action {
 
 		// 페이지 번호 파라미터
 		String strp = request.getParameter("p");
-
+		
+		// 분류 파라미터
+		String type = request.getParameter("type");
+		vo.setType(type);
+		
 		// 페이지 번호가 없으면 1로 최기화
 		int p = 1;
 		if (strp != null && !strp.equals("")) {
@@ -47,11 +51,7 @@ public class GoNoticeBoardPageAction implements Action {
 		list = dao.selectAll(vo);
 
 		// 목록 결과와 페이징 객체를 저장해서 뷰페이지로 넘기기
-		request.setAttribute("members", list);
-
-		//list = dao.selectAll();
-
-		//request.setAttribute("list", list);
+		request.setAttribute("list", list);
 
 		return "/jsp/main/noticeBoard.jsp";
 	}

@@ -115,17 +115,17 @@ public class MemberDao extends DAO {
 	}
 	
 	//비번 리셋
-	public int resetPw(MemberVO vo) { 
-		int n = 0;
-		try {
-			psmt = conn.prepareStatement(RESETPW);
-			psmt.setString(1, vo.getPw());
-
-		} catch (SQLException e) {
-			e.printStackTrace();
+		public MemberVO resetPw(MemberVO vo) { 
+			int n = 0;
+			try {
+				psmt = conn.prepareStatement(RESETPW);
+				psmt.setString(1, vo.getPw());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return vo;
 		}
-		return n;
-	}
+		
 	
 	//아이디찾기
 	   public MemberVO findId(MemberVO vo){
@@ -135,6 +135,7 @@ public class MemberDao extends DAO {
 	         psmt.setString(2, vo.getEmail());
 	         rs = psmt.executeQuery();
 	         if(rs.next()) {
+	        	vo.setId(rs.getString("id"));
 	            vo.setName(rs.getString("name"));
 	            vo.setEmail(rs.getString("email"));
 	         }
@@ -156,6 +157,7 @@ public class MemberDao extends DAO {
 	         rs = psmt.executeQuery();
 	         if(rs.next()) {
 	            vo.setId(rs.getString("id"));
+	            vo.setPw(rs.getString("pw"));
 	            vo.setName(rs.getString("name"));
 	            vo.setEmail(rs.getString("email"));
 	         }

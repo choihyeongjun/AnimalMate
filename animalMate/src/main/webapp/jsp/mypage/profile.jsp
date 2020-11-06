@@ -7,6 +7,8 @@
 <title>유저 프로필 거래내역/후기</title>
 </head>
 <body>
+<br>
+
 	<div><h1>유저 프로필</h1></div>
 	<div><button>즐겨찾기</button></div>
 	<div class="row">

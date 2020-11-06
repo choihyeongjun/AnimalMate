@@ -13,10 +13,7 @@
 <body>
    <div align="center" class="id_find_result">
       <div class="id_find_reuslt-main">
-   <h6>회원가입 시 사용한 아이디는<Strong>${fn:substring{id,0,4}
-      <c:forEach begin="1" end="${fn:length(id)-4}">
-         *
-      </c:forEach>
+   <h6>회원가입 시 사용한 아이디는<Strong>${param.id}
       </Strong>입니다</h6>
       </div>
       <div class="id_find_result-footer">

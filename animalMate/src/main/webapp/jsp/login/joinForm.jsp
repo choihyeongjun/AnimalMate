@@ -8,7 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 function id_input_check(){
-	window.open("overlapIdCheck.jsp", "아이디 중복 확인", "width=600, height=400"); 
+	window.open("overlapIdCheck.jsp", "아이디 중복 확인", "width=400, height=250"); 
 }
 
 	var id = document.querySelector('#id');

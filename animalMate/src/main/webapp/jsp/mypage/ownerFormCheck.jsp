@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,7 @@
 <title>맡기기 상세화면</title>
 </head>
 <body>
+<br>
 	<div>
 		<h1>맡기기 상세화면</h1>
 	</div>
@@ -46,7 +47,7 @@
 				<tr>
 					<td rowspan="5"><img id="userpic" src="${pageContext.request.contextPath}/images/user.png"></td>
 					<th>이름</th>
-					<td>DBVALUE</td>
+					<td>${tbs.seller}</td>
 				</tr>
 				<tr>
 					<th>나이</th>
@@ -76,7 +77,7 @@
 			<table class="table">
 				<tr>
 					<th>지역</th>
-					<td><p>DBValue</p></td>
+					<td><p>${tbs.location1}</p></td>
 				</tr>
 				<tr>
 					<th>날짜</th>
