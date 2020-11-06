@@ -1,18 +1,24 @@
-package co.animalMate.main.command;
+package co.animalMate.login.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import co.animalMate.common.Action;
 import co.animalMate.login.dao.MemberDao;
 import co.animalMate.vo.MemberVO;
 
-public class GoLoginPageAction implements Action {
+public class ResetPwAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		return "/jsp/login/loginForm.jsp";
+		MemberDao dao = new MemberDao();
+		MemberVO vo = new MemberVO();
+		
+		vo.setPw(request.getParameter("pw"));
+		
+		int n = dao.resetPw(vo);
+		
+		return null;
 	}
 
 }

@@ -23,8 +23,8 @@
 		</div> <!-- 메인 끝 -->
 	<div class="pw_find-footer" align="center">
 	<hr style="border-color: white;" align="left" noshade="noshade" size="1" />
-		<a class="pw_find-submit" href="#">비밀번호 찾기</button>&nbsp;&nbsp;
-		<a class="pw_find-cancel" href="#">취소/닫기</a>
+		<button class="pw_find-submit" type="submit">아이디 찾기</button>&nbsp;&nbsp;
+		<a href="#" onclick="javascript:window.close()">창닫기</a>
 	</div> 
 	</form>
 </div><!-- 전체 감싸는 div 끝 -->

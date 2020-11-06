@@ -36,10 +36,19 @@
 </style>
 </head>
 <body>
-	${paging}
+	<br>
+	<h3>공지사항</h3>
+	<hr/>
+	<div align="right">
+		분류: &nbsp;&nbsp;
+		<select>
+			<option selected="selected">분류
+			<option>공지사항
+			<option>이벤트
+		</select>
+	</div>
+	<br>
 	<div align="center">
-		<br>
-		<hr />
 		<table class="table">
 			<thead>
 				<tr>

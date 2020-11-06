@@ -7,6 +7,13 @@
 		
 		<pattern>/index.jsp</pattern>
 		<pattern>/jsp/login/*</pattern>
+		<pattern>/login.do</pattern>
+		<pattern>/joinForm.do</pattern>
+		<pattern>/joinInsert.do</pattern>
+		<pattern>/logout.do</pattern>
+		<pattern>/ld_find.do</pattern>
+		<pattern>/resetPw.do</pattern>
+		<pattern>/loginForm.do</pattern>
 		<pattern>/jsp/admin/test/*</pattern>
 		<pattern>/submitQuestion.do</pattern>
 		<pattern>*/ajax/*</pattern>

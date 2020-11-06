@@ -10,7 +10,7 @@ public class JoinForm implements Action {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// TODO 회원가입 폼 호출
-		return "jsp/member/memberForm.jsp";
+		return "jsp/login/joinForm.jsp";
 	}
 
 }

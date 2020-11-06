@@ -4,14 +4,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.common.Action;
+import co.animalMate.login.dao.MemberDao;
+import co.animalMate.vo.MemberVO;
 
 public class FindIdAction implements Action {
 
-	@Override
-	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 아이디찾기 결과 창으로 이동
-		return "main/webapp/jsp/login/findIdResult.jsp";
-	}
+   @Override
+   public String exec(HttpServletRequest request, HttpServletResponse response) {
+      // TODO 아이디찾기 결과 창으로 이동
+
+      MemberDao dao = new MemberDao();
+      MemberVO vo = new MemberVO();
+
+      vo.setName(request.getParameter("name"));
+      vo.setEmail(request.getParameter("email"));
+
+      
+      vo = dao.findId(vo);
+      
+      if(vo.getName()!=(request.getParameter("name")) &&
+      vo.getEmail()!=(request.getParameter("email")) ){
+
+    	  return "jsp/login/findID.jsp";
+      }else{
+    	  request.setAttribute("vo", vo); 
+    	  return "jsp/login/findIdResult.jsp";
+      }
+      
+   }
 
 }
-

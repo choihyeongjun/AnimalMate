@@ -79,6 +79,7 @@ CREATE TABLE message
 	code number NOT NULL,
 	send varchar2(100),
 	receive varchar2(100) NOT NULL,
+	title varchar2(100),
 	comm varchar2(4000),
 	status varchar2(100),
 	ttime date,
@@ -127,6 +128,7 @@ CREATE TABLE question
 (
 	code number NOT NULL,
 	send varchar2(100),
+	title varchar2(100),
 	ttype varchar2(100),
 	comm varchar2(4000),
 	status varchar2(100),
@@ -181,13 +183,13 @@ CREATE TABLE tradeBoard
 /* Create Foreign Keys */
 
 ALTER TABLE black
-	ADD FOREIGN KEY (fromUser)
+	ADD FOREIGN KEY (toUser)
 	REFERENCES members (id)
 ;
 
 
 ALTER TABLE black
-	ADD FOREIGN KEY (toUser)
+	ADD FOREIGN KEY (fromUser)
 	REFERENCES members (id)
 ;
 
@@ -218,13 +220,13 @@ ALTER TABLE sitter
 
 
 ALTER TABLE tradeBoard
-	ADD FOREIGN KEY (buyer)
+	ADD FOREIGN KEY (seller)
 	REFERENCES members (id)
 ;
 
 
 ALTER TABLE tradeBoard
-	ADD FOREIGN KEY (seller)
+	ADD FOREIGN KEY (buyer)
 	REFERENCES members (id)
 ;
 
@@ -295,6 +297,7 @@ COMMENT ON TABLE message IS '메시지';
 COMMENT ON COLUMN message.code IS '메세지번호';
 COMMENT ON COLUMN message.send IS '보내는아이디';
 COMMENT ON COLUMN message.receive IS '받는아이디';
+COMMENT ON COLUMN message.title IS '제목';
 COMMENT ON COLUMN message.comm IS '내용';
 COMMENT ON COLUMN message.status IS '상태';
 COMMENT ON COLUMN message.ttime IS '발송시간';
@@ -323,6 +326,7 @@ COMMENT ON COLUMN picture.pic IS '돌봄환경사진';
 COMMENT ON TABLE question IS '1:1문의';
 COMMENT ON COLUMN question.code IS '메세지번호';
 COMMENT ON COLUMN question.send IS '보내는아이디';
+COMMENT ON COLUMN question.title IS '제목';
 COMMENT ON COLUMN question.ttype IS '분류';
 COMMENT ON COLUMN question.comm IS '내용';
 COMMENT ON COLUMN question.status IS '상태';
