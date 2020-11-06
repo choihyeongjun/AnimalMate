@@ -39,6 +39,8 @@ public class QuestionDAO extends DAO {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		return list;
 	}
@@ -55,9 +57,7 @@ public class QuestionDAO extends DAO {
 			psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			close();
-		}
+		} 
 	
 	}
 	

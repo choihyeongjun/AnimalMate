@@ -18,7 +18,9 @@
 			<li>|</li>
 			<li><a class="menuLink" href="#">공지사항 등록 및 수정</a></li>
 			<li>|</li>
-			<li><a class="menuLink" href="#">1:1문의내역</a></li>
+			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/question.jsp">1:1문의작성</a></li>
+			<li>|</li>
+			<li><a class="menuLink" href="${pageContext.request.contextPath}/Questionlist.do">1:1문의내역</a></li>
 			<li>|</li>
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/blacklist.jsp">블랙리스트</a></li>
 			<li>|</li>

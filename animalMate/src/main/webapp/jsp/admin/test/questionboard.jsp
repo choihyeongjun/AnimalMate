@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,61 +11,65 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-.pagination {
+.pagination, li.active, .pagination li {
   display: inline-block;
 }
 
-.pagination a {
+.pagination a, li.active {
   color: black;
-  float: left;
   padding: 8px 16px;
   text-decoration: none;
+  border: 1px solid #ddd;
 }
 
-.pagination a.active {
+<%-- active된 거에 색깔넣기 --%>
+.pagination li.active {
   background-color: #4CAF50;
   color: white;
+  border: 1px solid #4CAF50;
 }
 
+<%-- active안 된 거에 마32우스 올리면 회색 --%>
 .pagination a:hover:not(.active) {background-color: #ddd;}
+
+.pagination a, li.active {
+  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+td{
+width: 50px;
+}
 </style>
 </head>
 <body>
+<jsp:include page="mainMenu.jsp"/>
 	<div align="center">
 
-		<table class="table">
-			<thead>
+		<table class="table text-center">
+		<thead>
 				<tr>
-					<th scope="col">번호</th>
-					<th scope="col">제목</th>
-					<th scope="col">작성자</th>
-					<th scope="col">공개여부</th>
-					<th scope="col">게시날짜</th>
+					<th class="text-center">번호</th>
+					<th class="text-center">제목</th>
+					<th class="text-center">작성자</th>
+					<th class="text-center">공개여부</th>
+					<th class="text-center">게시날짜</th>
 				</tr>
-			</thead>
-			<tbody>
-			<c:forEach items="${list}" var="l">
-				<td>${l.code }</td>
-				<td>${l.title }</td>
-				<td>${l.send }</td>
-				<td>${l.status }</td>
-				<td>${l.ttime }</td>
+				</thead>
+				<tbody>
+				<c:forEach items="${list}" var="l">
+				<tr>
+				<td>${l.code}</td>
+				<td>${l.title}</td>
+				<td>${l.send}</td>
+				<td>${l.status}</td>
+				<td>${l.ttime}</td>
+				</tr>
 			</c:forEach>
-			</tbody>
+				</tbody>
 		</table>
-		<div class="pagination">
-			<a href="#">&laquo;</a>
-			<a href="#">1</a>
-			<a class="active" href="#">2</a>
-			<a href="#">3</a>
-			<a href="#">4</a>
-			<a href="#">5</a>
-			<a href="#">6</a>
-			<a href="#">&raquo;</a>
-		</div>
-		<br><br>
+	
 		<div align="right">
-			<button>신고하기</button>
+			<button>수정하기</button>
 		</div>
 	</div>
 </body>

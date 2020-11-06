@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <style>
 	* {
   box-sizing: border-box;
@@ -72,7 +73,7 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
-
+<jsp:include page="mainMenu.jsp"/>
 <div class="container">
   <form action="${pageContext.request.contextPath}/submitQuestion.do">
   <div class="row">
@@ -80,7 +81,7 @@ input[type=submit]:hover {
       <label for="fname">아이디</label>
     </div>
     <div class="col-75">
-      <input type="text" id="id" name=id" placeholder="아이디">
+      <input type="text" id="id" name="id" placeholder="아이디">
     </div>
   </div>
   <div class="row">
