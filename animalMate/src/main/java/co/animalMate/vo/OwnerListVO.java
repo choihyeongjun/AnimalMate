@@ -7,8 +7,22 @@ public class OwnerListVO {
 	private int wtime;
 	private String location2;
 	private String status;
+	private String stime;
+	private String etime;
 	
 	
+	public String getStime() {
+		return stime;
+	}
+	public void setStime(String stime) {
+		this.stime = stime;
+	}
+	public String getEtime() {
+		return etime;
+	}
+	public void setEtime(String etime) {
+		this.etime = etime;
+	}
 	public String getPic() {
 		return pic;
 	}
