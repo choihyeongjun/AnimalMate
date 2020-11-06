@@ -4,6 +4,7 @@
 		<pattern>/*</pattern>
 	</decorator>
 	<excludes>
+		
 		<pattern>/index.jsp</pattern>
 		<pattern>/jsp/login/*</pattern>
 		<pattern>/login.do</pattern>

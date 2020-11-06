@@ -22,7 +22,10 @@ public class MemberVO {
 	public MemberVO() {
 		
 	}
-
+	public MemberVO(String id) {
+		super();
+		this.id=id;
+	}
 	public String getId() {
 		return id;
 	}

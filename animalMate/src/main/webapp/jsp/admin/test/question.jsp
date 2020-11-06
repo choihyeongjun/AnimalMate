@@ -74,13 +74,13 @@ input[type=submit]:hover {
 <body>
 
 <div class="container">
-  <form action="/action_page.php">
+  <form action="${pageContext.request.contextPath}/submitQuestion.do">
   <div class="row">
     <div class="col-25">
       <label for="fname">아이디</label>
     </div>
     <div class="col-75">
-      <input type="text" id="fname" name="firstname" placeholder="아이디">
+      <input type="text" id="id" name=id" placeholder="아이디">
     </div>
   </div>
   <div class="row">
@@ -88,15 +88,26 @@ input[type=submit]:hover {
       <label for="lname">제목</label>
     </div>
     <div class="col-75">
-      <input type="text" id="lname" name="lastname" placeholder="제목">
+      <input type="text" id="title" name="title" placeholder="제목">
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-      <label for="country">분류</label>
+      <label for="category">공개 여부</label>
     </div>
     <div class="col-75">
-      <select id="category" name="category">
+      <select id="status" name="status">
+        <option value="공개">공개</option>
+        <option value="비공개">비공개</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="category">분류</label>
+    </div>
+    <div class="col-75">
+      <select id="ttype" name="ttype">
         <option value="페이지">페이지문제</option>
         <option value="반려인">반려인문제</option>
         <option value="시터">시터</option>
@@ -108,7 +119,7 @@ input[type=submit]:hover {
       <label for="subject">내용</label>
     </div>
     <div class="col-75">
-      <textarea id="subject" name="subject" placeholder="나문의내용.." style="height:200px"></textarea>
+      <textarea id="comm" name="comm" placeholder="나문의내용.." style="height:200px"></textarea>
     </div>
   </div>
   <div class="row">

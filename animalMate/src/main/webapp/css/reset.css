@@ -11,6 +11,7 @@
     line-height:1;
     letter-spacing:-0.4px;
     font-size:15px;
+    font-weight:300;
     -ms-overflow-style:none; /* 스크롤 숨기기 */
 	scrollbar-width:none;
     vertical-align:middle;
@@ -87,10 +88,10 @@ table{
 
 select{
 	padding:0 25px 0 10px;
-	background:url(../images/select_01.png) no-repeat 50% / 7px;
+	/* background:url(../images/select_01.png) no-repeat 50% / 7px;
 	background-position-x:calc(100% - 10px);
-    appearance:none; /* 네이티브 화살표 제거*/
-    -webkit-appearance:none; /* 네이티브 화살표 제거*/
+    appearance:none; 네이티브 화살표 제거
+    -webkit-appearance:none; 네이티브 화살표 제거 */
 }
 
 select option{
@@ -120,7 +121,6 @@ select{
 
 input{
 	width:100%;
-	max-width:300px;
 	background-color:#fff;
 	padding:0 10px;
 }
@@ -184,6 +184,12 @@ textarea{
 	min-height:100px;
 	resize:none;
 	line-height:1.5;
+}
+
+::placeholder{
+	font-weight:lighter;
+	color:#999;
+	font-size:13px;
 }
 
 

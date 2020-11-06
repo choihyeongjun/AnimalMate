@@ -12,6 +12,7 @@ DROP TABLE trade CASCADE CONSTRAINTS;
 DROP TABLE tradeBoard CASCADE CONSTRAINTS;
 DROP TABLE members CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
+DROP TABLE question CASCADE CONSTRAINTS;
 
 
 
@@ -22,7 +23,7 @@ CREATE TABLE black
 (
 	code number NOT NULL,
 	toUser varchar2(100) NOT NULL,
-	fromUser varchar2(100),
+	fromUser varchar2(100) NOT NULL,
 	title varchar2(100),
 	comm varchar2(4000),
 	dtime date,
@@ -75,13 +76,14 @@ CREATE TABLE members
 
 CREATE TABLE message
 (
-	id number NOT NULL,
+	code number NOT NULL,
 	send varchar2(100),
 	receive varchar2(100) NOT NULL,
+	title varchar2(100),
 	comm varchar2(4000),
 	status varchar2(100),
-	ttype varchar2(100),
-	PRIMARY KEY (id)
+	ttime date,
+	PRIMARY KEY (code)
 );
 
 
@@ -122,10 +124,24 @@ CREATE TABLE picture
 );
 
 
+CREATE TABLE question
+(
+	code number NOT NULL,
+	send varchar2(100),
+	title varchar2(100),
+	ttype varchar2(100),
+	comm varchar2(4000),
+	status varchar2(100),
+	ttime date,
+	PRIMARY KEY (code)
+);
+
+
 CREATE TABLE sitter
 (
 	id varchar2(100) NOT NULL,
 	maxP number,
+	comm varchar2(4000),
 	status varchar2(100),
 	PRIMARY KEY (id)
 );
@@ -138,7 +154,6 @@ CREATE TABLE trade
 	stime varchar2(100),
 	etime varchar2(100),
 	day varchar2(100),
-	id varchar2(100),
 	tmoney number,
 	PRIMARY KEY (code)
 );
@@ -147,7 +162,7 @@ CREATE TABLE trade
 CREATE TABLE tradeBoard
 (
 	code number(10) NOT NULL,
-	buyer varchar2(100) NOT NULL,
+	buyer varchar2(100),
 	seller varchar2(100),
 	title varchar2(100),
 	ttime date DEFAULT sysdate,
@@ -173,14 +188,20 @@ ALTER TABLE black
 ;
 
 
-ALTER TABLE message
-	ADD FOREIGN KEY (send)
+ALTER TABLE black
+	ADD FOREIGN KEY (fromUser)
 	REFERENCES members (id)
 ;
 
 
 ALTER TABLE message
 	ADD FOREIGN KEY (receive)
+	REFERENCES members (id)
+;
+
+
+ALTER TABLE message
+	ADD FOREIGN KEY (send)
 	REFERENCES members (id)
 ;
 
@@ -273,12 +294,13 @@ COMMENT ON COLUMN members.pic IS '사진';
 COMMENT ON COLUMN members.zoomin1 IS '주민번호 앞자리';
 COMMENT ON COLUMN members.zoomin2 IS '주민번호 뒷자리';
 COMMENT ON TABLE message IS '메시지';
-COMMENT ON COLUMN message.id IS '메세지번호';
+COMMENT ON COLUMN message.code IS '메세지번호';
 COMMENT ON COLUMN message.send IS '보내는아이디';
 COMMENT ON COLUMN message.receive IS '받는아이디';
+COMMENT ON COLUMN message.title IS '제목';
 COMMENT ON COLUMN message.comm IS '내용';
 COMMENT ON COLUMN message.status IS '상태';
-COMMENT ON COLUMN message.ttype IS '1대1문의분류';
+COMMENT ON COLUMN message.ttime IS '발송시간';
 COMMENT ON TABLE notice IS '공지테이블';
 COMMENT ON COLUMN notice.code IS '게시글번호';
 COMMENT ON COLUMN notice.day IS '작성일자';
@@ -301,9 +323,18 @@ COMMENT ON TABLE picture IS '돌봄환경사진';
 COMMENT ON COLUMN picture.code IS '순번';
 COMMENT ON COLUMN picture.id IS '시터아이디';
 COMMENT ON COLUMN picture.pic IS '돌봄환경사진';
+COMMENT ON TABLE question IS '1:1문의';
+COMMENT ON COLUMN question.code IS '메세지번호';
+COMMENT ON COLUMN question.send IS '보내는아이디';
+COMMENT ON COLUMN question.title IS '제목';
+COMMENT ON COLUMN question.ttype IS '분류';
+COMMENT ON COLUMN question.comm IS '내용';
+COMMENT ON COLUMN question.status IS '상태';
+COMMENT ON COLUMN question.ttime IS '발송시간';
 COMMENT ON TABLE sitter IS '시터';
 COMMENT ON COLUMN sitter.id IS '아이디';
 COMMENT ON COLUMN sitter.maxP IS '펫 수용 수';
+COMMENT ON COLUMN sitter.comm IS '지원내용';
 COMMENT ON COLUMN sitter.status IS '상태';
 COMMENT ON TABLE trade IS '거래테이블';
 COMMENT ON COLUMN trade.code IS '거래번호';
@@ -311,7 +342,6 @@ COMMENT ON COLUMN trade.status IS '상태';
 COMMENT ON COLUMN trade.stime IS '시작시간';
 COMMENT ON COLUMN trade.etime IS '종료시간';
 COMMENT ON COLUMN trade.day IS '요일';
-COMMENT ON COLUMN trade.id IS '아이디';
 COMMENT ON COLUMN trade.tmoney IS '거래머니';
 COMMENT ON TABLE tradeBoard IS '거래게시판';
 COMMENT ON COLUMN tradeBoard.code IS '거래번호';
