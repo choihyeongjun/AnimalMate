@@ -84,6 +84,14 @@
 			}
 		})
 		
+		//관리자버튼
+		$("#adminBtn").on({
+			"click" : function() {
+				location.href="${pageContext.request.contextPath}/adminLogin.do";
+			}
+		})
+		
+		
 	})
 		
 		
@@ -123,6 +131,9 @@
 	</c:if>
 	<c:if test="${sessionScope.id ne null}">
 		<button id="logoutBtn" class="">로그아웃</button>
+	</c:if>
+	<c:if test="${sessionScope.id eq 'admin'}">
+		<button id="adminBtn" class="">관리자페이지</button>
 	</c:if>
 	</div>
 	<br>

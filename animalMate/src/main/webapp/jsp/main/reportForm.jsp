@@ -19,9 +19,20 @@
 	height: 500px
 }
 </style>
+<script type="text/javascript">
+	$(()=>{
+		$("#gobackBtn").on({
+			"click" : function() {
+				 history.back();
+			}
+		})
+	})
+</script>
 </head>
 <body>
+	
 	<div class="reportDiv" align="center">
+	<h1>&lt;신고하기&gt;</h1><br>
 		<form id="frm" name="frm" method="post"
 			action="${pageContext.request.contextPath}/submitReport.do">
 			<table class="reportTd">
@@ -38,13 +49,13 @@
 				</tr>
 				<tr>
 					<td class="col3_comm">내용</td>
-					<td><input class="col3_comm" type="text" id="comm" name="comm"></td>
+					<td><textarea rows="20" cols="118" class="col3_comm" id="comm" name="comm"></textarea></td>
 				</tr>
 			</table>
 			<br>
 			<div align="right">
 				<button type="submit" id="submitBtn">제출하기</button>
-				<button>취소</button>
+				<button id="gobackBtn">취소</button>
 			</div>
 		</form>
 

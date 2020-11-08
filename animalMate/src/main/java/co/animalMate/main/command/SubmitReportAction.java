@@ -4,8 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.json.JSONObject;
+import javax.servlet.http.HttpSession;
 
 import co.animalMate.common.Action;
 import co.animalMate.main.dao.BlackDAO;
@@ -15,12 +14,13 @@ public class SubmitReportAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession session = request.getSession();
 		String title = request.getParameter("title");
 		String toUser = request.getParameter("toUser");
 		String comm = request.getParameter("comm");
 		
 		BlackVO vo = new BlackVO();
-		vo.setFromUser("id1");
+		vo.setFromUser((String) session.getAttribute("id"));
 		vo.setTitle(title);
 		vo.setToUser(toUser);
 		vo.setComm(comm);
@@ -31,7 +31,6 @@ public class SubmitReportAction implements Action {
 		try {
 			response.sendRedirect(request.getContextPath() + "/goBlackBoardPage.do");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

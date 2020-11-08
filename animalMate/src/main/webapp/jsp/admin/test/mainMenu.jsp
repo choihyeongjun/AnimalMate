@@ -16,7 +16,7 @@
 			<c:if test="${author ne 'admin'}">
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/trade.jsp">거래내역</a></li>
 			<li>|</li>
-			<li><a class="menuLink" href="#">공지사항 등록 및 수정</a></li>
+			<li><a class="menuLink" href="${pageContext.request.contextPath}/goNoticeBoardPage.do">공지사항 등록 및 수정</a></li>
 			<li>|</li>
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/question.jsp">1:1문의작성</a></li>
 			<li>|</li>

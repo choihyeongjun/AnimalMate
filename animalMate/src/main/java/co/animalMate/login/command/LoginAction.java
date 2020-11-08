@@ -39,16 +39,18 @@ public class LoginAction implements Action {
 				session.setAttribute("nName", vo.getnName());
 				session.setAttribute("name", vo.getName());
 				session.setAttribute("mvo", vo);
+				
+				//admin일 때 로그인
 				if(vo.getId().equals("admin")) {
 					try {
-						response.sendRedirect(request.getContextPath() + "/jsp/admin/test/admin.jsp");
+						response.sendRedirect(request.getContextPath() + "/adminLogin.do");
 						return null;
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
 				}
 				
-				
+				//일반 유저 로그인
 				try {
 					response.sendRedirect(request.getContextPath() + "/main.do");
 					return null;

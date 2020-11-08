@@ -36,7 +36,12 @@
 </style>
 <script type="text/javascript">
 	$(()=> {
-		
+		//글쓰기 버튼
+		$("#createBtn").on({
+			"click" : function() {
+				location.href="${pageContext.request.contextPath}/goNoticeForm.do";
+			}
+		})
 	})
 </script>
 </head>
@@ -45,13 +50,15 @@
 	<h3>공지사항</h3>
 	<hr />
 	<div align="right">
-		<form id="filterFrm" name="filterFrm" action="goNoticeBoardPage.do" method="get">
+		<form id="filterFrm" name="filterFrm" action="goNoticeBoardPage.do"
+			method="get">
 			<select id="type" name="type">
 				<option value="">분류
-				<option value="공지사항" <c:if test="${param.type == '공지사항'}">selected</c:if>> 공지사항
-				<option value="이벤트" <c:if test="${param.type == '이벤트'}">selected</c:if>>이벤트
-			</select>
-			<input type="hidden" name="p" value="1">
+				<option value="공지사항"
+					<c:if test="${param.type == '공지사항'}">selected</c:if>>공지사항
+				<option value="이벤트"
+					<c:if test="${param.type == '이벤트'}">selected</c:if>>이벤트
+			</select> <input type="hidden" name="p" value="1">
 			<button id="filterBtn">검색</button>
 		</form>
 	</div>
@@ -60,20 +67,20 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">게시글번호</th>
-					<th scope="col">작성일자</th>
-					<th scope="col">제목</th>
-					<th scope="col">분류</th>
-					<th scope="col">조회수</th>
+					<th>게시글번호</th>
+					<th>제목</th>
+					<th>분류</th>
+					<th>작성일자</th>
+					<th>조회수</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${list}" var="l">
-					<tr>
+					<tr >
 						<td>${l.code}</td>
-						<td scope="row">${l.day}</td>
-						<td>${l.title}</td>
+						<td><a href="${pageContext.request.contextPath}/goNoticeForm.do?code=${l.code}">${l.title}</a></td>
 						<td>${l.type}</td>
+						<td>${l.day}</td>
 						<td>${l.count}</td>
 					</tr>
 				</c:forEach>
@@ -88,8 +95,11 @@
 		<my:paging paging="${paging}" jsfunc="goPage" />
 		<br>
 	</div>
-	<div align="right">
-		<button>글쓰기</button>
-	</div>
+	<c:if test="${sessionScope.id eq 'admin'}">
+		<div align="right">
+			<button id="createBtn">글쓰기</button>
+		</div>
+	</c:if>
+		
 </body>
 </html>

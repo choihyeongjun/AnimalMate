@@ -7,8 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.common.Action;
-import co.animalMate.main.dao.SitterListDAO;
-import co.animalMate.vo.SitterListVO;
 
 public class GoSitterListPageAction implements Action {
 
