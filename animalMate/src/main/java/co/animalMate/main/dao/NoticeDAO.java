@@ -120,7 +120,7 @@ public class NoticeDAO extends DAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			//close();
 		}
 		return vo;
 	}
@@ -151,6 +151,21 @@ public class NoticeDAO extends DAO {
 			psmt.setString(2, vo.getComm());
 			psmt.setString(3, vo.getType());
 			psmt.setInt(4, vo.getCode());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return n;
+	}
+	
+	//조회수 없데이트
+	public int updateCount(NoticeVO vo) { 
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement("UPDATE NOTICE SET COUNT = COUNT +1 WHERE CODE = ?");
+			psmt.setInt(1, vo.getCode());
 			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
