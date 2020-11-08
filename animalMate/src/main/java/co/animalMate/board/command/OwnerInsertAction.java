@@ -18,8 +18,11 @@ public class OwnerInsertAction implements Action {
 		HttpSession session = request.getSession();
 		
 		//리퀘스트 값 변수 저장
-		String title = request.getParameter("title");
-		String buyer = (String)session.getAttribute("id");
+			//TradeBoardVO
+			String title = request.getParameter("title");
+			String buyer = (String)session.getAttribute("id");
+			
+			
 		
 		
 		//VO객체에 저장
