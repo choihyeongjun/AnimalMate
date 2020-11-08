@@ -151,6 +151,7 @@ public class NoticeDAO extends DAO {
 			psmt.setString(2, vo.getComm());
 			psmt.setString(3, vo.getType());
 			psmt.setInt(4, vo.getCode());
+			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

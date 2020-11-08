@@ -156,12 +156,15 @@
 	                                    </div>
 	                                </td>
 	                            </tr>
-	
+	<input type="time" name="testttt" id="testttt">
 	                            <tr>
 	                                <th>근무시간</th>
 	                                <td>
 	                                    <div class="calendar">
-	                                        <input type="time" name="ttime" id="testttt">
+	                                        <select>
+	                                            <option>12:00</option>
+	                                            <option>13:00</option>
+	                                        </select>
 	                                        <span>~</span>
 	                                        <select>
 	                                            <option>12:00</option>

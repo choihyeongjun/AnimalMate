@@ -7,9 +7,7 @@ import co.animalMate.board.dao.BoardDao;
 import co.animalMate.common.Action;
 import co.animalMate.vo.OwnerInsertVO;
 
-
-
-public class OwnerInertAction implements Action {
+public class OwnerInsertAction2 implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {

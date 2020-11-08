@@ -26,10 +26,6 @@ public class SubmitNoticeAction implements Action {
 		if(request.getParameter("code") != null) {
 			int code = Integer.parseInt(request.getParameter("code")); 
 			vo.setCode(code);
-			System.out.println(vo.getCode());
-			System.out.println(vo.getComm());
-			System.out.println(vo.getTitle());
-			System.out.println(vo.getType());
 			dao.update(vo);
 		} else {
 			dao.insert(vo);
