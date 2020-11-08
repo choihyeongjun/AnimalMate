@@ -21,7 +21,7 @@ import co.animalMate.admin.command.SubmitQuestionAction;
 import co.animalMate.admin.command.tradeAction;
 import co.animalMate.board.command.MainAction;
 import co.animalMate.board.command.OwnerFormAction;
-import co.animalMate.board.command.OwnerInertAction;
+import co.animalMate.board.command.OwnerInsertAction;
 import co.animalMate.board.command.OwnerListAction;
 import co.animalMate.board.command.OwnerListSearhAction;
 import co.animalMate.board.command.SitterFormAction;
@@ -164,7 +164,7 @@ public class FrontController extends HttpServlet {
      map.put("/sitterList.do", new SitterListAction()); //sitterList 화면 호출
      map.put("/sitterForm.do", new SitterFormAction()); //sitterForm 화면 호출
      map.put("/ownerForm.do", new OwnerFormAction()); //sitterForm 화면 호출
-     map.put("/ownerInsert.do", new OwnerInertAction()); //
+     map.put("/ownerInsert.do", new OwnerInsertAction()); //
      map.put("/ownerListSearch.do", new OwnerListSearhAction()); //
       
       
