@@ -40,6 +40,7 @@ button{width: 50px;
 			$('<tr>')
 			.append($('<td>').html(item.id))
 			.append($('<td>').html(item.name))
+			.append($('<td>').html(item.nname))
 			.append($('<td>').html(item.location1))
 			.append($('<td>').html(item.tel))
 			.append($('<td>').html(item.edate))
@@ -94,10 +95,12 @@ button{width: 50px;
 			$('<tr>')
 			.append($('<td>').html(item.id))
 			.append($('<td>').html(item.name))
+			.append($('<td>').html(item.nname))
 			.append($('<td>').html(item.location1))
 			.append($('<td>').html(item.tel))
 			.append($('<td>').html(item.edate))
-			.append($('<td>').html('<input type="text" id=\'author\' value='+item.author+'>'))
+			.append($('<td>').html(
+					'<input type=\'text\' id=\'author\' value='+item.author+'>'))
 			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
 			.append($('<td>').html('<button id=\'btnUpdate\'>수정</button>'))
 			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
@@ -127,11 +130,14 @@ button{width: 50px;
 	</div>
 	<div>
 		<div class="container">
+		
 		<table id="search" class="table text-center">
 			<thead>
 				<tr>
+			
 					<th class="text-center">아이디</th>
 					<th class="text-center">이  름</th>
+					<th class="text-center">별  명</th>
 					<th class="text-center">주  소</th>
 					<th class="text-center">전화번호</th>
 					<th class="text-center">가입일자</th>
@@ -149,6 +155,7 @@ button{width: 50px;
 			<tr>
 				<th class="text-center">아이디</th>
 				<th class="text-center">이  름</th>
+				<th class="text-center">별  명</th>
 				<th class="text-center">주  소</th>
 				<th class="text-center">전화번호</th>
 				<th class="text-center">가입일자</th>

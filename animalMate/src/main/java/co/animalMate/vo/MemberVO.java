@@ -50,13 +50,7 @@ public class MemberVO {
 		this.name = name;
 	}
 
-	public String getnName() {
-		return nName;
-	}
 
-	public void setnName(String nName) {
-		this.nName = nName;
-	}
 
 	public String getTel() {
 		return tel;
@@ -66,14 +60,26 @@ public class MemberVO {
 		this.tel = tel;
 	}
 
-	public String geteDate() {
+
+	public String getNname() {
+		return nName;
+	}
+	public void setNName(String nName) {
+		this.nName = nName;
+	}
+	public String getEdate() {
 		return eDate;
 	}
-
 	public void seteDate(String eDate) {
 		this.eDate = eDate;
 	}
-
+	@Override
+	public String toString() {
+		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", nName=" + nName + ", tel=" + tel + ", eDate="
+				+ eDate + ", author=" + author + ", point=" + point + ", status=" + status + ", location1=" + location1
+				+ ", location2=" + location2 + ", email=" + email + ", pic=" + pic + ", zoomin1=" + zoomin1
+				+ ", zoomin2=" + zoomin2 + "]";
+	}
 	public String getAuthor() {
 		return author;
 	}

@@ -25,8 +25,8 @@ $(function(){
 function userUpdate() {
 	//업데이트 버튼 클릭
 	$('body').on('click','#btnSave',function(){
-		var userId = $(this).closest('tr').find('#id').val();
-		var userAuthor = $(this).parent().prev().prev().closest('tr').find('#author').val();
+		var userId = $(this).closest('tr').find('#hidden_userId').val();
+		var userAuthor = $(this).closest('tr').find('#author').val();
 		console.log(userAuthor);
 		var result = confirm(userId +" 사용자를 업데이트 하시겠습니까?");
 		if(result) {

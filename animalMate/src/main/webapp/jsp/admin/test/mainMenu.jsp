@@ -28,6 +28,8 @@
 			<li>|</li>
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/sconfirm.jsp">시터승인페이지</a></li>
 			<li>|</li>
+			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/adminchat.jsp" target="_blank">실시간문의</a></li>
+			<li>|</li>
 			<li><a class="menuLink" href="logout.do">로그아웃</a></li>
 			</c:if>
 		</ul>
