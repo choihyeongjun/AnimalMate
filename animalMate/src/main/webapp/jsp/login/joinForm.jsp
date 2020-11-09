@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/joinform.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 function id_input_check(){
@@ -138,7 +139,8 @@ function telCheck(){
 	 <!-- wrapper -->
         <div id="wrapper">
 	 <!-- content-->
-            	<div id="content">        	
+            	<div id="content">   
+            	<h2>애니멀메이트 <br>가입 정보를 입력해주세요.</h2>     	
       <!-- ID -->
 				  <div>
                     <h3 class="join_title">
@@ -146,7 +148,9 @@ function telCheck(){
                     </h3>
                     <span class="box int_id">
                         <input type="text" id="id" class="int" maxlength="20"  name="id" placeholder="아이디 입력">
-                        <button type="button" class="id_input_check" onclick="id_input_check()">중복확인</button>
+                      	<div align="right">
+                        <button type="button" class="id_input_check" onclick="id_input_check()" >중복확인</button>
+                  		</div>
                     </span>
                 </div>
 		<!-- 비밀번호 입력창 -->
@@ -154,15 +158,14 @@ function telCheck(){
                 <div>
                     <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="text" id="pw1" class="int" maxlength="20" name="pw" placeholder="비밀번호 입력">             
+                        <input type="text" id="pw1" class="int" maxlength="20" name="pw" placeholder="비밀번호 (8~20자리)">             
                     </span>
                 </div>
                 
 		    <!-- PW2 -->
                 <div>
-                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
                     <span class="box int_pass_check">
-                        <input type="text" id="pw2" class="int" maxlength="20" name="pw2"placeholder="비밀번호 확인" disable;>
+                        <input type="text" id="pw2" class="int" maxlength="20" name="pw2"placeholder="비밀번호 재입력" disable;>
                     </span>
                 </div>
                 
@@ -170,24 +173,26 @@ function telCheck(){
                 <div>
                     <h3 class="join_title"><label for="name">이름</label></h3>
                     <span class="box int_name">
-                        <input type="text" id="name" class="int" name="name"maxlength="20">
+                        <input type="text" id="name" class="int" name="name"maxlength="20" placeholder="이름을 입력해주세요.">
                     </span>
                 </div>
                   <!-- nick NAME -->
                 <div>
                     <h3 class="join_title"><label for="name">닉네임</label></h3>
                     <span class="box int_nname">
-                        <input type="text" id="nname" class="int" name="nName"maxlength="20">
+                        <input type="text" id="nname" class="int" name="nName"maxlength="20" placeholder="닉네임을 입력해주세요.">
                     </span>
                 </div>
             <!-- 주민등록번호 -->
 		<div>
 			 <h3 class="join_title"><label for="zoomin">주민등록번호 </label></h3>
 				<span class="box int_zoomin">
-					<input type="text" class="int" name="zoomin1" id="zoomin1" maxlength="6"> -
-					<input type="text" class="int" name="zoomin2" id="zoomin2" maxlength="7">
+					<input type="text" class="zoo" name="zoomin1" id="zoomin1" maxlength="6"> -
+					<input type="text" class="zoo" name="zoomin2" id="zoomin2" maxlength="7">
 				</span>
-			<a href="#" class="zoomin">실명인증</a>
+				<div align="right">
+			 <button type="button" class="id_input_check">실명인증</button>
+			 	</div>
 		</div> 	
               
                 <!-- EMAIL -->
@@ -212,7 +217,6 @@ function telCheck(){
 				<span class="box int_location">
 					<input type="text" id="location1" class="int" maxlength="100" name="location1" placeholder="주소 입력"><br>
 				</span>
-			<h3><label for="location">상세주소</label></h3>
 			 	<span class="box int_location">
 					<input type="text" id="location2" class="int" maxlength="100"  name="location2" placeholder="상세주소를 입력해주세요">
 				</span>
@@ -220,9 +224,9 @@ function telCheck(){
 		<br/>
 		<br/>
 	<!-- 가입&취소 버튼 -->
-	<div class="btn_area">
-		<button type="submit" id="btn">가입하기</button>&nbsp;&nbsp;&nbsp;
-		<button type="button" id="btn" onclick="window.location.href='${pageContext.request.contextPath}/main.do'">취소</button> <!-- 메인 페이지로이동 -->
+	<div class="btn_area" align="center">
+		<button type="submit" id="btn_submit">가입하기</button><br>
+		<button type="button" id="btn_cancel" onclick="window.location.href='${pageContext.request.contextPath}/main.do'">취소</button> <!-- 메인 페이지로이동 -->
 	</div><!-- 가입&취소 버튼 끝 -->
 	 		</div> 
            <!-- content-->
