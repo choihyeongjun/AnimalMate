@@ -19,12 +19,13 @@ public class BoardDao extends DAO {
 	private OwnerListVO vo;
 	public BoardSearchVO serarchvo;
 	
-	private final String SELECT =  "SELECT A.PRICE, A.CODE, A.WTIME, A.LOCATION2 , A.STATUS, B.TYPE, B.PIC"
-									+ " FROM TRADEBOARD A"
-									+ " INNER JOIN PET B  "
-									+ "ON A.BUYER = B.ID ";
+	private final String SELECT =  "SELECT A.PRICE, A.CODE, A.STIME, A.ETIME, A.LOCATION1, TO_CHAR(A.SDATE,'MM-DD') AS SDATE,"
+														+ " TO_CHAR(A.EDATE,'MM-DD') AS EDATE , A.STATUS, B.TYPE, B.PIC  "
+														+ "FROM TRADEBOARD A "
+														+ "INNER JOIN PET B ON A.BUYER = B.ID";
 	
-	private final String SEARCH =  "SELECT A.PRICE, A.WTIME, A.LOCATION2 , A.STATUS, B.TYPE, B.PIC "
+	private final String SEARCH =  "SELECT A.PRICE, A.CODE, A.STIME, A.ETIME, A.LOCATION1, TO_CHAR(A.SDATE,'MM-DD') AS SDATE,"
+														+ " TO_CHAR(A.EDATE,'MM-DD') AS EDATE , A.STATUS, B.TYPE, B.PIC  "
 														+ "FROM TRADEBOARD A INNER JOIN PET B "
 														+ "ON A.BUYER = B.ID"
 														+ " WHERE B.TYPE =? AND A.STIME =? AND A.ETIME = ?";
@@ -36,13 +37,17 @@ public class BoardDao extends DAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				vo = new OwnerListVO();
-				vo.setCode(rs.getInt("code"));
-				vo.setPic(rs.getString("pic"));
-				vo.setType(rs.getString("type"));
 				vo.setPrice(rs.getInt("price"));
-				vo.setWtime(rs.getInt("wtime"));
-				vo.setLocation2(rs.getString("location2"));
+				vo.setCode(rs.getInt("code"));
+				vo.setStime(rs.getString("stime"));
+				vo.setEtime(rs.getString("etime"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setSdate(rs.getString("sdate"));
+				vo.setEdate(rs.getString("edate"));
+				vo.setType(rs.getString("type"));
+				vo.setPic(rs.getString("pic"));
 				vo.setStatus(rs.getString("status"));
+				
 				list.add(vo);
 			}
 		} catch (SQLException e) {//
@@ -61,18 +66,22 @@ public class BoardDao extends DAO {
 		try {
 			psmt = conn.prepareStatement(SEARCH);
 			psmt.setString(1,serarchvo.getType());
-			psmt.setString(2,serarchvo.getSTime());
-			psmt.setString(3,serarchvo.getETime());
+			psmt.setString(2,serarchvo.getStime());
+			psmt.setString(3,serarchvo.getEtime());
 			
 			rs = psmt.executeQuery();
 			
 			while (rs.next()) {
 				serarchvo = new BoardSearchVO();
 				serarchvo.setPic(rs.getString("pic"));
+				serarchvo.setCode(rs.getInt("code"));
 				serarchvo.setType(rs.getString("type"));
 				serarchvo.setPrice(rs.getInt("price"));
-				serarchvo.setWtime(rs.getInt("wtime"));
-				serarchvo.setLocation2(rs.getString("location2"));
+				serarchvo.setSdate(rs.getString("sdate"));
+				serarchvo.setEdate(rs.getString("edate"));
+				serarchvo.setStime(rs.getString("stime"));
+				serarchvo.setEtime(rs.getString("etime"));
+				serarchvo.setLocation1(rs.getString("location1"));
 				serarchvo.setStatus(rs.getString("status"));
 				list.add(serarchvo);
 			}
@@ -90,7 +99,7 @@ public class BoardDao extends DAO {
 	
 	private final String INSERT = "INSERT INTO TRADEBOARD "
 			+ "(CODE,BUYER,TITLE,TTIME,PRICE,COMM,STATUS,"
-			+ "STIME,ETIME,WTIME,TTYPE,LOCATION2) "
+			+ "STIME,ETIME,WTIME,TTYPE,LOCATION1) "
 			+ "VALUES "
 			+ "(BOARD_SEQ.NEXTVAL, ?,?,SYSDATE,?,?,?,"
 			+ "?,?,?,?,?)";
@@ -108,7 +117,7 @@ public class BoardDao extends DAO {
 		psmt.setString(7, insertvo.getEtime());
 		psmt.setInt(8, insertvo.getWtime());
 		psmt.setString(9, insertvo.getTtype());
-		psmt.setString(10, insertvo.getLocation2());
+		psmt.setString(10, insertvo.getLocation1());
 		
 
 		
