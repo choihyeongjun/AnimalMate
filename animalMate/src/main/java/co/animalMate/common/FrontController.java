@@ -56,7 +56,6 @@ import co.animalMate.mypage.command.MypetUpdate;
 import co.animalMate.mypage.command.MypetUpdateAction;
 import co.animalMate.mypage.command.MytradeList;
 import co.animalMate.mypage.command.OwnerFormCheck;
-import co.animalMate.mypage.command.Profile;
 import co.animalMate.mypage.command.SitterFormCheck;
 
 
@@ -193,7 +192,6 @@ public class FrontController extends HttpServlet {
       map.put("/mytradeList.do", new MytradeList()); //내 거래현황,내역 화면 호출
       map.put("/ownerFormCheck.do", new OwnerFormCheck()); // 맡기기 화면 호출
       map.put("/sitterFormCheck.do", new SitterFormCheck()); // 돌보기 화면 호출
-      map.put("/profile.do", new Profile()); //프로필 화면 호출
       map.put("/memberForm.do", new MemberForm()); //회원 정보 수정
       
       

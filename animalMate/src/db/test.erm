@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2020-10-27 13:10:09</creation_date>
-			<updated_date>2020-11-09 09:57:13</updated_date>
+			<updated_date>2020-11-09 16:34:01</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -195,7 +195,7 @@
 			<binary>false</binary>
 			<args></args>
 			<char_semantics>false</char_semantics>
-			<description>1: user&#x0D;&#x0A;2: admin&#x0D;&#x0A;3: userSitter&#x0D;&#x0A;4: black</description>
+			<description>1.user //유저&#x0D;&#x0A;2.admin //어드민&#x0D;&#x0A;3.usersitter //시터승인 얻은놈&#x0D;&#x0A;4.black //블랙먹은놈&#x0D;&#x0A;5.sitterwait //승인대기</description>
 			<logical_name>권한</logical_name>
 			<physical_name>author</physical_name>
 			<type>varchar(n)</type>
@@ -1784,6 +1784,70 @@
 					<referenced_column>42</referenced_column>
 					<referenced_column>42</referenced_column>
 					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<referenced_column>42</referenced_column>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
+					<relation>1</relation>
 					<relation>1</relation>
 					<relation>1</relation>
 					<relation>1</relation>
@@ -2066,7 +2130,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>42</word_id>
+					<word_id>40</word_id>
 					<id>15</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2330,7 +2394,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>61</word_id>
+					<word_id>60</word_id>
 					<id>21</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2460,7 +2524,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>59</word_id>
+					<word_id>57</word_id>
 					<id>24</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2559,7 +2623,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>52</word_id>
+					<word_id>50</word_id>
 					<id>27</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -2801,7 +2865,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>60</word_id>
+					<word_id>58</word_id>
 					<id>32</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -3109,7 +3173,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>58</word_id>
+					<word_id>59</word_id>
 					<id>39</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -3536,7 +3600,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>50</word_id>
+					<word_id>52</word_id>
 					<id>51</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -3854,7 +3918,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>52</word_id>
+					<word_id>50</word_id>
 					<id>59</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -4129,7 +4193,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>57</word_id>
+					<word_id>61</word_id>
 					<id>65</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -4909,7 +4973,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>40</word_id>
+					<word_id>42</word_id>
 					<id>87</id>
 					<description></description>
 					<unique_key_name></unique_key_name>

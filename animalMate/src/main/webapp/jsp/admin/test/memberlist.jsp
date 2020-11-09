@@ -44,7 +44,14 @@ button{width: 50px;
 			.append($('<td>').html(item.location1))
 			.append($('<td>').html(item.tel))
 			.append($('<td>').html(item.edate))
-			.append($('<td>').html('<input type="text" id=\'author\' value='+item.author+'>'))
+			.append($('<td>').html('<select id=\'author\'> '+
+			'<option selected value='+item.author+'>'+item.author+'</option>'+
+			'<option value="sitter">sitter</option>'+
+			'<option >sitterwait</option>'+
+			'<option >users</option>'+
+			'<option >admin</option>'+
+			'<option >black</option></select>'
+			))
 			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
 			.append($('<td>').html('<button id=\'btnUpdate\'>수정</button>'))
 			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
@@ -55,7 +62,8 @@ button{width: 50px;
 		//업데이트 버튼 클릭
 		$('body').on('click','#btnUpdate',function(){
 			var userId = $(this).closest('tr').find('#hidden_userId').val();
-			var userAuthor = $(this).closest('tr').find('#author').val();
+			var userAuthor = $(this).parent().prev().prev().children().val();
+			console.log(userAuthor);
 			var result = confirm(userId +" 사용자를 업데이트 하시겠습니까?");
 			if(result) {
 				$.ajax({
@@ -99,8 +107,14 @@ button{width: 50px;
 			.append($('<td>').html(item.location1))
 			.append($('<td>').html(item.tel))
 			.append($('<td>').html(item.edate))
-			.append($('<td>').html(
-					'<input type=\'text\' id=\'author\' value='+item.author+'>'))
+			.append($('<td>').html('<select id=\'author\'> '+
+			'<option selected value='+item.author+'>'+item.author+'</option>'+
+			'<option >sitter</option>'+
+			'<option >sittersait</option>'+
+			'<option >users</option>'+
+			'<option >admin</option>'+
+			'<option >black</option></select>'
+			))
 			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
 			.append($('<td>').html('<button id=\'btnUpdate\'>수정</button>'))
 			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
@@ -131,8 +145,7 @@ button{width: 50px;
 	<div>
 		<div class="container">
 		
-		<table id="search" class="table text-center">
-			<thead>
+		<table class="table text-center">
 				<tr>
 			
 					<th class="text-center">아이디</th>
@@ -144,7 +157,8 @@ button{width: 50px;
 					<th class="text-center">권 한 </th>
 					<th class="text-center">변경</th>
 				</tr>
-			</thead>
+				<tbody id="search">
+				</tbody>
 		</table>
 		</div>
 	</div>

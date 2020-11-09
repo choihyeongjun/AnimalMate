@@ -23,7 +23,7 @@ public class MemberListAction implements Action {
 		
 		list = dao.selectAll();
 		
-		System.out.println(list);
+		//System.out.println(list);
 		try {
 			response.getWriter().print(new JSONArray(list));
 		} catch (IOException e) {
