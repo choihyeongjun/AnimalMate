@@ -49,9 +49,9 @@ public class MemberDao extends DAO {
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
-				vo.setnName(rs.getString("nName"));
+				vo.setNName(rs.getString("nname"));
 				vo.setTel(rs.getString("tel"));
-				vo.seteDate(rs.getString("eDate"));
+				vo.seteDate(rs.getString("edate"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setPoint(rs.getInt("point"));
 				vo.setStatus(rs.getString("status"));
@@ -84,9 +84,9 @@ public class MemberDao extends DAO {
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
-				vo.setnName(rs.getString("nName"));
+				vo.setNName(rs.getString("nname"));
 				vo.setTel(rs.getString("tel"));
-				vo.seteDate(rs.getString("eDate"));
+				vo.seteDate(rs.getString("edate"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setPoint(rs.getInt("point"));
 				vo.setStatus(rs.getString("status"));
@@ -121,9 +121,9 @@ public class MemberDao extends DAO {
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
-				vo.setnName(rs.getString("nName"));
+				vo.setNName(rs.getString("nname"));
 				vo.setTel(rs.getString("tel"));
-				vo.seteDate(rs.getString("eDate"));
+				vo.seteDate(rs.getString("edate"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setPoint(rs.getInt("point"));
 				vo.setStatus(rs.getString("status"));
@@ -156,9 +156,9 @@ public class MemberDao extends DAO {
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
-				vo.setnName(rs.getString("nName"));
+				vo.setNName(rs.getString("nname"));
 				vo.setTel(rs.getString("tel"));
-				vo.seteDate(rs.getString("eDate"));
+				vo.seteDate(rs.getString("edate"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setPoint(rs.getInt("point"));
 				vo.setStatus(rs.getString("status"));

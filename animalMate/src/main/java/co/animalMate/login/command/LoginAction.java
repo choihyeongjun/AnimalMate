@@ -36,7 +36,7 @@ public class LoginAction implements Action {
 				page = "jsp/login/loginForm.jsp";
 			}else {
 				session.setAttribute("id", vo.getId());
-				session.setAttribute("nName", vo.getnName());
+				session.setAttribute("nName", vo.getNname());
 				session.setAttribute("name", vo.getName());
 				session.setAttribute("mvo", vo);
 				

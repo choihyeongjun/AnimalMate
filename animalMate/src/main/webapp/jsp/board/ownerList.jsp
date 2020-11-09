@@ -52,16 +52,20 @@
 	padding: 4em 0 2em 0;
 }
 
-#code_dl {
+.code_dl {
 	display: none;
 }
+
+
 </style>
+
 <script>
-	$(document).ready(function() {
-		$(".box").on("click",function() {
-			alert("클릭확인");
-		})
-	});	
+$(()=>{
+	$(".box").on("click",function() {
+		var code = $(this).children().children(1).children(0).eq(1).text();
+		location.href="${pageContext.request.contextPath}/ownerFormSelect.do?code="+code;
+	});
+})
 </script>
 </head>
 
@@ -137,11 +141,12 @@
 			
 				<c:forEach var="border" items="${borders}">
 					<div class="box">
+					
 						<img class="image fit" src="${pageContext.request.contextPath}${border.pic}" alt="" />
 						<div>
-							<dl id="code_dl">
+							<dl class="code_dl">
 								<dt>거래번호</dt>
-								<dd>${border.code}</dd>
+								<dd id="code" name="code">${border.code}</dd>
 							</dl>
 							
 							<dl>
@@ -150,11 +155,15 @@
 							</dl>
 							<dl>
 								<dt>근무지역</dt>
-								<dd>${border.location2}</dd>
+								<dd>${border.location1}</dd>
+							</dl>
+							<dl>
+								<dt>근무날짜</dt>
+								<dd>${border.sdate} ~ ${border.edate}</dd>
 							</dl>
 							<dl>
 								<dt>근무시간</dt>
-								<dd>${border.wtime}</dd>
+								<dd>${border.stime} ~ ${border.etime}</dd>
 							</dl>
 							<dl>
 								<dt>돌봄금액</dt>
@@ -164,6 +173,7 @@
 							<dt>거래상태</dt>
 							<dd>${border.status}</dd>
 						</dl>
+						
 						</div>
 					</div>
 				</c:forEach>

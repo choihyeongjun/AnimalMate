@@ -3,14 +3,36 @@ package co.animalMate.vo;
 public class BoardSearchVO {
 	private String Pic;
 	private String Type;
-	private String Location2;
-	private int Wtime;
+	private String Location1;
 	private int Price;
 	private String Status;
-	private String STime;
-	private String ETime;
+	private String Stime;
+	private String Etime;
+	private int code;
+	private String Edate;
+	private String Sdate;
 	
 	
+	
+
+	public String getEdate() {
+		return Edate;
+	}
+	public void setEdate(String edate) {
+		Edate = edate;
+	}
+	public String getSdate() {
+		return Sdate;
+	}
+	public void setSdate(String sdate) {
+		Sdate = sdate;
+	}
+	public int getCode() {
+		return code;
+	}
+	public void setCode(int code) {
+		this.code = code;
+	}
 	public BoardSearchVO() {
 		super();
 	}
@@ -26,17 +48,12 @@ public class BoardSearchVO {
 	public void setType(String type) {
 		Type = type;
 	}
-	public String getLocation2() {
-		return Location2;
+
+	public String getLocation1() {
+		return Location1;
 	}
-	public void setLocation2(String location2) {
-		Location2 = location2;
-	}
-	public int getWtime() {
-		return Wtime;
-	}
-	public void setWtime(int wtime) {
-		Wtime = wtime;
+	public void setLocation1(String location1) {
+		Location1 = location1;
 	}
 	public int getPrice() {
 		return Price;
@@ -50,18 +67,18 @@ public class BoardSearchVO {
 	public void setStatus(String status) {
 		Status = status;
 	}
-	public String getSTime() {
-		return STime;
+	public String getStime() {
+		return Stime;
 	}
-	public void setSTime(String sTime) {
-		STime = sTime;
+	public void setStime(String stime) {
+		Stime = stime;
 	}
-	public String getETime() {
-		return ETime;
+	public String getEtime() {
+		return Etime;
 	}
-	public void setETime(String eTime) {
-		ETime = eTime;
+	public void setEtime(String etime) {
+		Etime = etime;
 	}
-	
+ 
 	
 	}

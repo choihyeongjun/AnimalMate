@@ -18,7 +18,7 @@ public class JoinInsertAction implements Action {
 		vo.setId(request.getParameter("id"));
 		vo.setPw(request.getParameter("pw"));
 		vo.setName(request.getParameter("name"));
-		vo.setnName(request.getParameter("nName"));
+		vo.setNName(request.getParameter("nName"));
 		vo.setEmail(request.getParameter("email"));
 		vo.setTel(request.getParameter("tel"));
 		vo.setZoomin1(Integer.valueOf(request.getParameter("zoomin1")));

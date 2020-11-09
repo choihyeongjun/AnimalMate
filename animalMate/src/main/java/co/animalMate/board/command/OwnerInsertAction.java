@@ -22,7 +22,7 @@ public class OwnerInsertAction implements Action {
 		
 		//리퀘스트 값 변수 저장
 			//TradeBoardVO
-			TradeBoardVO TradeBoardVO = new TradeBoardVO();
+			TradeBoardVO tradeBoardVO = new TradeBoardVO();
 			String buyer = (String)session.getAttribute("id");
 			String title = request.getParameter("title");
 			String location1 = request.getParameter("location1");
@@ -34,28 +34,29 @@ public class OwnerInsertAction implements Action {
 			int price = Integer.parseInt(request.getParameter("price"));
 			String comm = request.getParameter("comm");
 			
-			TradeBoardVO.setBuyer(buyer);
-			TradeBoardVO.setTitle(title);
-			TradeBoardVO.setLocation1(location1);
-			TradeBoardVO.setLocation2(location2);
-			TradeBoardVO.setSdate(sdate);
-			TradeBoardVO.setEdate(edate);
-			TradeBoardVO.setStime(stime);
-			TradeBoardVO.setEtime(etime);
-			TradeBoardVO.setPrice(price);
-			TradeBoardVO.setComm(comm);
+			tradeBoardVO.setBuyer(buyer);
+			tradeBoardVO.setTitle(title);
+			tradeBoardVO.setLocation1(location1);
+			tradeBoardVO.setLocation2(location2);
+			tradeBoardVO.setSdate(sdate);
+			tradeBoardVO.setEdate(edate);
+			tradeBoardVO.setStime(stime);
+			tradeBoardVO.setEtime(etime);
+			tradeBoardVO.setPrice(price);
+			tradeBoardVO.setComm(comm);
 			
-			TradeBoardDAO TradeBoardDAO = new TradeBoardDAO();
-			TradeBoardDAO.ownerInsert(TradeBoardVO);
+			TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
+			tradeBoardDAO.ownerInsert(tradeBoardVO);
 			
 			//PetCodeVO
-			PetCodeVO PetCodeVO = new PetCodeVO();
+			PetCodeVO petCodeVO = new PetCodeVO();
 			int petCode = Integer.parseInt(request.getParameter("petCode"));
-			System.out.println(petCode);
-			PetCodeVO.setPetCode(petCode);
 			
-			PetCodeDAO PetCodeDAO = new PetCodeDAO();
-			PetCodeDAO.ownerInsert(PetCodeVO);
+			petCodeVO.setPetCode(petCode);
+			petCodeVO.setCode(tradeBoardVO.getCode());
+			
+			PetCodeDAO petCodeDAO = new PetCodeDAO();
+			petCodeDAO.ownerInsert(petCodeVO);
 			
 			//JoblistVO
 			JoblistVO JoblistVO = new JoblistVO();
@@ -63,6 +64,7 @@ public class OwnerInsertAction implements Action {
 			String[] joblistComm = request.getParameterValues("joblistComm");
 			for(String a : joblistComm) {
 				JoblistVO.setComm(a);
+				JoblistVO.setCode(tradeBoardVO.getCode());
 				JoblistDAO.ownerInsert(JoblistVO);
 			}
 			

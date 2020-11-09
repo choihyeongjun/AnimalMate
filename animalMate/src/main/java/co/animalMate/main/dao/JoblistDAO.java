@@ -20,7 +20,7 @@ public class JoblistDAO extends DAO {
 		try {
 			psmt = conn.prepareStatement("INSERT INTO JOBLIST " + 
 					"(CODE, COMM) VALUES " + 
-					"(TRADEBOARD_CODE.CURRVAL-1, ?)");
+					"(TRADEBOARD_CODE.CURRVAL, ?)");
 			psmt.setString(1, vo.getComm());
 			n = psmt.executeUpdate();
 		} catch (SQLException e) {

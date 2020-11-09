@@ -12,6 +12,15 @@
 	crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<style>
+.row{
+margin-right:100px;
+}
+
+.container {
+    width: 810px;
+}
+</style>
 <script>
 
 $(function(){
@@ -25,10 +34,11 @@ $(function(){
 function userUpdate() {
 	//업데이트 버튼 클릭
 	$('body').on('click','#btnSave',function(){
-		var userId = $(this).closest('tr').find('#id').val();
-		var userAuthor = $(this).parent().prev().prev().closest('tr').find('#author').val();
+		var userId = $(this).parent().parent().prev().prev().prev().prev().prev().prev().prev().children().find('#id').val();
+		var userAuthor = $(this).parent().parent().prev().prev().prev().find('#author').val();
 		console.log(userAuthor);
-		var result = confirm(userId +" 사용자를 업데이트 하시겠습니까?");
+		var result = confirm(userId +" 사용자를 업데이트 하시겠습니까?"+
+				userAuthor+"권한업데이트할래?");
 		if(result) {
 			$.ajax({
 				url:'${pageContext.request.contextPath}/ajax/updatemember.do',
@@ -69,6 +79,8 @@ function userUpdate() {
 		$('input:text[name="tel"]').val(user[0].tel);
 		$('input:text[name="author"]').val(user[0].author);
 		$('input:text[name="edate"]').val(user[0].edate);
+		$('input:text[name="pic"]').val(user[0].pic);
+		
 		
 		
 	}//userSelectResult
@@ -87,12 +99,12 @@ function userUpdate() {
 		
 		$.each(data,function(idx,item){
 			$('<tr>')
-			.append($('<td>').html(item.id))
+			.append($('<td width=100>').html(item.id))
 			.append($('<td>').html(item.name))
 			.append($('<td>').html(item.location1))
-			.append($('<td>').html(item.tel))
+			.append($('<td width=100>').html(item.tel))
 			.append($('<td>').html(item.edate))
-			.append($('<td>').html('<input type="text" id=\'author\' value='+item.author+'>'))
+			.append($('<td>').html(item.author))
 			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
 			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
 			.appendTo('#memlist');
@@ -110,13 +122,13 @@ function userUpdate() {
 
 <br>
 		<h3>시터승인 관리</h3>
-	<div class="row">
+	<div  class="row" >
 		<div class="col">
 		<div>
 			<table id="search" class="table text-center">
 				<thead>
 					<tr>
-						<th class="text-center">아이디</th>
+						<th width="100" class="text-center">아이디</th>
 						<th class="text-center">이  름</th>
 						<th class="text-center">주  소</th>
 						<th class="text-center">전화번호</th>
@@ -135,31 +147,41 @@ function userUpdate() {
 				<table border="1">
 					<tr>
 						<th width="150">아이디 :</th>
-						<td width="500"><input type="text" id="id" name="id"></td>
+						<td width="500"><input type="text" id="id" name="id" disabled></td>
 					</tr>
 					<tr>
 						<th width="150">이름 :</th>
-						<td><input type="text" id="name" name="name"></td>
+						<td><input type="text" id="name" name="name" disabled></td>
 					</tr>
 					<tr>
 						<th width="150">주소 :</th>
-						<td><input type="text" id="location" name="location"></td>
+						<td><input type="text" id="location" name="location" disabled></td>
 					</tr>
 					<tr>
 						<th width="150">전화번호 :</th>
-						<td><input type="text" id="tel" name="tel" size="20"></td>
+						<td><input type="text" id="tel" name="tel" size="20" disabled></td>
 					</tr>
 					<tr>
 						<th width="150">권한 :</th>
-						<td><input type="text" id="author" name="author"></td>
+						<td>
+						<select id="author">
+						<option>선택하기</option>
+						<option>users</option>
+						<option>usersitter</option>
+						<option>black</option>
+						<option>sitterwait</option>
+						<option>black</option>
+						
+						</select>
+						</td>
 					</tr>
 					<tr>
 						<th width="150">가입일자 :</th>
-						<td><input type="text" id="edate" name="edate"></td>
+						<td><input type="text" id="edate" name="edate" disabled></td>
 					</tr>
 					<tr>
 						<th width="150">사진 :</th>
-						<td><input type="file" id="img" name="img"></td>
+						<td><img src="${pageContext.request.contextPath}" name="pic"></td>
 					</tr>
 
 					<tr>

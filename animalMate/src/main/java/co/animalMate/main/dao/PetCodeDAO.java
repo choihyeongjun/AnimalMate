@@ -18,7 +18,7 @@ public class PetCodeDAO extends DAO {
 		try {
 			psmt = conn.prepareStatement("INSERT INTO PETCODE " + 
 					"(CODE, PETCODE) VALUES " + 
-					"(TRADEBOARD_CODE.CURRVAL-1, ?)");
+					"(TRADEBOARD_CODE.CURRVAL, ?)");
 			psmt.setInt(1, vo.getPetCode());
 			n = psmt.executeUpdate();
 		} catch (SQLException e) {
