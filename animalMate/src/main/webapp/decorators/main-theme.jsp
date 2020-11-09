@@ -307,12 +307,12 @@ width: 230px;
 					<li><a href="http://www.instagram.com/epetsitter/" target="_blank"><img src="${pageContext.request.contextPath}/jsp/main/images/instargramIcon.png" height="20px" width="20px"></a></li>
 				</ul>
 				</div>
-				<address>상호 : 주식회사 애니멀메이트    주소 : 부산광역시 남구 수영로 312 21센츄리시티 오피스텔 1526호 (대연동) 사업자등록번호 : 310-88-01170 <br>
-				대표자 : 김태호   전화 : 051-610-1526    팩스 : 051-610-1527    이메일 : <a href="mailto:epetsitter@epetsitter.co.kr">epetsitter@epetsitter.co.kr</a> 통신판매업신고번호 : 2018-부산남구-0429<br><span class="pcx"><br>
-				당 사이트에서 전자결제된 금액에 대한 책임은 (주)태호컴퍼니에게 있습니다. 환불 등 필요한 조치가 있을 시 아래로 연락해주시길 바랍니다.<br>
-				담당자: 김태호 / 연락처: 051-610-1526</span>
+				<address>상호 : 주식회사 애니멀메이트    주소 : 대구광역시 중구 국채보상로 537 (수동) 사업자등록번호 : 310-88-01171 <br>
+				대표자 : 김상민   전화 : 053-666-6666    팩스 : 053-666-6667    이메일 : <a href="mailto:epetsitter@epetsitter.co.kr">sangmin@animalmate.co.kr</a> 통신판매업신고번호 : 2020-대구중구-1109<br><span class="pcx"><br>
+				당 사이트에서 전자결제된 금액에 대한 책임은 (주)애니멀메이트에게 있습니다. 환불 등 필요한 조치가 있을 시 아래로 연락해주시길 바랍니다.<br>
+				담당자: 김상민 / 연락처: 053-666-6666</span>
 				</address>
-				<small>Copyright(c)2018 by <span>epetsitter.co.kr</span>. All Rights Reserved.</small>
+				<small>Copyright(c)2020 by <span>animalmate.co.kr</span>. All Rights Reserved.</small>
 			</div>
 		</div>
 	</div>
