@@ -87,28 +87,45 @@
 }
 
 /* ownerFormCheck 화면 */
-.checkPet img, .checkSitter img, .profileUser img {
+.ownerFormCheckView img, .profileUser img {
 	width: 200px;
-	heigth: 200px;
+	height: 200px;
 	border: 1px solid black;
 	margin: 20px 10px 20px 10px;
 	border-radius: 50%;
 }
 
-.checkPet {
-	width: 40%;
-	heigth: 500px;
-	float: left;
+.ownerFormCheckView {
+	padding: 20px;
+	margin: 10px auto;
+	width: 48%;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	background-color: #f9f9f9;
+}
+.ownerFormCheckView h3{
+	margin: 10px 10px 20px 20px;
+	text-align: left;
 }
 
-.checkSitter {
-	width: 40%;
-	heigth: 500px;
-	float: right;
-}
-
-.checkDetail {
+.ownerFormCheckText{
+	padding: 10px;
 	width: 100%;
+	height: 85%;
+	text-align: left;
+	background-color: #f0f0f0;
+}
+
+.ownerFormCheckButton{
+	margin: 10px auto;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+
+.ownerFormCheckView th {
+	background-color: #f0f0f0;
 }
 
 .checkDetail img {
@@ -116,6 +133,7 @@
 	heigth: 150px;
 	margin: 20px 10px 20px 10px;
 }
+
 /* profile 화면 */
 .profileUser {
 	width: 80%;

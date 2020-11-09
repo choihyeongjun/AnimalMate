@@ -27,6 +27,7 @@ public class MypetList implements Action {
 		vo.setId("id3");
 		// 해당 페이지의 리스트만 조회
 		list = dao.selectPets(vo);
+		System.out.println();
 
 		request.setAttribute("pets", list);
 		return "jsp/mypage/mypetList.jsp";

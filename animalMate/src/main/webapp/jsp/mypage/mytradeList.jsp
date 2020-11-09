@@ -62,9 +62,9 @@
 						<td>${tb.ttype}</td>
 						<td>${tb.code}</td>
 						<td>${tb.seller}</td>
-						<td>DBValue</td>
+						<td>${tb.type} ${tb.detailType}</td>
 						<td>${tb.price}포인트</td>
-						<td>${tb.stime} ~ ${tb.etime}</td>
+						<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 						<td>${tb.status}</td>
 					</tr>
 				</c:forEach>

@@ -8,16 +8,15 @@
 </head>
 <body>
 <br>
-	<div>
-		<h1>맡기기 상세화면</h1>
-	</div>
+	<h1>돌봐주세요 상세화면</h1>
+<br>
 
 	<div class="row">
-		<div class="checkPet">
+		<div class="ownerFormCheckView">
 			<h3>내 펫 정보</h3>
 			<table class="table">
 				<tr>
-					<td rowspan="5"><img
+					<td rowspan="5" width =30%><img
 						src="${pageContext.request.contextPath}/images/muncat.jpg"></td>
 					<th>펫 이름</th>
 					<td>형준몬</td>
@@ -40,12 +39,12 @@
 				</tr>
 			</table>
 		</div>
-		<div style="width: 15%;"></div>
-		<div class="checkSitter">
+		
+		<div class="ownerFormCheckView">
 			<h3>시터 정보</h3>
 			<table class="table">
 				<tr>
-					<td rowspan="5"><img id="userpic" src="${pageContext.request.contextPath}/images/user.png"></td>
+					<td rowspan="5" width =30%><img id="userpic" src="${pageContext.request.contextPath}/images/user.png"></td>
 					<th>이름</th>
 					<td>${tbs.seller}</td>
 				</tr>
@@ -70,39 +69,46 @@
 	</div>
 
 	<div class="row">
-		<div class="checkDetail">
-			<p>
-				<b>세부조건</b>
-			</p>
+		<div class="ownerFormCheckView">
+			<h3>세부조건</h3>
 			<table class="table">
 				<tr>
-					<th>지역</th>
-					<td><p>${tbs.location1}</p></td>
+					<th width=30%>지역</th>
+					<td>${tbs.location1}</td>
 				</tr>
 				<tr>
 					<th>날짜</th>
-					<td><p>DBValue</p></td>
+					<td>DBValue</td>
 				</tr>
 				<tr>
 					<th>근무시간</th>
-					<td><p>DBValue</p></td>
+					<td>DBValue</td>
 				</tr>
 				<tr>
 					<th>거래금액</th>
-					<td><p>DBValue</p></td>
+					<td>DBValue</td>
 				</tr>
 				<tr>
 					<th>요청내용</th>
-					<td><p>DBValue</p></td>
+					<td>DBValue</td>
 				</tr>
 			</table>
 		</div>
+		
+		<div class="ownerFormCheckView">
+			<h3>세부내용</h3>
+			<div class="ownerFormCheckText">
+				세부내용입력
+			</div>
+		</div>
 	</div>
+	
+<br>
 
-	<div class="row">
+	<div class="ownerFormCheckButton">
 		<button type="submit">거래 수락</button>
-		&nbsp;&nbsp;&nbsp;
 	</div>
+<hr>
 	
 	<div class="row">
 		<div class="checkDetail">
@@ -124,9 +130,8 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="ownerFormCheckButton">
 		<button type="submit">거래완료</button>
-		&nbsp;&nbsp;&nbsp;
 	</div>
 	
 </body>

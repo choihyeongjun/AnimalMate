@@ -12,6 +12,7 @@ import co.animalMate.common.Action;
 import co.animalMate.vo.MemberVO;
 import co.animalMate.vo.PetVO;
 import co.animalMate.vo.TradeBoardVO;
+import co.animalMate.vo.TradeListVO;
 
 public class MytradeList implements Action {
 
@@ -20,7 +21,7 @@ public class MytradeList implements Action {
 		//내 거래현황,내역 화면 호출
 		MypageDao myDao = new MypageDao();
 		MemberVO memVo = new MemberVO();
-		TradeBoardVO tbVo = new TradeBoardVO();
+		TradeListVO tlVo = new TradeListVO();
 
 		// 세션 아이디 정보
 //		HttpSession session = request.getSession(false);
@@ -33,9 +34,9 @@ public class MytradeList implements Action {
 		
 		// User 거래정보 출력
 		myDao = new MypageDao();
-		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
-		tbVo.setBuyer("id3");//로그인 세션 아이디
-		list = myDao.selectUserTrades(tbVo);
+		List<TradeListVO> list = new ArrayList<TradeListVO>();
+		tlVo.setBuyer("id3");//로그인 세션 아이디
+		list = myDao.selectUserTrades(tlVo);
 		
 		request.setAttribute("tbs", list);
 		request.setAttribute("user", memVo);

@@ -8,7 +8,6 @@
 </head>
 <body>
 <br>
-
 	<div><h1>유저 프로필</h1></div>
 	<div><button>즐겨찾기</button></div>
 	<div class="row">
@@ -51,11 +50,11 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th scope="col">거래날짜</th>
-					<th scope="col">제목</th>
-					<th scope="col">위탁자</th>
-					<th scope="col">시터</th>
-					<th scope="col">별점</th>
+					<th>거래날짜</th>
+					<th>제목</th>
+					<th>위탁자</th>
+					<th>시터</th>
+					<th>별점</th>
 				</tr>
 			</thead>
 			<tbody>

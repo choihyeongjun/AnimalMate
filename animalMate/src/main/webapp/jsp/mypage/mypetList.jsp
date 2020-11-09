@@ -18,14 +18,14 @@
 			<div class = "mypetListView">
 				<table class="table">
 					<tr>
-						<th></th>
+						<th width = 3%></th>
 						<th>이름</th>
-						<th>나이</th>
+						<th width = 6%>나이</th>
 						<th>성별</th>
 						<th>분류</th>
 						<th>세부분류</th>
-						<th>중성화</th>
-						<th>설명</th>
+						<th width = 9%>중성화</th>
+						<th width = 30%>설명</th>
 						<th>사진</th>
 					</tr>
 					<c:forEach var="pet" items="${pets}">
