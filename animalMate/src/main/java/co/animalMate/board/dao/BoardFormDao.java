@@ -13,13 +13,13 @@ import co.animalMate.vo.OwnerListVO;
 import co.animalMate.vo.TradeBoardVO;
 
 
-public class BoardDao extends DAO {
+public class BoardFormDao extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
 	private ResultSet rs; // select 후 결과셋 받기
 	private OwnerListVO vo;
 	public BoardSearchVO serarchvo;
 	
-	private final String SELECT =  "SELECT A.PRICE, A.CODE, A.WTIME, A.LOCATION2 , A.STATUS, B.TYPE, B.PIC"
+	private final String SELECT =  "SELECT A.PRICE, A.WTIME, A.LOCATION2 , A.STATUS, B.TYPE, B.PIC"
 									+ " FROM TRADEBOARD A"
 									+ " INNER JOIN PET B  "
 									+ "ON A.BUYER = B.ID ";
@@ -36,7 +36,6 @@ public class BoardDao extends DAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				vo = new OwnerListVO();
-				vo.setCode(rs.getInt("code"));
 				vo.setPic(rs.getString("pic"));
 				vo.setType(rs.getString("type"));
 				vo.setPrice(rs.getInt("price"));
