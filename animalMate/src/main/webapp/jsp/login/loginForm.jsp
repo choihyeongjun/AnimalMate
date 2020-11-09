@@ -19,13 +19,13 @@ function formCheck() {
 	var id = document.querySelector('#id');
 	var pw = document.querySelector('#pw');
 	if(id.value == ""){
-		alert("사용자 아이디를 입력하세요");
+		alert("아이디를 입력하세요");
 		id.focus();
 		return false;
 	}
 	
 	if(pw.value == ""){
-		alert("사용자 패스워드를 입력하세요");
+		alert("패스워드를 입력하세요");
 		pw.focus();
 		return false;
 	}
@@ -39,8 +39,8 @@ function formCheck() {
 <div class="login-wrapper" align="center">
 <!-- 회원가입창 상단로고 //클릭하면 메인페이지로 이동 -->
 	<header class="header">	
-			<a href="#" target"_blank">
-				<image src="#" id="logo" >
+			<a href="${pageContext.request.contextPath}/jsp/main/mainMenu.jsp" target="_blank">
+				<image src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG" id="logo" >
 				</image>
 			</a>
 	</header>

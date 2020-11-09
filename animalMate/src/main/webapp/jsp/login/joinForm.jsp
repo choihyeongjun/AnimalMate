@@ -8,7 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 function id_input_check(){
-	window.open("overlapIdCheck.jsp", "아이디 중복 확인", "width=400, height=250"); 
+	window.open("${pageContext.request.contextPath}/jsp/login/overlapIdCheck.jsp", "아이디 중복 확인", "width=400, height=250"); 
 }
 
 	var id = document.querySelector('#id');
@@ -24,13 +24,22 @@ function id_input_check(){
 	var location2 = document.querySelector('#location2');
 	
 function formCheck(){
-	pwCheck();
-	nameCheck();
-	emailCheck();
-	zoominCheck();
-	telCheck();
+	if(!pwCheck()){
+		return false;
+	}
+	if(!nameCheck()){
+		return false; 
+	}
+	if(!emailCheck()){
+		return false; 
+	}
+	if(!zoominCheck()){
+		return false; 
+	}
+	if(!telCheck()){
+		return false; 
+	}
 	
-	return true;
 }
 	
 function pwCheck(){
@@ -117,8 +126,8 @@ function telCheck(){
 <body>
 <!-- 회원가입창 상단로고 //클릭하면 메인페이지로 이동 -->
 	<header class="header">	
-			<a href="#" target ="_blank">
-				<image src="#" id="logo" >
+			<a href="${pageContext.request.contextPath}/jsp/main/mainMenu.jsp" target="_blank">
+				<image src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG" id="logo" >
 				</image>
 			</a>
 	</header>
@@ -185,7 +194,7 @@ function telCheck(){
                 <div>
                     <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
                     <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100" name="email"placeholder="이메일 입력">
+                        <input type="text" id="email" class="int" maxlength="20" name="email"placeholder="이메일 입력">
                     </span>
                 </div>
 
@@ -193,7 +202,7 @@ function telCheck(){
                 <div>
                     <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
                     <span class="box int_mobile">
-                        <input type="tel" id="mobile" class="int" maxlength="16" name="tel" placeholder="전화번호 입력">
+                        <input type="text" id="mobile" class="int" maxlength="20" name="tel" placeholder="전화번호 입력">
                     </span>   
                 </div>
 		
