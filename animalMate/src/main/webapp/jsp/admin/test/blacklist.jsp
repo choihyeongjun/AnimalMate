@@ -43,10 +43,16 @@ button{width: 50px;
 			.append($('<td>').html(item.id))
 			.append($('<td>').html(item.name))
 			.append($('<td>').html(item.location1))
-			.append($('<td>').html(item.role))
 			.append($('<td>').html(item.tel))
-			.append($('<td>').html(item.eDate))
-			.append($('<td>').html('<input type="text" id=\'author\' value='+item.author+'>'))
+			.append($('<td>').html(item.edate))
+			.append($('<td>').html('<select id=\'author\'> '+
+			'<option selected value='+item.author+'>'+item.author+'</option>'+
+			'<option >sitter</option>'+
+			'<option >sittersait</option>'+
+			'<option >users</option>'+
+			'<option >admin</option>'+
+			'<option >black</option></select>'
+			))
 			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
 			.append($('<td>').html('<button id=\'btnUpdate\'>수정</button>'))
 			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
@@ -77,10 +83,16 @@ button{width: 50px;
 			.append($('<td>').html(item.id))
 			.append($('<td>').html(item.name))
 			.append($('<td>').html(item.location1))
-			.append($('<td>').html(item.role))
 			.append($('<td>').html(item.tel))
-			.append($('<td>').html(item.eDate))
-			.append($('<td>').html('<input type="text" id=\'author\' value='+item.author+'>'))
+			.append($('<td>').html(item.edate))
+			.append($('<td>').html('<select id=\'author\'> '+
+			'<option selected value='+item.author+'>'+item.author+'</option>'+
+			'<option >sitter</option>'+
+			'<option >sittersait</option>'+
+			'<option >users</option>'+
+			'<option >admin</option>'+
+			'<option >black</option></select>'
+			))
 			.append($('<td>').html('<button id=\'btnSelect\'>조회</button>'))
 			.append($('<td>').html('<button id=\'btnUpdate\'>수정</button>'))
 			.append($('<input type=\'hidden\' id=\'hidden_userId\'>').val(item.id))
@@ -132,8 +144,7 @@ button{width: 50px;
 	</div>
 	<div>
 		<div class="container">
-		<table id="search" class="table text-center">
-			<thead>
+		<table  class="table text-center">
 				<tr>
 					<th class="text-center">아이디</th>
 					<th class="text-center">이  름</th>
@@ -142,8 +153,9 @@ button{width: 50px;
 					<th class="text-center">가입일자</th>
 					<th class="text-center">권 한 </th>
 					<th class="text-center">변경</th>
+				<tbody id="search">
+				</tbody>
 				</tr>
-			</thead>
 		</table>
 		</div>
 	</div>
