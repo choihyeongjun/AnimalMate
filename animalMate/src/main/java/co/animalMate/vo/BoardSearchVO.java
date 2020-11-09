@@ -1,65 +1,67 @@
 package co.animalMate.vo;
 
 public class BoardSearchVO {
-	private String pPic;
-	private String pType;
-	private String tLocation2;
-	private int tWtime;
-	private int tPrice;
-	private String tStatus;
-	private String tSTime;
-	private String tETime;
+	private String Pic;
+	private String Type;
+	private String Location2;
+	private int Wtime;
+	private int Price;
+	private String Status;
+	private String STime;
+	private String ETime;
 	
 	
-	public String gettSTime() {
-		return tSTime;
+	public BoardSearchVO() {
+		super();
 	}
-	public void settSTime(String tSTime) {
-		this.tSTime = tSTime;
+	public String getPic() {
+		return Pic;
 	}
-	public String gettETime() {
-		return tETime;
+	public void setPic(String pic) {
+		Pic = pic;
 	}
-	public void settETime(String tETime) {
-		this.tETime = tETime;
+	public String getType() {
+		return Type;
 	}
-	public String getpPic() {
-		return pPic;
+	public void setType(String type) {
+		Type = type;
 	}
-	public void setpPic(String pPic) {
-		this.pPic = pPic;
+	public String getLocation2() {
+		return Location2;
 	}
-	public String getpType() {
-		return pType;
+	public void setLocation2(String location2) {
+		Location2 = location2;
 	}
-	public void setpType(String pType) {
-		this.pType = pType;
+	public int getWtime() {
+		return Wtime;
 	}
-	public String gettLocation2() {
-		return tLocation2;
+	public void setWtime(int wtime) {
+		Wtime = wtime;
 	}
-	public void settLocation2(String tLocation2) {
-		this.tLocation2 = tLocation2;
+	public int getPrice() {
+		return Price;
 	}
-	public int gettWtime() {
-		return tWtime;
+	public void setPrice(int price) {
+		Price = price;
 	}
-	public void settWtime(int tWtime) {
-		this.tWtime = tWtime;
+	public String getStatus() {
+		return Status;
 	}
-	public int gettPrice() {
-		return tPrice;
+	public void setStatus(String status) {
+		Status = status;
 	}
-	public void settPrice(int tPrice) {
-		this.tPrice = tPrice;
+	public String getSTime() {
+		return STime;
 	}
-	public String gettStatus() {
-		return tStatus;
+	public void setSTime(String sTime) {
+		STime = sTime;
 	}
-	public void settStatus(String tStatus) {
-		this.tStatus = tStatus;
+	public String getETime() {
+		return ETime;
+	}
+	public void setETime(String eTime) {
+		ETime = eTime;
 	}
 	
 	
-	
-}
+	}

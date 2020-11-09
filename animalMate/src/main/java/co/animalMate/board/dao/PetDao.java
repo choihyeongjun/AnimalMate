@@ -105,6 +105,34 @@ public class PetDao extends DAO {
 		}
 		return vo;
 	}
+	
+	// id,name기반 단일 조회
+		public PetVO selectByIdName(PetVO vo) {
+			try {
+				psmt = conn.prepareStatement("SELECT * FROM PET WHERE ID = ? and NAME = ?");
+				psmt.setString(1, vo.getId());
+				psmt.setString(2, vo.getName());
+				rs = psmt.executeQuery();
+				if(rs.next()) {
+					vo = new PetVO();
+					vo.setCode(rs.getString("code"));
+					vo.setName(rs.getString("name"));
+					vo.setAge(rs.getInt("age"));
+					vo.setGender(rs.getString("gender"));
+					vo.setType(rs.getString("type"));
+					vo.setDetailType(rs.getString("detailType"));
+					vo.setCut(rs.getString("cut"));
+					vo.setComm(rs.getString("comm"));
+					vo.setId(rs.getString("id"));
+					vo.setPic(rs.getString("pic"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return vo;
+		}
 
 	// 펫 등록
 	public int insert(PetVO vo) {

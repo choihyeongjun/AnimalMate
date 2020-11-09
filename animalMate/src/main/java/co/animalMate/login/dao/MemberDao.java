@@ -33,7 +33,7 @@ public class MemberDao extends DAO {
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
-				vo.setnName(rs.getString("nName"));
+				vo.setNName(rs.getString("nName"));
 				vo.setTel(rs.getString("tel"));
 				vo.seteDate(rs.getString("eDate"));
 				vo.setAuthor(rs.getString("author"));
@@ -67,7 +67,7 @@ public class MemberDao extends DAO {
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
-				vo.setnName(rs.getString("nName"));
+				vo.setNName(rs.getString("nName"));
 				vo.setTel(rs.getString("tel"));
 				vo.seteDate(rs.getString("eDate"));
 				vo.setAuthor(rs.getString("author"));
@@ -96,7 +96,7 @@ public class MemberDao extends DAO {
 			psmt.setString(1, vo.getId());
 			psmt.setString(2, vo.getPw());
 			psmt.setString(3, vo.getName());
-			psmt.setString(4, vo.getnName());
+			psmt.setString(4, vo.getNname());
 			psmt.setString(5, vo.getEmail());
 			psmt.setString(6, vo.getTel() );
 			psmt.setInt(7, vo.getZoomin1());

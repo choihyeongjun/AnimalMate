@@ -31,7 +31,8 @@ public class MypetUpdateAction implements Action {
 		vo.setComm(request.getParameter("comm"));
 		vo.setPic(request.getParameter("pic"));
 		vo.setCode(request.getParameter("code"));
-
+		
+		
 		// 현재 컨텍스트에 사진업로드하기
 		String appPath = request.getServletContext().getRealPath("/images");
 		try {

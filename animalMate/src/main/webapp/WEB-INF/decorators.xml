@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/decorators">
+
 	<decorator name="main-theme" page="main-theme.jsp">
 		<pattern>/*</pattern>
 	</decorator>
+	
 	<excludes>
 		<pattern>/index.jsp</pattern>
 		<pattern>/jsp/login/*</pattern>
@@ -13,9 +15,10 @@
 		<pattern>/ld_find.do</pattern>
 		<pattern>/resetPw.do</pattern>
 		<pattern>/loginForm.do</pattern>
-		<pattern>/jsp/admin/test/*</pattern>
 		<pattern>/submitQuestion.do</pattern>
+		<pattern>/jsp/admin/test/*</pattern>
 		<pattern>*/ajax/*</pattern>
+		
 		<pattern>*/adminLogin.do</pattern>
 	</excludes>
 </decorators>

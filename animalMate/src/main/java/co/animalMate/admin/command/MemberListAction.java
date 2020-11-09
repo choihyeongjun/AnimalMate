@@ -22,6 +22,8 @@ public class MemberListAction implements Action {
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		
 		list = dao.selectAll();
+		
+		System.out.println(list);
 		try {
 			response.getWriter().print(new JSONArray(list));
 		} catch (IOException e) {
