@@ -24,8 +24,7 @@
 	$(()=>{
 		$("#gobackBtn").on({
 			"click" : function() {
-				
-				 history.back();
+				location.href = "${pageContext.request.contextPath}/goNoticeBoardPage.do"
 			}
 		})
 	})

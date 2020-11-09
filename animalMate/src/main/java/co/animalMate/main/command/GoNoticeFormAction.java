@@ -14,9 +14,11 @@ public class GoNoticeFormAction implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		NoticeDAO dao = new NoticeDAO();
 		NoticeVO vo = new NoticeVO();
+		String sCode = request.getParameter("code");
 		
-		if(request.getParameter("code")!=null && request.getParameter("code")!="") { //기존 글을 조회하는 경우
-			int code = Integer.parseInt(request.getParameter("code"));
+		if(sCode!=null && sCode!="") { //기존 글을 조회하는 경우
+			
+			int code = Integer.parseInt(sCode);
 			
 			vo.setCode(code);
 			vo = dao.selectCode(vo);
@@ -29,16 +31,16 @@ public class GoNoticeFormAction implements Action {
 			boolean existCookie = false;
 			Cookie[] cookieList = request.getCookies();
 			for(Cookie co : cookieList) {
-				if(co.getValue().equals(request.getParameter("code"))) {
+				if(co.getValue().equals(sCode)) {
 					existCookie = true;
 				}
 			}
 			
 				//쿠키생성
-				if(existCookie) {
-					
-				} else {
+				if(!existCookie) {
+					//쿠키가 없는 경우
 					Cookie cookie = new Cookie("cookieCode", request.getParameter("code"));
+					cookie .setMaxAge(60*60*24);
 					response.addCookie(cookie);
 					dao.updateCount(vo);
 				}

@@ -8,9 +8,10 @@ public class DAO {
 
 	private String driver = "oracle.jdbc.driver.OracleDriver";
 	//학원
-		//private String url = "jdbc:oracle:thin:@192.168.0.92:1521:xe";
-	//집
 		private String url = "jdbc:oracle:thin:@192.168.0.92:1521:xe";
+	//집
+		//private String url = "jdbc:oracle:thin:@192.168.0.92:1521:xe";
+
 		
 	private String user = "mongde";
 	private String password = "1234";

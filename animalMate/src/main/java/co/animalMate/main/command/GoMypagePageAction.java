@@ -33,9 +33,8 @@ public class GoMypagePageAction implements Action {
 //		String id = (String) session.getAttribute("id");
 //		petVo.setId(id);
 
-		// 임시 아이디.
-		petVo.setId("id3");
 		// User 펫 리스트 출력
+		petVo.setId("id3");
 		list = petDao.selectPets(petVo);
 		
 		// User 정보 출력
@@ -43,8 +42,11 @@ public class GoMypagePageAction implements Action {
 		memVo = myDao.userInfo(memVo);
 		
 		// 거래 횟수 호출
+		myDao = new MypageDao();
+		tbVo.setBuyer("id3");
+		tbVo.setSeller("id3");
 		tbVo = myDao.tradeCount(tbVo);
-		System.out.println(tbVo.getCode());
+
 		
 		request.setAttribute("tcount", tbVo);
 		request.setAttribute("pets", list);
