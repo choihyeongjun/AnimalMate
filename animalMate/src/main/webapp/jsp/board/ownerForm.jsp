@@ -1,6 +1,7 @@
   
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
  <head>
@@ -33,10 +34,10 @@
             	// 버튼 add function
             	$(document).on("click",".checkAddBtn",function(){
             		var addDiv = $('<div/>',{'class':'checkList1 check_input_2ea'});
-            		var $input = $('<input/>',{type:'text', placeholder:'업무 체크리스트를 입력해주세요.'});
+            		var $input = $('<input/>',{type:'text', placeholder:'업무 체크리스트를 입력해주세요.', name:'joblistComm'});
             		
             		$(addDiv).append($input);
-            		$(addDiv).append($('<button/>').attr('class','checkDelBtn btn_xs c_red').text('삭제'));
+            		$(addDiv).append($('<button/>').attr({'class':'checkDelBtn btn_xs c_red'}).text('삭제'));
             		$("#sec03").append(addDiv);
 
             	});
@@ -63,6 +64,7 @@
             					$("#genderTD").text(pet.gender);
             					$("#typeTD").text(pet.type);
             					$("#cutTD").text(pet.cut);
+            					$("#petCode").val(pet.code);
             				}
             			}) //end of ajax
             		} //end of change function
@@ -113,10 +115,10 @@
                                         <td>펫 이름</td>
                                         <td>
                                         	<select id="name" name="name">
-                                        		<option value="">내 펫 선택</option>
-                                        		<option value="나">나</option>
-                                        		<option value="고양이">고양이</option>
-                                        		<option value="다람쥐">다람쥐</option>
+                                        		<c:forEach items="${petList}" var="v">
+                                        			<option value="">펫을 선택해주세요</option>
+                                        			<option value="${v.name}">${v.name}</option>
+                                        		</c:forEach>
                                         	</select>
                                         </td>
                                     </tr>
@@ -142,6 +144,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <input type="hidden" id="petCode" name="petCode" value="">
                         </div>
                     </div>
                 </div>
@@ -166,17 +169,20 @@
 	                        <tbody>
 	                            <tr>
 	                                <th>근무지역</th>
-	                              	<td><input type="text" name="location2" placeholder="돌봄 지역을 입력하세요"></td>
+	                                <td><input type="text" name="location1" placeholder="돌봄 지역을 입력하세요"></td>
 	                            </tr>
-	                            
+	                            <tr>
+	                                <th>상세지역</th>	                            
+	                            	<td><input type="text" name="location2" placeholder="돌봄 세부지역을 입력하세요"></td>
+	                            </tr>
 	                            <tr>
 	                                <th>근무날짜</th>
 	                                <td>
 	                                    <!-- jQuery datepicker 연결하면 됨-->
 	                                    <div class="calendar">
-	                                        <input type="date" name="stime" placeholder="시작일" >
+	                                        <input type="date" name="sdate" id="sdate" placeholder="시작일" >
 	                                        <span>~</span>
-	                                        <input type="date" name="etime" placeholder="종료일" >
+	                                        <input type="date" name="edate" id="edate" placeholder="종료일" >
 	                                    </div>
 	                                </td>
 	                            </tr>
@@ -185,19 +191,16 @@
 	                                <th>근무시간</th>
 	                                <td>
 	                                    <div class="calendar">
-	                                        <input type="time" name="" id="testttt">
+	                                        <input type="time" name="stime" id="stime">
 	                                        <span>~</span>
-	                                        <select>
-	                                            <option>12:00</option>
-	                                            <option>13:00</option>
-	                                        </select>
+	                                        <input type="time" name="etime" id="etime">
 	                                    </div>
 	                                </td>
 	                            </tr>
 	                            
 	                            <tr>
 	                                <th>거래금액</th>
-	                                <td class="amount"><input type="text" name="price" placeholder="서비스 비용을 입력하세요">원</td>
+	                                <td class="amount"><input type="text" name="price" id="price" placeholder="서비스 비용을 입력하세요">원</td>
 	                            </tr>
 	                        </tbody>
 	                    </table>
@@ -210,7 +213,7 @@
 	                    </div>
 	                    
 	                    <div class="checkList1 check_input_2ea">
-	                        <input type="text" placeholder="업무 체크리스트를 입력해주세요">
+	                        <input type="text" id="joblistComm" name="joblistComm" placeholder="업무 체크리스트를 입력해주세요">
 	                        <button class="checkDelBtn btn_xs c_red" type="button">삭제</button><!-- class명 바꿔야함 삭제로(checkAddBtn) -->
 	                    </div>
 	                </div>
@@ -219,7 +222,7 @@
                 <div id="sec05" class="">
                     <h2 class="cont_tit">세부내용</h2>
 
-                    <textarea name="comm" placeholder="세부내용을 입력해 주세요"></textarea>
+                    <textarea name="comm" id="comm" placeholder="세부내용을 입력해 주세요"></textarea>
                 </div>
 
                 <div id="sec06" class="sitter_caution">

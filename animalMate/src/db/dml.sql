@@ -3,6 +3,7 @@ CREATE SEQUENCE PET_CODE;
 CREATE SEQUENCE BLACK_CODE;
 CREATE SEQUENCE QUESTION_SEQ;
 CREATE SEQUENCE NOTICE_CODE;
+CREATE SEQUENCE TRADEBOARD_CODE;
 
 --notice테이블 더미
 insert into notice values(notice_code.nextval, sysdate, 0, '실험1', '실험용입니다.', '공지');

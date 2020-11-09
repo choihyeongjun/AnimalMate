@@ -11,6 +11,8 @@ public class TradeBoardVO {
 	private int price;
 	private String comm;
 	private String status;
+	private String sdate;
+	private String edate;
 	private String stime;
 	private String etime;
 	private int wtime;
@@ -131,9 +133,22 @@ public class TradeBoardVO {
 	public void setLocation2(String location2) {
 		this.location2 = location2;
 	}
+
+	public String getSdate() {
+		return sdate;
+	}
+
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
+	}
+
+	public String getEdate() {
+		return edate;
+	}
+
+	public void setEdate(String edate) {
+		this.edate = edate;
+	}
 		
-	
-	
-	
-	
+
 }
