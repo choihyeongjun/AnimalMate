@@ -34,9 +34,9 @@ public class MytradeList implements Action {
 		// User 거래정보 출력
 		myDao = new MypageDao();
 		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
-		tbVo.setBuyer("id3");
+		tbVo.setBuyer("id3");//로그인 세션 아이디
 		list = myDao.selectUserTrades(tbVo);
-
+		
 		request.setAttribute("tbs", list);
 		request.setAttribute("user", memVo);
 		return "jsp/mypage/mytradeList.jsp";

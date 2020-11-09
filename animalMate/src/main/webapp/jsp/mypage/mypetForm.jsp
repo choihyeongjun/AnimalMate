@@ -25,12 +25,12 @@
 					</tr>
 					<tr>
 						<th colspan=2>펫성별</th>
-						<td colspan=2><input type="radio" id="male" name="gender" value="남"> 
-							<label for="male">수컷</label><br> 
-							<input type="radio" id="female" name="gender" value="여"> 
-							<label for="female">암컷</label><br> 
-							<input type="radio" id="other" name="gender" value="기타" checked> 
-							<label for="other">기타</label>
+						<td colspan=2><input type="radio" id="수컷" name="gender" value="수컷"> 
+							<label for="수컷">수컷</label><br> 
+							<input type="radio" id="암컷" name="gender" value="암컷"> 
+							<label for="암컷">암컷</label><br> 
+							<input type="radio" id="기타" name="gender" value="기타" checked> 
+							<label for="기타">기타</label>
 						</td>
 					</tr>
 					<tr>
