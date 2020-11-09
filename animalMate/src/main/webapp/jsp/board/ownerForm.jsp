@@ -50,7 +50,6 @@
             	//펫 이름 선택했을 때
             	$("#name").on({
             		"change":function(){
-            			
             			var petName = $(this).val()
             			$.ajax({
             				url:'${pageContext.request.contextPath}/ajax/petInfo.do',

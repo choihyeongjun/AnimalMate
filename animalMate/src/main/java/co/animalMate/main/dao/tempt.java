@@ -33,7 +33,7 @@ public class tempt extends DAO {
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
-				vo.setnName(rs.getString("nName"));
+				vo.setNName(rs.getString("nName"));
 				vo.setTel(rs.getString("tel"));
 				vo.seteDate(rs.getString("eDate"));
 				vo.setAuthor(rs.getString("author"));
@@ -68,7 +68,7 @@ public class tempt extends DAO {
 				vo.setId(rs.getString("id"));
 				vo.setPw(rs.getString("pw"));
 				vo.setName(rs.getString("name"));
-				vo.setnName(rs.getString("nName"));
+				vo.setName(rs.getString("nName"));
 				vo.setTel(rs.getString("tel"));
 				vo.seteDate(rs.getString("eDate"));
 				vo.setAuthor(rs.getString("author"));

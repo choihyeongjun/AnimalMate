@@ -59,13 +59,13 @@ public class OwnerInsertAction implements Action {
 			petCodeDAO.ownerInsert(petCodeVO);
 			
 			//JoblistVO
-			JoblistVO JoblistVO = new JoblistVO();
-			JoblistDAO JoblistDAO = new JoblistDAO();
+			JoblistVO joblistVO = new JoblistVO();
+			JoblistDAO joblistDAO = new JoblistDAO();
 			String[] joblistComm = request.getParameterValues("joblistComm");
 			for(String a : joblistComm) {
-				JoblistVO.setComm(a);
-				JoblistVO.setCode(tradeBoardVO.getCode());
-				JoblistDAO.ownerInsert(JoblistVO);
+				joblistVO.setComm(a);
+				joblistVO.setCode(tradeBoardVO.getCode());
+				joblistDAO.ownerInsert(joblistVO);
 			}
 			
 //			System.out.println(buyer);
