@@ -23,8 +23,8 @@ public class OwnerListSearhAction implements Action {
 		List<BoardSearchVO> list = new ArrayList<BoardSearchVO>();
 		
 		vo.setType(request.getParameter("petType"));
-		vo.setSTime(request.getParameter("sTime"));
-		vo.setETime(request.getParameter("eTime"));
+		vo.setStime(request.getParameter("sTime"));
+		vo.setEtime(request.getParameter("eTime"));
 		
 		list =  dao.search(vo);
 		request.setAttribute("borders", list); 

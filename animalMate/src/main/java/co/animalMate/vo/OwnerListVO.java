@@ -4,14 +4,33 @@ public class OwnerListVO {
 	private String pic;
 	private String type;
 	private int price ;
-	private int wtime;
-	private String location2;
+	private String sdate;
+	private String edate;
+	private String location1;
 	private String status;
 	private String stime;
 	private String etime;
 	private int code;
 	
 	
+	public String getSdate() {
+		return sdate;
+	}
+	public void setSdate(String sdate) {
+		this.sdate = sdate;
+	}
+	public String getEdate() {
+		return edate;
+	}
+	public void setEdate(String edate) {
+		this.edate = edate;
+	}
+	public String getLocation1() {
+		return location1;
+	}
+	public void setLocation1(String location1) {
+		this.location1 = location1;
+	}
 	public int getCode() {
 		return code;
 	}
@@ -48,18 +67,8 @@ public class OwnerListVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getWtime() {
-		return wtime;
-	}
-	public void setWtime(int wtime) {
-		this.wtime = wtime;
-	}
-	public String getLocation2() {
-		return location2;
-	}
-	public void setLocation2(String location2) {
-		this.location2 = location2;
-	}
+
+
 	public String getStatus() {
 		return status;
 	}

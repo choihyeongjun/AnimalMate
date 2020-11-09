@@ -4,7 +4,7 @@ public class JoblistVO {
 	private int code;
 	private String comm;
 	private String pic;
-	private String comfirm;
+	private String confirm;
 	
 	public JoblistVO() {}
 
@@ -32,13 +32,14 @@ public class JoblistVO {
 		this.pic = pic;
 	}
 
-	public String getComfirm() {
-		return comfirm;
+	public String getConfirm() {
+		return confirm;
 	}
 
-	public void setComfirm(String comfirm) {
-		this.comfirm = comfirm;
+	public void setConfirm(String confirm) {
+		this.confirm = confirm;
 	}
-	
+
+
 	
 }

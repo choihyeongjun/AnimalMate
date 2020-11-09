@@ -1,6 +1,6 @@
-  
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
  <head>
@@ -24,18 +24,25 @@
 
         <!-- css -->
         <style>
-
+			#code {
+				display: none;
+			}
+			
+		.calendar span {
+    		display: inline;
+		}
         </style>
     </head>
 
     <body>
         <!-- s:container -->
         <div class="container">
-            
+            <c:forEach var="border" items="${borders}">
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐주세요 - (예약page)</h1>
-                <p>{param.title}</p>
+                <p>${border.title}</p>
+                <p id="code">${border.code}</p>
             </div>
             <!-- e:title -->
 
@@ -47,7 +54,7 @@
 
                     <div class="cont_area">
                         <div class="info_img">
-                            <img class="info_img" src="${pageContext.request.contextPath}/images/muncat.jpg" alt="시터 이미지" height="100px" width="100px">
+                            <img class="info_img" src="${pageContext.request.contextPath}${border.pic}" alt="시터 이미지" height="100px" width="100px">
                         </div>
 
                         <div class="info_table">
@@ -67,27 +74,27 @@
                                 <tbody>
                                     <tr>
                                         <td>펫 이름</td>
-                                        <td>DBVALUE</td>
+                                        <td>${border.name}</td>
                                     </tr>
                                     
                                     <tr>
                                         <td>펫 나이</td>
-                                        <td>DBVALUE</td>
+                                        <td>${border.age}</td>
                                     </tr>
                                     
                                     <tr>
                                         <td>펫 성별</td>
-                                        <td>DBVALUE</td>
+                                        <td>${border.gender}</td>
                                     </tr>
 
                                    <tr>
                                         <td>펫 종류</td>
-                                        <td>DBVALUE</td>
+                                        <td>${border.type}</td>
                                     </tr>
 
                                     <tr>
                                         <td>중성화 유무</td>
-                                        <td>DBVALUE</td>
+                                        <td>${border.cut}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -112,42 +119,45 @@
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>근무지역</td>
-                                <td>{param.location2}</td>
-                            </tr>
-                            
-                            <tr>
-                                <td>근무날짜</td>
+                          		<tr>
+                                   <th>근무지역</th>
+                                   <td>${border.location1}</td>
+                               </tr>
+                               <tr>
+                                   <th>상세지역</th>                               
+                                  <td>${border.location2}</td>
+                               </tr>
+                            	<tr>
+                                <th>근무날짜</th>
                                 <td>
                                     <!-- jQuery datepicker 연결하면 됨-->
                                     <div class="calendar">
-                                        <span class="datepickerview"  placeholder="시작일">{param.stime}
+                                        <span class="datepickerview">${border.sdate}
                                         <span>~</span>
-                                        <span class="datepickerview"  placeholder="종료일" >{param.etime}
+                                        <span class="datepickerview">${border.edate}
                                     </div>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>근무시간</td>
+                                <th>근무시간</th>
                                 <td>
                                     <div class="calendar">
-                                      <span>DBVALUE</span>
+                                      <span>${border.stime}</span>
                                         <span>~</span>
-                                        <span>DBVALUE</span>
+                                        <span>${border.etime}</span>
                                     </div>
                                 </td>
                             </tr>
 
                             <tr>
-                                <td>돌봄 요청 금액</td>
-                                <td>{param.price} 원</td>
+                                <th>돌봄 요청 금액</th>
+                                <td>${border.price} 원</td>
                             </tr>
 
                             <tr>
-                                <td>반려인</td>
-                                <td><button>프로필 상세보기</button></td>
+                                <th>반려인</th>
+                                <td>${border.buyer}<button>프로필 상세보기</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -156,17 +166,13 @@
                  <div id="sec04" class="">
                     <h2 class="cont_tit">체크리스트</h2>
                     <div>
-                        <p>DBVALUE</p>
-                 		<p>DBVALUE</p>
-                 		<p>DBVALUE</p>
-                 		<p>DBVALUE</p>
+                        <p>${border.comm}</p>
                     </div>
                 </div>
 
                 <div id="sec05" class="">
-                    <h2 class="cont_tit">{param.comm}</h2>
-                    <textarea>
-                    </textarea>
+                    <h2 class="cont_tit">세부사항</h2>
+                    	<textarea>${joblist.comm}</textarea>
                 </div>
 
                 <div id="sec06" class="">
@@ -190,6 +196,7 @@
 
             </div>
             <!-- e:contents -->
+            </c:forEach>
         </div>
         <!-- s:container -->
     </body>
