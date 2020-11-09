@@ -15,20 +15,13 @@ public class MypetUpdate implements Action {
 		PetDao petDao = new PetDao();
 		PetVO petVo = new PetVO();
 
-		// 세션 아이디 정보
-//		HttpSession session = request.getSession(false);
-//		String id = (String) session.getAttribute("id");
-//		petVo.setId(id);
 		String code = request.getParameter("code");
-		
-		
-		// 임시 아이디.
-		petVo.setId("id3");
 		petVo.setCode(code);
 		
-		// User 펫 리스트 출력
+		// User 펫 기존 데이터 출력
 		petVo = petDao.selectPet(petVo);
 		request.setAttribute("pet", petVo);
+		
 		return "jsp/mypage/mypetUpdate.jsp";
 	}
 

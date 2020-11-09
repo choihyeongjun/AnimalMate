@@ -27,6 +27,7 @@
         <!-- css -->
         <style>
         </style>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
             <script>
             $(function() {
             	// 버튼 add function
@@ -44,6 +45,28 @@
             	$(document).on("click",".checkDelBtn",function(){
             		$(this).parent().remove();
             	});
+            	
+            	//펫 이름 선택했을 때
+            	$("#name").on({
+            		"change":function(){
+            			
+            			var petName = $(this).val()
+            			$.ajax({
+            				url:'${pageContext.request.contextPath}/ajax/petInfo.do',
+            				data : {name : petName},
+            				dataType:'json',
+            				error:function(xhr,status,msg){
+            					alert("상태값 :" + status + " Http에러메시지 :"+msg);
+            				},
+            				success:function(pet){
+            					$("#ageTD").text(pet.age);
+            					$("#genderTD").text(pet.gender);
+            					$("#typeTD").text(pet.type);
+            					$("#cutTD").text(pet.cut);
+            				}
+            			}) //end of ajax
+            		} //end of change function
+            	})//end of on
             });
         </script>
       
@@ -58,6 +81,7 @@
                 <h1>돌봐주세요- (글등록 Form)</h1>
                 <input type="text" name="title" placeholder="제목을 입력하세요">
             </div>
+            <br>
             <!-- e:title -->
 
             <!-- s:contents -->
@@ -88,33 +112,33 @@
                                     <tr>
                                         <td>펫 이름</td>
                                         <td>
-                                        	<select>
-                                        		<option>내 펫 선택</option>
-                                        		<option>DBVALUE</option>
-                                        		<option>DBVALUE</option>
-                                        		<option>DBVALUE</option>
+                                        	<select id="name" name="name">
+                                        		<option value="">내 펫 선택</option>
+                                        		<option value="나">나</option>
+                                        		<option value="고양이">고양이</option>
+                                        		<option value="다람쥐">다람쥐</option>
                                         	</select>
                                         </td>
                                     </tr>
                                     
                                     <tr>
                                         <td>나이</td>
-                                        <td>DBVALUE</td>
+                                        <td id="ageTD">DBVALUE</td>
                                     </tr>
                                     
                                     <tr>
                                         <td>성별</td>
-                                        <td>DBVALUE</td>
+                                        <td id="genderTD">DBVALUE</td>
                                     </tr>
 
                                     <tr>
                                         <td>종류</td>
-                                        <td>DBVALUE</td>
+                                        <td id="typeTD">DBVALUE</td>
                                     </tr>
 
                                     <tr>
                                         <td>중성화 유무</td>
-                                        <td>DBVALUE</td>
+                                        <td id="cutTD">DBVALUE</td>
                                     </tr>
                                 </tbody>
                             </table>

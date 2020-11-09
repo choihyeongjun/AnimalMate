@@ -31,6 +31,9 @@ function pwCheck(){
 </script>
 </head>
 <body>
+${msg1}
+${msg2}
+${msg3}
 <!-- 비번 재설정 -->
 	<div class="pw_reset-header" align="center">
 		<h1>비밀번호 재설정</h1>

@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+.btn_area {
+    margin: 30px 0 11px;
+}
+
+ #btn_submit {
+    width: 80%;
+    height :50px;
+    border: 0;
+    cursor: pointer;
+    background-color: #FFAC4B;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    margin-bottom: 33px;
+    
+}
+ #btn_cancel {
+    width: 80%;
+    height :50px;
+    border: 0;
+    cursor: pointer;
+    background-color: #eee;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    
+}
+.int{
+	width: 88%;
+    height: 40px;
+    line-height: 47px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
+    border: none;
+    border-bottom: 2px solid;
+    border-bottom-color: #ccc;
+    margin-bottom: 10px
+    
+}
+::placeholder {
+  color: #ccc;
+   font-weight: 500;
+}
+.zoo{
+	width: 41%;
+    height: 40px;
+    line-height: 47px;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
+    border: none;
+    border-bottom: 2px solid;
+    border-bottom-color: #ccc;
+    margin-bottom: 10px  
+}
+label{
+	display: block;
+    font-size: 15px;
+    color: #000;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+.id_input_check{
+	font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
+	display: inline-block;
+    height: 42px;
+    padding: 0 31px;
+    color: #252525;
+    border: 1px solid #dbdbdb;
+    border-radius: 30px;
+    box-sizing: border-box;
+    background-color: white;
+    margin-top: 20px;
+	font-size: 16px;
+	line-height: 1.5;
+	vertical-align: middle
+}
+#logo {
+    width: 240px;
+    height: 200px;
+    cursor: pointer;
+}
+input:focus {
+    outline: none;
+}
+
+h3 {
+    margin: 19px 0 8px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+h2 {
+    margin: 20px 0 8px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+#wrapper {
+    position: relative;
+    height: 90%;
+    border: 1px solid #e5e5e5;
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px 100px 70px;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
