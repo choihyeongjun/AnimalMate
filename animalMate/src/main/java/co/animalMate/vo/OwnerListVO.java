@@ -9,8 +9,15 @@ public class OwnerListVO {
 	private String status;
 	private String stime;
 	private String etime;
+	private int code;
 	
 	
+	public int getCode() {
+		return code;
+	}
+	public void setCode(int code) {
+		this.code = code;
+	}
 	public String getStime() {
 		return stime;
 	}

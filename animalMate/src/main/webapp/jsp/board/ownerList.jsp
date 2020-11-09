@@ -51,8 +51,18 @@
 #main {
 	padding: 4em 0 2em 0;
 }
+
+#code_dl {
+	display: none;
 }
 </style>
+<script>
+	$(document).ready(function() {
+		$(".box").on("click",function() {
+			alert("클릭확인");
+		})
+	});	
+</script>
 </head>
 
 <body id="top">
@@ -129,6 +139,10 @@
 					<div class="box">
 						<img class="image fit" src="${pageContext.request.contextPath}${border.pic}" alt="" />
 						<div>
+							<dl id="code_dl">
+								<dt>거래번호</dt>
+								<dd>${border.code}</dd>
+							</dl>
 							
 							<dl>
 								<dt>펫 분 류</dt>

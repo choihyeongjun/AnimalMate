@@ -17,9 +17,9 @@ public class BoardDao extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
 	private ResultSet rs; // select 후 결과셋 받기
 	private OwnerListVO vo;
-	private BoardSearchVO serarchvo;
+	public BoardSearchVO serarchvo;
 	
-	private final String SELECT =  "SELECT A.PRICE, A.WTIME, A.LOCATION2 , A.STATUS, B.TYPE, B.PIC"
+	private final String SELECT =  "SELECT A.PRICE, A.CODE, A.WTIME, A.LOCATION2 , A.STATUS, B.TYPE, B.PIC"
 									+ " FROM TRADEBOARD A"
 									+ " INNER JOIN PET B  "
 									+ "ON A.BUYER = B.ID ";
@@ -36,6 +36,7 @@ public class BoardDao extends DAO {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				vo = new OwnerListVO();
+				vo.setCode(rs.getInt("code"));
 				vo.setPic(rs.getString("pic"));
 				vo.setType(rs.getString("type"));
 				vo.setPrice(rs.getInt("price"));
@@ -56,22 +57,23 @@ public class BoardDao extends DAO {
 	//거래게시판 
 	public List<BoardSearchVO> search(BoardSearchVO serarchvo) {
 		List<BoardSearchVO> list = new ArrayList<BoardSearchVO>();
+		
 		try {
 			psmt = conn.prepareStatement(SEARCH);
-			psmt.setString(1,serarchvo.getpType());
-			psmt.setString(2,serarchvo.gettSTime());
-			psmt.setString(3,serarchvo.gettETime());
+			psmt.setString(1,serarchvo.getType());
+			psmt.setString(2,serarchvo.getSTime());
+			psmt.setString(3,serarchvo.getETime());
 			
 			rs = psmt.executeQuery();
 			
 			while (rs.next()) {
 				serarchvo = new BoardSearchVO();
-				serarchvo.setpPic(rs.getString("pic"));
-				serarchvo.setpType(rs.getString("type"));
-				serarchvo.settPrice(rs.getInt("price"));
-				serarchvo.settWtime(rs.getInt("wtime"));
-				serarchvo.settLocation2(rs.getString("location2"));
-				serarchvo.settStatus(rs.getString("status"));
+				serarchvo.setPic(rs.getString("pic"));
+				serarchvo.setType(rs.getString("type"));
+				serarchvo.setPrice(rs.getInt("price"));
+				serarchvo.setWtime(rs.getInt("wtime"));
+				serarchvo.setLocation2(rs.getString("location2"));
+				serarchvo.setStatus(rs.getString("status"));
 				list.add(serarchvo);
 			}
 		} catch (SQLException e) {//
@@ -83,35 +85,7 @@ public class BoardDao extends DAO {
 	}
 	
 	
-	
-	//보류서치 
-	public List<BoardSearchVO> search() {
-		List<BoardSearchVO> list = new ArrayList<BoardSearchVO>();
-		try {
-			psmt = conn.prepareStatement(SEARCH);
-			psmt.setString(1,serarchvo.getpType());
-			psmt.setString(2,serarchvo.gettSTime());
-			psmt.setString(3,serarchvo.gettETime());
-			
-			rs = psmt.executeQuery();
-			
-			while (rs.next()) {
-				serarchvo = new BoardSearchVO();
-				serarchvo.setpPic(rs.getString("pic"));
-				serarchvo.setpType(rs.getString("type"));
-				serarchvo.settPrice(rs.getInt("price"));
-				serarchvo.settWtime(rs.getInt("wtime"));
-				serarchvo.settLocation2(rs.getString("location2"));
-				serarchvo.settStatus(rs.getString("status"));
-				list.add(serarchvo);
-			}
-		} catch (SQLException e) {//
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return list;
-	}
+
 	
 	
 	private final String INSERT = "INSERT INTO TRADEBOARD "
