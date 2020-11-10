@@ -60,11 +60,11 @@ public class OwnerInsertAction implements Action {
 			
 			//JoblistVO
 			JoblistVO joblistVO = new JoblistVO();
-			JoblistDAO joblistDAO = new JoblistDAO();
 			String[] joblistComm = request.getParameterValues("joblistComm");
 			for(String a : joblistComm) {
-				joblistVO.setComm(a);
+				JoblistDAO joblistDAO = new JoblistDAO(); //DAO객체 생성하면서 연결한다!
 				joblistVO.setCode(tradeBoardVO.getCode());
+				joblistVO.setComm(a);
 				joblistDAO.ownerInsert(joblistVO);
 			}
 			

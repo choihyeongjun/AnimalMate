@@ -16,19 +16,28 @@ public class TradeBoardDAO extends DAO {
 	public int ownerInsert(TradeBoardVO vo) { 
 		int n = 0;
 		try {
+			//시퀀스 조회
+			psmt = conn.prepareStatement("select tradeboard_code.nextval from dual");
+			ResultSet rs = psmt.executeQuery();
+			rs.next();
+			int code = rs.getInt(1); //설렉트해온 첫 번째 컬럼
+			vo.setCode(code);
+			
+			//인서트 쿼리
 			psmt = conn.prepareStatement("INSERT INTO TRADEBOARD " + 
 					"(CODE, BUYER, TITLE, TTIME, PRICE, COMM, SDATE, EDATE, STIME, ETIME, TTYPE, LOCATION1, LOCATION2) VALUES " + 
-					"(TRADEBOARD_CODE.NEXTVAL, ?, ?, SYSDATE, ?, ?, ?, ?, ?, ?, '돌봐주세요', ?, ?)");
-			psmt.setString(1, vo.getBuyer());
-			psmt.setString(2, vo.getTitle());
-			psmt.setInt(3, vo.getPrice());
-			psmt.setString(4, vo.getComm());
-			psmt.setString(5, vo.getSdate());
-			psmt.setString(6, vo.getEdate());
-			psmt.setString(7, vo.getStime());
-			psmt.setString(8, vo.getEtime());
-			psmt.setString(9, vo.getLocation1());
-			psmt.setString(10, vo.getLocation2());
+					"(?, ?, ?, SYSDATE, ?, ?, ?, ?, ?, ?, '돌봐주세요', ?, ?)");
+			psmt.setInt(1, vo.getCode());
+			psmt.setString(2, vo.getBuyer());
+			psmt.setString(3, vo.getTitle());
+			psmt.setInt(4, vo.getPrice());
+			psmt.setString(5, vo.getComm());
+			psmt.setString(6, vo.getSdate());
+			psmt.setString(7, vo.getEdate());
+			psmt.setString(8, vo.getStime());
+			psmt.setString(9, vo.getEtime());
+			psmt.setString(10, vo.getLocation1());
+			psmt.setString(11, vo.getLocation2());
 			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

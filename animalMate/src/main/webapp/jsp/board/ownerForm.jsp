@@ -39,7 +39,6 @@
             		$(addDiv).append($input);
             		$(addDiv).append($('<button/>').attr({'class':'checkDelBtn btn_xs c_red'}).text('삭제'));
             		$("#sec03").append(addDiv);
-
             	});
             	
             	// 버튼 minus function
