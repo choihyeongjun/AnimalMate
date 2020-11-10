@@ -15,11 +15,36 @@ public class QuestionDAO extends DAO {
 	
 	
 	private final String SELECTQ = "SELECT * FROM QUESTION where SEND=? and TITLE=?";
+	private final String SELECTCODE = "SELECT * FROM QUESTION WHERE CODE=?";
 	private final String SELECT = "SELECT * FROM QUESTION";
 	private final String SELECTSEARCH="SELECT * FROM QUESTION WHERE STATUS=?";
 	private final String INSERT = "INSERT INTO QUESTION(CODE, SEND, TTYPE, TITLE, COMM, STATUS,TTIME) VALUES(QUESTION_SEQ.nextval,?,?,?,?,?,sysdate)";
 	private final String UPDATE = "UPDATE MEMBER SET NAME = ?, PASSWORD = ?, ADDRESS = ?, TEL = ?, ID = ?";
 	private final String DELETE = "DELETE FROM MEMBER WHERE ID = ?"; 
+	
+	public QuestionVO selectcode(QuestionVO vo){
+		try {
+			psmt=conn.prepareStatement(SELECTCODE);
+			psmt.setInt(1,vo.getCode());
+			rs=psmt.executeQuery();
+			if(rs.next()) {
+				vo.setCode(rs.getInt("code"));
+				vo.setSend(rs.getString("send"));
+				vo.setTtype(rs.getString("ttype"));
+				vo.setTitle(rs.getString("title"));
+				vo.setComm(rs.getString("comm"));
+				vo.setStatus(rs.getString("status"));
+				vo.setTtime(rs.getString("ttime"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return vo;
+	}
 	
 	public List<QuestionVO> selectAll(QuestionVO vo){
 		List<QuestionVO>list=new ArrayList<>();
@@ -89,7 +114,6 @@ public class QuestionDAO extends DAO {
 				vo1.setComm(rs.getString("comm"));
 				vo1.setStatus(rs.getString("status"));
 				vo1.setTtime(rs.getString("ttime"));
-				
 				list.add(vo);
 			}
 		} catch (SQLException e) {

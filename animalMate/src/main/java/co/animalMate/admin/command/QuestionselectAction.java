@@ -19,14 +19,13 @@ public class QuestionselectAction implements Action {
 		   
 		QuestionDAO dao=new QuestionDAO();
 		QuestionVO vo=new QuestionVO();
-		String code=request.getParameter("code");
-		vo.setSend(code);
+		String scode=request.getParameter("code");
+		int code=Integer.parseInt(scode);
+		vo.setCode(code);
+		vo=dao.selectcode(vo);
 		request.setAttribute("title",vo.getTitle());
 		request.setAttribute("comm",vo.getComm());
 		request.setAttribute("ttype",vo.getTtype());
-		
-		
-	
 		
 		return "/jsp/admin/test/questionform.jsp";
 	}
