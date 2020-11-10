@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.animalMate.board.dao.MypageDao;
 import co.animalMate.board.dao.PetDao;
@@ -27,24 +28,23 @@ public class GoMypagePageAction implements Action {
 		MypageDao myDao = new MypageDao();
 		PetDao petDao = new PetDao();
 
-
 		// 세션 아이디 정보
-//		HttpSession session = request.getSession(false);
-//		String id = (String) session.getAttribute("id");
-//		petVo.setId(id);
+		HttpSession session = request.getSession(false);
+		String id = (String) session.getAttribute("id");
+		petVo.setId(id);
 
 		// User 펫 리스트 출력
-		petVo.setId("id3");
+		petVo.setId(id);
 		list = petDao.selectPets(petVo);
 		
 		// User 정보 출력
-		memVo.setId("id3");
+		memVo.setId(id);
 		memVo = myDao.userInfo(memVo);
 		
 		// 거래 횟수 호출
 		myDao = new MypageDao();
-		tbVo.setBuyer("id3");
-		tbVo.setSeller("id3");
+		tbVo.setBuyer(id);
+		tbVo.setSeller(id);
 		tbVo = myDao.tradeCount(tbVo);
 
 		
