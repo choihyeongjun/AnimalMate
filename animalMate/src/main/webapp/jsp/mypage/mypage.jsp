@@ -16,8 +16,8 @@
 			<table class="table">
 				<tr>
 					<td colspan=2 height="200px"><img
-						src="${pageContext.request.contextPath}/images/${pet.pic}"
-						alt="사진을 넣어주세요" width="100px" height="100px"></td>
+						src="${pageContext.request.contextPath}/images/members_pic/${user.pic}"
+						alt="사진을 넣어주세요" style = "width:250px; height:250px; border-radius: 100%;"></td>
 				</tr>
 				<tr>
 					<th>이름</th>
@@ -41,7 +41,7 @@
 				<c:forEach var="pet" items="${pets}" end="2">
 					<tr>
 						<td rowspan=2 width=30%><img
-							src="${pageContext.request.contextPath}/images/${pet.pic}"
+							src="${pageContext.request.contextPath}/images/pet_pic/${pet.pic}"
 							alt="사진을 넣어주세요" width=100px height=100px></td>
 						<td>${pet.name}</td>
 						<td>${pet.age}살</td>

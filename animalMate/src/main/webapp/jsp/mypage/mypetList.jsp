@@ -38,7 +38,7 @@
 							<td>${pet.detailType}</td>
 							<td>${pet.cut}</td>
 							<td>${pet.comm}</td>
-							<td><img src="${pageContext.request.contextPath}/images/${pet.pic}" alt="사진을 넣어주세요" width="100px" height="100px"></td>
+							<td><img src="${pageContext.request.contextPath}/images/pet_pic/${pet.pic}" alt="사진을 넣어주세요" width="100px" height="100px"></td>
 						</tr>
 					</c:forEach>
 				</table>
