@@ -36,6 +36,7 @@ import co.animalMate.login.command.LogoutAction;
 import co.animalMate.login.command.ResetPwAction;
 import co.animalMate.login.command.idOverlapCheck;
 import co.animalMate.main.command.AdminLoginAction;
+import co.animalMate.main.command.AjaxPetInfoAction;
 import co.animalMate.main.command.GoBlackBoardPageAction;
 import co.animalMate.main.command.GoLoginPageAction;
 import co.animalMate.main.command.GoMessageListPageAction;
@@ -45,8 +46,8 @@ import co.animalMate.main.command.GoNoticeFormAction;
 import co.animalMate.main.command.GoOwnerListPageAction;
 import co.animalMate.main.command.GoSitterListPageAction;
 import co.animalMate.main.command.GotradeListPageAction;
-import co.animalMate.main.command.SubmitReportAction;
 import co.animalMate.main.command.SubmitNoticeAction;
+import co.animalMate.main.command.SubmitReportAction;
 import co.animalMate.mypage.command.MemberForm;
 import co.animalMate.mypage.command.MypetDeleteAction;
 import co.animalMate.mypage.command.MypetForm;
@@ -81,9 +82,11 @@ public class FrontController extends HttpServlet {
       map.put("/goBlackBoardPage.do", new GoBlackBoardPageAction()); // 신고하기 폼에서 제출하기 버튼을 눌렀을 때 
       map.put("/adminLogin.do", new AdminLoginAction()); // 로그인 창에서 admin으로 로그인 했을 때
       map.put("/goNoticeForm.do", new GoNoticeFormAction()); // 공지사항 페이지에서 글쓰기 버튼 눌렀을 때
-      	//제출하기
+      map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
+         //제출하기
       map.put("/submitReport.do", new SubmitReportAction()); // 신고폼 페이지에서 제출버튼 눌렀을 때
       map.put("/submitNotice.do", new SubmitNoticeAction()); // 공지사항폼 페이지에서 제출버튼 눌렀을 때
+
 
       
       
@@ -206,6 +209,7 @@ public class FrontController extends HttpServlet {
    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       // 수행할 명령을 정리
       request.setCharacterEncoding("utf-8"); //한글깨짐 방지!
+      response.setContentType("text/html;charset=UTF-8");//한글깨짐 방지!
       String uri = request.getRequestURI();
       String contextPath = request.getContextPath();
       String path = uri.substring(contextPath.length()); //실제 들어오는 요청페이지를 찾음(uri에서 contextPath를 지움)
