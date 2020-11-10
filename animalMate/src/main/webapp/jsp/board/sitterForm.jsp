@@ -35,7 +35,7 @@
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐줄께요- (글등록 Form)</h1>
-                <input placeholder="제목을 입력하세요">
+                <input type="text" name="title" placeholder="제목을 입력하세요">
                 </input>
             </div>
             <!-- e:title -->
@@ -48,7 +48,7 @@
 
                     <div class="cont_area">
                         <div class="info_img">
-                            <img class="info_img" src="${pageContext.request.contextPath}/images/muncat.jpg" alt="시터 이미지" height="100px" width="100px">
+                            <img class="info_img" src="${pageContext.request.contextPath}/images/members_pic/${members.pic}" alt="시터 이미지" height="100px" width="100px">
                         </div>
 
                         <div class="info_table">
@@ -67,28 +67,32 @@
 
                                 <tbody>
                                     <tr>
-                                        <td>시터 이름</td>
-                                        <td>DBVALUE</td>
+                                        <td>시터 닉네임</td>
+                                        <td>${members.getNname()}</td>
                                     </tr>
                                     
                                     <tr>
                                         <td>시터 나이</td>
-                                        <td>DBVALUE</td>
+                                        <td>${age}</td>
                                     </tr>
                                     
                                     <tr>
                                         <td>시터 성별</td>
-                                        <td>DBVALUE</td>
+                                        <td>${gender}</td>
                                     </tr>
 
                                     <tr>
                                         <td>시터 평점</td>
-                                        <td>DBVALUE</td>
+                                        <td>${score}</td>
                                     </tr>
 
                                     <tr>
                                         <td>시터 경력(돌봄횟수)</td>
-                                        <td>DBVALUE</td>
+                                        <td>${career}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>최대 돌봄 수</td>
+                                        <td>${sitter.maxP}마리</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -115,7 +119,11 @@
                         <tbody>
                             <tr>
                                 <td>돌봄지역</td>
-                                <td><input type="text" placeholder="돌봐주실 지역을 입력하세요"></td>
+                                <td><input type="text" name="location1" placeholder="돌봐주실 지역을 입력하세요"></td>
+                            </tr>
+                            <tr>
+                                <td>상세지역</td>
+                                <td><input type="text" name="location2" placeholder="돌봐주실 세부지역을 입력하세요"></td>
                             </tr>
                             
                             <tr>
@@ -123,9 +131,9 @@
                                 <td>
                                     <!-- jQuery datepicker 연결하면 됨-->
                                     <div class="calendar">
-                                        <input type="date" class="datepicker" name="" value="" placeholder="시작일" onchange="">
+                                        <input type="date" class="datepicker" name="sdate" value="" placeholder="시작일" onchange="">
                                         <span>~</span>
-                                        <input type="date" class="datepicker" name="" value="" placeholder="종료일" onchange="">
+                                        <input type="date" class="datepicker" name="edate" value="" placeholder="종료일" onchange="">
                                     </div>
                                 </td>
                             </tr>
@@ -134,27 +142,16 @@
                                 <td>돌봄시간</td>
                                 <td>
                                     <div class="calendar">
-                                        <select>
-                                            <option>12:00</option>
-                                            <option>13:00</option>
-                                        </select>
+                                        <input type="time" name="stime" id="stime">
                                         <span>~</span>
-                                        <select>
-                                            <option>12:00</option>
-                                            <option>13:00</option>
-                                        </select>
+                                        <input type="time" name="etime" id="etime">
                                     </div>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>거래금액</td>
-                                <td><input type="text" name="" placeholder="돌봄서비스 금액을 입력하세요" class="txt-r" >원</td>
-                            </tr>
-
-                            <tr>
-                                <td>최대돌봄수</td>
-                                <td><input type="text" name="" placeholder="최대 수용가능한 펫 수를 입력하세요" class="txt-r" >마리</td>
+                                <td><input type="text" name="price" placeholder="돌봄서비스 금액을 입력하세요" class="txt-r" >원</td>
                             </tr>
                         </tbody>
                     </table>

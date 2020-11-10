@@ -3,14 +3,39 @@ package co.animalMate.main.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import co.animalMate.common.DAO;
+import co.animalMate.vo.CommentsVO;
+import co.animalMate.vo.TradeBoardVO;
 import co.animalMate.vo.TradeBoardVO;
 
 public class TradeBoardDAO extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
 	private ResultSet rs; // select 후 결과셋 받기
 	private TradeBoardVO vo;
+	
+	//id로 select하기
+			public List<TradeBoardVO> selectById(TradeBoardVO vo){
+				List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
+				try {
+					
+					psmt=conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE SELLER = ? and status = '거래완료'");
+					psmt.setString(1, vo.getSeller());
+					rs = psmt.executeQuery();
+					while(rs.next()) {
+						vo = new TradeBoardVO();
+						vo.setCode(rs.getInt("code"));
+						list.add(vo);
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}finally{
+					close();
+				}
+				return list;
+			}
 	
 	//인서트
 	public int ownerInsert(TradeBoardVO vo) { 
