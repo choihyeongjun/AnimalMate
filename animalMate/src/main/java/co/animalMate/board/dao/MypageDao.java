@@ -24,9 +24,7 @@ public class MypageDao extends DAO {
 	private final String TRADE_COUNT = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE (STATUS IN('예약가능', '예약완료')) AND (BUYER = ? OR SELLER= ?)";
 	//private final String SELECT_USER_TRADES = "SELECT * FROM TRADEBOARD WHERE (BUYER = ? OR SELLER = ?) ORDER BY CODE DESC";
 	private final String SELECT_USER_TRADES = "SELECT TB.*, P.* FROM PETCODE T LEFT OUTER JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) LEFT OUTER JOIN PET P ON (T.PETCODE = P.CODE) WHERE TB.BUYER = ? OR TB.SELLER = ?";
-	
 	private final String SELECT_USER_TRADE = "SELECT * FROM TRADEBOARD WHERE CODE = ?";
-	private final String SELECT_PET_PIC = "SELECT PIC FROM PET WHERE CODE = ?";
 	private final String SELECT_TRADE_PETS = "SELECT TYPE, DETAILTYPE FROM PET WHERE CODE = (SELECT T.PETCODE FROM TRADE T JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) WHERE TB.CODE = ?)";
 	
 	
@@ -53,26 +51,7 @@ public class MypageDao extends DAO {
 			return list;
 		}
 	
-	//Pet 사진 안들어왔을때 기존 값 뿌리기
-	public PetVO selectPetPic(PetVO petVo) {
-		try {
-			psmt = conn.prepareStatement(SELECT_PET_PIC);
-			psmt.setString(1, petVo.getCode());
-			rs = psmt.executeQuery();
-			if (rs.next()) {
-				petVo = new PetVO();
-				petVo.setPic(rs.getString("pic"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return petVo;
-	}
-	
-	
-	
+
 	//User 거래 단건 조회
 	public TradeBoardVO selectUserTrade(TradeBoardVO tbVo) {
 		try {

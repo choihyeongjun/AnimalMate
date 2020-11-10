@@ -34,7 +34,7 @@ public class MypetUpdateAction implements Action {
 		
 		
 		// 현재 컨텍스트에 사진업로드하기
-		String appPath = request.getServletContext().getRealPath("/images");
+		String appPath = request.getServletContext().getRealPath("/images/pet_pic");
 		try {
 			for (Part part : request.getParts()) { // 첨부파일을 읽어온다
 				String fileName = FileUtil.extractFileName(part); // 파일이 존재하면

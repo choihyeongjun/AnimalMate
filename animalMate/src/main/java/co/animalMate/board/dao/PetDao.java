@@ -20,6 +20,7 @@ public class PetDao extends DAO {
 	private final String INSERT = "INSERT INTO PET VALUES(PET_CODE.NEXTVAL,?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE = "UPDATE PET SET NAME = ?, AGE = ?, GENDER = ?, TYPE = ?, DETAILTYPE = ?, CUT = ?, COMM = ?, PIC = ? WHERE CODE=?";
 	private final String DELETE = "DELETE FROM PET WHERE CODE = ?";
+	private final String SELECT_PET_PIC = "SELECT PIC FROM PET WHERE CODE = ?";
 	
 	
 	// 전체 펫 조회
@@ -105,6 +106,24 @@ public class PetDao extends DAO {
 		}
 		return vo;
 	}
+	
+	//Pet 사진 안들어왔을때 기존 값 뿌리기
+		public PetVO selectPetPic(PetVO petVo) {
+			try {
+				psmt = conn.prepareStatement(SELECT_PET_PIC);
+				psmt.setString(1, petVo.getCode());
+				rs = psmt.executeQuery();
+				if (rs.next()) {
+					petVo = new PetVO();
+					petVo.setPic(rs.getString("pic"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return petVo;
+		}
 	
 	// id,name기반 단일 조회
 		public PetVO selectByIdName(PetVO vo) {
