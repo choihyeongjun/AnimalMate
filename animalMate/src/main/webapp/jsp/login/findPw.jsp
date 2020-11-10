@@ -48,17 +48,13 @@ function pwfindCheck(){
                     <h3 class="join_title"><label for="name">아이디</label></h3>
                     <span class="box int_name">
                         <input type="text" id="id" class="int" maxlength="20" name="id" placeholder="아이디입력">
-                      <br>
-       				 <span class="error_msg" style="color:red;">${msg1}</span> 
                     </span>
                 </div>
 		 <!-- NAME -->
                 <div>
                     <h3 class="join_title"><label for="name">이름</label></h3>
                     <span class="box int_name">
-                        <input type="text" id="name" class="int" maxlength="20" name="name" placeholder="이름 입력">
-                     <br>
-       				 <span class="error_msg" style="color:red;">${msg2}</span> 
+                        <input type="text" id="name" class="int" maxlength="20" name="name" placeholder="이름 입력">   
                     </span>
                 </div>
 		 <!-- EMAIL -->
@@ -66,9 +62,9 @@ function pwfindCheck(){
                     <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
                     <span class="box int_email">
                         <input type="email" id="email" class="int" maxlength="100" name="email" placeholder="이메일 입력">
-                    <br>
-       				 <span class="error_msg" style="color:red;">${msg3}</span> 
                     </span>
+                     <br>
+       				 <span class="error_msg" style="color:red;">${msg}</span> 
                 </div>      
 	<div class="pw_find-footer" align="center">
 	<hr style="border-color: white;" align="left" noshade="noshade" size="1" />
