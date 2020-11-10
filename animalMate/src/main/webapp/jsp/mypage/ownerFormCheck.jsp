@@ -4,12 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>맡기기 상세화면</title>
+<title>돌봐주세요 게시판 거래</title>
 </head>
 <body>
 <br>
-	<h1>돌봐주세요 상세화면</h1>
+	<h1>돌봐주세요 게시판 거래</h1>
 <br>
+	
+	<h3>${tbs.title}</h3>
+	<p>${tbs.ttime}</p>
 
 	<div class="row">
 		<div class="ownerFormCheckView">
@@ -31,7 +34,7 @@
 				</tr>
 				<tr>
 					<th>종류</th>
-					<td>${tbs.type}</td>
+					<td>${tbs.type} ${tbs.detailType}</td>
 				</tr>
 				<tr>
 					<th>중성화 유무</th>
@@ -41,7 +44,14 @@
 		</div>
 		
 		<div class="ownerFormCheckView">
-			<h3>시터 정보</h3>
+			<div class = "row">
+				<div>
+					<h3>시터 정보</h3>			
+				</div>
+				<div>
+					<button style = "margin:5px; background-color:rgb(255, 164, 89);"onclick="window.location.href='${pageContext.request.contextPath}/profile.do'">더보기</button><br>
+				</div>
+			</div>
 			<table class="table">
 				<tr>
 					<td rowspan="5" width =30%><img id="userpic" src="${pageContext.request.contextPath}/images/members_pic/${user.pic}"></td>
@@ -58,11 +68,11 @@
 				</tr>
 				<tr>
 					<th>평점</th>
-					<td>DBVALUE</td>
+					<td>DBvalue</td>
 				</tr>
 				<tr>
 					<th>경력</th>
-					<td>DBVALUE</td>
+					<td>DBvalue</td>
 				</tr>
 			</table>
 		</div>
