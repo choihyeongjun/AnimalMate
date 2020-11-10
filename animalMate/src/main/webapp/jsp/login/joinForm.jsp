@@ -9,7 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 function id_input_check(){
-	window.open("${pageContext.request.contextPath}/jsp/login/overlapIdCheck.jsp", "아이디 중복 확인", "width=400, height=250"); 
+	window.open("${pageContext.request.contextPath}/jsp/login/overlapIdCheck.jsp", "아이디 중복 확인", "width=600, height=400"); 
 }
 
 	var id = document.querySelector('#id');
@@ -126,7 +126,7 @@ function telCheck(){
 </head>
 <body>
 <!-- 회원가입창 상단로고 //클릭하면 메인페이지로 이동 -->
-	<header class="header">	
+	<header class="header" align="center">	
 			<a href="${pageContext.request.contextPath}/jsp/main/mainMenu.jsp" target="_blank">
 				<image src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG" id="logo" >
 				</image>
@@ -199,7 +199,7 @@ function telCheck(){
                 <div>
                     <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
                     <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="20" name="email"placeholder="이메일 입력">
+                        <input type="email" id="email" class="int" maxlength="20" name="email"placeholder="이메일 입력">
                     </span>
                 </div>
 

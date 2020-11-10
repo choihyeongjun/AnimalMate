@@ -9,11 +9,11 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 function FindId(){
-	window.open("${pageContext.request.contextPath}/jsp/login/findId.jsp", "아이디 찾기", "width=600, height=400"); 
+	window.open("${pageContext.request.contextPath}/jsp/login/findId.jsp", "아이디 찾기", "width=1000, height=750"); 
 }
 
 function FindPw(){
-	window.open("${pageContext.request.contextPath}/jsp/login/findPw.jsp", "비밀번호 찾기", "width=600, height=400"); 
+	window.open("${pageContext.request.contextPath}/jsp/login/findPw.jsp", "비밀번호 찾기", "width=1000, height=900"); 
 }
 
 function formCheck() {
@@ -59,7 +59,7 @@ function formCheck() {
 			 <!-- PW1 -->
                 <div>
                     <span class="box int_pass">
-                        <input type="text" id="pw" class="int" maxlength="20" name="pw" placeholder="비밀번호">             
+                        <input type="password" id="pw" class="int" maxlength="20" name="pw" placeholder="비밀번호">          
                    		<br>
                    	<span class="error_msg">${msg2}</span> 
                     </span>
@@ -73,12 +73,11 @@ function formCheck() {
 		    
 		    <div class="login_join-button">
 				<button type="button" class="btn_join" 
-				onclick="location.href='${pageContext.request.contextPath}/joinForm.do'">회원가입</button>
-				<button onclick="FindId()" class="findid">아이디 찾기</button>
-				<button onclick="FindPw()" class="findpw">비밀번호 찾기</button>
+				onclick="location.href='${pageContext.request.contextPath}/jsp/login/joinCheck.jsp'">회원가입</button>
+				<button type="button" onclick="FindId()" class="findid">아이디 찾기</button>
+				<button type="button" onclick="FindPw()" class="findpw">비밀번호 찾기</button>
 			</div>
 			<!-- 로그인 / 회원가입 버튼-->
-			
 		</form>
 	</div>
 </body>

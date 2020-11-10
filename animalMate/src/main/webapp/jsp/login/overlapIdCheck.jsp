@@ -4,7 +4,47 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원가입</title>
+<title>아이디 중복 확인</title>
+<style>
+
+ .btn_submit {
+    width: 60%;
+    height :50px;
+    border: 0;
+    cursor: pointer;
+    background-color: #ff6a2e;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    margin-top:41px;
+    margin-left:20px;
+    
+}
+::placeholder {
+  color: #ccc;
+   font-weight: 500;
+}
+.int{
+	width: 70%;
+    height: 40px;
+    line-height: 47px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
+    border: none;
+    border-bottom: 2px solid;
+    border-bottom-color: #ccc;
+    margin-bottom: 20px
+    
+}
+h3 {
+    margin: 19px 0 8px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-right: 300px;
+    margin-bottom: 20px;
+}
+</style>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
 function overlap_id_check(){
@@ -38,19 +78,16 @@ function overlap_id_check(){
 </script>
 </head>
 <body>
-
 	<div class="overlap_id_check-wrapper" align="center">
-	<h3>아이디 중복 확인</h3>
+	<h2>AnimalMate</h2>
 		<form method="GET" action ="${pageContext.request.contextPath}/idoverlapcheck.do" onsubmit="return overlap_id_check()">
 		<!-- ID -->
 				  <div>
-                    <h3 class="join_title">
-                        <label for="id">아이디</label>
-                    </h3>
+                    <h3>아이디 중복 확인</h3>
                     <span class="box int_id">
                         <input type="text" id="id" class="int" maxlength="20" name="id" placeholder="아이디 입력" autofocus>
-                        <imput type="hidden" class="overlapIdCheckResult" name="overlapIdCheckResult" id="overlapIdCheckResult" value="0"/>
-                        <button type="submit">중복확인</button>
+                        <imput type="hidden" class="overlapIdCheckResult" name="overlapIdCheckResult" id="overlapIdCheckResult" value="0"/><br>
+                        <button type="submit" class="btn_submit">중복확인</button>
                     </span>
                 </div>
            </form>

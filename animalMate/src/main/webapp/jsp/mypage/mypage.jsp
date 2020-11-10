@@ -17,7 +17,7 @@
 				<tr>
 					<td colspan=2 height="200px"><img
 						src="${pageContext.request.contextPath}/images/members_pic/${user.pic}"
-						alt="사진을 넣어주세요" style = "width:250px; height:250px; border-radius: 100%;"></td>
+						alt="사진을 넣어주세요" style = "width:200px; height:200px; border-radius: 100%;"></td>
 				</tr>
 				<tr>
 					<th>이름</th>
