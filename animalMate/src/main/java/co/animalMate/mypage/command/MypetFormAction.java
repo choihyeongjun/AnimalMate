@@ -22,7 +22,13 @@ public class MypetFormAction implements Action {
 		// 로그인 인증과정을 처리한다.
 		PetDao dao = new PetDao();
 		PetVO vo = new PetVO();
-
+		
+		
+		// 세션 아이디 정보
+		HttpSession session = request.getSession(false);
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
+		
 		vo.setName(request.getParameter("name"));
 		vo.setAge(Integer.parseInt(request.getParameter("age")));
 		vo.setGender(request.getParameter("gender"));
@@ -30,8 +36,10 @@ public class MypetFormAction implements Action {
 		vo.setDetailType(request.getParameter("detailType"));
 		vo.setCut(request.getParameter("cut"));
 		vo.setComm(request.getParameter("comm"));
-		// vo.setId((String)session.getAttribute("userId"));//세션 아이디받기
-		vo.setId("id3");
+		
+		
+		
+		
 		
 		// 현재 컨텍스트에  사진업로드하기
 		String appPath = request.getServletContext().getRealPath("/images/pet_pic");

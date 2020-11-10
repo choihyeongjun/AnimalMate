@@ -21,23 +21,21 @@ public class FindPwAction implements Action {
 	     vo.setEmail(request.getParameter("email"));
 		
 		String page;
-		String msg1 = "";
-		String msg2 = "";
-		String msg3 = "";
-		
+		String msg = "";
+
 		vo = dao.findPw(vo);
 		page = "jsp/login/pwReset.jsp";
 		
 		if(vo.getId().equals(request.getParameter("id"))==false) {
-			msg1 = "아이디가 일치하지 않습니다.";
+			msg = "일치하는 회원 정보가 없습니다.";
 			page= "jsp/login/findpw.jsp";
 		}else if
 		(vo.getName().equals(request.getParameter("name"))==false){
-			msg2 = "아이디가 일치하지 않습니다.";
+			msg = "일치하는 회원 정보가 없습니다.";
 			page= "jsp/login/findpw.jsp";
 		}else if
 			(vo.getEmail().equals(request.getParameter("email"))==false){
-			msg3 = "아이디가 일치하지 않습니다.";
+			msg = "일치하는 회원 정보가 없습니다.";
 			page= "jsp/login/findpw.jsp";
 		}else {
 			session.setAttribute("id", vo.getId());
@@ -47,9 +45,7 @@ public class FindPwAction implements Action {
 			page= "jsp/login/pwReset.jsp";
 		}
 	
-		request.setAttribute("msg1", msg1);
-		request.setAttribute("msg2", msg2);
-		request.setAttribute("msg3", msg3);
+		request.setAttribute("msg", msg);
 		request.setAttribute("vo", vo);
 		return page;
 	}

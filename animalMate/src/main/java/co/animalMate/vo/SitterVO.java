@@ -4,8 +4,18 @@ public class SitterVO {
 	private String id;
 	private int maxP;
 	private String status;
+	private String code;
 	
+
 	public SitterVO() {}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
 
 	public String getId() {
 		return id;

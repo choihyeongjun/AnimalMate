@@ -58,7 +58,8 @@
 					<c:if test="${param.type == '공지사항'}">selected</c:if>>공지사항
 				<option value="이벤트"
 					<c:if test="${param.type == '이벤트'}">selected</c:if>>이벤트
-			</select> <input type="hidden" name="p" value="1">
+			</select> 
+			<input type="hidden" name="p" value="1">
 			<button id="filterBtn">검색</button>
 		</form>
 	</div>

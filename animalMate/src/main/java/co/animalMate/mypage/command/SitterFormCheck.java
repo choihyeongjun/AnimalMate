@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.animalMate.board.dao.MypageDao;
 import co.animalMate.common.Action;
@@ -20,9 +21,9 @@ public class SitterFormCheck implements Action {
 		MemberVO memVo = new MemberVO();
 
 		// 세션 아이디 정보
-//				HttpSession session = request.getSession(false);
-//				String sid = (String) session.getAttribute("id");
-		String sid = "id3";
+		HttpSession session = request.getSession(false);
+		String sid = (String) session.getAttribute("id");
+		
 
 		request.setAttribute("sid", sid);
 

@@ -73,15 +73,15 @@ input[type=submit]:hover {
 </style>
 </head>
 <body>
-<jsp:include page="mainMenu.jsp"/>
 <div class="container">
   <form action="${pageContext.request.contextPath}/submitQuestion.do">
+  <br/>
   <div class="row">
     <div class="col-25">
       <label for="fname">아이디</label>
     </div>
     <div class="col-75">
-      <input type="text" id="id" name="id" placeholder="아이디">
+      <input type="text" id="id" name="id" value="${sessionScope.id}" readonly>
     </div>
   </div>
   <div class="row">
