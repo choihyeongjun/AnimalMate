@@ -21,11 +21,13 @@ import co.animalMate.admin.command.SubmitQuestionAction;
 import co.animalMate.admin.command.tradeAction;
 import co.animalMate.board.command.MainAction;
 import co.animalMate.board.command.OwnerFormAction;
+import co.animalMate.board.command.OwnerFormViewAction;
 import co.animalMate.board.command.OwnerInsertAction;
 import co.animalMate.board.command.OwnerListAction;
 import co.animalMate.board.command.OwnerListSearhAction;
 import co.animalMate.board.command.SitterFormAction;
 import co.animalMate.board.command.SitterListAction;
+import co.animalMate.board.command.SitterListSearhAction;
 import co.animalMate.login.command.FindIdAction;
 import co.animalMate.login.command.FindPwAction;
 import co.animalMate.login.command.JoinForm;
@@ -44,8 +46,10 @@ import co.animalMate.main.command.GoMypagePageAction;
 import co.animalMate.main.command.GoNoticeBoardPageAction;
 import co.animalMate.main.command.GoNoticeFormAction;
 import co.animalMate.main.command.GoOwnerListPageAction;
+import co.animalMate.main.command.GoSendMessageListPageAction;
 import co.animalMate.main.command.GoSitterListPageAction;
 import co.animalMate.main.command.GotradeListPageAction;
+import co.animalMate.main.command.SitterInsertAction;
 import co.animalMate.main.command.SubmitNoticeAction;
 import co.animalMate.main.command.SubmitReportAction;
 import co.animalMate.mypage.command.MemberForm;
@@ -57,6 +61,7 @@ import co.animalMate.mypage.command.MypetUpdate;
 import co.animalMate.mypage.command.MypetUpdateAction;
 import co.animalMate.mypage.command.MytradeList;
 import co.animalMate.mypage.command.OwnerFormCheck;
+import co.animalMate.mypage.command.Profile;
 import co.animalMate.mypage.command.SitterFormCheck;
 
 
@@ -75,6 +80,7 @@ public class FrontController extends HttpServlet {
       map.put("/goLoginPage.do", new GoLoginPageAction()); // 헤더에서 로그인 버튼 눌렀을 때
       map.put("/gotradeListPage.do", new GotradeListPageAction()); // 헤더에서 요청알림 버튼 눌렀을 때
       map.put("/goMessageListPage.do", new GoMessageListPageAction()); // 헤더에서 쪽지 버튼 눌렀을 때
+      map.put("/goSendMessageListPage.do", new GoSendMessageListPageAction()); // 쪽지페이지에서 보낸 쪽지함 버튼 눌렀을 때
       map.put("/goNoticeBoardPage.do", new GoNoticeBoardPageAction()); // 헤더에서 공지사항 메뉴 눌렀을 때
       map.put("/goOwnerListPage.do", new GoOwnerListPageAction()); // 헤더에서 돌봐주세요 메뉴 눌렀을 때
       map.put("/goSitterListPage.do", new GoSitterListPageAction()); // 헤더에서 돌봐줄께요 메뉴 눌렀을 때
@@ -86,8 +92,7 @@ public class FrontController extends HttpServlet {
          //제출하기
       map.put("/submitReport.do", new SubmitReportAction()); // 신고폼 페이지에서 제출버튼 눌렀을 때
       map.put("/submitNotice.do", new SubmitNoticeAction()); // 공지사항폼 페이지에서 제출버튼 눌렀을 때
-
-
+      map.put("/sitterInsert.do", new SitterInsertAction()); // 시터폼에서 제출하기 눌렀을 떄 
       
       
       
@@ -161,13 +166,15 @@ public class FrontController extends HttpServlet {
       
       
       
-      //선애
+     //선애
      map.put("/ownerList.do", new OwnerListAction()); //ownerList 화면 호출
+     map.put("/ownerForm.do", new OwnerFormAction()); //OwnerForm 화면 호출
+     map.put("/ownerInsert.do", new OwnerInsertAction()); //OwnerForm Insert 
+     map.put("/ownerListSearch.do", new OwnerListSearhAction()); //ownerList에서 검색
+     map.put("/ownerFormSelect.do", new OwnerFormViewAction()); //OwnerFormView 화면 호출
      map.put("/sitterList.do", new SitterListAction()); //sitterList 화면 호출
      map.put("/sitterForm.do", new SitterFormAction()); //sitterForm 화면 호출
-     map.put("/ownerForm.do", new OwnerFormAction()); //sitterForm 화면 호출
-     map.put("/ownerInsert.do", new OwnerInsertAction()); //
-     map.put("/ownerListSearch.do", new OwnerListSearhAction()); //
+     map.put("/sitterListSearch.do", new SitterListSearhAction()); //sitterList에서 검색 
       
       
       
@@ -185,17 +192,18 @@ public class FrontController extends HttpServlet {
       
       
    
-      //진구
-      map.put("/mypetForm.do", new MypetForm()); //펫 등록 화면 호출
-      map.put("/mypetFormAction.do", new MypetFormAction()); //펫 등록 액션
-      map.put("/mypetList.do", new MypetList()); //펫 목록 화면 호출
-      map.put("/mypetUpdate.do", new MypetUpdate()); //펫 수정, 삭제 화면 호출       
-      map.put("/mypetUpdateAction.do", new MypetUpdateAction()); //펫 수정 액션
-      map.put("/mypetDeleteAction.do", new MypetDeleteAction()); //펫 삭제 액션
-      map.put("/mytradeList.do", new MytradeList()); //내 거래현황,내역 화면 호출
-      map.put("/ownerFormCheck.do", new OwnerFormCheck()); // 맡기기 화면 호출
-      map.put("/sitterFormCheck.do", new SitterFormCheck()); // 돌보기 화면 호출
-      map.put("/memberForm.do", new MemberForm()); //회원 정보 수정
+     //진구
+     map.put("/mypetForm.do", new MypetForm()); //펫 등록 화면 호출
+     map.put("/mypetFormAction.do", new MypetFormAction()); //펫 등록 액션
+     map.put("/mypetList.do", new MypetList()); //펫 목록 화면 호출
+     map.put("/mypetUpdate.do", new MypetUpdate()); //펫 수정, 삭제 화면 호출       
+     map.put("/mypetUpdateAction.do", new MypetUpdateAction()); //펫 수정 액션
+     map.put("/mypetDeleteAction.do", new MypetDeleteAction()); //펫 삭제 액션
+     map.put("/mytradeList.do", new MytradeList()); //내 거래현황,내역 화면 호출
+     map.put("/ownerFormCheck.do", new OwnerFormCheck()); // 맡기기 화면 호출
+     map.put("/sitterFormCheck.do", new SitterFormCheck()); // 돌보기 화면 호출
+     map.put("/memberForm.do", new MemberForm()); //회원 정보 수정
+     map.put("/profile.do", new Profile()); //프로필 화면 호출
       
       
       
