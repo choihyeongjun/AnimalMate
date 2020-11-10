@@ -18,7 +18,7 @@
 		<pattern>/submitQuestion.do</pattern>
 		<pattern>/jsp/admin/test/*</pattern>
 		<pattern>*/ajax/*</pattern>
-		
+		<pattern>/goLoginPage.do</pattern>
 		<pattern>*/adminLogin.do</pattern>
 	</excludes>
 </decorators>

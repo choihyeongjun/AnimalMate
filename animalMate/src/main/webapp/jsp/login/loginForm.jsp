@@ -41,8 +41,7 @@ function formCheck() {
 <!-- 회원가입창 상단로고 //클릭하면 메인페이지로 이동 -->
 	<header class="header">	
 			<a href="${pageContext.request.contextPath}/jsp/main/mainMenu.jsp" target="_blank">
-				<image src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG" id="logo" >
-				</image>
+				<image src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG" id="logo" ></image>
 			</a>
 	</header>
 	<!-- 로그인 입력창 -->
@@ -80,5 +79,6 @@ function formCheck() {
 			<!-- 로그인 / 회원가입 버튼-->
 		</form>
 	</div>
+</div>
 </body>
 </html>
