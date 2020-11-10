@@ -54,13 +54,13 @@
 }
 </style>
 <script>
-/*
+
 $(()=>{
 	$(".box").on("click",function() {
 		var code = $(this).children().children(1).children(0).eq(1).text();
-		location.href="${pageContext.request.contextPath}/sitterFormSelect.do?code="+code;
+		location.href="${pageContext.request.contextPath}//sitterFormSelect.do?code="+code;
 	});
-})*/
+})
 </script>
 </head>
 
