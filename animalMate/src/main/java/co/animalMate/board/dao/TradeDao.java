@@ -7,12 +7,12 @@ import java.sql.SQLException;
 import co.animalMate.common.DAO;
 import co.animalMate.vo.MemberVO;
 import co.animalMate.vo.TradeBoardVO;
-import co.animalMate.vo.TradeVO;
+import co.animalMate.vo.PetCodeVO;
 
 public class TradeDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
 	private ResultSet rs; //select 후 결과셋 받기
-	private TradeVO tradevo;
+	private PetCodeVO tradevo;
 	
 
 		

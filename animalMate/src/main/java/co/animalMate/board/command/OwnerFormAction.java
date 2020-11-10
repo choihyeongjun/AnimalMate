@@ -5,37 +5,28 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import co.animalMate.board.dao.BoardFormDao;
-import co.animalMate.board.dao.JobListDao;
+import co.animalMate.board.dao.PetDao;
 import co.animalMate.common.Action;
-import co.animalMate.vo.JoblistVO;
-import co.animalMate.vo.OwnerFormVO;
+import co.animalMate.vo.PetVO;
 
 public class OwnerFormAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		BoardFormDao dao = new BoardFormDao();
-		OwnerFormVO vo = new OwnerFormVO();
+		HttpSession session = request.getSession();
+		String id = (String) session.getAttribute("id");
 		
-		JobListDao jobdao = new JobListDao();
+		//펫정보 보내기
+		PetDao dao = new PetDao();
+		PetVO vo = new PetVO();
+		vo.setId(id);
+		List<PetVO> list = new ArrayList<PetVO>();
+		list = dao.selectPets(vo);
+		request.setAttribute("petList", list);
 		
-		List<OwnerFormVO> list = new ArrayList<OwnerFormVO>(); //여러건
-		JoblistVO jobvo = new JoblistVO(); //단건
-		
-		vo.setCode(request.getParameter("code"));
-		
-		jobvo.setCode(Integer.parseInt(request.getParameter("code")));
-		
-		list = dao.selectAll(vo);
-		request.setAttribute("borders", list);
-		
-		
-		jobvo = jobdao.selectAll(jobvo); 
-		request.setAttribute("joblist", jobvo);
-		
-		return "jsp/board/ownerFormView.jsp";
+		return "jsp/board/ownerForm.jsp";
 	}
 
 }
