@@ -30,7 +30,7 @@
 					</tr>
 					<c:forEach var="pet" items="${pets}">
 						<tr>
-							<td><input type="radio" id="code" name="code" value="${pet.code}" )></td>
+							<td><input type="radio" id="code" name="code" value="${pet.code}"></td>
 							<td>${pet.name}</td>
 							<td>${pet.age}</td>
 							<td>${pet.gender}</td>

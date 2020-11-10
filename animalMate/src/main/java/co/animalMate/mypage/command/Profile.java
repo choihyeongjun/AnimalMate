@@ -11,6 +11,7 @@ public class Profile implements Action {
    public String exec(HttpServletRequest request, HttpServletResponse response) {
       //프로필 화면 호출
       return "jsp/mypage/profile.jsp";
+      
    }
 
 }
