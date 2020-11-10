@@ -74,7 +74,7 @@ $(document).ready(function() {
 	</header>
 <!-- 회원가입 입력창 -->
 
-<form class="join_form" action="${pageContext.request.contextPath}/joinForm.do" onsubmit="return formCheck()">
+<form class="join_form" action="${pageContext.request.contextPath}/jsp/login/joinForm.jsp" onsubmit="return formCheck()">
 
 	 <!-- wrapper -->
         <div id="wrapper">

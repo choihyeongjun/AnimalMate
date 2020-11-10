@@ -9,7 +9,7 @@
     height :50px;
     border: 0;
     cursor: pointer;
-    background-color: #FFAC4B;
+    background-color: #ff6a2e;
     font-size: 18px;
     font-weight: bold;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
@@ -23,7 +23,7 @@
     background-color:white;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 	 font-size: 13px;
-    margin-right: 120px;
+    margin-right: 100px;
 }
 .findid{
 	border:0; 
@@ -40,7 +40,7 @@
 	 font-size: 13px;
 }
 .int{
-	width: 15%;
+	width: 18%;
     height: 40px;
     line-height: 47px;
     font-size: 18px;

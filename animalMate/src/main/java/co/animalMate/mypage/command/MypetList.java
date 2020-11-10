@@ -20,11 +20,11 @@ public class MypetList implements Action {
 		PetVO vo = new PetVO();
 
 		List<PetVO> list = new ArrayList<PetVO>();
-//		HttpSession session = request.getSession(false);
-//		String id = (String) session.getAttribute("id");
-//		vo.setId(id);
+		HttpSession session = request.getSession(false);
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		
-		vo.setId("id3");
+		
 		// 해당 페이지의 리스트만 조회
 		list = dao.selectPets(vo);
 		System.out.println();

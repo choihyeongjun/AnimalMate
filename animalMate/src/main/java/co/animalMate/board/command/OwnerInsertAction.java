@@ -60,28 +60,13 @@ public class OwnerInsertAction implements Action {
 			
 			//JoblistVO
 			JoblistVO joblistVO = new JoblistVO();
-			JoblistDAO joblistDAO = new JoblistDAO();
 			String[] joblistComm = request.getParameterValues("joblistComm");
 			for(String a : joblistComm) {
-				joblistVO.setComm(a);
+				JoblistDAO joblistDAO = new JoblistDAO(); //DAO객체 생성하면서 연결한다!
 				joblistVO.setCode(tradeBoardVO.getCode());
+				joblistVO.setComm(a);
 				joblistDAO.ownerInsert(joblistVO);
 			}
-			
-//			System.out.println(buyer);
-//			System.out.println(title);
-//			System.out.println(petCode);
-//			System.out.println(location1);
-//			System.out.println(location2);
-//			System.out.println(sdate);
-//			System.out.println(edate);
-//			System.out.println(stime);
-//			System.out.println(etime);
-//			System.out.println(price);
-//			System.out.println(comm);
-//			for(String a : joblistComm) {
-//				System.out.println(a);
-//			}
 		
 		return "jsp/board/ownerFormView.jsp";
 	}

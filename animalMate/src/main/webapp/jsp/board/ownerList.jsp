@@ -142,7 +142,7 @@ $(()=>{
 				<c:forEach var="border" items="${borders}">
 					<div class="box">
 					
-						<img class="image fit" src="${pageContext.request.contextPath}${border.pic}" alt="" />
+						<img class="image fit" src="${pageContext.request.contextPath}/images/pet_pic/${border.pic}" alt="" />
 						<div>
 							<dl class="code_dl">
 								<dt>거래번호</dt>

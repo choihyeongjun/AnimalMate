@@ -39,7 +39,6 @@
             		$(addDiv).append($input);
             		$(addDiv).append($('<button/>').attr({'class':'checkDelBtn btn_xs c_red'}).text('삭제'));
             		$("#sec03").append(addDiv);
-
             	});
             	
             	// 버튼 minus function
@@ -167,7 +166,7 @@
 	
 	                        <tbody>
 	                            <tr>
-	                                <th>근무지역</th>
+	                                <th>돌봄지역</th>
 	                                <td><input type="text" name="location1" placeholder="돌봄 지역을 입력하세요"></td>
 	                            </tr>
 	                            <tr>
@@ -175,7 +174,7 @@
 	                            	<td><input type="text" name="location2" placeholder="돌봄 세부지역을 입력하세요"></td>
 	                            </tr>
 	                            <tr>
-	                                <th>근무날짜</th>
+	                                <th>돌봄날짜</th>
 	                                <td>
 	                                    <!-- jQuery datepicker 연결하면 됨-->
 	                                    <div class="calendar">
@@ -187,7 +186,7 @@
 	                            </tr>
 	
 	                            <tr>
-	                                <th>근무시간</th>
+	                                <th>돌봄시간</th>
 	                                <td>
 	                                    <div class="calendar">
 	                                        <input type="time" name="stime" id="stime">

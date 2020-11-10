@@ -21,9 +21,12 @@ public class OwnerListAction implements Action {
 		BoardDao dao = new BoardDao();
 		OwnerListVO vo = new OwnerListVO();
 		List<OwnerListVO> list = new ArrayList<OwnerListVO>();
+		List<OwnerListVO> list1 = new ArrayList<OwnerListVO>();
 		
 		list =  dao.selectAll();
-		request.setAttribute("borders", list); 
+
+		request.setAttribute("borders", list);
+
 		
 
 				

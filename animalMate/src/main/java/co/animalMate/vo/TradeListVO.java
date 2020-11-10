@@ -17,8 +17,16 @@ public class TradeListVO {
 	private String ttype;
 	private String location1;
 	private String location2;
+
+	private String name;
+	private int age;
+	private String gender;
 	private String type;
 	private String detailType;
+	private String cut;
+	private String petComm;
+	private String id;
+	private String pic;
 	
 	public TradeListVO() {
 		
@@ -152,6 +160,30 @@ public class TradeListVO {
 		this.location2 = location2;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
 	public String getType() {
 		return type;
 	}
@@ -167,7 +199,39 @@ public class TradeListVO {
 	public void setDetailType(String detailType) {
 		this.detailType = detailType;
 	}
-	
+
+	public String getCut() {
+		return cut;
+	}
+
+	public void setCut(String cut) {
+		this.cut = cut;
+	}
+
+	public String getPetComm() {
+		return petComm;
+	}
+
+	public void setPetComm(String petComm) {
+		this.petComm = petComm;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
 	
 	
 }

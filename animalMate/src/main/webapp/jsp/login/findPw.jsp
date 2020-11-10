@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/find.css">
 <script>
 function pwfindCheck(){
 	var id = document.querySelector('#id');
@@ -30,14 +31,18 @@ function pwfindCheck(){
 <body>
 <!-- 비밀번호 찾기  -->
 	<div class="pw_find-header" align="center">
-		<h1>비밀번호 찾기</h1>
+		<h1>AnimalMate</h1>
 	</div>
 	
 	<!-- 메인시작 -->
-	<div class="pw_find-wrapper" align="center"> 
+	<div id="wrapper">
+		<div class="pw_find-wrapper" align="center"> 
 	<form class="pw_find-form" action="${pageContext.request.contextPath}/findpw.do" method="GET"
 	onsubmit="return pwfindCheck()">
-		
+		<div id="subtitle">
+			<h2>아이디, 이름, 이메일로 <br>비밀번호를 찾습니다.</h2>
+			<br>
+		</div>
 		 <!-- ID -->
                 <div>
                     <h3 class="join_title"><label for="name">아이디</label></h3>
@@ -60,17 +65,18 @@ function pwfindCheck(){
                 <div>
                     <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
                     <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100" name="email" placeholder="이메일 입력">
+                        <input type="email" id="email" class="int" maxlength="100" name="email" placeholder="이메일 입력">
                     <br>
        				 <span class="error_msg" style="color:red;">${msg3}</span> 
                     </span>
                 </div>      
 	<div class="pw_find-footer" align="center">
 	<hr style="border-color: white;" align="left" noshade="noshade" size="1" />
-		<button class="pw_find-submit" type="submit">비밀번호 찾기</button>&nbsp;&nbsp;
-		<a href="#" onclick="javascript:window.close()">창닫기</a>
+		<button class="btn_submit" type="submit">비밀번호 찾기</button>&nbsp;&nbsp;
+		<!--  <a href="#" onclick="javascript:window.close()">창닫기</a>-->
 	</div>
 	</form>
+	</div>
 </div> <!-- 끝 -->
 </body>
 </html>

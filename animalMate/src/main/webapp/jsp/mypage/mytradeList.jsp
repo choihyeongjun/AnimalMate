@@ -8,14 +8,8 @@
 </head>
 <body>
 	<br>
-
+	<h1>${user.name}님의 거래</h1>
 	<div class="row">
-		<div>
-			<h1>${user.name}님의 거래</h1>
-		</div>
-		<button onclick="window.location.href='${pageContext.request.contextPath}/ownerFormCheck.do'">맡기기보기</button>
-		<button onclick="window.location.href='${pageContext.request.contextPath}/sitterFormCheck.do'">돌보기보기</button>
-		
 		<div class="mypageTrade">
 			<div>
 				<dl>
@@ -50,23 +44,43 @@
 				<tr>
 					<th>게시판분류</th>
 					<th>거래코드</th>
-					<th>상대이름</th>
+					<th>맡김이</th>
+					<th>돌봄이</th>
 					<th>펫종류</th>
 					<th>거래금액</th>
 					<th>예약시간</th>
 					<th>거래상태</th>
 				</tr>
 				
-		        <c:forEach items="${tbs}" var="tb">
-					<tr>
-						<td>${tb.ttype}</td>
-						<td>${tb.code}</td>
-						<td>${tb.seller}</td>
-						<td>${tb.type} ${tb.detailType}</td>
-						<td>${tb.price}포인트</td>
-						<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-						<td>${tb.status}</td>
-					</tr>
+			    <c:forEach items="${tbs}" var="tb">
+				<c:choose>
+			        <c:when test="${tb.ttype eq '돌봐줄게요'}">
+				        <tr onclick="location.href='${pageContext.request.contextPath}/sitterFormCheck.do?code=${tb.code}';" 
+						style='cursor:pointer;'>
+					        <td>${tb.ttype}</td>
+					        <td>${tb.code}</td>
+					        <td>${tb.buyer}</td>
+							<td>${tb.seller}</td>
+							<td>${tb.type} ${tb.detailType}</td>
+							<td>${tb.price}p</td>
+							<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+							<td>${tb.status}</td>
+						</tr>
+			        </c:when>         
+			        <c:otherwise>
+			        	 <tr onclick="location.href='${pageContext.request.contextPath}/ownerFormCheck.do?code=${tb.code}';" 
+						style='cursor:pointer;'>
+					        <td>${tb.ttype}</td>
+					        <td>${tb.code}</td>
+							<td>${tb.buyer}</td>
+							<td>${tb.seller}</td>
+							<td>${tb.type} ${tb.detailType}</td>
+							<td>${tb.price}p</td>
+							<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+							<td>${tb.status}</td>
+						</tr>
+			        </c:otherwise>
+		  			</c:choose>
 				</c:forEach>
 			</table>
 		</div>

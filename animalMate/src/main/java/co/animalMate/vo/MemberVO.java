@@ -18,14 +18,16 @@ public class MemberVO {
 	private String pic;
 	private int zoomin1;
 	private int zoomin2;
-	
+
 	public MemberVO() {
-		
+
 	}
+
 	public MemberVO(String id) {
 		super();
-		this.id=id;
+		this.id = id;
 	}
+
 	public String getId() {
 		return id;
 	}
@@ -50,8 +52,6 @@ public class MemberVO {
 		this.name = name;
 	}
 
-
-
 	public String getTel() {
 		return tel;
 	}
@@ -60,26 +60,22 @@ public class MemberVO {
 		this.tel = tel;
 	}
 
-
 	public String getNname() {
 		return nName;
 	}
+
 	public void setNName(String nName) {
 		this.nName = nName;
 	}
+
 	public String getEdate() {
 		return eDate;
 	}
+
 	public void seteDate(String eDate) {
 		this.eDate = eDate;
 	}
-	@Override
-	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", nName=" + nName + ", tel=" + tel + ", eDate="
-				+ eDate + ", author=" + author + ", point=" + point + ", status=" + status + ", location1=" + location1
-				+ ", location2=" + location2 + ", email=" + email + ", pic=" + pic + ", zoomin1=" + zoomin1
-				+ ", zoomin2=" + zoomin2 + "]";
-	}
+
 	public String getAuthor() {
 		return author;
 	}
@@ -152,5 +148,11 @@ public class MemberVO {
 		this.zoomin2 = zoomin2;
 	}
 
-
+	@Override
+	public String toString() {
+		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", nName=" + nName + ", tel=" + tel + ", eDate="
+				+ eDate + ", author=" + author + ", point=" + point + ", status=" + status + ", location1=" + location1
+				+ ", location2=" + location2 + ", email=" + email + ", pic=" + pic + ", zoomin1=" + zoomin1
+				+ ", zoomin2=" + zoomin2 + "]";
+	}
 }

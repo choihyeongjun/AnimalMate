@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+.btn_area {
+    margin: 30px 0 11px;
+}
+h2{
+	font-size: 24px;
+    line-height: 34px;
+    color: #252525;
+    letter-spacing: -1px;
+    font-weight: 500;
+    margin-right: 150px;
+	font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
+}
+ .btn_submit {
+    width: 80%;
+    height :50px;
+    border: 0;
+    cursor: pointer;
+    background-color: #ff6a2e;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    margin-top:20px;
+    margin-left:20px;
+    
+}
+ .btn_join {
+ 	border:0; 
+	outline:0; 
+    cursor: pointer;
+    background-color:white;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+	 font-size: 13px;
+    margin-right: 100px;
+}
+.findid{
+	border:0; 
+	outline:0; 
+	background-color:white;
+	 font-family: Dotum,'돋움',Helvetica,sans-serif;
+	 font-size: 13px;
+}
+.findpw{
+	border:0; 
+	outline:0; 
+	background-color:white;
+	 font-family: Dotum,'돋움',Helvetica,sans-serif;
+	 font-size: 13px;
+}
+.int{
+	width: 70%;
+    height: 40px;
+    line-height: 47px;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
+    border: none;
+    border-bottom: 2px solid;
+    border-bottom-color: #ccc;
+    margin-bottom: 20px
+    
+}
+::placeholder {
+  color: #ccc;
+   font-weight: 500;
+}
+
+#logo {
+    width: 240px;
+    height: 200px;
+    cursor: pointer;
+}
+input:focus {
+    outline: none;
+}
+h4{
+	margin: 19px 0 8px;
+    font-size: 13px;
+    font-weight: 500;
+    margin-right: 100px;
+    margin-bottom: 10px;
+    line-height: 25px;
+    padding: 0px 40px 0px;
+     float: left;
+}
+h3 {
+    margin: 19px 0 8px;
+    font-size: 17px;
+    font-weight: 700;
+    margin-right: 280px;
+    font-family: NotoSans-Regular,AppleSDGothicNeo-Regular,"맑은 고딕",Malgun Gothic,"돋움",dotum,sans-serif;
+}
+
+h6{
+	text-decoration: underline;
+	color: blue;
+	font-size: 15px;
+
+}
+
+#wrapper {
+    position: relative;
+    height: 90%;
+    border: 1px solid #e5e5e5;
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 40px 40px 70px;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+
+.error_msg{
+	color: red;
+	margin-bottom: 20px;
+	font-weight: 700;
+}
