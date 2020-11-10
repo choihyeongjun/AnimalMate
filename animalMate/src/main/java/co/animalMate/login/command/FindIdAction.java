@@ -22,17 +22,17 @@ public class FindIdAction implements Action {
       
       String page;
       vo = dao.findId(vo);
+      String msg;
       String id = vo.getId();
       page = "jsp/login/findIdResult.jsp";
-      
       if(vo.getName()!=(request.getParameter("name")) &&
-      vo.getEmail()!=(request.getParameter("email")) ){
-
-    	  page= "jsp/login/findId.jsp";
-    	  return page;
-      }else{
-    	  page = "jsp/login/findIdResult.jsp?id="+id;
-      }
+		vo.getEmail()!=(request.getParameter("email"))){
+  
+	  page= "jsp/login/findId.jsp";
+	  return page;
+     }else{
+	  page = "jsp/login/findIdResult.jsp?id="+id;
+     }
       return page;
    }
 

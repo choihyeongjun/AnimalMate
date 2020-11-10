@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>비밀번호 재설정</title>
+<title>AnimaMate</title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/pwreset.css">
 <script>
 function pwCheck(){
 	var pw1 = document.querySelector('#pw1');
@@ -26,7 +27,12 @@ function pwCheck(){
 		alert("비밀번호가 일치하지 않습니다.");
 		return false;
 	}
-	
+}
+
+function submit{
+	$(".btn_submit").on("click",function(){
+		window.close();
+	});
 }
 </script>
 </head>
@@ -35,35 +41,33 @@ ${msg1}
 ${msg2}
 ${msg3}
 <!-- 비번 재설정 -->
-	<div class="pw_reset-header" align="center">
-		<h1>비밀번호 재설정</h1>
-		<br/><br/>
-	</div>
+	<div id="wrapper">
+		<h2>새로운 비밀번호를 입력해주세요.</h2>
+	<br>
 	<!-- 메인시작 -->
 	<div class="pw_reset-main" align="center">
 		 <form class="join_form" action="${pageContext.request.contextPath}/resetPw.do" method="post" 
 		 onsubmit="return pwCheck()">
 		  <!-- PW1 -->
 			 <div>
-                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                    <h3>비밀번호</h3>
                     <span class="box int_pass">
-                        <input type="text" id="pw1" class="int" name="pw" maxlength="20"  placeholder="비밀번호 입력">             
+                        <input type="text" id="pw1" class="int" name="pw" maxlength="20"  placeholder="비밀번호(8~20자리)">             
                     </span>
                 </div> 
 		    <!-- PW2 -->
                 <div>
-                    <h3 class="join_title"><label for="pw2">비밀번호 확인</label></h3>
                     <span class="box int_pass_check">
-                        <input type="text" id="pswd2" class="int" maxlength="20"  placeholder="비밀번호 확인">
+                        <input type="text" id="pswd2" class="int" maxlength="20"  placeholder="비밀번호 재입력">
                     </span>
                 </div>
 			<!-- 버튼 시작 -->
 			<div class="pw_reset-footer" align="center">
 			<hr style="border-color: white;" align="left" noshade="noshade" size="1" />
-			<button class="pw_reset-change" type="submit">비밀번호 변경</button>&nbsp;&nbsp;
-			<a class="id_find-cancel" href="#">취소/닫기</a>
+			<button class="btn_submit" type="submit">비밀번호 변경</button>
 			</div>
 		</form>
+		</div>
 		</div> <!-- 전체 끝 -->
 </body>
 </html>
