@@ -67,21 +67,6 @@ public class OwnerInsertAction implements Action {
 				joblistVO.setComm(a);
 				joblistDAO.ownerInsert(joblistVO);
 			}
-			
-//			System.out.println(buyer);
-//			System.out.println(title);
-//			System.out.println(petCode);
-//			System.out.println(location1);
-//			System.out.println(location2);
-//			System.out.println(sdate);
-//			System.out.println(edate);
-//			System.out.println(stime);
-//			System.out.println(etime);
-//			System.out.println(price);
-//			System.out.println(comm);
-//			for(String a : joblistComm) {
-//				System.out.println(a);
-//			}
 		
 		return "jsp/board/ownerFormView.jsp";
 	}

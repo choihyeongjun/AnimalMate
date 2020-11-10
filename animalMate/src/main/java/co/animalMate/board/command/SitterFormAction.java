@@ -11,10 +11,12 @@ import javax.servlet.http.HttpSession;
 import co.animalMate.common.Action;
 import co.animalMate.main.dao.CommentsDAO;
 import co.animalMate.main.dao.MemberDao;
+import co.animalMate.main.dao.PictureDAO;
 import co.animalMate.main.dao.SitterDAO;
 import co.animalMate.main.dao.TradeBoardDAO;
 import co.animalMate.vo.CommentsVO;
 import co.animalMate.vo.MemberVO;
+import co.animalMate.vo.PictureVO;
 import co.animalMate.vo.SitterVO;
 import co.animalMate.vo.TradeBoardVO;
 
@@ -79,7 +81,15 @@ public class SitterFormAction implements Action {
 			score += commentsVO.getScore();
 		}
 		request.setAttribute("score", score/career);
-
+		
+		//돌봄환경 사진 구하기!
+		PictureDAO pictureDAO = new PictureDAO();  
+		PictureVO pictureVO = new PictureVO();  
+		pictureVO.setId(id);
+		List<PictureVO> pictureList = new ArrayList<PictureVO>();
+		pictureList = pictureDAO.selectById(pictureVO);
+		request.setAttribute("pictureList", pictureList);
+		
 		return  "jsp/board/sitterForm.jsp";
 	}
 

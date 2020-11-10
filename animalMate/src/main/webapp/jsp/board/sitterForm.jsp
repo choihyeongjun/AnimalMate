@@ -1,6 +1,5 @@
-  
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
  <head>
@@ -24,19 +23,21 @@
 
         <!-- css -->
         <style>
-
+			.sitterEnvironment {
+				width: 200px;
+				height: 200px;
+			}
         </style>
     </head>
 
     <body>
         <!-- s:container -->
         <div class="container">
-            
+            <form action="${pageContext.request.contextPath}/sitterInsert.do" method="post">
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐줄께요- (글등록 Form)</h1>
-                <input type="text" name="title" placeholder="제목을 입력하세요">
-                </input>
+                <input type="text" name="title" placeholder="제목을 입력하세요"></input>
             </div>
             <!-- e:title -->
 
@@ -163,25 +164,18 @@
                     <ul>
                         <li>
                             <div>
-                                <button type="button">사진추가</button>
+                                <c:forEach items="${pictureList}" var="v">
+                                	<img class="sitterEnvironment" alt="이미지없다!" src="${pageContext.request.contextPath}/images/picture/${v.pic}">
+                                </c:forEach>
                             </div>
                         </li>
-                        <li></li>
                     </ul>
                 </div>
-
-                <div id="sec04" class="">
-                    <h2 class="cont_tit">스케쥴선택</h2>
-
-                    <div>
-                        
-                    </div>
-                </div>
-
+                
                 <div id="sec05" class="">
                     <h2 class="cont_tit">세부내용</h2>
 
-                    <textarea>
+                    <textarea name="comm">
                     </textarea>
                 </div>
 
@@ -205,6 +199,7 @@
 
             </div>
             <!-- e:contents -->
+            </form>
         </div>
         <!-- s:container -->
     </body>
