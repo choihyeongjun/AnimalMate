@@ -42,6 +42,7 @@ public class NoticeDAO extends DAO {
 	// 전체선택(페이징)
 		public List<NoticeVO> selectAll(NoticeVO nvo) { // 멤버리스트 전체를 가져오는 메소드
 			List<NoticeVO> list = new ArrayList<NoticeVO>();
+			//type에 따라 가져오기
 			String whereCondition = " where 1 = 1 ";
 			if(nvo.getType() != null && !nvo.getType().equals("")) {
 				whereCondition += " and type = ?";
@@ -78,7 +79,7 @@ public class NoticeDAO extends DAO {
 			return list;
 		}
 		
-	// 게시판 태그 관련
+	//페이지 번호 추출기
 	public int count(NoticeVO nvo) {
 		int cnt = 0;
 		String whereCondition = " where 1 = 1 ";

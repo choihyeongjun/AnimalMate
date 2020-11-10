@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신고하기</title>
+<title>쪽지보내기</title>
 
 <style type="text/css">
 .col1_title, .col1_target, .col3_comm {
@@ -23,7 +23,7 @@
 	$(()=>{
 		$("#gobackBtn").on({
 			"click" : function() {
-				 history.back();
+				window.close();
 			}
 		})
 	})
@@ -32,9 +32,8 @@
 <body>
 	
 	<div class="reportDiv" align="center">
-	<h1>&lt;신고하기&gt;</h1><br>
 		<form id="frm" name="frm" method="post"
-			action="${pageContext.request.contextPath}/submitReport.do">
+			action="${pageContext.request.contextPath}/submitMessage.do">
 			<table class="reportTd">
 				<tr>
 					<td class="col1_title">제목</td>
@@ -43,9 +42,9 @@
 				</tr>
 
 				<tr>
-					<td class="col1_target">신고대상</td>
-					<td><input class="col2_target" type="text" id="toUser"
-						name="toUser"></td>
+					<td class="col1_target">받을 사람</td>
+					<td><input class="col2_target" type="text" id="receive"
+						name="receive"></td>
 				</tr>
 				<tr>
 					<td class="col3_comm">내용</td>

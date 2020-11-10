@@ -1,39 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib tagdir="/WEB-INF/tags" prefix="my"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>받은쪽지함</title>
-<script type="text/javascript">
-	$(() => {
-		$("#testBtn").on({
-			"click": function() {
-				history.back();
-			}
-		})
-	});
-</script>
 <style>
-.pagination {
+.pagination, li.active, .pagination li {
 	display: inline-block;
 }
 
-.pagination a {
+.pagination a, li.active {
 	color: black;
-	float: left;
 	padding: 8px 16px;
 	text-decoration: none;
+	border: 1px solid #ddd;
 }
 
-.pagination a.active {
+.pagination li.active {
 	background-color: #4CAF50;
 	color: white;
+	border: 1px solid #4CAF50;
 }
 
 .pagination a:hover:not(.active) {
 	background-color: #ddd;
+}
+
+.pagination a, li.active {
+	border-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
 .sendMessageBtn {
@@ -43,10 +41,21 @@
 </style>
 <script type="text/javascript">
 	$(()=>{
+		//보낸 메세지 버튼
 		$("#sendMessageBtn").on({
 			"click" : function(){
 				location.href = "${pageContext.request.contextPath}/goSendMessageListPage.do"
 			} 
+		})
+		
+		//tr을 클릭했을 때
+		$(".messageListTR").on({
+			"click" : function(){
+				console.log("r");
+				window.open("${pageContext.request.contextPath}/jsp/login/findId.jsp", "아이디 찾기", "width=1000, height=750");
+				console.log("a");
+				//window.open("${pageContext.request.contextPath}/jsp/login/findId.jsp","a","width=300, height=300, left=50, top=10");
+			}
 		})
 	})
 </script>
@@ -70,7 +79,7 @@
 			</thead>
 			<tbody>
 				<c:forEach items="${messageList}" var="v">
-					<tr>
+					<tr class="messageListTR">
 						<td scope="row">${v.code}</td>
 						<td scope="row">${v.title}</td>
 						<td scope="row">${v.send}</td>
@@ -80,11 +89,13 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<div class="pagination">
-			<a href="#">&laquo;</a> <a href="#">1</a> <a class="active" href="#">2</a>
-			<a href="#">3</a> <a href="#">4</a> <a href="#">5</a> <a href="#">6</a>
-			<a href="#">&raquo;</a>
-		</div>
+		<script>
+			function goPage(p) {
+				location.href="goMessageListPage.do?p="+p;
+			}
+		</script>
+		<my:paging paging="${paging}" jsfunc="goPage" />
+		<br>
 	</div>
 </body>
 </html>

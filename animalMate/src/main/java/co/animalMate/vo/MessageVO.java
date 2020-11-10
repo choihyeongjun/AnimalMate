@@ -8,6 +8,8 @@ public class MessageVO {
 	private String status;
 	private String ttime;
 	private String title;
+	private Integer first;
+	private Integer last;
 	
 	public MessageVO() {}
 
@@ -65,7 +67,24 @@ public class MessageVO {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public Integer getFirst() {
+		return first;
+	}
+
+	public void setFirst(Integer first) {
+		this.first = first;
+	}
+
+	public Integer getLast() {
+		return last;
+	}
+
+	public void setLast(Integer last) {
+		this.last = last;
 	}	
+	
 	
 	
 }
