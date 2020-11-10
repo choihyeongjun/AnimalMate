@@ -50,6 +50,7 @@ import co.animalMate.main.command.GoSendMessageListPageAction;
 import co.animalMate.main.command.GoSitterListPageAction;
 import co.animalMate.main.command.GotradeListPageAction;
 import co.animalMate.main.command.SitterInsertAction;
+import co.animalMate.main.command.SubmitMessageAction;
 import co.animalMate.main.command.SubmitNoticeAction;
 import co.animalMate.main.command.SubmitReportAction;
 import co.animalMate.mypage.command.MemberForm;
@@ -92,7 +93,8 @@ public class FrontController extends HttpServlet {
          //제출하기
       map.put("/submitReport.do", new SubmitReportAction()); // 신고폼 페이지에서 제출버튼 눌렀을 때
       map.put("/submitNotice.do", new SubmitNoticeAction()); // 공지사항폼 페이지에서 제출버튼 눌렀을 때
-      map.put("/sitterInsert.do", new SitterInsertAction()); // 시터폼에서 제출하기 눌렀을 떄 
+      map.put("/sitterInsert.do", new SitterInsertAction()); // 시터폼에서 제출하기 눌렀을 때 
+      map.put("/submitMessage.do", new SubmitMessageAction()); // 메세지 보내기폼에서 제출하기 눌렀을 때
       
       
       
