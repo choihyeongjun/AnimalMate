@@ -4,6 +4,7 @@ CREATE SEQUENCE BLACK_CODE;
 CREATE SEQUENCE QUESTION_SEQ;
 CREATE SEQUENCE NOTICE_CODE;
 CREATE SEQUENCE PICTURE_CODE;
+CREATE SEQUENCE MESSAGE_CODE;
 
 --notice테이블 더미
 insert into notice values(notice_code.nextval, sysdate, 0, '실험1', '실험용입니다.', '공지');
@@ -27,3 +28,6 @@ insert into picture values(picture_code.nextval, 'id1', 'picture2.jpg');
 insert into picture values(picture_code.nextval, 'id1', 'picture3.jpg');
 insert into picture values(picture_code.nextval, 'id1', 'picture4.jpg');
 insert into picture values(picture_code.nextval, 'id1', 'picture5.jpg');
+
+--message테이블 더미
+insert into message(code, send, receive, comm, status, ttime, title) values (message_code.nextval, 'id2', 'id1', '실험용쪽지', '미확인', sysdate, '쪽지제목');

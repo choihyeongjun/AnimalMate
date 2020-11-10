@@ -1,6 +1,7 @@
 
 /* Drop Tables */
 
+DROP TABLE applytrade CASCADE CONSTRAINTS;
 DROP TABLE black CASCADE CONSTRAINTS;
 DROP TABLE comments CASCADE CONSTRAINTS;
 DROP TABLE joblist CASCADE CONSTRAINTS;
@@ -8,7 +9,7 @@ DROP TABLE message CASCADE CONSTRAINTS;
 DROP TABLE pet CASCADE CONSTRAINTS;
 DROP TABLE picture CASCADE CONSTRAINTS;
 DROP TABLE sitter CASCADE CONSTRAINTS;
-DROP TABLE trade CASCADE CONSTRAINTS;
+DROP TABLE petcode CASCADE CONSTRAINTS;
 DROP TABLE tradeBoard CASCADE CONSTRAINTS;
 DROP TABLE members CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
@@ -18,6 +19,15 @@ DROP TABLE question CASCADE CONSTRAINTS;
 
 
 /* Create Tables */
+
+CREATE TABLE applytrade
+(
+	code number(10) NOT NULL,
+	id varchar2(100) NOT NULL,
+	tdate date DEFAULT sysdate,
+	status varchar2(100)
+);
+
 
 CREATE TABLE black
 (
@@ -45,9 +55,10 @@ CREATE TABLE comments
 CREATE TABLE joblist
 (
 	code number(10) NOT NULL,
-	comm varchar2(100),
+	comm varchar2(100) NOT NULL,
 	pic varchar2(100),
-	confirm varchar2(10),
+	confirm varchar2(100) DEFAULT '인증대기',
+	PRIMARY KEY (code, comm),
 	CONSTRAINT joblist_key UNIQUE (code, comm)
 );
 
@@ -78,7 +89,7 @@ CREATE TABLE message
 (
 	code number NOT NULL,
 	send varchar2(100),
-	receive varchar2(100) NOT NULL,
+	receive varchar2(100),
 	title varchar2(100),
 	comm varchar2(4000),
 	status varchar2(100),
@@ -104,7 +115,7 @@ CREATE TABLE pet
 	code number NOT NULL,
 	name varchar2(100),
 	age number(2,0),
-	gender varchar2(4),
+	gender varchar2(100),
 	type varchar2(100),
 	detailType varchar2(100),
 	cut varchar2(2),
@@ -112,6 +123,13 @@ CREATE TABLE pet
 	id varchar2(100) NOT NULL,
 	pic varchar2(100),
 	PRIMARY KEY (code)
+);
+
+
+CREATE TABLE petcode
+(
+	code number(10) NOT NULL,
+	petcode number
 );
 
 
@@ -147,18 +165,6 @@ CREATE TABLE sitter
 );
 
 
-CREATE TABLE trade
-(
-	code number(10) NOT NULL,
-	status varchar2(100),
-	stime varchar2(100),
-	etime varchar2(100),
-	day varchar2(100),
-	tmoney number,
-	PRIMARY KEY (code)
-);
-
-
 CREATE TABLE tradeBoard
 (
 	code number(10) NOT NULL,
@@ -168,10 +174,11 @@ CREATE TABLE tradeBoard
 	ttime date DEFAULT sysdate,
 	price number(20),
 	comm varchar2(200),
-	status varchar2(100),
+	status varchar2(100) DEFAULT '거래 미정',
+	sdate date,
+	edate date,
 	stime varchar2(100),
 	etime varchar2(100),
-	wtime number,
 	ttype varchar2(100),
 	location1 varchar2(200),
 	location2 varchar2(200),
@@ -181,6 +188,12 @@ CREATE TABLE tradeBoard
 
 
 /* Create Foreign Keys */
+
+ALTER TABLE applytrade
+	ADD FOREIGN KEY (id)
+	REFERENCES members (id)
+;
+
 
 ALTER TABLE black
 	ADD FOREIGN KEY (toUser)
@@ -195,13 +208,13 @@ ALTER TABLE black
 
 
 ALTER TABLE message
-	ADD FOREIGN KEY (receive)
+	ADD FOREIGN KEY (send)
 	REFERENCES members (id)
 ;
 
 
 ALTER TABLE message
-	ADD FOREIGN KEY (send)
+	ADD FOREIGN KEY (receive)
 	REFERENCES members (id)
 ;
 
@@ -237,6 +250,12 @@ ALTER TABLE picture
 ;
 
 
+ALTER TABLE applytrade
+	ADD FOREIGN KEY (code)
+	REFERENCES tradeBoard (code)
+;
+
+
 ALTER TABLE comments
 	ADD FOREIGN KEY (code)
 	REFERENCES tradeBoard (code)
@@ -249,7 +268,7 @@ ALTER TABLE joblist
 ;
 
 
-ALTER TABLE trade
+ALTER TABLE petcode
 	ADD FOREIGN KEY (code)
 	REFERENCES tradeBoard (code)
 ;
@@ -258,6 +277,11 @@ ALTER TABLE trade
 
 /* Comments */
 
+COMMENT ON TABLE applytrade IS '거래신청';
+COMMENT ON COLUMN applytrade.code IS '거래번호';
+COMMENT ON COLUMN applytrade.id IS '신청자id';
+COMMENT ON COLUMN applytrade.tdate IS 'tdate';
+COMMENT ON COLUMN applytrade.status IS '상태';
 COMMENT ON TABLE black IS '신고';
 COMMENT ON COLUMN black.code IS '신고게시글번호';
 COMMENT ON COLUMN black.toUser IS '신고하는사람';
@@ -319,6 +343,9 @@ COMMENT ON COLUMN pet.cut IS '중성화유무';
 COMMENT ON COLUMN pet.comm IS '상세설명';
 COMMENT ON COLUMN pet.id IS '아이디';
 COMMENT ON COLUMN pet.pic IS '사진';
+COMMENT ON TABLE petcode IS '거래테이블';
+COMMENT ON COLUMN petcode.code IS '거래번호';
+COMMENT ON COLUMN petcode.petcode IS '펫코드';
 COMMENT ON TABLE picture IS '돌봄환경사진';
 COMMENT ON COLUMN picture.code IS '순번';
 COMMENT ON COLUMN picture.id IS '시터아이디';
@@ -336,25 +363,19 @@ COMMENT ON COLUMN sitter.id IS '아이디';
 COMMENT ON COLUMN sitter.maxP IS '펫 수용 수';
 COMMENT ON COLUMN sitter.comm IS '지원내용';
 COMMENT ON COLUMN sitter.status IS '상태';
-COMMENT ON TABLE trade IS '거래테이블';
-COMMENT ON COLUMN trade.code IS '거래번호';
-COMMENT ON COLUMN trade.status IS '상태';
-COMMENT ON COLUMN trade.stime IS '시작시간';
-COMMENT ON COLUMN trade.etime IS '종료시간';
-COMMENT ON COLUMN trade.day IS '요일';
-COMMENT ON COLUMN trade.tmoney IS '거래머니';
 COMMENT ON TABLE tradeBoard IS '거래게시판';
 COMMENT ON COLUMN tradeBoard.code IS '거래번호';
 COMMENT ON COLUMN tradeBoard.buyer IS '위탁자아이디';
 COMMENT ON COLUMN tradeBoard.seller IS '시터아이디';
 COMMENT ON COLUMN tradeBoard.title IS '제목';
-COMMENT ON COLUMN tradeBoard.ttime IS '거래시간';
+COMMENT ON COLUMN tradeBoard.ttime IS '글 올린 시간';
 COMMENT ON COLUMN tradeBoard.price IS '거래가격';
 COMMENT ON COLUMN tradeBoard.comm IS '상세정보';
 COMMENT ON COLUMN tradeBoard.status IS '거래상태';
-COMMENT ON COLUMN tradeBoard.stime IS '시작일자';
-COMMENT ON COLUMN tradeBoard.etime IS '종료일자';
-COMMENT ON COLUMN tradeBoard.wtime IS '근무시간';
+COMMENT ON COLUMN tradeBoard.sdate IS '시작일자';
+COMMENT ON COLUMN tradeBoard.edate IS '종료일자';
+COMMENT ON COLUMN tradeBoard.stime IS '시작시간';
+COMMENT ON COLUMN tradeBoard.etime IS '종료시간';
 COMMENT ON COLUMN tradeBoard.ttype IS '돌봐줄께요/돌봐주세요';
 COMMENT ON COLUMN tradeBoard.location1 IS '근무지역';
 COMMENT ON COLUMN tradeBoard.location2 IS '상세근무지역';

@@ -6,7 +6,8 @@ public class MessageVO {
 	private String receive;
 	private String comm;
 	private String status;
-	private String ttype;
+	private String ttime;
+	private String title;
 	
 	public MessageVO() {}
 
@@ -50,13 +51,21 @@ public class MessageVO {
 		this.status = status;
 	}
 
-	public String getTtype() {
-		return ttype;
+	public String getTtime() {
+		return ttime;
 	}
 
-	public void setTtype(String ttype) {
-		this.ttype = ttype;
+	public void setTtime(String ttime) {
+		this.ttime = ttime;
 	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}	
 	
 	
 }

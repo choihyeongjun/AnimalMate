@@ -11,7 +11,7 @@ import co.animalMate.common.Action;
 import co.animalMate.main.dao.MessageDAO;
 import co.animalMate.vo.MessageVO;
 
-public class GoMessageListPageAction implements Action {
+public class GoSendMessageListPageAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -21,12 +21,11 @@ public class GoMessageListPageAction implements Action {
 		MessageDAO messageDAO = new MessageDAO();
 		MessageVO messageVO = new MessageVO();
 		List<MessageVO> messageList = new ArrayList<MessageVO>(); 
-		messageVO.setReceive(id);
-		messageList = messageDAO.selectByReceive(messageVO);
+		messageVO.setSend(id);
+		messageList = messageDAO.selectBySend(messageVO);
 		request.setAttribute("messageList", messageList);
 		
-		
-		return "jsp/main/messageList.jsp";
+		return "jsp/main/sendMessageList.jsp";
 	}
 
 }
