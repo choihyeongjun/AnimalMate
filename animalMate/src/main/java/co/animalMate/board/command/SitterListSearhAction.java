@@ -8,29 +8,29 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.board.dao.BoardDao;
 import co.animalMate.common.Action;
-import co.animalMate.vo.OwnerListVO;
-import co.animalMate.vo.TradeBoardVO;
+import co.animalMate.vo.BoardSearchVO;
 
 
-public class OwnerListAction implements Action {
+
+public class SitterListSearhAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		
 		//owner 게시판 리스트 보기 구현
 		BoardDao dao = new BoardDao();
-		OwnerListVO vo = new OwnerListVO();
-		List<OwnerListVO> list = new ArrayList<OwnerListVO>();
-		List<OwnerListVO> list1 = new ArrayList<OwnerListVO>();
+		BoardSearchVO vo = new BoardSearchVO();
+		List<BoardSearchVO> list = new ArrayList<BoardSearchVO>();
 		
-		list =  dao.selectAll();
-
-		request.setAttribute("borders", list);
-
+		vo.setMaxp(request.getParameter("maxp"));
+		vo.setStime(request.getParameter("sTime"));
+		vo.setEtime(request.getParameter("eTime"));
 		
+		list =  dao.sitsearch(vo);
+		request.setAttribute("sitborders", list); 
 
 				
-		return "jsp/board/ownerList.jsp";
+		return "jsp/board/sitterList.jsp";
 	}
 
 }

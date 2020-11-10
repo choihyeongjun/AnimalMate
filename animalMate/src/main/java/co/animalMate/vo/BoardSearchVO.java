@@ -3,6 +3,7 @@ package co.animalMate.vo;
 public class BoardSearchVO {
 	private String Pic;
 	private String Type;
+	private String maxp;
 	private String Location1;
 	private int Price;
 	private String Status;
@@ -12,9 +13,15 @@ public class BoardSearchVO {
 	private String Edate;
 	private String Sdate;
 	
-	
-	
 
+
+
+	public String getMaxp() {
+		return maxp;
+	}
+	public void setMaxp(String maxp) {
+		this.maxp = maxp;
+	}
 	public String getEdate() {
 		return Edate;
 	}
