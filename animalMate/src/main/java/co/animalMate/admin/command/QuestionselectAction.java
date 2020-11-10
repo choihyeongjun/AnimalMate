@@ -12,17 +12,23 @@ import org.json.JSONObject;
 import co.animalMate.common.Action;
 import co.animalMate.vo.QuestionVO;
 
-public class QuestionlistAction implements Action {
+public class QuestionselectAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		   
 		QuestionDAO dao=new QuestionDAO();
-		List<QuestionVO>list=new ArrayList<>();
-		list=dao.selectAll();
-		request.setAttribute("list",list);
+		QuestionVO vo=new QuestionVO();
+		String code=request.getParameter("code");
+		vo.setSend(code);
+		request.setAttribute("title",vo.getTitle());
+		request.setAttribute("comm",vo.getComm());
+		request.setAttribute("ttype",vo.getTtype());
 		
-		return "/jsp/admin/test/questionboard.jsp";
+		
+	
+		
+		return "/jsp/admin/test/questionform.jsp";
 	}
 
 }
