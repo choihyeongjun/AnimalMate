@@ -67,25 +67,25 @@ public class OwnerFormCheck implements Action {
 		}
 		request.setAttribute("gender", gender);
 
-		// 거래완료 횟수
-		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
-		TradeBoardVO tradeBoardVO = new TradeBoardVO();
-		List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
-		tradeBoardVO.setSeller(sid);//바꿔줘야함
-		tradeBoardList = tradeBoardDAO.selectById(tradeBoardVO);
-		int career = tradeBoardList.size(); 
-		request.setAttribute("career", career);
+//		// 거래완료 횟수
+//		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
+//		TradeBoardVO tradeBoardVO = new TradeBoardVO();
+//		List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
+//		tradeBoardVO.setSeller(sid);//바꿔줘야함
+//		tradeBoardList = tradeBoardDAO.selectById(tradeBoardVO);
+//		int career = tradeBoardList.size(); 
+//		request.setAttribute("career", career);
 		
-		// 경력
-		CommentsVO commentsVO = new CommentsVO();
-		CommentsDAO commentsDAO = new CommentsDAO();
-		int score = 0;
-		for (TradeBoardVO tempt : tradeBoardList) {
-			commentsVO.setCode(tempt.getCode());
-			commentsVO = commentsDAO.selectByCode(commentsVO);
-			score += commentsVO.getScore();
-		}
-		request.setAttribute("score", score / career);
+//		// 경력
+//		CommentsVO commentsVO = new CommentsVO();
+//		CommentsDAO commentsDAO = new CommentsDAO();
+//		int score = 0;
+//		for (TradeBoardVO tempt : tradeBoardList) {
+//			commentsVO.setCode(tempt.getCode());
+//			commentsVO = commentsDAO.selectByCode(commentsVO);
+//			score += commentsVO.getScore();
+//		}
+//		request.setAttribute("score", score / career);
 
 		return "jsp/mypage/ownerFormCheck.jsp";
 	}

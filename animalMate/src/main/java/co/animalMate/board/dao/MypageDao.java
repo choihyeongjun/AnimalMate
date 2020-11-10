@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.List;
 
 import co.animalMate.common.DAO;
+import co.animalMate.vo.CommentsVO;
 import co.animalMate.vo.MemberVO;
 import co.animalMate.vo.PetVO;
 import co.animalMate.vo.TradeBoardVO;
@@ -19,29 +20,30 @@ public class MypageDao extends DAO {
 	private MemberVO memVo;
 	private TradeBoardVO tbVo;
 	private PetVO petVo;
+	private CommentsVO comVo;
 
 	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ?";
 	private final String TRADE_COUNT = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE (STATUS IN('예약가능', '예약완료')) AND (BUYER = ? OR SELLER= ?)";
 	//private final String SELECT_USER_TRADES = "SELECT * FROM TRADEBOARD WHERE (BUYER = ? OR SELLER = ?) ORDER BY CODE DESC";
 	private final String SELECT_USER_TRADES = "SELECT TB.*, P.* FROM PETCODE T LEFT OUTER JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) LEFT OUTER JOIN PET P ON (T.PETCODE = P.CODE) WHERE TB.BUYER = ? OR TB.SELLER = ? ORDER BY TB.CODE DESC";
 	private final String SELECT_USER_TRADE = "SELECT TB.*, P.* FROM PETCODE T LEFT OUTER JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) LEFT OUTER JOIN PET P ON (T.PETCODE = P.CODE) WHERE TB.code = ? ";
-	private final String SELECT_TRADE_PETS = "SELECT TYPE, DETAILTYPE FROM PET WHERE CODE = (SELECT T.PETCODE FROM TRADE T JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) WHERE TB.CODE = ?)";
+	private final String SELECT_COMMENTS = "SELECT C.* FROM COMMENTS C JOIN TRADEBOARD TB ON (C.CODE=TB.CODE) WHERE TB.SELLER = ? ";
 	
-	
-	
-	
-	//거래 리스트에 단일 펫 정보 뿌리기
-	public List<PetVO> selectTradePets(PetVO petVo) {
-		List<PetVO> list = new ArrayList<PetVO>();
+	//프로필에 거래후기 리스트 뿌리기
+	public List<CommentsVO> selectComments(CommentsVO comVo) {
+		List<CommentsVO> list = new ArrayList<CommentsVO>();
 		try {
-			psmt = conn.prepareStatement(SELECT_TRADE_PETS);
-			psmt.setInt(1, tbVo.getCode());
+			psmt = conn.prepareStatement(SELECT_COMMENTS);
+			psmt.setString(1, memVo.getId());
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				petVo = new PetVO();
-				petVo.setPic(rs.getString("type"));
-				petVo.setPic(rs.getString("detailtype"));
-				list.add(petVo);
+				comVo = new CommentsVO();
+				comVo.setCode(rs.getInt("code"));
+				comVo.setScore(rs.getInt("score"));
+				comVo.setComm(rs.getString("comm"));
+				comVo.setPic(rs.getString("pic"));
+				comVo.setTitle(rs.getString("title"));
+				list.add(comVo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -50,7 +52,7 @@ public class MypageDao extends DAO {
 		}
 		return list;
 	}
-
+	
 	// User 거래 리스트 모두 출력
 	public List<TradeListVO> selectUserTrades(TradeListVO tlVo) {
 		List<TradeListVO> list = new ArrayList<TradeListVO>();
