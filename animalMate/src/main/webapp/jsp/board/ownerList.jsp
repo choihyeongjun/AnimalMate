@@ -44,7 +44,7 @@
 	display: block;
 	margin: 0 0 2em 0;
 	width: 100%;
-	height : 150px;
+	height: 150px;
 }
 
 /* 검색창과 썸네일 간격  */
@@ -60,7 +60,7 @@
 <script>
 $(()=>{
 	$(".box").on("click",function() {
-		var code = $(this).children().children(1).children(0).eq(1).text();
+		var code = $(this).children().eq(0).val();
 		location.href="${pageContext.request.contextPath}/ownerFormSelect.do?code="+code;
 	});
 })
@@ -68,112 +68,85 @@ $(()=>{
 </head>
 
 <body id="top">
+	<br>
 	<div>
-		<h1>돌봐주세요 리스트</h1>
+		<h3>돌봐주세요 게시판</h3>
 	</div>
+	<br>
 	
-	<form id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerListSearch.do">
 	<div>
-		<label>펫 종류</label> 
-		<select id="petType" name="petType">
-			<option>선택하세요</option>
-			<option value="고양이">고양이</option>
-			<option value="대형견">대형견</option>
-			<option value="중형견">중형견</option>
-			<option value="소형견">소형견</option>
-		</select> 
-		<label>시작시간</label> 
-		<select id="sTime" name="sTime">
-			<option>선택하세요</option>
-			<option value="07:00">07:00</option>
-			<option value="08:00">08:00</option>
-			<option value="09:00">09:00</option>
-			<option value="10:00">10:00</option>
-			<option value="11:00">11:00</option>
-			<option value="12:00">12:00</option>
-			<option value="13:00">13:00</option>
-			<option value="14:00">14:00</option>
-			<option value="15:00">15:00</option>
-			<option value="16:00">16:00</option>
-			<option value="17:00">17:00</option>
-			<option value="18:00">18:00</option>
-			<option value="19:00">19:00</option>
-			<option value="20:00">20:00</option>
-			<option value="21:00">21:00</option>
-			<option value="22:00">22:00</option>
-		</select>
-		 <label>끝 시간</label> 
-		 <select id="eTime" name="eTime">
-			<option value="07:00">07:00</option>
-			<option value="08:00">08:00</option>
-			<option value="09:00">09:00</option>
-			<option value="10:00">10:00</option>
-			<option value="11:00">11:00</option>
-			<option value="12:00">12:00</option>
-			<option value="13:00">13:00</option>
-			<option value="14:00">14:00</option>
-			<option value="15:00">15:00</option>
-			<option value="16:00">16:00</option>
-			<option value="17:00">17:00</option>
-			<option value="18:00">18:00</option>
-			<option value="19:00">19:00</option>
-			<option value="20:00">20:00</option>
-			<option value="21:00">21:00</option>
-			<option value="22:00">22:00</option>
-		</select>
-		<button type="submit">검색</button>
+		<form id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerListSearch.do">
+			<label for="type">분류</label> 
+			<select id="type" name="type">
+				<option>선택하세요</option>
+				<option value="고양이">고양이</option>
+				<option value="대형견">대형견</option>
+				<option value="중형견">중형견</option>
+				<option value="소형견">소형견</option>
+			</select> &nbsp;&nbsp;
+			거래 상태
+			<select id="status" name="status">
+				<option>선택하세요</option>
+				<option value="거래 미정">거래 미정</option>
+				<option value="거래 대상 확정">거래 대상 확정</option>
+				<option value="입금 후">입금 완료</option>
+				<option value="반려인 미확인">반려인 미확인</option>
+				<option value="거래 완료">거래 완료</option>
+			</select> &nbsp;&nbsp;
+			<label for="location1">돌봄지역</label> <input placeholder="돌봄지역을 입력하세요" type="text" id="location1" name="location1">&nbsp;&nbsp;
+			<br>
+			돌봄금액
+			<input id="minPrice" name="minPrice" type="number" step="1000" placeholder="최소금액">~
+			<input id="maxPrice" name="maxPrice" type="number" step="1000" placeholder="최대금액">
+			<br>
+			돌봄날짜<input type="date" id="sDate" name="sDate">~<input type="date" id="eDate" name="eDate">&nbsp;&nbsp;
+			<br>
+			돌봄시간<input type="time" id="sTime" name="sTime">~<input type="time" id="eTime" name="eTime">&nbsp;&nbsp;
+			<br><br>
+			<button type="submit">검색하기</button>&nbsp;&nbsp;
+			<button type="button" onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글등록</button>
+		</form>
 	</div>
-</form>
 
-
-	<div>
-		<button
-			onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글
-			등록</button>
-	</div>
-	<div id="main">
-		<div class="inner">
+	<div id="main" align="center">
+		<div class="inner" align="center">
 
 			<!-- Boxes -->
-			<div class="thumbnails">
-			
+			<div class="thumbnails" align="center">
+
 				<c:forEach var="v" items="${Superlist}">
-					<div class="box">
-					
-						<img class="image fit" src="${pageContext.request.contextPath}/images/pet_pic/${v[0].pic}" alt="" />
-						<div>
-							<dl class="code_dl">
-								<dt>거래번호</dt>
-								<dd id="code" name="code">${v[1].code}</dd>
-							</dl>
-							
-							<dl>
-								<dt>펫 분 류</dt>
-								<dd>${v[0].type}</dd>
-							</dl>
-							<dl>
-								<dt>근무지역</dt>
-								<dd>${v[1].location1}</dd>
-							</dl>
-							<dl>
-								<dt>근무날짜</dt>
-								<dd>${v[1].sdate} ~ ${v[1].edate}</dd>
-							</dl>
-							<dl>
-								<dt>근무시간</dt>
-								<dd>${v[1].stime} ~ ${v[1].etime}</dd>
-							</dl>
-							<dl>
-								<dt>돌봄금액</dt>
-								<dd>${v[1].price}</dd>
-							</dl>
-							<dl>
-							<dt>거래상태</dt>
-							<dd>${v[1].status}</dd>
-						</dl>
-						
+						<div class="box">
+							<input class="sitterListCode" type="hidden" value="${v[1].code}">
+							<img class="image fit"
+								src="${pageContext.request.contextPath}/images/pet_pic/${v[0].pic}"
+								alt="" />
+							<div>
+								<dl>
+									<dt>분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;류</dt>
+									<dd>${v[0].type}</dd>
+								</dl>
+								<dl>
+									<dt>돌봄지역</dt>
+									<dd>${v[1].location1}</dd>
+								</dl>
+								<dl>
+									<dt>돌봄날짜</dt>
+									<dd>${v[1].sdate}~ ${v[1].edate}</dd>
+								</dl>
+								<dl>
+									<dt>돌봄시간</dt>
+									<dd>${v[1].stime}~ ${v[1].etime}</dd>
+								</dl>
+								<dl>
+									<dt>돌봄금액</dt>
+									<dd>${v[1].price}</dd>
+								</dl>
+								<dl>
+									<dt>거래상태</dt>
+									<dd>${v[1].status}</dd>
+								</dl>
+							</div>
 						</div>
-					</div>
 				</c:forEach>
 
 			</div>
