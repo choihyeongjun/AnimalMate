@@ -27,8 +27,9 @@ public class MytradeList implements Action {
 		// 세션 아이디 정보
 		HttpSession session = request.getSession(false);
 		String id = (String) session.getAttribute("id");
+		request.setAttribute("sid", id);
 		memVo.setId(id);
-
+		
 		// User 정보 출력
 		memVo = myDao.userInfo(memVo);
 		
@@ -37,7 +38,6 @@ public class MytradeList implements Action {
 		List<TradeListVO> list = new ArrayList<TradeListVO>();
 		tlVo.setBuyer(id);//로그인 세션 아이디
 		list = myDao.selectUserTrades(tlVo);
-		
 		request.setAttribute("tbs", list);
 		request.setAttribute("user", memVo);
 		return "jsp/mypage/mytradeList.jsp";

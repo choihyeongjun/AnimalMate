@@ -90,7 +90,7 @@
 					<td>김돌돌</td>
 					<td>32살</td>
 					<td>대구 동구 신천동</td>
-					<td><button onclick="window.location.href='${pageContext.request.contextPath}/profile.do'">더보기</button></td>	
+					<td><button onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=id3'">더보기</button></td>	
 				</tr>
 			</table>
 		</div>

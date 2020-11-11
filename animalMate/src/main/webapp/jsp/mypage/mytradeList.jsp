@@ -51,12 +51,18 @@
 					<th>예약시간</th>
 					<th>거래상태</th>
 				</tr>
-				
 			    <c:forEach items="${tbs}" var="tb">
 				<c:choose>
 			        <c:when test="${tb.ttype eq '돌봐줄게요'}">
-				        <tr onclick="location.href='${pageContext.request.contextPath}/sitterFormCheck.do?code=${tb.code}';" 
-						style='cursor:pointer;'>
+			        	<c:if test="${tb.seller eq sid and tb.buyer eq null}">
+					        <tr onclick="location.href='${pageContext.request.contextPath}/sitterFormCheck.do?code=${tb.code}';" 
+							style='cursor:pointer;'>   
+			        	</c:if>
+			        	<c:if test="${tb.seller eq sid and tb.buyer ne null}">
+					        <tr onclick="location.href='${pageContext.request.contextPath}/sitterFormCheck.do?code=${tb.code}';" 
+							style='cursor:pointer;'>  
+			        	</c:if>
+			        	
 					        <td>${tb.ttype}</td>
 					        <td>${tb.code}</td>
 					        <td>${tb.buyer}</td>
@@ -68,8 +74,14 @@
 						</tr>
 			        </c:when>         
 			        <c:otherwise>
-			        	 <tr onclick="location.href='${pageContext.request.contextPath}/ownerFormCheck.do?code=${tb.code}';" 
-						style='cursor:pointer;'>
+			        	<c:if test="${tb.buyer eq sid and tb.seller eq null}">
+					        <tr onclick="location.href='${pageContext.request.contextPath}/ownerTradeCheck.do?code=${tb.code}';" 
+						style='cursor:pointer;'> 
+			        	</c:if>
+			        	<c:if test="${tb.buyer eq sid and tb.seller ne null}">
+					        <tr onclick="location.href='${pageContext.request.contextPath}/ownerFormCheck.do?code=${tb.code}';" 
+						style='cursor:pointer;'> 
+			        	</c:if>
 					        <td>${tb.ttype}</td>
 					        <td>${tb.code}</td>
 							<td>${tb.buyer}</td>
