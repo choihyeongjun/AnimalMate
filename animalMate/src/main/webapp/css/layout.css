@@ -73,7 +73,7 @@
 .sitter_info .cont_area .info_img {display:inline-block;}
 .sitter_info .cont_area .info_table{display:inline-block;}
 
-/*.sitter_info .cont_area .info_img{width:150px; height:150px; line-height:150px; text-align:center; border-radius:50%; background:#eaeaea; margin-right:70px;}*/
+.sitter_info .cont_area .info_img{width:150px; height:150px; line-height:150px; text-align:center; border-radius:50%; background:#eaeaea; margin-right:70px;}
 .sitter_info .cont_area .info_table{width:calc(100% - 150px - 70px);}
 .sitter_info .cont_area .info_table table{width:740px;}
 .addpic button {width: 150px; height: 150px; background-color: gray;}

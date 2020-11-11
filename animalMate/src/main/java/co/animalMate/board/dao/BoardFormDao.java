@@ -67,8 +67,6 @@ public class BoardFormDao extends DAO {
 	}
 	
 
-	
-	
 	// DB자원해제
 	private void close() {
 		try {

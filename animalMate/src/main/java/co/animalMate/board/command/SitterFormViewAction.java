@@ -8,22 +8,27 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.board.dao.SitterFormDao;
 import co.animalMate.common.Action;
-import co.animalMate.vo.SitterVO;
+import co.animalMate.vo.SitterFormViewVO;
+
+
 
 public class SitterFormViewAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		
+
 		//시터테이블 정보 보내기		
-		List<SitterVO> list = new ArrayList<SitterVO>();
-		SitterFormDao sitterdao = new SitterFormDao();
-		SitterVO svo = new SitterVO();
-		svo.setCode(request.getParameter("code"));
-	//	list = sitterdao.selectAll(svo);
-		request.setAttribute("sitter", list );
+		List<SitterFormViewVO> list = new ArrayList<SitterFormViewVO>();
+		SitterFormDao dao = new SitterFormDao();
+		SitterFormViewVO vo = new SitterFormViewVO();
 		
-	
+		vo.setCode(Integer.parseInt(request.getParameter("code")));
+		list = dao.selectAll(vo);
+		request.setAttribute("sitters", list );
+
+		
+		
 		
 		return  "jsp/board/sitterFormView.jsp";
 	}
