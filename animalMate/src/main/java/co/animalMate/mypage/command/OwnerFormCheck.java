@@ -29,8 +29,6 @@ public class OwnerFormCheck implements Action {
 		// 세션 아이디 정보
 		HttpSession session = request.getSession(false);
 		String sid = (String) session.getAttribute("id");
-		
-
 		request.setAttribute("sid", sid);
 
 		// 펫, 거래 게시판 정보 호출
@@ -38,10 +36,15 @@ public class OwnerFormCheck implements Action {
 		tlVo.setCode(code);// 거래번호 클릭시
 		tlVo = myDao.selectUserTrade(tlVo);
 		request.setAttribute("tbs", tlVo);
-
+		
 		// 상대 시터정보 호출
 		myDao = new MypageDao();
-		memVo.setId(tlVo.getSeller());
+		if(sid.equals(tlVo.getSeller())) {
+			memVo.setId(tlVo.getBuyer());
+			//return "새로 만들어줘야 할 페이지 ㅡㅡ";
+		}else{			
+			memVo.setId(tlVo.getSeller());
+		}
 		memVo = myDao.userInfo(memVo);
 		request.setAttribute("user", memVo);
 
@@ -67,6 +70,8 @@ public class OwnerFormCheck implements Action {
 		}
 		request.setAttribute("gender", gender);
 
+		
+		
 //		// 거래완료 횟수
 //		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
 //		TradeBoardVO tradeBoardVO = new TradeBoardVO();
