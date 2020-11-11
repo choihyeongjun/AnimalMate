@@ -6,9 +6,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import co.animalMate.board.dao.BoardDao;
 import co.animalMate.common.Action;
-import co.animalMate.vo.OwnerListVO;
+import co.animalMate.main.dao.PetDao;
+import co.animalMate.main.dao.TradeBoardDAO;
+import co.animalMate.vo.PetVO;
 import co.animalMate.vo.TradeBoardVO;
 
 
@@ -17,18 +18,25 @@ public class OwnerListAction implements Action {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		
-		//owner 게시판 리스트 보기 구현
-		BoardDao dao = new BoardDao();
-		OwnerListVO vo = new OwnerListVO();
-		List<OwnerListVO> list = new ArrayList<OwnerListVO>();
-		List<OwnerListVO> list1 = new ArrayList<OwnerListVO>();
+		//데이터 설렉해오기
+		PetDao petDao = new PetDao();
+		List<PetVO> petList = new ArrayList<PetVO>();
+		petList = petDao.selectOwnerList();
 		
-		list =  dao.selectAll();
-
-		request.setAttribute("borders", list);
-
+		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
+		List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
+		tradeBoardList = tradeBoardDAO.selectOwnerList();
 		
-
+		//리스트에 담아서 보내기
+		List<Object> VOlist = new ArrayList<Object>();
+		List<Object> Superlist = new ArrayList<Object>();
+		for(int i=0; i<petList.size(); i++) {
+			VOlist = new ArrayList<Object>();
+			VOlist.add(petList.get(i));
+			VOlist.add(tradeBoardList.get(i));
+			Superlist.add(VOlist);
+		}
+		request.setAttribute("Superlist", Superlist);
 				
 		return "jsp/board/ownerList.jsp";
 	}

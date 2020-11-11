@@ -55,8 +55,6 @@
 .code_dl {
 	display: none;
 }
-
-
 </style>
 
 <script>
@@ -139,47 +137,47 @@ $(()=>{
 			<!-- Boxes -->
 			<div class="thumbnails">
 			
-				<c:forEach var="border" items="${borders}">
+				<c:forEach var="v" items="${Superlist}">
 					<div class="box">
 					
-						<img class="image fit" src="${pageContext.request.contextPath}/images/pet_pic/${border.pic}" alt="" />
+						<img class="image fit" src="${pageContext.request.contextPath}/images/pet_pic/${v[0].pic}" alt="" />
 						<div>
 							<dl class="code_dl">
 								<dt>거래번호</dt>
-								<dd id="code" name="code">${border.code}</dd>
+								<dd id="code" name="code">${v[1].code}</dd>
 							</dl>
 							
 							<dl>
 								<dt>펫 분 류</dt>
-								<dd>${border.type}</dd>
+								<dd>${v[0].type}</dd>
 							</dl>
 							<dl>
 								<dt>근무지역</dt>
-								<dd>${border.location1}</dd>
+								<dd>${v[1].location1}</dd>
 							</dl>
 							<dl>
 								<dt>근무날짜</dt>
-								<dd>${border.sdate} ~ ${border.edate}</dd>
+								<dd>${v[1].sdate} ~ ${v[1].edate}</dd>
 							</dl>
 							<dl>
 								<dt>근무시간</dt>
-								<dd>${border.stime} ~ ${border.etime}</dd>
+								<dd>${v[1].stime} ~ ${v[1].etime}</dd>
 							</dl>
 							<dl>
 								<dt>돌봄금액</dt>
-								<dd>${border.price}</dd>
+								<dd>${v[1].price}</dd>
 							</dl>
 							<dl>
 							<dt>거래상태</dt>
-							<dd>${border.status}</dd>
+							<dd>${v[1].status}</dd>
 						</dl>
 						
 						</div>
 					</div>
 				</c:forEach>
 
-
 			</div>
+			<!-- Boxes -->
 
 		</div>
 	</div>

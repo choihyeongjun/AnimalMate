@@ -29,9 +29,10 @@ public class OwnerFormViewAction implements Action {
 		//jobList테이블 정보 보내기
 		JobListDao jobdao = new JobListDao();
 		JoblistVO jobvo = new JoblistVO(); //단건
+		List<JoblistVO> joblistList = new ArrayList<JoblistVO>();
 		jobvo.setCode(Integer.parseInt(request.getParameter("code")));
-		jobvo = jobdao.selectAll(jobvo); 
-		request.setAttribute("joblist", jobvo);
+		joblistList = jobdao.selectAllByCode(jobvo); 
+		request.setAttribute("joblist", joblistList);
 
 	
 		return "jsp/board/ownerFormView.jsp";

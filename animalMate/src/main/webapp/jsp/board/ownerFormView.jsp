@@ -108,7 +108,8 @@
 					</div>
 				</div>
 			</div>
-
+			
+			<br>
 			<div id="sec02" class="">
 				<h2 class="cont_tit">돌봄 세부조건</h2>
 
@@ -166,22 +167,28 @@
 					</tbody>
 				</table>
 			</div>
-
+			
+			<br>
 			<div id="sec04" class="">
 				<h2 class="cont_tit">체크리스트</h2>
 				<div>
-					<p>${borders[0].comm}</p>
+					<ul>
+						<c:forEach items="${joblist}" var="v">
+							<li>○ ${v.comm}</li>
+						</c:forEach>
+					</ul>
 				</div>
 			</div>
-
+			
+			<br>
 			<div id="sec05" class="">
 				<h2 class="cont_tit">세부사항</h2>
-				<textarea>${joblist.comm}</textarea>
+				<textarea>${borders[0].comm}</textarea>
 			</div>
-
+			
+			<br>
 			<div id="sec06" class="">
 				<h2 class="cont_tit">유의사항</h2>
-
 				<ul>
 					<li>○ 배드, 사료, 산책용품등은 의뢰자께서 준비해주세요.</li>
 					<li>○ 특이사항(질병등)은 사전에 펫시터에게 공지해주세요.</li>
@@ -191,12 +198,11 @@
 				</ul>
 			</div>
 
-
+			<br>
 			<div class="btn_sumit">
-				<button type="submit" class="btn_blue">쪽지보내기</button>
-				<button type="submit" class="btn_blue" onclick="window.open('${pageContext.request.contextPath}/boardTradePet.do'">신청하기</button>
-				<button type="reset" class="btn_gray"
-					onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
+				<button type="submit">쪽지보내기</button>&nbsp;&nbsp;
+				<button type="submit" onclick="window.open('${pageContext.request.contextPath}/boardTradePet.do'">신청하기</button>&nbsp;&nbsp;
+				<button type="reset" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>&nbsp;&nbsp;
 			</div>
 
 		</div>

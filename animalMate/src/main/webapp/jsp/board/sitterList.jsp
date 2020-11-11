@@ -61,8 +61,7 @@
 
 $(()=>{
 	$(".box").on("click",function() {
-		var code = $(this).children().children().eq(1).children().eq(1).text();
-		console.log($(this).children().children().eq(1).children().eq(1).text());
+		var code = $(this).children().eq(0).val();
 		location.href="${pageContext.request.contextPath}/sitterFormSelect.do?code="+code;
 	});
 })
@@ -126,56 +125,50 @@ $(()=>{
 
 
 	<div>
-		<button
-			onclick="window.location.href='${pageContext.request.contextPath}/sitterForm.do'">글
-			등록</button>
+		<button	onclick="window.location.href='${pageContext.request.contextPath}/sitterForm.do'">글등록</button>
 	</div>
 	<div id="main">
 		<div class="inner">
 
 			<!-- Boxes -->
 			<div class="thumbnails">
-			
-				<c:forEach var="border" items="${sitborders}">
+				<c:forEach var="v" items="${Superlist}">
 					<div class="box">
+						<input class="sitterListCode" type="hidden" value="${v[2].code}">
 						<img class="image fit"
-							src="${pageContext.request.contextPath}/images/members_pic/${border.pic}"
-							alt="" />
+							src="${pageContext.request.contextPath}/images/members_pic/${v[0].pic}"
+							alt="사진이 없습니다!" />
 						<div>
-							<dl class="code_dl">
-								<dt>거래번호</dt>
-								<dd id="code" name="code">${border.code}</dd>
-							</dl>
 							<dl>
 								<dt>펫수용수</dt>
-								<dd>${border.maxp}</dd>
+								<dd>${v[1].maxP}</dd>
 							</dl>
 							<dl>
 								<dt>근무지역</dt>
-								<dd>${border.location1}</dd>
+								<dd>${v[2].location1}</dd>
 							</dl>
 							<dl>
 								<dt>근무날짜</dt>
-								<dd>${border.sdate}~${border.edate}</dd>
+								<dd>${v[2].sdate}~${v[2].edate}</dd>
 							</dl>
 							<dl>
 								<dt>근무시간</dt>
-								<dd>${border.stime}~${border.etime}</dd>
+								<dd>${v[2].stime}~${v[2].etime}</dd>
 							</dl>
 							<dl>
 								<dt>돌봄금액</dt>
-								<dd>${border.price}</dd>
+								<dd>${v[2].price}</dd>
 							</dl>
 							<dl>
 								<dt>거래상태</dt>
-								<dd>${border.status}</dd>
+								<dd>${v[2].status}</dd>
 							</dl>
 						</div>
 					</div>
 				</c:forEach>
-				
 			</div>
-
+			<!-- Boxes -->
+			
 		</div>
 	</div>
 </body>
