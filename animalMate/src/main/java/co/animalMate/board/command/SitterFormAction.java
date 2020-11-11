@@ -80,7 +80,12 @@ public class SitterFormAction implements Action {
          commentsVO = commentsDAO.selectByCode(commentsVO);
          score += commentsVO.getScore();
       }
-      request.setAttribute("score", score/career);
+      if(career!=0) {
+    	  request.setAttribute("score", score/career);
+      } else {
+    	  request.setAttribute("score", "거래내역 없음");
+      }
+      
       
       //돌봄환경 사진 구하기!
       PictureDAO pictureDAO = new PictureDAO();  
@@ -89,6 +94,7 @@ public class SitterFormAction implements Action {
       List<PictureVO> pictureList = new ArrayList<PictureVO>();
       pictureList = pictureDAO.selectById(pictureVO);
       request.setAttribute("pictureList", pictureList);
+
       
       return  "jsp/board/sitterForm.jsp";
    }

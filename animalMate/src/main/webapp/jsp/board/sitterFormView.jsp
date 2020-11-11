@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
 
 <!-- css -->
 <style>
-.epic {
+.sitterEnvironment {
 	width: 150px;
 	height: 150px;
 	display: inline;
@@ -49,7 +50,7 @@
 		<!-- s:title -->
 		<div class="title">
 			<h1>돌봐줄게요 (예약page)</h1>
-			<p>${sitters[0].title}</p>
+			<p>${tradeBoard.title}</p>
 		</div>
 		<!-- e:title -->
 
@@ -62,7 +63,7 @@
 					<div class="cont_area">
 						<div class="info_img">
 							<img class="info_img"
-								src="${pageContext.request.contextPath}/images/members_pic/${sitters[0].mpic}"
+								src="${pageContext.request.contextPath}/images/members_pic/${members.pic}"
 								alt="시터 이미지" height="100px" width="100px">
 						</div>
 
@@ -82,32 +83,32 @@
 
 								<tbody>
 									<tr>
-										<td>시터 이름</td>
-										<td>${sitters[0].name}</td>
+										<td>시터 닉네임</td>
+										<td>${members.getNname()}</td>
 									</tr>
 
 									<tr>
 										<td>시터 나이</td>
-										<td>${sitters[0].zoomin1}</td>
+										<td>${age}</td>
 									</tr>
 
 									<tr>
 										<td>시터 성별</td>
-										<td>${sitters[0].zoomin2}</td>
+										<td>${gender}</td>
 									</tr>
 
 									<tr>
 										<td>시터 평점</td>
-										<td>${sitters[0].score}</td>
+										<td>${score}</td>
 									</tr>
 
 									<tr>
 										<td>시터 경력(돌봄횟수)</td>
-										<td>모르겟다</td>
+										<td>${career}</td>
 									</tr>
 									<tr>
 										<td>거래상태</td>
-										<td>${sitters[0].status}</td>
+										<td>${tradeBoard.status}</td>
 									</tr>
 								</tbody>
 							</table>
@@ -134,7 +135,11 @@
 						<tbody>
 							<tr>
 								<td>돌봄지역</td>
-								<td>${sitters[0].location1}</td>
+								<td>${tradeBoard.location1}</td>
+							</tr>
+							<tr>
+								<td>상세지역</td>
+								<td>${tradeBoard.location2}</td>
 							</tr>
 
 							<tr>
@@ -142,8 +147,8 @@
 								<td>
 									<!-- jQuery datepicker 연결하면 됨-->
 									<div class="calendar">
-										<span class="datepickerview">${sitters[0].sdate}</span> <span>~</span>
-										<span class="datepickerview">${sitters[0].edate}</span>
+										<span class="datepickerview">${tradeBoard.sdate}</span> <span>~</span>
+										<span class="datepickerview">${tradeBoard.edate}</span>
 									</div>
 								</td>
 							</tr>
@@ -152,19 +157,19 @@
 								<td>돌봄시간</td>
 								<td>
 									<div class="calendar">
-										<span>${sitters[0].stime}</span> <span>~</span> <span>${sitters[0].etime}</span>
+										<span>${tradeBoard.stime}</span> <span>~</span> <span>${tradeBoard.etime}</span>
 									</div>
 								</td>
 							</tr>
 
 							<tr>
 								<td>거래금액</td>
-								<td>${sitters[0].price}원</td>
+								<td>${tradeBoard.price}원</td>
 							</tr>
 
 							<tr>
 								<td>최대돌봄수</td>
-								<td>${sitters[0].maxp}마리</td>
+								<td>${sitter.maxP}마리</td>
 							</tr>
 						</tbody>
 					</table>
@@ -176,10 +181,12 @@
 					<ul>
 						<li>
 							<div>
-							<c:forEach var="sitter" items="${sitters}">
-								<img class="epic"
-									src="${pageContext.request.contextPath}/images/picture/${sitter.epic}"></img>
-							</c:forEach>
+								<c:if test="${fn:length(pictureList) eq 0}">
+									<img class="sitterEnvironment" alt="이미지가 없습니다." src="${pageContext.request.contextPath}/images/picture/${v.pic}">
+								</c:if>
+								<c:forEach items="${pictureList}" var="v">
+                                	<img class="sitterEnvironment" alt="이미지없다!" src="${pageContext.request.contextPath}/images/picture/${v.pic}">
+                                </c:forEach>
 							</div>
 							
 						</li>
@@ -187,15 +194,9 @@
 					</ul>
 				</div>
 
-				<div id="sec04" class="">
-					<h2 class="cont_tit">스케쥴선택</h2>
-
-					<div></div>
-				</div>
-
 				<div id="sec05" class="">
 					<h2 class="cont_tit">세부내용</h2>
-					<textarea>${sitters[0].comm}</textarea>
+					<textarea>${tradeBoard.comm}</textarea>
 				</div>
 		
 			<div id="sec06" class="">

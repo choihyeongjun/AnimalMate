@@ -15,7 +15,6 @@ public class TradeBoardVO {
 	private String edate;
 	private String stime;
 	private String etime;
-	private int wtime;
 	private String ttype;
 	private String location1;
 	private String location2;
@@ -100,14 +99,6 @@ public class TradeBoardVO {
 
 	public void setEtime(String etime) {
 		this.etime = etime;
-	}
-
-	public int getWtime() {
-		return wtime;
-	}
-
-	public void setWtime(int wtime) {
-		this.wtime = wtime;
 	}
 
 	public String getTtype() {

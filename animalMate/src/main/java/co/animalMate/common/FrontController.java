@@ -26,6 +26,7 @@ import co.animalMate.board.command.OwnerInsertAction;
 import co.animalMate.board.command.OwnerListAction;
 import co.animalMate.board.command.OwnerListSearhAction;
 import co.animalMate.board.command.SitterFormAction;
+import co.animalMate.board.command.SitterFormViewAction;
 import co.animalMate.board.command.SitterListAction;
 import co.animalMate.board.command.SitterListSearhAction;
 import co.animalMate.login.command.FindIdAction;
@@ -185,6 +186,7 @@ public class FrontController extends HttpServlet {
      map.put("/ownerFormSelect.do", new OwnerFormViewAction()); //OwnerFormView 화면 호출
      map.put("/sitterList.do", new SitterListAction()); //sitterList 화면 호출
      map.put("/sitterForm.do", new SitterFormAction()); //sitterForm 화면 호출
+     map.put("/sitterFormSelect.do", new SitterFormViewAction()); //OwnerFormView 화면 호출
      map.put("/sitterListSearch.do", new SitterListSearhAction()); //sitterList에서 검색 
       
       
