@@ -16,7 +16,7 @@
 
 	<div class="row">
 		<div class="ownerFormCheckView">
-			<h3>내 펫 정보</h3>
+			<h3>펫 정보</h3>
 			<table class="table">
 				<tr>
 					<td rowspan="5" width =30%><img
@@ -46,17 +46,17 @@
 		<div class="ownerFormCheckView">
 			<div class = "row">
 				<div>
-					<h3>시터 정보</h3>			
+					<h3>상대 정보</h3>			
 				</div>
 				<div>
-					<button style = "margin:5px; background-color:rgb(255, 164, 89);"onclick="window.location.href='${pageContext.request.contextPath}/profile.do'">더보기</button><br>
+					<button style = "margin:5px; background-color:rgb(255, 164, 89);"onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=${user.id}'">더보기</button><br>
 				</div>
 			</div>
 			<table class="table">
 				<tr>
 					<td rowspan="5" width =30%><img id="userpic" src="${pageContext.request.contextPath}/images/members_pic/${user.pic}"></td>
 					<th width =25%>이름</th>
-					<td>${tbs.seller}</td>
+					<td>${user.name}</td>
 				</tr>
 				<tr>
 					<th>나이</th>
@@ -100,7 +100,7 @@
 				</tr>
 				<tr>
 					<th>거래금액</th>
-					<td>${tbs.price}포인트</td>
+					<td>${tbs.price}p</td>
 				</tr>
 			</table>
 		</div>

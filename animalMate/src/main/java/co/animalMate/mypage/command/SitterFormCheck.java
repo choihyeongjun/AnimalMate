@@ -35,7 +35,11 @@ public class SitterFormCheck implements Action {
 
 		// 상대 시터정보 호출
 		myDao = new MypageDao();
-		memVo.setId(tlVo.getSeller());
+		if(sid.equals(tlVo.getBuyer())) {
+			memVo.setId(tlVo.getSeller());
+		}else{			
+			memVo.setId(tlVo.getBuyer());
+		}
 		memVo = myDao.userInfo(memVo);
 		request.setAttribute("user", memVo);
 

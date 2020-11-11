@@ -93,7 +93,7 @@
 
 /* sitterFormCheck 화면 */
 /* ownerFormCheck 화면 */
-.ownerFormCheckView img, .profileUser img, .sitterFormCheckView img {
+.ownerFormCheckView img, .profileUser img, .sitterFormCheckView img, .ownerTradeCheckView img {
 	width: 200px;
 	height: 200px;
 	margin: 20px 10px 20px 10px;
@@ -140,6 +140,25 @@
 	margin: 20px 10px 20px 10px;
 }
 
+/*ownerTradeCheck*/
+.ownerTradeCheckView h3{
+	margin: 10px 10px 20px 20px;
+	text-align: left;
+}
+
+.ownerTradeCheckView {
+	padding: 20px;
+	margin: 10px auto;
+	width: 30%;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	background-color: #f9f9f9;
+}
+
+.ownerTradeCheckView th {
+	background-color: #f0f0f0;
+}
 
 
 /* profile 화면 */
