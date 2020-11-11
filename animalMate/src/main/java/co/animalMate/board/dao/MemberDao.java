@@ -15,6 +15,7 @@ public class MemberDao extends DAO {
 	private ResultSet rs; //select 후 결과셋 받기
 	private MemberVO vo;
 	
+	private final String SELECTSI = "SELECT * FROM MEMBERS";
 	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
 	private final String BLACK_SEARCH="SELECT * FROM MEMBERS WHERE AUTHOR = ? ";
 	private final String SELECT_SEARCH="SELECT * FROM MEMBERS WHERE ID = ? ";
@@ -24,6 +25,9 @@ public class MemberDao extends DAO {
 	private final String UPDATE_BLACK = "UPDATE MEMBERS SET AUTHOR=? WHERE ID=? AND AUTHOR='black'";
 	private final String DELETE = "DELETE FROM MEMBERS WHERE ID = ?"; 
 	private final String SELECT_BLACK="SELECT * FROM MEMBERS WHERE AUTHOR=? AND ID=?";
+	
+	
+	
 	//업데이트
 		public void updateBlack(MemberVO vo) { 	
 			try {
@@ -72,6 +76,42 @@ public class MemberDao extends DAO {
 		}
 		return list;
 	}
+	public List<MemberVO> selectSitter(MemberVO vo){
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			
+			psmt=conn.prepareStatement(SELECTSI);
+			psmt.setString(1, vo.getAuthor());
+			rs=psmt.executeQuery();
+			while(rs.next()) {
+				vo = new MemberVO();
+				vo.setId(rs.getString("id"));
+				vo.setPw(rs.getString("pw"));
+				vo.setName(rs.getString("name"));
+				vo.setNName(rs.getString("nname"));
+				vo.setTel(rs.getString("tel"));
+				vo.seteDate(rs.getString("edate"));
+				vo.setAuthor(rs.getString("author"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setStatus(rs.getString("status"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setLocation2(rs.getString("location2"));
+				vo.setEmail(rs.getString("email"));
+				vo.setPic(rs.getString("pic"));
+				vo.setZoomin1(rs.getInt("zoomin1"));
+				vo.setZoomin2(rs.getInt("zoomin2"));
+				list.add(vo);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+		return list;
+	}
+	
 	public List<MemberVO> selectAllBlack(MemberVO vo){
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {

@@ -79,7 +79,7 @@ function userUpdate() {
 		$('input:text[name="tel"]').val(user[0].tel);
 		$('input:text[name="author"]').val(user[0].author);
 		$('input:text[name="edate"]').val(user[0].edate);
-		$('input:text[name="pic"]').val(user[0].pic);
+		$('#sconfirmImg').attr("src", "${pageContext.request.contextPath}/images/members_pic/"+user[0].pic);
 		
 		
 		
@@ -181,7 +181,7 @@ function userUpdate() {
 					</tr>
 					<tr>
 						<th width="150">사진 :</th>
-						<td><img src="${pageContext.request.contextPath}" name="pic"></td>
+						<td><img id="sconfirmImg" alt="이미지 없다" src="#"></td>
 					</tr>
 
 					<tr>

@@ -23,6 +23,7 @@ public class QuestionselectAction implements Action {
 		int code=Integer.parseInt(scode);
 		vo.setCode(code);
 		vo=dao.selectcode(vo);
+		request.setAttribute("requestid",vo.getSend());
 		request.setAttribute("title",vo.getTitle());
 		request.setAttribute("comm",vo.getComm());
 		request.setAttribute("ttype",vo.getTtype());

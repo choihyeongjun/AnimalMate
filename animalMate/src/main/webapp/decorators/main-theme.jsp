@@ -175,6 +175,9 @@ width: 230px;
   		<a class="navbar-brand" href="${pageContext.request.contextPath}/goNoticeBoardPage.do?p=1"><b>공지사항</b></a>
         <a class="navbar-brand" href="${pageContext.request.contextPath}/sitterList.do"><b>돌봐줄께요</b></a>
         <a class="navbar-brand" href="${pageContext.request.contextPath}/ownerList.do"><b>돌봐주세요</b></a>
+        <c:if test="${sessionScope.sessionauthor eq 'users'}">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/jsp/main/wannabeSitter.jsp"><b>시터신청</b></a>
+        </c:if>
         <a class="navbar-brand" href="${pageContext.request.contextPath}/goMypagePage.do"><b>마이페이지</b></a>
 	</nav>
     <hr/>

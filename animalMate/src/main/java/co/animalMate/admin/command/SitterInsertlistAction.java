@@ -11,9 +11,11 @@ import org.json.JSONArray;
 
 import co.animalMate.board.dao.MemberDao;
 import co.animalMate.common.Action;
+import co.animalMate.main.dao.SitterDAO;
 import co.animalMate.vo.MemberVO;
+import co.animalMate.vo.SitterVO;
 
-public class SitterlistAction implements Action {
+public class SitterInsertlistAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -22,16 +24,23 @@ public class SitterlistAction implements Action {
 		MemberDao dao = new MemberDao();
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		MemberVO vo=new MemberVO();
-		vo.setAuthor("sitterwait");
-		list = dao.selectSitter(vo);
-	
+		SitterDAO sdao=new SitterDAO();
+		SitterVO svo=new SitterVO();
+		
+		String id=request.getParameter("id");
+		String pet=request.getParameter("pet");
+		int maxP=Integer.parseInt(pet);
+		String comm=request.getParameter("comm");
+		svo.setId(id);
+		svo.setMaxP(maxP);
+		svo.setComm(comm);
+		sdao.insert(svo);
 		try {
-			response.getWriter().print(new JSONArray(list));
+			response.sendRedirect(request.getContextPath()+"/main.do");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 

@@ -68,6 +68,22 @@ input[type=submit]:hover {
   }
 }
 </style>
+
+<script type="text/javascript">
+	$(()=>{
+		$("#wannabeSitterSubmit").on({
+			"click" : function(event) {
+				confirm("신청이 완료되었습니다!!");
+				location.href="${pageContext.request.contextPath}/sitterinsert.do";
+			}
+		});
+		$("#cancel").on({
+			"click" : function() {
+				location.href="${pageContext.request.contextPath}/main.do";
+			}
+		})
+	});
+</script>
 </head>
 <body>
 
@@ -75,30 +91,41 @@ input[type=submit]:hover {
 <br>
 
 <div class="container">
-  <form action="/action_page.php">
+  <form action="${pageContext.request.contextPath}/sitterinsert.do">
   <div class="row">
-    <div class="col-25">
-      <label for="country">최대 돌봄 마리 수</label>
+  <div class="col-25">
+      <label >id</label>
     </div>
     <div class="col-75">
-      <select id="country" name="country">
+    <td><input text="type" readonly="readonly" name="id" value="${sessionScope.id}"></td>
+    </div>
+    <div class="col-25">
+      <label >최대 돌봄 마리 수</label>
+    </div>
+    <div class="col-75">
+      <select id="pet" name="pet">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
+        <option value="3">4</option>
+        <option value="3">5</option>
       </select>
     </div>
   </div>
   <div class="row">
     <div class="col-25">
-      <label for="subject">지원내용</label>
+      <label >지원내용</label>
     </div>
     <div class="col-75">
-      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+      <textarea id="comm" name="comm" placeholder="Write something.." style="height:200px"></textarea>
     </div>
   </div>
   <br>
   <div class="wannabeSitterSubmit" align="right">
     <button>제출하기</button>
+  </div>
+    <div class="calcel" align="right">
+    <button>취소</button>
   </div>
   </form>
 </div>

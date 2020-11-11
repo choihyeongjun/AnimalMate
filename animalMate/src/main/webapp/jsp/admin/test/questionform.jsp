@@ -24,39 +24,70 @@
 	$(()=>{
 		$("#gobackBtn").on({
 			"click" : function() {
-				location.href = "${pageContext.request.contextPath}/questionlist.do"
+				location.href = "${pageContext.request.contextPath}/questionlist.do";
 			}
-		})
-	})
+		});
+			$("#rewrite").on({
+			"click" : function() {
+				location.href = "${pageContext.request.contextPath}/questionrewrite.do";
+			}
+		});
+		$("#submitBtn").on({
+			"click" : function() {
+				location.href = "${pageContext.request.contextPath}/questionanswer.do";
+			}
+		});
+	});
 </script>
 </head>
 <body>
 	<div class="reportDiv" align="center">
-	<h1>&lt;공지사항/이벤트&gt;</h1><br> 
-		<form id="frm" name="frm" method="post" action="">
+	<h1>&lt;1:1문의 내용&gt;</h1><br> 
+		<form id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/questionrewrite.do">
 			
 				<table class="reportTd">
 				<tr>
+					<td class="col1_title">작성자</td>
+					<td><input class="col2_target" type="text" id="id" name="id" value="${id}"></td>
+				</tr>
+				<tr>
 					<td class="col1_title">제목</td>
-					<td><input class="col2_target" type="text" id="title" name="title" readonly="readonly" value="${title}"></td>
+					<td><input class="col2_target" type="text" id="title" name="title"  value="${title}"></td>
 				</tr>
 				<tr>
 					<td class="col1_target">분류</td>
-					<td><input class="col2_target" type="text" id="type" name="type" readonly="readonly" value="${ttype}">
+					<td><input class="col2_target" type="text" id="type" name="type"  value="${ttype}">
 					</td>
 				</tr>
 				<tr>
 					<td class="col2_target">내용</td>
 					<td>
-						<textarea rows="20" cols="118" class="col3_comm" id="comm" name="comm" readonly="readonly" value="${comm}"></textarea>	
+						<textarea rows="15" cols="118" id="comm" name="comm" <c:if test="${sessionScope.id ne requestid }">readonly="readonly"</c:if>>${comm}</textarea>	
 					</td>
 				</tr>
 			</table>
+				<table>
+					<tr>
+					<c:if test="${id ne 'admin'}">
+					<td class="col2_target">답글</td>
+						<td><textarea rows="5" cols="118" id="answer" name="answer" readonly="readonly" placeholder="아직 답글이 달리지 않았습니다.."></textarea>
+						</td>
+					</c:if>
+					<c:if test="${id eq 'admin'}">
+					<td class="col2_target">답글</td>
+						<td><textarea rows="5" cols="118" id="answer" name="answer"></textarea>
+						</td>
+					</c:if>
+					</tr>
+				</table>
 		
 			<br>
 			<div align="right">
+			<c:if test="${sessionScope.id eq requestid }">
+			<button type="submit" id="rewrite">수정</button>&nbsp;
+			</c:if>
 			<c:if test="${id eq 'admin'}">
-					<button type="submit" id="submitBtn">제출하기</button>&nbsp;
+					<button type="submit" id="submitBtn">등록</button>&nbsp;
 					<c:if test="${code ne null}">
 						<input type="hidden" value="${code}" name="code">
 					</c:if>

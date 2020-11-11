@@ -11,8 +11,23 @@ public class SitterDAO extends DAO  {
 	private PreparedStatement psmt; //sql 명령문 실행
 	private ResultSet rs; //select 후 결과셋 받기
 	private SitterVO vo;
-	
+	private final String INSERT="INSERT INTO SITTER(ID,MAXP,STATUS,COMM) VALUES(?,?,?,?)";
 	//아이디로 단 건 조회
+		public void insert(SitterVO vo) {
+			try {
+				psmt=conn.prepareStatement(INSERT);
+				psmt.setString(1,vo.getId());
+				psmt.setInt(2,vo.getMaxP());
+				psmt.setString(3,"sitterwait");
+				psmt.setString(4,vo.getComm());
+				psmt.executeUpdate();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+	
 		public SitterVO selectById(SitterVO vo) { 
 			try {
 				psmt = conn.prepareStatement("SELECT * FROM SITTER WHERE ID = ?");

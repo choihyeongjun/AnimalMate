@@ -36,9 +36,7 @@ public class LoginAction implements Action {
 				page = "jsp/login/loginForm.jsp";
 			}else {
 				session.setAttribute("id", vo.getId());
-				session.setAttribute("nName", vo.getNname());
-				session.setAttribute("name", vo.getName());
-				session.setAttribute("mvo", vo);
+				session.setAttribute("sessionauthor",vo.getAuthor());
 				
 				//admin일 때 로그인
 				if(vo.getId().equals("admin")) {
