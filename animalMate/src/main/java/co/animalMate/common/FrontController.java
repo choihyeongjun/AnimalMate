@@ -26,6 +26,7 @@ import co.animalMate.board.command.OwnerInsertAction;
 import co.animalMate.board.command.OwnerListAction;
 import co.animalMate.board.command.OwnerListSearhAction;
 import co.animalMate.board.command.SitterFormAction;
+import co.animalMate.board.command.SitterFormViewAction;
 import co.animalMate.board.command.SitterListAction;
 import co.animalMate.board.command.SitterListSearhAction;
 import co.animalMate.login.command.FindIdAction;
@@ -38,9 +39,11 @@ import co.animalMate.login.command.LogoutAction;
 import co.animalMate.login.command.ResetPwAction;
 import co.animalMate.login.command.idOverlapCheck;
 import co.animalMate.main.command.AdminLoginAction;
+import co.animalMate.main.command.AjaxMessageInfoAction;
 import co.animalMate.main.command.AjaxPetInfoAction;
 import co.animalMate.main.command.GoBlackBoardPageAction;
 import co.animalMate.main.command.GoLoginPageAction;
+import co.animalMate.main.command.GoMessageFormAction;
 import co.animalMate.main.command.GoMessageListPageAction;
 import co.animalMate.main.command.GoMypagePageAction;
 import co.animalMate.main.command.GoNoticeBoardPageAction;
@@ -80,7 +83,7 @@ public class FrontController extends HttpServlet {
 
    public void init(ServletConfig config) throws ServletException { //init은 처음 실행할 때 한 번만 실행됨
       // 요청들을 정의함
-      //상민      
+	   //상민      
       map.put("/main.do", new MainAction()); // 처음 들어오는 페이지 처리 index.jsp
       map.put("/goLoginPage.do", new GoLoginPageAction()); // 헤더에서 로그인 버튼 눌렀을 때
       map.put("/gotradeListPage.do", new GotradeListPageAction()); // 헤더에서 요청알림 버튼 눌렀을 때
@@ -93,12 +96,15 @@ public class FrontController extends HttpServlet {
       map.put("/goBlackBoardPage.do", new GoBlackBoardPageAction()); // 신고하기 폼에서 제출하기 버튼을 눌렀을 때 
       map.put("/adminLogin.do", new AdminLoginAction()); // 로그인 창에서 admin으로 로그인 했을 때
       map.put("/goNoticeForm.do", new GoNoticeFormAction()); // 공지사항 페이지에서 글쓰기 버튼 눌렀을 때
-      map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
+      map.put("/goMessageForm.do", new GoMessageFormAction()); // 메세지 리스트에서 메세지를 눌렀을 때
          //제출하기
       map.put("/submitReport.do", new SubmitReportAction()); // 신고폼 페이지에서 제출버튼 눌렀을 때
       map.put("/submitNotice.do", new SubmitNoticeAction()); // 공지사항폼 페이지에서 제출버튼 눌렀을 때
       map.put("/sitterInsert.do", new SitterInsertAction()); // 시터폼에서 제출하기 눌렀을 때 
       map.put("/submitMessage.do", new SubmitMessageAction()); // 메세지 보내기폼에서 제출하기 눌렀을 때
+      	//아작스
+      map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
+      map.put("/ajax/messageInfo.do", new AjaxMessageInfoAction()); //펫 목록 화면 호출
       
       
       
@@ -180,6 +186,7 @@ public class FrontController extends HttpServlet {
      map.put("/ownerFormSelect.do", new OwnerFormViewAction()); //OwnerFormView 화면 호출
      map.put("/sitterList.do", new SitterListAction()); //sitterList 화면 호출
      map.put("/sitterForm.do", new SitterFormAction()); //sitterForm 화면 호출
+     map.put("/sitterFormSelect.do", new SitterFormViewAction()); //OwnerFormView 화면 호출
      map.put("/sitterListSearch.do", new SitterListSearhAction()); //sitterList에서 검색 
       
       

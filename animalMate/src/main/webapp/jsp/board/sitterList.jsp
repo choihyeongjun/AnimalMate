@@ -51,14 +51,19 @@
 #main {
 	padding: 4em 0 2em 0;
 }
+
+.code_dl {
+	display: none;
 }
+
 </style>
 <script>
 
 $(()=>{
 	$(".box").on("click",function() {
-		var code = $(this).children().children(1).children(0).eq(1).text();
-		location.href="${pageContext.request.contextPath}//sitterFormSelect.do?code="+code;
+		var code = $(this).children().children().eq(1).children().eq(1).text();
+		console.log($(this).children().children().eq(1).children().eq(1).text());
+		location.href="${pageContext.request.contextPath}/sitterFormSelect.do?code="+code;
 	});
 })
 </script>
@@ -137,6 +142,10 @@ $(()=>{
 							src="${pageContext.request.contextPath}/images/members_pic/${border.pic}"
 							alt="" />
 						<div>
+							<dl class="code_dl">
+								<dt>거래번호</dt>
+								<dd id="code" name="code">${border.code}</dd>
+							</dl>
 							<dl>
 								<dt>펫수용수</dt>
 								<dd>${border.maxp}</dd>

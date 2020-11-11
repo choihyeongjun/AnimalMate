@@ -18,11 +18,9 @@ public class MemberForm implements Action {
 		MemberDao dao = new MemberDao();
 		MemberVO vo = new MemberVO();
 		
-//		HttpSession session = request.getSession(false);
-//		String id = (String) session.getAttribute("id");
-//		vo.setId(id);
-		
-		vo.setId("id3");
+		HttpSession session = request.getSession(false);
+		String id = (String) session.getAttribute("id");
+		vo.setId(id);
 		
 		vo = dao.select(vo);
 			

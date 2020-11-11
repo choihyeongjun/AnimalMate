@@ -18,6 +18,17 @@ public class MemberVO {
 	private String pic;
 	private int zoomin1;
 	private int zoomin2;
+	private int code;
+	
+	
+
+	public int getCode() {
+		return code;
+	}
+
+	public void setCode(int code) {
+		this.code = code;
+	}
 
 	public MemberVO() {
 

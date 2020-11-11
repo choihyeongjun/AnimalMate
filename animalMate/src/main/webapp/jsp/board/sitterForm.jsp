@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
  <head>
@@ -164,6 +165,9 @@
                     <ul>
                         <li>
                             <div>
+                            	<c:if test="${fn:length(pictureList) eq 0}">
+									<img class="sitterEnvironment" alt="이미지가 없습니다." src="${pageContext.request.contextPath}/images/picture/${v.pic}">
+								</c:if>
                                 <c:forEach items="${pictureList}" var="v">
                                 	<img class="sitterEnvironment" alt="이미지없다!" src="${pageContext.request.contextPath}/images/picture/${v.pic}">
                                 </c:forEach>
