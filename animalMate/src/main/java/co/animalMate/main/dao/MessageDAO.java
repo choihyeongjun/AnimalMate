@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.animalMate.common.DAO;
-import co.animalMate.vo.MemberVO;
+import co.animalMate.vo.MessageVO;
 import co.animalMate.vo.MessageVO;
 import co.animalMate.vo.NoticeVO;
 import co.animalMate.vo.MessageVO;
@@ -48,7 +48,7 @@ public class MessageDAO extends DAO {
 		List<MessageVO> list = new ArrayList<MessageVO>();
 		try {
 			psmt = conn.prepareStatement("select * from(select a.*, rownum rn from ( "
-					+ "SELECT * FROM MESSAGE WHERE RECEIVE = ?"
+					+ "SELECT * FROM MESSAGE WHERE RECEIVE = ? ORDER BY CODE DESC"
 					+ ") a ) b where rn between ? and ?");
 			int pos =1;
 			psmt.setString(pos++, vo.getReceive());
@@ -125,7 +125,7 @@ public class MessageDAO extends DAO {
 		List<MessageVO> list = new ArrayList<MessageVO>();
 		try {
 			psmt = conn.prepareStatement("select * from(select a.*, rownum rn from ( "
-					+ "SELECT * FROM MESSAGE WHERE SEND = ?"
+					+ "SELECT * FROM MESSAGE WHERE SEND = ? ORDER BY CODE DESC"
 					+ ") a ) b where rn between ? and ?");
 			int pos =1;
 			psmt.setString(pos++, vo.getSend());
@@ -171,6 +171,26 @@ public class MessageDAO extends DAO {
 		return cnt;
 	}
 	
+	//code로 단건 조회
+	public MessageVO selectByCode(MessageVO vo) { 
+		try {
+			psmt = conn.prepareStatement("SELECT * FROM MESSAGE WHERE CODE = ?");
+			psmt.setInt(1, vo.getCode());
+			rs = psmt.executeQuery();
+			rs.next();
+				vo.setComm(rs.getString("comm"));
+				vo.setReceive(rs.getString("receive"));
+				vo.setSend(rs.getString("send"));
+				vo.setTitle(rs.getString("title"));
+				vo.setStatus(rs.getString("status"));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return vo;
+	}
+	
 	//인서트
 	public int insert(MessageVO vo) { 
 		int n = 0;
@@ -190,6 +210,23 @@ public class MessageDAO extends DAO {
 		}
 		return n;
 	}
+	
+	//인서트
+		public int updateStatus(MessageVO vo) { 
+			int n = 0;
+			try {
+				psmt = conn.prepareStatement("update message set "
+						+ "status = '확인' where code=?");
+				int cnt = 1;
+				psmt.setInt(cnt, vo.getCode());
+				n = psmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return n;
+		}
 
 	private void close() { // DB연결을 끊어준다
 		try {

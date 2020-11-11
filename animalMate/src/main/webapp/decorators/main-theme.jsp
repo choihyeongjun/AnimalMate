@@ -9,12 +9,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
 <meta charset="UTF-8">
+<title>Insert title here</title>
+
+<!-- 부트스트랩 넣기 시작 -->
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	crossorigin="anonymous">
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/base.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mypage.css">
 
-<title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"></script>
+
+
 <style>
 #_chatbox{
 position: fixed;
@@ -132,24 +143,6 @@ width: 230px;
 
 </script>
 
-<!-- 부트스트랩 넣기 시작 -->
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
-	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
-	crossorigin="anonymous">
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-	integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-	integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
-	crossorigin="anonymous"></script>
-<!-- 부트스트랩 넣기 끝 -->
 
 <decorator:head/>
 </head>
@@ -207,7 +200,7 @@ width: 230px;
 		// 콘솔 텍스트 에리어 오브젝트
 		var messageTextArea = document.getElementById("messageTextArea");
 		// 웹 소켓 접속 함수, url 뒤의 파라미터는 callback 함수를 받는다.
-		function connectWebSocket(url, message, open, close, error) {
+		function connectWebSocket(url, message, open1, close1, error1) {
 			// WebSocket 오브젝트 생성 (자동으로 접속 시작한다. - onopen 함수 호출)
 			let webSocket = new WebSocket(url);
 			// 함수 체크하는 함수
@@ -221,17 +214,17 @@ width: 230px;
 			// WebSocket 서버와 접속이 되면 호출되는 함수
 			webSocket.onopen = function() {
 				// callback 호출
-				call(open);
+				call(open1);
 			};
 			// WebSocket 서버와 접속이 끊기면 호출되는 함수
 			webSocket.onclose = function() {
 				// callback 호출
-				call(close);
+				call(close1);
 			};
 			// WebSocket 서버와 통신 중에 에러가 발생하면 요청되는 함수
 			webSocket.onerror = function() {
 				// callback 호출
-				call(error);
+				call(error1);
 			};
 			// WebSocket 서버로 부터 메시지가 오면 호출되는 함수
 			webSocket.onmessage = function(msg) {
@@ -242,12 +235,12 @@ width: 230px;
 			return webSocket;
 		}
 		// 연결 발생 때 사용할 callback 함수
-		var open = function() {
+		var open1 = function() {
 			// 콘솔 텍스트에 메시지를 출력한다
 			messageTextArea.value += "상담이 연결되었습니다...\n";
 		}
 		// 종료 발생 때 사용할 callback 함수
-		var close = function() {
+		var close1 = function() {
 			// 콘솔 텍스트에 메시지를 출력한다
 			messageTextArea.value += "Server Disconnect...\n";
 			// 재 접속을 시도한다.
@@ -255,11 +248,11 @@ width: 230px;
 				// 재접속
 				webSocket = connectWebSocket(
 						"ws://localhost:80/animalMate/broadsocket", message,
-						open, close, error);
+						open1, close1, error1);
 			});
 		}
 		// 에러 발생 때 사용할 callback 함수
-		var error = function() {
+		var error1 = function() {
 			messageTextArea.value += "error...\n";
 		}
 		// 메세지를 받을 때 사용할 callback 함수
@@ -269,8 +262,8 @@ width: 230px;
 		};
 		// 웹 소켓 생성
 		var webSocket = connectWebSocket(
-				"ws://localhost:80/animalMate/broadsocket", message, open,
-				close, error);
+				"ws://localhost:80/animalMate/broadsocket", message, open1,
+				close1, error1);
 		// Send 버튼을 누르면 호출되는 함수
 		function sendMessage() {
 			// 유저명 텍스트 박스 오브젝트를 취득

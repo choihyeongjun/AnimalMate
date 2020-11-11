@@ -1,5 +1,7 @@
 package co.animalMate.main.command;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -26,7 +28,14 @@ public class SubmitMessageAction implements Action {
 		messageVO.setReceive(receive);
 		messageVO.setComm(comm);
 		messageDAO.insert(messageVO);
-
+		
+		try {
+			response.sendRedirect(request.getContextPath() + "/goSendMessageListPage.do");
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 		return null;
 	}
 
