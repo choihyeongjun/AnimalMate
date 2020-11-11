@@ -13,9 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import co.animalMate.admin.command.BlackListAction;
 import co.animalMate.admin.command.BlackSearchAction;
 import co.animalMate.admin.command.BlackUpdateAction;
+import co.animalMate.admin.command.GoQuestionBoardPageAction;
 import co.animalMate.admin.command.MemberListAction;
 import co.animalMate.admin.command.MemberSearchAction;
 import co.animalMate.admin.command.MemberUpdateAction;
+import co.animalMate.admin.command.QuestionlistAction;
+import co.animalMate.admin.command.QuestionselectAction;
 import co.animalMate.admin.command.SitterlistAction;
 import co.animalMate.admin.command.SubmitQuestionAction;
 import co.animalMate.admin.command.tradeAction;
@@ -29,6 +32,7 @@ import co.animalMate.board.command.SitterFormAction;
 import co.animalMate.board.command.SitterFormViewAction;
 import co.animalMate.board.command.SitterListAction;
 import co.animalMate.board.command.SitterListSearhAction;
+import co.animalMate.board.command.boardTradePetAction;
 import co.animalMate.login.command.FindIdAction;
 import co.animalMate.login.command.FindPwAction;
 import co.animalMate.login.command.JoinForm;
@@ -57,6 +61,7 @@ import co.animalMate.main.command.SubmitMessageAction;
 import co.animalMate.main.command.SubmitNoticeAction;
 import co.animalMate.main.command.SubmitReportAction;
 import co.animalMate.mypage.command.MemberForm;
+import co.animalMate.mypage.command.MemberFormUpdateAction;
 import co.animalMate.mypage.command.MypetDeleteAction;
 import co.animalMate.mypage.command.MypetForm;
 import co.animalMate.mypage.command.MypetFormAction;
@@ -70,6 +75,7 @@ import co.animalMate.mypage.command.OwnerTradeCheckAction;
 import co.animalMate.mypage.command.Profile;
 import co.animalMate.mypage.command.SitterFormCheck;
 import co.animalMate.mypage.command.SitterTradeCheck;
+import co.animalMate.mypage.command.SitterTradeCheckAction;
 
 
 
@@ -127,6 +133,7 @@ public class FrontController extends HttpServlet {
      map.put("/findpw.do", new FindPwAction()); //비밀번호 찾기 액션
      map.put("/resetPw.do", new ResetPwAction()); //비밀번호 변경 액션
      map.put("/idoverlapcheck.do", new idOverlapCheck()); //아이디중복확인 찾기 액션
+     map.put("/memberUpdate.do", new MemberFormUpdateAction()); // 회원정보수정 액션
       
    
 
@@ -147,7 +154,7 @@ public class FrontController extends HttpServlet {
       
       
       
-      //형준
+     //형준
      map.put("/ajax/memberSearch.do",new MemberSearchAction());//검색 하는 회원찾기
      map.put("/ajax/memberlist.do",new MemberListAction());
      map.put("/ajax/blackSearch.do",new BlackSearchAction());
@@ -157,6 +164,13 @@ public class FrontController extends HttpServlet {
      map.put("/ajax/updatemember.do", new MemberUpdateAction());//업데이트
      map.put("/submitQuestion.do",new SubmitQuestionAction());
      map.put("/ajax/sitterlist.do",new SitterlistAction());
+     map.put("/goQuestionBoard.do",new GoQuestionBoardPageAction());
+     map.put("/questionlist.do",new QuestionlistAction());
+     map.put("/questionselect.do",new QuestionselectAction());
+     map.put("/sitterinsert.do",new SitterInsertlistAction());
+     map.put("/questionrewrite.do",new QuestionRewriteAction());
+     map.put("/questionanswer.do",new QuestionAnswerAction());
+
      
       
 
@@ -188,6 +202,8 @@ public class FrontController extends HttpServlet {
      map.put("/sitterForm.do", new SitterFormAction()); //sitterForm 화면 호출
      map.put("/sitterFormSelect.do", new SitterFormViewAction()); //OwnerFormView 화면 호출
      map.put("/sitterListSearch.do", new SitterListSearhAction()); //sitterList에서 검색 
+     map.put("/boardTradePet.do", new boardTradePetAction()); //ownerForm 에서 거래신청
+
       
       
       
@@ -220,6 +236,7 @@ public class FrontController extends HttpServlet {
      map.put("/ownerTradeCheck.do", new OwnerTradeCheck()); // 돌봐주세요 거래 체결 화면 호출
      map.put("/ownerTradeCheckAction.do", new OwnerTradeCheckAction()); // 돌봐주세요 거래 선택후 체결 액션
      map.put("/sitterTradeCheck.do", new SitterTradeCheck()); // 돌봐줄게요 거래 체결 화면 호출
+     map.put("/sitterTradeCheckAction.do", new SitterTradeCheckAction()); // 돌봐주세요 거래 선택후 체결 액션 
       
       
       
