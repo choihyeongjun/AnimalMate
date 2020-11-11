@@ -20,5 +20,6 @@
 		<pattern>*/ajax/*</pattern>
 		<pattern>/goLoginPage.do</pattern>
 		<pattern>*/adminLogin.do</pattern>
+		<pattern>/goMessageForm.do*</pattern>
 	</excludes>
 </decorators>

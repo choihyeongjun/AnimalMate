@@ -1,6 +1,7 @@
 package co.animalMate.mypage.command;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,20 +17,46 @@ public class Profile implements Action {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 프로필 화면 호출
+
+		// 해당 사람 정보 출력
 		MypageDao myDao = new MypageDao();
-		CommentsVO comVo = new CommentsVO();
-		List<CommentsVO> list = new ArrayList<CommentsVO>();
-		
-		//해당 사람 정보 출력
 		MemberVO memVo = new MemberVO();
-		String code = request.getParameter("code");		
-		//memVo = myDao.(memVo); 덜햇쪄여 뿌우
+		String id = request.getParameter("id"); // 아이디값 받아와서 검색
+		memVo.setId(id);
+		memVo = myDao.userInfo(memVo);
 		request.setAttribute("user", memVo);
+
+		// 나이 구하기!
+		int birthYear = Integer.parseInt(String.valueOf(memVo.getZoomin1()).substring(0, 2));
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR) - 2000;
+		int age;
+		if (birthYear > year) {
+			age = year + (100 - birthYear) + 1; // 1더하면 한국나이
+		} else {
+			age = year;
+		}
+		request.setAttribute("age", age);
+
+		// 성별 구하기!
+		String zoo2 = String.valueOf(memVo.getZoomin2()).substring(0, 1);
+		String gender;
+		if (zoo2.equals("1") || zoo2.equals("3")) {
+			gender = "남성";
+		} else {
+			gender = "여성";
+		}
+		request.setAttribute("gender", gender);
 		
-		//해당 사람의 거래 후기 리스트 출력
+		
+		// 해당 사람의 거래 후기 리스트 출력
+		myDao = new MypageDao();
+		List<CommentsVO> list = new ArrayList<CommentsVO>();
+		CommentsVO comVo = new CommentsVO();
+		comVo.setComm(id);
 		list = myDao.selectComments(comVo);
-		request.setAttribute("comm", list);
-		
+		request.setAttribute("comms", list);
+
 		return "jsp/mypage/profile.jsp";
 
 	}

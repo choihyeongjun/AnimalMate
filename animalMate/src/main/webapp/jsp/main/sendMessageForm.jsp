@@ -12,11 +12,11 @@
 }
 
 .col2_title, .col2_target, .col3_comm {
-	width: 850px;
+	width: 500px;
 }
 
 .col3_comm {
-	height: 500px
+	height: 300px;
 }
 </style>
 <script type="text/javascript">
@@ -53,7 +53,7 @@
 			</table>
 			<br>
 			<div align="right">
-				<button type="submit" id="submitBtn">제출하기</button>
+				<button type="submit" id="submitBtn">보내기</button>
 				<button type="button" id="gobackBtn">취소</button>
 			</div>
 		</form>

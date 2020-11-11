@@ -32,3 +32,4 @@ insert into picture values(picture_code.nextval, 'id1', 'picture5.jpg');
 --message테이블 더미
 insert into message(code, send, receive, comm, status, title) values (message_code.nextval, 'id2', 'id1', '실험용쪽지', '미확인', '쪽지제목');
 insert into message(code, send, receive, comm, title) values (message_code.nextval, 'id1', 'id2', '실험용쪽지', '쪽지제목');
+insert into message(code, send, receive, comm, title) values (message_code.nextval, 'id1', 'id2', '실험용쪽지', '쪽지제목');

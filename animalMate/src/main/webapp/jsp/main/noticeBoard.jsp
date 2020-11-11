@@ -42,6 +42,13 @@
 				location.href="${pageContext.request.contextPath}/goNoticeForm.do";
 			}
 		})
+		
+		//분류
+		$("#type").on({
+			"change" : function() {
+				filterFrm.submit();
+			}
+		})
 	})
 </script>
 </head>
@@ -60,7 +67,6 @@
 					<c:if test="${param.type == '이벤트'}">selected</c:if>>이벤트
 			</select> 
 			<input type="hidden" name="p" value="1">
-			<button id="filterBtn">검색</button>
 		</form>
 	</div>
 	<br>

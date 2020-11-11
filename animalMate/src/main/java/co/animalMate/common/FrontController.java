@@ -62,8 +62,12 @@ import co.animalMate.mypage.command.MypetUpdate;
 import co.animalMate.mypage.command.MypetUpdateAction;
 import co.animalMate.mypage.command.MytradeList;
 import co.animalMate.mypage.command.OwnerFormCheck;
+import co.animalMate.mypage.command.OwnerTradeCheck;
+import co.animalMate.mypage.command.OwnerTradeCheckAction;
 import co.animalMate.mypage.command.Profile;
 import co.animalMate.mypage.command.SitterFormCheck;
+import co.animalMate.mypage.command.SitterTradeCheck;
+
 
 
 public class FrontController extends HttpServlet {
@@ -202,12 +206,13 @@ public class FrontController extends HttpServlet {
      map.put("/mypetUpdateAction.do", new MypetUpdateAction()); //펫 수정 액션
      map.put("/mypetDeleteAction.do", new MypetDeleteAction()); //펫 삭제 액션
      map.put("/mytradeList.do", new MytradeList()); //내 거래현황,내역 화면 호출
-     map.put("/ownerFormCheck.do", new OwnerFormCheck()); // 맡기기 화면 호출
-     map.put("/sitterFormCheck.do", new SitterFormCheck()); // 돌보기 화면 호출
+     map.put("/ownerFormCheck.do", new OwnerFormCheck()); // 돌봐주세요 화면 호출
+     map.put("/sitterFormCheck.do", new SitterFormCheck()); // 돌봐줄게요 화면 호출
      map.put("/memberForm.do", new MemberForm()); //회원 정보 수정
      map.put("/profile.do", new Profile()); //프로필 화면 호출
-      
-      
+     map.put("/ownerTradeCheck.do", new OwnerTradeCheck()); // 돌봐주세요 거래 체결 화면 호출
+     map.put("/ownerTradeCheckAction.do", new OwnerTradeCheckAction()); // 돌봐주세요 거래 선택후 체결 액션
+     map.put("/sitterTradeCheck.do", new SitterTradeCheck()); // 돌봐줄게요 거래 체결 화면 호출
       
       
       

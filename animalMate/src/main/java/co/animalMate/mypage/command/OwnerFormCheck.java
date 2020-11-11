@@ -41,7 +41,6 @@ public class OwnerFormCheck implements Action {
 		myDao = new MypageDao();
 		if(sid.equals(tlVo.getSeller())) {
 			memVo.setId(tlVo.getBuyer());
-			//return "새로 만들어줘야 할 페이지 ㅡㅡ";
 		}else{			
 			memVo.setId(tlVo.getSeller());
 		}
