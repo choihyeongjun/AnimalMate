@@ -13,7 +13,7 @@ public class OwnerTradeCheckAction implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 거래 체크 액션
 		ApplytradeVO atVo = new ApplytradeVO();
-		MypageDao myDao = new MypageDao();
+		MypageDao myDao = new MypageDao(); 
 		
 		// 거래상태변경 액션
 		atVo.setCode(Integer.parseInt(request.getParameter("code")));
