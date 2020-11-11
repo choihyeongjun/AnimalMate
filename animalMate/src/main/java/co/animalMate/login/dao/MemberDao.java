@@ -23,8 +23,7 @@ public class MemberDao extends DAO {
 	private final String FINDID ="SELECT ID FROM MEMBERS WHERE NAME=? AND EMAIL=?";
 	private final String FINDPW ="SELECT PW FROM MEMBERS WHERE ID=? AND NAME=? AND EMAIL=?";
 	private final String OVERLAPID = "SELECT ID FROM MEMBERS WHERE ID = ?";
-	private final String UPDATE = "UPDATE MEMBERS SET NNAME=?, TEL=?, LOCATION1=?,LOCATION2=?,EMAIL=?,PIC=?";
-	
+	private final String UPDATELIST = "UPDATE MEMBERS SET NNAME=?, TEL=?, LOCATION1=?,LOCATION2=?,EMAIL=?,PIC=? WHERE ID=?";
 	
 	public List<MemberVO> selectAll(){ //멤버리스트 전체를 가져오는 메소드
 		List<MemberVO> list = new ArrayList<MemberVO>();
@@ -187,24 +186,24 @@ public class MemberDao extends DAO {
 	      return vo;
 	   }
 	   
-	// 업데이트
-		public int update(MemberVO vo) {
-			int n = 0;
-			try { 			
-				psmt = conn.prepareStatement(UPDATE);
-				psmt.setString(1, vo.getName());
-				psmt.setString(2, vo.getNname());
-				psmt.setString(3,vo.getTel());
-				psmt.setString(4,vo.getLocation1());
-				psmt.setString(5,vo.getLocation2());
-				psmt.setString(6,vo.getEmail());
-				psmt.setString(6,vo.getPic());
-				n = psmt.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			return n;
-		}   
+		// 업데이트
+				public int updatelist(MemberVO vo) {
+					int n = 0;
+					try { 			
+						psmt = conn.prepareStatement(UPDATELIST);
+						psmt.setString(1, vo.getNname());
+						psmt.setString(2,vo.getTel());
+						psmt.setString(3,vo.getLocation1());
+						psmt.setString(4,vo.getLocation2());
+						psmt.setString(5,vo.getEmail());
+						psmt.setString(6,vo.getPic());
+						psmt.setString(7,vo.getId());
+						n = psmt.executeUpdate();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					return n;
+				}   
 	private void close() { //DB연결을 끊어준다
 		try {
 			if(rs != null) rs.close();
