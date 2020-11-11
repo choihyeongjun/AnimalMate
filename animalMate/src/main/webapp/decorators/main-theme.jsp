@@ -29,16 +29,17 @@
 <style>
 #_chatbox{
 position: fixed;
-	top:5%;
+	top:350px;
 	right:4.5%;
 	width:200px;
 	hegiht:40px;
 }
-.chat{position: fixed;
-	top:50%;
-	right:5%;
-	width:200px;
-	hegiht:40px;
+.chat{
+		position: fixed;
+		margin-top: 531px;
+		right:5%;
+		width:200px;
+		hegiht:40px;
 }
 
 #textMessage {
