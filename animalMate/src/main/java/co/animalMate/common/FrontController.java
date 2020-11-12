@@ -13,9 +13,15 @@ import javax.servlet.http.HttpServletResponse;
 import co.animalMate.admin.command.BlackListAction;
 import co.animalMate.admin.command.BlackSearchAction;
 import co.animalMate.admin.command.BlackUpdateAction;
+import co.animalMate.admin.command.GoQuestionBoardPageAction;
 import co.animalMate.admin.command.MemberListAction;
 import co.animalMate.admin.command.MemberSearchAction;
 import co.animalMate.admin.command.MemberUpdateAction;
+import co.animalMate.admin.command.QuestionAnswerAction;
+import co.animalMate.admin.command.QuestionRewriteAction;
+import co.animalMate.admin.command.QuestionlistAction;
+import co.animalMate.admin.command.QuestionselectAction;
+import co.animalMate.admin.command.SitterInsertlistAction;
 import co.animalMate.admin.command.SitterlistAction;
 import co.animalMate.admin.command.SubmitQuestionAction;
 import co.animalMate.admin.command.tradeAction;
@@ -26,8 +32,10 @@ import co.animalMate.board.command.OwnerInsertAction;
 import co.animalMate.board.command.OwnerListAction;
 import co.animalMate.board.command.OwnerListSearhAction;
 import co.animalMate.board.command.SitterFormAction;
+import co.animalMate.board.command.SitterFormViewAction;
 import co.animalMate.board.command.SitterListAction;
 import co.animalMate.board.command.SitterListSearhAction;
+import co.animalMate.board.command.boardTradePetAction;
 import co.animalMate.login.command.FindIdAction;
 import co.animalMate.login.command.FindPwAction;
 import co.animalMate.login.command.JoinForm;
@@ -38,9 +46,11 @@ import co.animalMate.login.command.LogoutAction;
 import co.animalMate.login.command.ResetPwAction;
 import co.animalMate.login.command.idOverlapCheck;
 import co.animalMate.main.command.AdminLoginAction;
+import co.animalMate.main.command.AjaxMessageInfoAction;
 import co.animalMate.main.command.AjaxPetInfoAction;
 import co.animalMate.main.command.GoBlackBoardPageAction;
 import co.animalMate.main.command.GoLoginPageAction;
+import co.animalMate.main.command.GoMessageFormAction;
 import co.animalMate.main.command.GoMessageListPageAction;
 import co.animalMate.main.command.GoMypagePageAction;
 import co.animalMate.main.command.GoNoticeBoardPageAction;
@@ -54,6 +64,7 @@ import co.animalMate.main.command.SubmitMessageAction;
 import co.animalMate.main.command.SubmitNoticeAction;
 import co.animalMate.main.command.SubmitReportAction;
 import co.animalMate.mypage.command.MemberForm;
+import co.animalMate.mypage.command.MemberFormUpdateAction;
 import co.animalMate.mypage.command.MypetDeleteAction;
 import co.animalMate.mypage.command.MypetForm;
 import co.animalMate.mypage.command.MypetFormAction;
@@ -67,6 +78,7 @@ import co.animalMate.mypage.command.OwnerTradeCheckAction;
 import co.animalMate.mypage.command.Profile;
 import co.animalMate.mypage.command.SitterFormCheck;
 import co.animalMate.mypage.command.SitterTradeCheck;
+import co.animalMate.mypage.command.SitterTradeCheckAction;
 
 
 
@@ -80,7 +92,7 @@ public class FrontController extends HttpServlet {
 
    public void init(ServletConfig config) throws ServletException { //init은 처음 실행할 때 한 번만 실행됨
       // 요청들을 정의함
-      //상민      
+	   //상민      
       map.put("/main.do", new MainAction()); // 처음 들어오는 페이지 처리 index.jsp
       map.put("/goLoginPage.do", new GoLoginPageAction()); // 헤더에서 로그인 버튼 눌렀을 때
       map.put("/gotradeListPage.do", new GotradeListPageAction()); // 헤더에서 요청알림 버튼 눌렀을 때
@@ -93,12 +105,15 @@ public class FrontController extends HttpServlet {
       map.put("/goBlackBoardPage.do", new GoBlackBoardPageAction()); // 신고하기 폼에서 제출하기 버튼을 눌렀을 때 
       map.put("/adminLogin.do", new AdminLoginAction()); // 로그인 창에서 admin으로 로그인 했을 때
       map.put("/goNoticeForm.do", new GoNoticeFormAction()); // 공지사항 페이지에서 글쓰기 버튼 눌렀을 때
-      map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
+      map.put("/goMessageForm.do", new GoMessageFormAction()); // 메세지 리스트에서 메세지를 눌렀을 때
          //제출하기
       map.put("/submitReport.do", new SubmitReportAction()); // 신고폼 페이지에서 제출버튼 눌렀을 때
       map.put("/submitNotice.do", new SubmitNoticeAction()); // 공지사항폼 페이지에서 제출버튼 눌렀을 때
       map.put("/sitterInsert.do", new SitterInsertAction()); // 시터폼에서 제출하기 눌렀을 때 
       map.put("/submitMessage.do", new SubmitMessageAction()); // 메세지 보내기폼에서 제출하기 눌렀을 때
+      	//아작스
+      map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
+      map.put("/ajax/messageInfo.do", new AjaxMessageInfoAction()); //펫 목록 화면 호출
       
       
       
@@ -121,6 +136,7 @@ public class FrontController extends HttpServlet {
      map.put("/findpw.do", new FindPwAction()); //비밀번호 찾기 액션
      map.put("/resetPw.do", new ResetPwAction()); //비밀번호 변경 액션
      map.put("/idoverlapcheck.do", new idOverlapCheck()); //아이디중복확인 찾기 액션
+     map.put("/memberUpdate.do", new MemberFormUpdateAction()); // 회원정보수정 액션
       
    
 
@@ -141,7 +157,7 @@ public class FrontController extends HttpServlet {
       
       
       
-      //형준
+     //형준
      map.put("/ajax/memberSearch.do",new MemberSearchAction());//검색 하는 회원찾기
      map.put("/ajax/memberlist.do",new MemberListAction());
      map.put("/ajax/blackSearch.do",new BlackSearchAction());
@@ -151,6 +167,13 @@ public class FrontController extends HttpServlet {
      map.put("/ajax/updatemember.do", new MemberUpdateAction());//업데이트
      map.put("/submitQuestion.do",new SubmitQuestionAction());
      map.put("/ajax/sitterlist.do",new SitterlistAction());
+     map.put("/goQuestionBoard.do",new GoQuestionBoardPageAction());
+     map.put("/questionlist.do",new QuestionlistAction());
+     map.put("/questionselect.do",new QuestionselectAction());
+     map.put("/sitterinsert.do",new SitterInsertlistAction());
+     map.put("/questionrewrite.do",new QuestionRewriteAction());
+     map.put("/questionanswer.do",new QuestionAnswerAction());
+
      
       
 
@@ -180,7 +203,10 @@ public class FrontController extends HttpServlet {
      map.put("/ownerFormSelect.do", new OwnerFormViewAction()); //OwnerFormView 화면 호출
      map.put("/sitterList.do", new SitterListAction()); //sitterList 화면 호출
      map.put("/sitterForm.do", new SitterFormAction()); //sitterForm 화면 호출
+     map.put("/sitterFormSelect.do", new SitterFormViewAction()); //OwnerFormView 화면 호출
      map.put("/sitterListSearch.do", new SitterListSearhAction()); //sitterList에서 검색 
+     map.put("/boardTradePet.do", new boardTradePetAction()); //ownerForm 에서 거래신청
+
       
       
       
@@ -213,6 +239,7 @@ public class FrontController extends HttpServlet {
      map.put("/ownerTradeCheck.do", new OwnerTradeCheck()); // 돌봐주세요 거래 체결 화면 호출
      map.put("/ownerTradeCheckAction.do", new OwnerTradeCheckAction()); // 돌봐주세요 거래 선택후 체결 액션
      map.put("/sitterTradeCheck.do", new SitterTradeCheck()); // 돌봐줄게요 거래 체결 화면 호출
+     map.put("/sitterTradeCheckAction.do", new SitterTradeCheckAction()); // 돌봐주세요 거래 선택후 체결 액션 
       
       
       

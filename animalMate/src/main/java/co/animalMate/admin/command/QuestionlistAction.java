@@ -18,8 +18,7 @@ public class QuestionlistAction implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		   
 		QuestionDAO dao=new QuestionDAO();
-		List<QuestionVO>list=new ArrayList<>();
-		list=dao.selectAll();
+		List<QuestionVO>list=dao.selectAll();
 		request.setAttribute("list",list);
 		
 		return "/jsp/admin/test/questionboard.jsp";

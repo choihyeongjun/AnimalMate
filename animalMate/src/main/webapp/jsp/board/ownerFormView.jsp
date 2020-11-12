@@ -32,10 +32,30 @@
 	display: none;
 }
 
-.calendar span {
-	display: inline;
+.col1_title, .col1_target, .col3_comm {
+	width: 20px;
+}
+
+.col2_title, .col2_target, .col3_comm {
+	width: 300px;
+}
+
+.col3_comm {
+	height: 300px;
 }
 </style>
+
+<script type="text/javascript">
+		(()=>{
+			$("#submitBtn").on({
+				"click"  :function(){
+					console.log("aa")
+					messageFrm.submit();
+				}
+			})
+		})
+</script>
+
 </head>
 
 <body>
@@ -55,28 +75,28 @@
 
 			<div id="sec01" class="sitter_info">
 				<h2 class="cont_tit">펫정보</h2>
-	<c:forEach var="border" items="${borders}">
-				<div class="cont_area">
-					<div class="info_img">
-						<img class="info_img"
-							src="${pageContext.request.contextPath}/images/pet_pic/${border.pic}"
-							alt="펫 이미지" height="100px" width="100px">
-					</div>
-				
-					<div class="info_table">
-						<table class="tbl_write__list">
-							<colgroup>
-								<col width="40%">
-								<col width="60%">
-							</colgroup>
+				<c:forEach var="border" items="${borders}">
+					<div class="cont_area">
+						<div class="info_img">
+							<img class="info_img"
+								src="${pageContext.request.contextPath}/images/pet_pic/${border.pic}"
+								alt="펫 이미지" height="100px" width="100px">
+						</div>
 
-							<thead>
-								<tr>
-									<th>펫 정보</th>
-									<th>상세 내용</th>
-								</tr>
-							</thead>
-							
+						<div class="info_table">
+							<table class="tbl_write__list">
+								<colgroup>
+									<col width="40%">
+									<col width="60%">
+								</colgroup>
+
+								<thead>
+									<tr>
+										<th>펫 정보</th>
+										<th>상세 내용</th>
+									</tr>
+								</thead>
+
 								<tbody>
 									<tr>
 										<td>펫 이름</td>
@@ -103,12 +123,14 @@
 										<td>${border.cut}</td>
 									</tr>
 								</tbody>
-							</c:forEach>
-						</table>
+
+							</table>
+						</div>
 					</div>
-				</div>
+				</c:forEach>
 			</div>
 
+			<br>
 			<div id="sec02" class="">
 				<h2 class="cont_tit">돌봄 세부조건</h2>
 
@@ -137,8 +159,7 @@
 						<tr>
 							<th>근무날짜</th>
 							<td>
-								<!-- jQuery datepicker 연결하면 됨-->
-								<div class="calendar">
+								<div>
 									<span class="datepickerview">${borders[0].sdate} <span>~</span>
 										<span class="datepickerview">${borders[0].edate}
 								</div>
@@ -167,21 +188,27 @@
 				</table>
 			</div>
 
+			<br>
 			<div id="sec04" class="">
 				<h2 class="cont_tit">체크리스트</h2>
 				<div>
-					<p>${borders[0].comm}</p>
+					<ul>
+						<c:forEach items="${joblist}" var="v">
+							<li>○ ${v.comm}</li>
+						</c:forEach>
+					</ul>
 				</div>
 			</div>
 
+			<br>
 			<div id="sec05" class="">
 				<h2 class="cont_tit">세부사항</h2>
-				<textarea>${joblist.comm}</textarea>
+				<textarea>${borders[0].comm}</textarea>
 			</div>
 
+			<br>
 			<div id="sec06" class="">
 				<h2 class="cont_tit">유의사항</h2>
-
 				<ul>
 					<li>○ 배드, 사료, 산책용품등은 의뢰자께서 준비해주세요.</li>
 					<li>○ 특이사항(질병등)은 사전에 펫시터에게 공지해주세요.</li>
@@ -191,12 +218,17 @@
 				</ul>
 			</div>
 
-
+			<br>
 			<div class="btn_sumit">
-				<button type="submit" class="btn_blue">쪽지보내기</button>
-				<button type="submit" class="btn_blue">신청하기</button>
-				<button type="reset" class="btn_gray"
+				<button type="button" data-toggle="modal"
+					data-target="#exampleModal1">쪽지보내기</button>
+				&nbsp;&nbsp;
+				<button type="submit"
+					onclick="window.open('${pageContext.request.contextPath}/boardTradePet.do'">신청하기</button>
+				&nbsp;&nbsp;
+				<button type="reset"
 					onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
+				&nbsp;&nbsp;
 			</div>
 
 		</div>
@@ -204,5 +236,52 @@
 
 	</div>
 	<!-- s:container -->
+
+	<!-- Modal1쪽지쓰기 -->
+	<div class="modal fade" id="exampleModal1" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<p class="modal-title" id="exampleModalLabel">쪽지 보내기</p>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="reportDiv" align="center">
+						<form id="messageFrm" name="messageFrm" method="post"
+							action="${pageContext.request.contextPath}/submitMessage.do">
+							<table class="reportTd">
+								<tr>
+									<td class="col1_title">제목</td>
+									<td><input class="col2_title" type="text" id="title"
+										name="title"></td>
+								</tr>
+								<tr>
+									<td class="col1_target">받을 사람</td>
+									<td><input class="col2_target" type="text" id="receive"
+										name="receive" value="${borders[0].buyer}"></td>
+								</tr>
+								<tr>
+									<td class="col3_comm">내용</td>
+									<td><textarea rows="20" cols="50" class="col3_comm"
+											id="comm" name="comm"></textarea></td>
+								</tr>
+							</table>
+							<br>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="submitBtn" class="btn btn-primary">보내기</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal1쪽지쓰기 -->
 </body>
 </html>

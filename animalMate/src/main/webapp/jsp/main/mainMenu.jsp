@@ -20,7 +20,7 @@
 </script>
 </head>
 <body>
-	<img class="dd" alt="이미지 없어!" src="${pageContext.request.contextPath}/jsp/main/images/mainMenuImage2.png">
+	<img class="dd" alt="이미지 없어!" src="${pageContext.request.contextPath}/jsp/main/images/사진6.jpg">
 	<video class="dd" id="video" loop="loop" autoplay="autoplay" muted="muted">
 		<source class="dd" src="${pageContext.request.contextPath}/jsp/main/video/mainVideo.mp4" type="video/mp4">
 	</video>

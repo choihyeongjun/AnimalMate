@@ -48,7 +48,7 @@ a{
 <jsp:include page="mainMenu.jsp"/>
 </c:if>
 
-<br>
+  <br><br>
 	<h3>1:1문의내역</h3>
 	<hr />
 	<div align="right">
@@ -80,14 +80,17 @@ a{
 				<c:forEach items="${list}" var="l">
 				<tr>
 				<td>${l.code}</td>
-				<c:if test="${sessionScope.id ne l.send}">
+				<c:if test="${sessionScope.id ne l.send && l.status eq '비공개'}">
 				<td>${l.title}</td>
 				</c:if>
-				<c:if test="${sessionScope.id eq l.send}">
+				<c:if test="${l.status eq '공개'}">
+				<td><a href="${pageContext.request.contextPath}/questionselect.do?code=${l.code}" style="color: #184cc1;font-weight: bold;">${l.title}</a></td>
+				</c:if>
+				<c:if test="${l.status eq '비공개' && sessionScope.id eq l.send}">
 				<td><a href="${pageContext.request.contextPath}/questionselect.do?code=${l.code}" style="color: #184cc1;font-weight: bold;">${l.title}</a></td>
 				</c:if>
 				<c:if test="${sessionScope.id eq 'admin'}">
-				<td><a href="${pageContext.request.contextPath}/questionselect.do"?code=${l.code}>${l.title}</a></td>
+				<td><a href="${pageContext.request.contextPath}/questionselect.do?code=${l.code}">${l.title}</a></td>
 				</c:if>
 				<td>${l.send}</td>
 				<td>${l.status}</td>

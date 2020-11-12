@@ -8,7 +8,16 @@ public class QuestionVO {
 	private String status;
 	private String ttime;
 	private String title;
+	private String answer;
 	
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+
 	public String getTtime() {
 		return ttime;
 	}

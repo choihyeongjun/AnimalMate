@@ -5,7 +5,16 @@ public class SitterVO {
 	private int maxP;
 	private String status;
 	private String code;
+	private String comm;
 	
+
+	public String getComm() {
+		return comm;
+	}
+
+	public void setComm(String comm) {
+		this.comm = comm;
+	}
 
 	public SitterVO() {}
 

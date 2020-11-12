@@ -19,9 +19,43 @@ public class QuestionDAO extends DAO {
 	private final String SELECT = "SELECT * FROM QUESTION";
 	private final String SELECTSEARCH="SELECT * FROM QUESTION WHERE STATUS=?";
 	private final String INSERT = "INSERT INTO QUESTION(CODE, SEND, TTYPE, TITLE, COMM, STATUS,TTIME) VALUES(QUESTION_SEQ.nextval,?,?,?,?,?,sysdate)";
-	private final String UPDATE = "UPDATE MEMBER SET NAME = ?, PASSWORD = ?, ADDRESS = ?, TEL = ?, ID = ?";
+	private final String UPDATE = "UPDATE QUESTION SET ANSWER = ? WHERE SEND=? AND TITLE=? AND COMM=?";
+	private final String UPDATER = "UPDATE QUESTION SET COMM =? WHERE SEND=? AND TITLE=? ";
 	private final String DELETE = "DELETE FROM MEMBER WHERE ID = ?"; 
 	
+public void updateR(QuestionVO vo) {
+		
+		try {
+			psmt=conn.prepareStatement(UPDATER);
+			psmt.setString(1,vo.getComm());
+			psmt.setString(2, vo.getSend());
+			psmt.setString(3,vo.getTitle());
+			psmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	public void update(QuestionVO vo) {
+		
+		try {
+			psmt=conn.prepareStatement(UPDATE);
+			psmt.setString(1,vo.getAnswer());
+			psmt.setString(2, vo.getSend());
+			psmt.setString(3,vo.getTitle());
+			psmt.setString(4,vo.getComm());
+			psmt.executeUpdate();
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
 	public QuestionVO selectcode(QuestionVO vo){
 		try {
 			psmt=conn.prepareStatement(SELECTCODE);

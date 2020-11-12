@@ -23,7 +23,7 @@ public class SitterlistAction implements Action {
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		MemberVO vo=new MemberVO();
 		vo.setAuthor("sitterwait");
-		list = dao.selectAllBlack(vo);
+		list = dao.selectSitter(vo);
 	
 		try {
 			response.getWriter().print(new JSONArray(list));

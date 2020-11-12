@@ -13,6 +13,7 @@ import co.animalMate.vo.CommentsVO;
 import co.animalMate.vo.MemberTradeListVO;
 import co.animalMate.vo.MemberVO;
 import co.animalMate.vo.PetVO;
+import co.animalMate.vo.SitterTradeCheckListVO;
 import co.animalMate.vo.TradeBoardVO;
 import co.animalMate.vo.TradeListVO;
 
@@ -26,6 +27,7 @@ public class MypageDao extends DAO {
 	private CommentsVO comVo;
 	private MemberTradeListVO memtlVo;
 	private ApplytradeVO atVo;
+	private SitterTradeCheckListVO stclVo;
 
 	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ?";
 	private final String TRADE_COUNT = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE (STATUS IN('예약가능', '예약완료')) AND (BUYER = ? OR SELLER= ?)";
@@ -36,26 +38,104 @@ public class MypageDao extends DAO {
 	private final String SELECT_TRADEPETS = "SELECT P.* FROM PETCODE TP JOIN PET P ON (TP.PETCODE = P.CODE) WHERE TP.CODE = ?";
 	private final String UPDATE_APPLYTRADES1 = "UPDATE APPLYTRADE SET STATUS = '수락완료' WHERE CODE = ? AND ID = ?";
 	private final String UPDATE_APPLYTRADES2 = "UPDATE APPLYTRADE SET STATUS = '수락거절' WHERE CODE = ? AND ID != ?";
-	private final String UPDATE_TRADEBOARD = "UPDATE TRADEBOARD SET SELLER = ?, STATUS = '거래대상확정' WHERE CODE = ?";
-			
-	// 거래 체크 후 거래 상태 업데이트
+	private final String UPDATE_BUYER_TRADEBOARD = "UPDATE TRADEBOARD SET SELLER = ?, STATUS = '거래 대상 확정' WHERE CODE = ?";
+	private final String UPDATE_SITTER_TRADEBOARD = "UPDATE TRADEBOARD SET BUYER = ?, STATUS = '거래 대상 확정' WHERE CODE = ?";
+	private final String SELCET_SITTER_TRADE_LIST = "SELECT PC.CODE , M.*, P.* FROM PET P LEFT OUTER JOIN MEMBERS M ON (M.ID = P.ID) LEFT OUTER JOIN PETCODE PC ON (P.CODE = PC.PETCODE) WHERE PC.CODE = ?";
+
+	// 돌봐줄게요 게시판 거래 체크 후 거래 상태 업데이트
+		public int updateSitterApplyTrade(ApplytradeVO atVo) {
+			int n = 0;
+			try {
+				int atCode = atVo.getCode();
+				String atId = atVo.getId();
+
+				psmt = conn.prepareStatement(UPDATE_APPLYTRADES1);
+				psmt.setInt(1, atCode);
+				psmt.setString(2, atId);
+				n = psmt.executeUpdate();
+
+				psmt = conn.prepareStatement(UPDATE_APPLYTRADES2);
+				psmt.setInt(1, atCode);
+				psmt.setString(2, atVo.getId());
+				n = psmt.executeUpdate();
+
+				psmt = conn.prepareStatement(UPDATE_SITTER_TRADEBOARD);
+				psmt.setString(1, atId);
+				psmt.setInt(2, atCode);
+				n = psmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return n;
+		}	
+	
+	
+	
+	// 돌봐줄게요 게시판 거래체결 
+	public List<SitterTradeCheckListVO> selectSitterTradeList(SitterTradeCheckListVO stclVo) {
+		List<SitterTradeCheckListVO> list = new ArrayList<SitterTradeCheckListVO>();
+		try {
+			psmt = conn.prepareStatement(SELCET_SITTER_TRADE_LIST);
+			psmt.setString(1, stclVo.getCode());
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				stclVo.setCode(rs.getString("code"));
+				
+				stclVo = new SitterTradeCheckListVO();
+				stclVo.setId(rs.getString("id"));
+				stclVo.setPw(rs.getString("pw"));
+				stclVo.setName(rs.getString("name"));
+				stclVo.setnName(rs.getString("nName"));
+				stclVo.setTel(rs.getString("tel"));
+				stclVo.seteDate(rs.getString("eDate"));
+				stclVo.setAuthor(rs.getString("author"));
+				stclVo.setPoint(rs.getInt("point"));
+				stclVo.setStatus(rs.getString("status"));
+				stclVo.setLocation1(rs.getString("location1"));
+				stclVo.setLocation2(rs.getString("location2"));
+				stclVo.setEmail(rs.getString("email"));
+				stclVo.setPic(rs.getString("pic"));
+				stclVo.setZoomin1(rs.getInt("zoomin1"));
+				stclVo.setZoomin2(rs.getInt("zoomin2"));
+				//나이,성별 넣어줘야함
+				
+				stclVo.setpCode(rs.getString("code_1"));
+				stclVo.setpName(rs.getString("name_1"));
+				stclVo.setpAge(rs.getInt("age_1"));
+				stclVo.setpGender(rs.getString("gender_1"));
+				stclVo.setType(rs.getString("type"));
+				stclVo.setDetailType(rs.getString("detailtype"));
+				stclVo.setCut(rs.getString("cut"));
+				stclVo.setpPic(rs.getString("pic_1"));
+				
+				list.add(stclVo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+
+	// 돌봐주세요 게시판 거래 체크 후 거래 상태 업데이트
 	public int updateApplyTrade(ApplytradeVO atVo) {
 		int n = 0;
 		try {
 			int atCode = atVo.getCode();
 			String atId = atVo.getId();
-			
+
 			psmt = conn.prepareStatement(UPDATE_APPLYTRADES1);
 			psmt.setInt(1, atCode);
 			psmt.setString(2, atId);
 			n = psmt.executeUpdate();
-			
+
 			psmt = conn.prepareStatement(UPDATE_APPLYTRADES2);
 			psmt.setInt(1, atCode);
 			psmt.setString(2, atVo.getId());
 			n = psmt.executeUpdate();
-			
-			psmt = conn.prepareStatement(UPDATE_TRADEBOARD);
+
+			psmt = conn.prepareStatement(UPDATE_BUYER_TRADEBOARD);
 			psmt.setString(1, atId);
 			psmt.setInt(2, atCode);
 			n = psmt.executeUpdate();
@@ -64,9 +144,8 @@ public class MypageDao extends DAO {
 		}
 		return n;
 	}
-	
-	
-	// 거래하는 펫 리스트 뿌리기
+
+	// 돌봐주세요 게시판 거래하는 펫 리스트 뿌리기
 	public List<PetVO> selectTradepets(PetVO petVo) {
 		List<PetVO> list = new ArrayList<PetVO>();
 		try {
@@ -94,8 +173,8 @@ public class MypageDao extends DAO {
 		}
 		return list;
 	}
-	
-	// 거래 게시판 거래수락
+
+	// 돌봐주세요 게시판 거래수락
 	public List<MemberTradeListVO> selectApplyTradeList(MemberTradeListVO memtlVo) {
 		List<MemberTradeListVO> list = new ArrayList<MemberTradeListVO>();
 		try {
@@ -119,7 +198,7 @@ public class MypageDao extends DAO {
 				memtlVo.setPic(rs.getString("pic"));
 				memtlVo.setZoomin1(rs.getInt("zoomin1"));
 				memtlVo.setZoomin2(rs.getInt("zoomin2"));
-				//나이 성별 넣어야함		
+				// 나이 성별 넣어야함
 				list.add(memtlVo);
 			}
 		} catch (SQLException e) {

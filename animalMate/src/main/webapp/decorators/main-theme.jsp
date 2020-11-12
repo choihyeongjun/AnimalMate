@@ -29,24 +29,34 @@
 <style>
 #_chatbox{
 position: fixed;
-	top:5%;
+	top:350px;
 	right:4.5%;
 	width:200px;
 	hegiht:40px;
 }
-.chat{position: fixed;
-	top:50%;
-	right:5%;
-	width:200px;
-	hegiht:40px;
+.chat{
+		position: fixed;
+		margin-top: 531px;
+		right:5%;
+		width:200px;
+		hegiht:40px;
 }
 
 #textMessage {
 width: 230px;
 height: 100px;
+border-radius: 0 0 10px 10px;
+border: #ff7d21 4px solid;
+
 }
+
 #user{
-width: 230px;
+    width: 230px;
+    background-color: #ff7d21;
+    border: none;
+    border-radius: 10px 10px 0 0;
+  padding-left: 10px;
+    font-weight: bold;
 }
 	#bigcat {
 		float: left;
@@ -84,6 +94,24 @@ width: 230px;
     border : none;
 	}
 	
+	.sendbtn {
+	background-color: #ff7d21;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+    color : white;
+    margin-top: 10px;
+    margin-left: 188px;
+}
+	#messageTextArea {
+    width: 230px;
+    border-radius: 10px;
+    border: #ff7d21 4px solid;
+    text-align: left;
+    font-weight: bold;	
+    }
+
+
 </style>
 
 <script type="text/javascript">
@@ -173,8 +201,11 @@ width: 230px;
 	<br>
 	<nav class="navbar">
   		<a class="navbar-brand" href="${pageContext.request.contextPath}/goNoticeBoardPage.do?p=1"><b>공지사항</b></a>
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/sitterList.do"><b>돌봐줄께요</b></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/sitterList.do"><b>돌봐줄게요</b></a>
         <a class="navbar-brand" href="${pageContext.request.contextPath}/ownerList.do"><b>돌봐주세요</b></a>
+        <c:if test="${sessionScope.sessionauthor eq 'users'}">
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/jsp/main/wannabeSitter.jsp"><b>시터신청</b></a>
+        </c:if>
         <a class="navbar-brand" href="${pageContext.request.contextPath}/goMypagePage.do"><b>마이페이지</b></a>
 	</nav>
     <hr/>
@@ -188,14 +219,14 @@ width: 230px;
 		<!-- 송신 메시지를 작성하는 텍스트 박스 -->
 		<input id="textMessage" type="text">
 		<!-- 메세지를 송신하는 버튼 -->
-		<input onclick="sendMessage()" value="전송" type="button">
+		<input onclick="sendMessage()" value="전송" type="button" class="sendbtn">
 		<!-- WebSocket 접속 종료하는 버튼 -->
 		
 	</form>
 	
 
 	</div>
-	<img class="chat" src="${pageContext.request.contextPath}/images/img/chat.jpg" />
+	<img class="chat" src="${pageContext.request.contextPath}/images/img/문의하기.png" />
 	<script type="text/javascript">
 		// 콘솔 텍스트 에리어 오브젝트
 		var messageTextArea = document.getElementById("messageTextArea");
@@ -237,7 +268,7 @@ width: 230px;
 		// 연결 발생 때 사용할 callback 함수
 		var open1 = function() {
 			// 콘솔 텍스트에 메시지를 출력한다
-			messageTextArea.value += "상담이 연결되었습니다...\n";
+			messageTextArea.value += "문의사항을 입력하세냥ʕ ᵔᴥᵔ ʔ\n";
 		}
 		// 종료 발생 때 사용할 callback 함수
 		var close1 = function() {
@@ -293,11 +324,11 @@ width: 230px;
     $(".chat").on({
         "click" : function() {
         	console.log("안녕");
-            if ($(this).attr("src") == "${pageContext.request.contextPath}/images/img/chat.jpg") {
-                $(".chat").attr("src", "${pageContext.request.contextPath}/images/img/chat_hide.jpg");
+            if ($(this).attr("src") == "${pageContext.request.contextPath}/images/img/문의하기.png") {
+                $(".chat").attr("src", "${pageContext.request.contextPath}/images/img/문의종료.png");
                 $("#_chatbox").css("display","block");
-            } else if ($(this).attr("src") == "${pageContext.request.contextPath}/images/img/chat_hide.jpg") {
-                $(".chat").attr("src", "${pageContext.request.contextPath}/images/img/chat.jpg");
+            } else if ($(this).attr("src") == "${pageContext.request.contextPath}/images/img/문의종료.png") {
+                $(".chat").attr("src", "${pageContext.request.contextPath}/images/img/문의하기.png");
                 $("#_chatbox").css("display", "none");
             }
         }

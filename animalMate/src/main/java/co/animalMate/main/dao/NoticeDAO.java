@@ -40,44 +40,44 @@ public class NoticeDAO extends DAO {
 	
 	
 	// 전체선택(페이징)
-		public List<NoticeVO> selectAll(NoticeVO nvo) { // 멤버리스트 전체를 가져오는 메소드
-			List<NoticeVO> list = new ArrayList<NoticeVO>();
-			//type에 따라 가져오기
-			String whereCondition = " where 1 = 1 ";
-			if(nvo.getType() != null && !nvo.getType().equals("")) {
-				whereCondition += " and type = ?";
-			}
-			try {
-				psmt = conn.prepareStatement("select * from(select a.*, rownum rn from ("
-						+ "SELECT * FROM NOTICE"
-						+ whereCondition
-						+ " order by code desc"
-						+ ") a ) b where rn between ? and ?");
-				int pos =1;
-				if(nvo.getType() != null && !nvo.getType().equals("")) {
-					psmt.setString(pos++, nvo.getType());
-				}
-				psmt.setInt(pos++, nvo.getFirst());
-				psmt.setInt(pos++, nvo.getLast());
-				 
-				rs = psmt.executeQuery();
-				while (rs.next()) {
-					vo = new NoticeVO();
-					vo.setCode(rs.getInt("code"));
-					vo.setComm(rs.getString("comm"));
-					vo.setCount(rs.getInt("count"));
-					vo.setDay(rs.getString("day"));
-					vo.setTitle(rs.getString("title"));
-					vo.setType(rs.getString("type"));
-					list.add(vo);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close();
-			}
-			return list;
+	public List<NoticeVO> selectAll(NoticeVO nvo) { // 멤버리스트 전체를 가져오는 메소드
+		List<NoticeVO> list = new ArrayList<NoticeVO>();
+		//type에 따라 가져오기
+		String whereCondition = " where 1 = 1 ";
+		if(nvo.getType() != null && !nvo.getType().equals("")) {
+			whereCondition += " and type = ?";
 		}
+		try {
+			psmt = conn.prepareStatement("select * from(select a.*, rownum rn from ("
+					+ "SELECT * FROM NOTICE"
+					+ whereCondition
+					+ " order by code desc"
+					+ ") a ) b where rn between ? and ?");
+			int pos =1;
+			if(nvo.getType() != null && !nvo.getType().equals("")) {
+				psmt.setString(pos++, nvo.getType());
+			}
+			psmt.setInt(pos++, nvo.getFirst());
+			psmt.setInt(pos++, nvo.getLast());
+			 
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				vo = new NoticeVO();
+				vo.setCode(rs.getInt("code"));
+				vo.setComm(rs.getString("comm"));
+				vo.setCount(rs.getInt("count"));
+				vo.setDay(rs.getString("day"));
+				vo.setTitle(rs.getString("title"));
+				vo.setType(rs.getString("type"));
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
 		
 	//페이지 번호 추출기
 	public int count(NoticeVO nvo) {

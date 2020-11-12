@@ -41,7 +41,28 @@ public class JobListDao extends DAO {
 		return vo;
 	}
 	
-
+	//코드로 전체조회 
+	public List<JoblistVO> selectAllByCode(JoblistVO vo) {
+		List<JoblistVO> list = new ArrayList<JoblistVO>();
+		try {
+			psmt = conn.prepareStatement(SELECT);
+			psmt.setInt(1, vo.getCode());
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				vo = new JoblistVO();
+				vo.setCode(rs.getInt("code"));
+				vo.setConfirm(rs.getString("confirm"));
+				vo.setComm(rs.getString("comm"));
+				vo.setPic(rs.getString("pic"));
+				list.add(vo);
+			}
+		} catch (SQLException e) {//
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
 	
 	
 	// DB자원해제

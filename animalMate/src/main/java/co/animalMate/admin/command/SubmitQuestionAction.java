@@ -33,12 +33,15 @@ public class SubmitQuestionAction implements Action {
 		vo.setTtype(ttype);
 		vo.setComm(comm);
 		dao.insert(vo);
-		List<QuestionVO>list=new ArrayList<>();
-		list=dao.selectAll();
-		request.setAttribute("list",list);
+		try {
+			response.sendRedirect(request.getContextPath()+"/questionlist.do");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
-		return "/jsp/admin/test/questionboard.jsp";
+		return null;
 	}
 
 }

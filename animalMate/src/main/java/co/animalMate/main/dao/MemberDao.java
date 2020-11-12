@@ -36,10 +36,10 @@ public class MemberDao extends DAO {
 			}
 		}
 	
+	//블랙리스트 가져오기
 	public List<MemberVO> selectBlack(MemberVO vo){
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
-			
 			psmt=conn.prepareStatement(SELECT_BLACK);
 			psmt.setString(1, vo.getAuthor());
 			psmt.setString(2, vo.getId());
@@ -63,7 +63,6 @@ public class MemberDao extends DAO {
 				vo.setZoomin2(rs.getInt("zoomin2"));
 				list.add(vo);
 			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -75,7 +74,6 @@ public class MemberDao extends DAO {
 	public List<MemberVO> selectAllBlack(MemberVO vo){
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
-			
 			psmt=conn.prepareStatement(BLACK_SEARCH);
 			psmt.setString(1, vo.getAuthor());
 			rs=psmt.executeQuery();
@@ -145,11 +143,44 @@ public class MemberDao extends DAO {
 		return list;
 	}
 	
-	
-	public List<MemberVO> selectAll(){ //멤버리스트 전체를 가져오는 메소드
+	//멤버리스트 전체를 가져오는 메소드
+	public List<MemberVO> selectAll(){ 
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
 			psmt = conn.prepareStatement(SELECT_ALL);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				vo = new MemberVO();
+				vo.setId(rs.getString("id"));
+				vo.setPw(rs.getString("pw"));
+				vo.setName(rs.getString("name"));
+				vo.setNName(rs.getString("nname"));
+				vo.setTel(rs.getString("tel"));
+				vo.seteDate(rs.getString("edate"));
+				vo.setAuthor(rs.getString("author"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setStatus(rs.getString("status"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setLocation2(rs.getString("location2"));
+				vo.setEmail(rs.getString("email"));
+				vo.setPic(rs.getString("pic"));
+				vo.setZoomin1(rs.getInt("zoomin1"));
+				vo.setZoomin2(rs.getInt("zoomin2"));
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+	
+	//시터리스트 설렉하기
+	public List<MemberVO> selectSitterList(){ 
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		try {
+			psmt = conn.prepareStatement("SELECT A.* FROM MEMBERS A, SITTER B, TRADEBOARD C WHERE C.SELLER = B.ID and A.ID = B.ID and C.SELLER = A.ID and C.ttype = '돌봐줄게요'");
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				vo = new MemberVO();
@@ -252,7 +283,6 @@ public class MemberDao extends DAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
 	}
 	
 	private void close() { //DB연결을 끊어준다

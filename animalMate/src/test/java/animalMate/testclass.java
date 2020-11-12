@@ -15,8 +15,10 @@ public class testclass {
 		} else {
 			age = year;
 		}
-		System.out.println(birthYear);
-		System.out.println(year);
-		System.out.println(age);
+		
+		String[] s = {"안","녕","하","세","요"};
+		System.out.println(s[0]);
+		
+		
 	}
 }

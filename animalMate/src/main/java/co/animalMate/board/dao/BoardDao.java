@@ -30,7 +30,7 @@ public class BoardDao extends DAO {
 														+ "ON A.BUYER = B.ID"
 														+ " WHERE B.TYPE =? AND (A.STIME >=?  AND  A.ETIME <=?)";
 	
-	private final String SITSELECT = "SELECT A.NNAME, A.PIC, B.MAXP, C.LOCATION1, TO_CHAR(C.SDATE,'MM-DD') AS SDATE, TO_CHAR(C.EDATE,'MM-DD')AS EDATE,  "
+	private final String SITSELECT = "SELECT A.NNAME, A.PIC, C.CODE, B.MAXP, C.LOCATION1, TO_CHAR(C.SDATE,'MM-DD') AS SDATE, TO_CHAR(C.EDATE,'MM-DD')AS EDATE,  "
 															+ "C.STIME, C.ETIME,   C.PRICE,  C.STATUS FROM MEMBERS A, SITTER B, TRADEBOARD C WHERE A.ID = B.ID AND B.ID = C.SELLER";
 	
 	private final String SITSEARCH = "SELECT A.NNAME, A.PIC, B.MAXP, C.LOCATION1, TO_CHAR(C.SDATE,'MM-DD') AS SDATE, TO_CHAR(C.EDATE,'MM-DD')AS EDATE,  "
@@ -116,6 +116,7 @@ public class BoardDao extends DAO {
 				sitvo.setNname(rs.getString("nname"));
 				sitvo.setPic(rs.getString("pic"));
 				sitvo.setMaxp(rs.getInt("maxp"));
+				sitvo.setCode(rs.getInt("code"));
 				sitvo.setLocation1(rs.getString("location1"));
 				sitvo.setSdate(rs.getString("sdate"));
 				sitvo.setEdate(rs.getString("edate"));
