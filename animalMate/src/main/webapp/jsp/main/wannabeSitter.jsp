@@ -121,12 +121,11 @@ input[type=submit]:hover {
     </div>
   </div>
   <br>
-  <div class="wannabeSitterSubmit" align="right">
-    <button>제출하기</button>
+  <div align="right">
+    <button class="wannabeSitterSubmit">제출하기</button>
+    <button	type="button" class="calcel">취소</button>
   </div>
-    <div class="calcel" align="right">
-    <button>취소</button>
-  </div>
+    
   </form>
 </div>
 

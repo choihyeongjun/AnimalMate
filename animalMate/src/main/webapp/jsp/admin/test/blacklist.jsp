@@ -131,6 +131,7 @@ button{width: 50px;
 <jsp:include page="mainMenu.jsp"/>
 <hr>
 <div align="center">
+<br/>
 	<div><h1>블랙리스트 목록 정보</h1></div>
 	<div>
 		<form>
@@ -142,6 +143,7 @@ button{width: 50px;
 		</table>
 		</form>
 	</div>
+	<br/>
 	<div>
 		<div class="container">
 		<table  class="table text-center">
