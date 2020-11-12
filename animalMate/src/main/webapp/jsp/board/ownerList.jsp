@@ -15,7 +15,7 @@
 	.box {border-radius: 10px;background: #FF8826;text-align: center;font-size: 10px;}
 	.box dt, dd {color: white;float: left;width: 50%;}
 	/* Image */
-	.image.fit {display: block;width: 100%;height: 150px;border-radius: 10px 10px 0 0;border: 2px solid #FF8826;}
+	.image.fit {display: block;width: 100%;height: 150px;border-radius: 10px 10px 0 0;border: 3.2px solid #FF8826;}
 	/* 검색창과 썸네일 간격  */
 	#main {padding: 4em 0 2em 0;}
 	.code_dl {display: none;}
@@ -31,6 +31,8 @@
 	.tbtn {height: 60px;margin-left: 30px;width:100px;border-radius: 10px;}
 	.regiBtn {height: 60px; margin-left: 30px;width: 100px; border-radius: 10px;}
 	.boardtitle {margin-left: 460px;margin-bottom: 41px;}
+	.boardimg{width: 1110px;height: 140px;}
+	.frm {margin-top: 50px;}
 </style>
 
 <script>
@@ -46,12 +48,14 @@ $(()=>{
 <body id="top">
 	<br>
 	<div>
-		<h3 class="boardtitle">돌봐주세요 게시판</h3>
+		
+		<img class="boardimg" src="${pageContext.request.contextPath}/images/img/boardimg.jpg">
+		<!-- <h3 class="boardtitle">돌봐주세요 게시판</h3> -->
 	</div>
 	<br>
 	
 	<div>
-		<form id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerListSearch.do">
+		<form class="frm" id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerListSearch.do">
 		<table class="tsearch">
 		<tr>
 			<td class="ttitle" colspan="2">분류</td> 

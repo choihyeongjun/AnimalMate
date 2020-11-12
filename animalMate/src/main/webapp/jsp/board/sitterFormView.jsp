@@ -39,6 +39,11 @@
 .calendar span {
 	display: inline;
 }
+.btn_sumit{margin: 30px 350px;}
+.btn_sumit .btn_send {margin-right:20px; background-color: #ff7d21; width: 100px;height: 50px;}
+.btn_sumit .btn_result {margin-right: 20px;background-color: #ff7d21;width: 100px;height: 50px;}
+.btn_sumit .btn_cancle {margin-right: 20px;background-color: #bbb;width: 100px;height: 50px;}
+.sec06 li {margin-bottom: 15px;}
 </style>
 </head>
 
@@ -199,7 +204,7 @@
 					<textarea>${tradeBoard.comm}</textarea>
 				</div>
 		
-			<div id="sec06" class="">
+			<div id="sec06" class="sec06">
 				<h2 class="cont_tit">유의사항</h2>
 
 				<ul>
@@ -213,9 +218,9 @@
 
 
 			<div class="btn_sumit">
-				<button type="submit" class="btn_blue">쪽지보내기</button>
-				<button type="submit" class="btn_blue">예약하기</button>
-				<button type="reset" class="btn_gray"
+				<button type="submit" class="btn_send">쪽지보내기</button>
+				<button type="submit" class="btn_result ">예약하기</button>
+				<button type="reset" class="btn_cancle "
 					onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do'">취소</button>
 			</div>
 

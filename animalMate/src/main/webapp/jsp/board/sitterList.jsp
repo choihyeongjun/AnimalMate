@@ -8,57 +8,26 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
 /* Box */
-.thumbnails {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 auto;
-}
-
-.thumbnails .box {
-	margin: 0 1em 2em 1em;
-	width: 20%;
-}
-
+.thumbnails {display: flex;flex-wrap: wrap;margin: 0 auto;}
+.thumbnails .box {margin: 0 1em 2em 1em;width: 20%;}
 /* Box */
-.box {
-	border-radius: 10px;
-	background: rgb(15, 162, 226);
-	text-align: center;
-	font-size: 10px;
-}
-
-.box dt, dd {
-	color: white;
-	float: left;
-	width: 50%;
-}
-
-.Image.fit {
-	border-radius: 4px 4px 0 0;
-}
-
+.box {border-radius: 10px;background: #FF8826;text-align: center;font-size: 10px;}
+.box dt, dd {color: white;float: left;width: 50%;}
+.image.fit {display: block;width: 100%;height: 150px;border-radius: 10px 10px 0 0;border: 3.2px solid #FF8826;}
 /* Image */
-.image.fit {
-	display: block;
-	margin: 0 0 2em 0;
-	width: 100%;
-	height : 150px;
-}
-
+.image.fit {display: block;margin: 0 0 2em 0;width: 100%;height : 150px;}
 /* 검색창과 썸네일 간격  */
-#main {
-	padding: 4em 0 2em 0;
-}
-
-.code_dl {
-	display: none;
-}
-
+#main {padding: 4em 0 2em 0;}
+.code_dl {display: none;}
+.boardtitle {margin: 40px 0 41px 460px;}
+.tsearch {margin: 10px 0 0 200px;}
+.tsearch td{padding-right: 13px;}
+.searchBtn {height: 43px;border-radius: 10px;}
+.boardimg{width: 1110px;height: 140px;}
+.frm {margin-top: 50px;}
 </style>
 <script>
-
 $(()=>{
 	$(".box").on("click",function() {
 		var code = $(this).children().eq(0).val();
@@ -69,29 +38,42 @@ $(()=>{
 </head>
 
 <body id="top">
-	<br>
-	<div>
-		<h3>돌봐줄게요 게시판</h3>
-	</div>
-	<br>
 
-	<form id="frm" name="frm" method="get"
-		action="${pageContext.request.contextPath}/sitterListSearch.do">
-		<div>
-			<label>펫 수용수</label> <select id="maxp" name="maxp">
-				<option>선택하세요</option>
-				<option value="1">1마리</option>
-				<option value="2">2마리</option>
-				<option value="3">3마리</option>
-				<option value="4">4마리</option>
-				<option value="5">5마리</option>
-			</select> 
-			<label>시작시간</label> <input type="time" id="sTime" name="sTime">&nbsp;&nbsp;
-			
-			<label>끝 시간</label> <input type="time" id="eTime" name="eTime">&nbsp;&nbsp;
-			<button type="submit">검색하기</button>&nbsp;&nbsp;
-			<button type="button" onclick="window.location.href='${pageContext.request.contextPath}/sitterForm.do'">글등록</button>
-		</div>
+	<div>
+		<!-- <h3 class="boardtitle">돌봐줄게요 게시판</h3> -->
+		<img class="boardimg" src="${pageContext.request.contextPath}/images/img/boardimg.jpg">
+	</div>
+	
+	<form class="frm" id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/sitterListSearch.do">
+		<table class="tsearch">
+		<tr>
+			<th class="ttitle">펫 수용수</th>
+			<td class="tbottom">
+				 <select id="maxp" name="maxp" style="height: 42px;">
+					<option>선택하세요</option>
+					<option value="1">1마리</option>
+					<option value="2">2마리</option>
+					<option value="3">3마리</option>
+					<option value="4">4마리</option>
+					<option value="5">5마리</option>
+				</select>
+			</td>
+			<th>시작시간</th>
+			<td>
+				<input type="time" id="sTime" name="sTime" style="height: 42px;">
+			</td>
+			<th>끝 시간</th>
+			<td>
+				<input type="time" id="eTime" name="eTime" style="height: 42px;">
+			</td>
+			<td>
+				<button class="searchBtn" type="submit">검색하기</button>
+			</td>
+			<td>
+				<button class="searchBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/sitterForm.do'">글등록</button>
+			</td>
+		</tr>
+		</table>
 	</form>
 
 	<div id="main">
