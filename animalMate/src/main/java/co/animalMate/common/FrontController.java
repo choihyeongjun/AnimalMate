@@ -21,7 +21,10 @@ import co.animalMate.admin.command.QuestionAnswerAction;
 import co.animalMate.admin.command.QuestionRewriteAction;
 import co.animalMate.admin.command.QuestionlistAction;
 import co.animalMate.admin.command.QuestionselectAction;
+import co.animalMate.admin.command.ReviewInsertAction;
+import co.animalMate.admin.command.ReviewlistAction;
 import co.animalMate.admin.command.SitterInsertlistAction;
+import co.animalMate.admin.command.SitterSearchAction;
 import co.animalMate.admin.command.SitterlistAction;
 import co.animalMate.admin.command.SubmitQuestionAction;
 import co.animalMate.admin.command.tradeAction;
@@ -63,6 +66,7 @@ import co.animalMate.main.command.SitterInsertAction;
 import co.animalMate.main.command.SubmitMessageAction;
 import co.animalMate.main.command.SubmitNoticeAction;
 import co.animalMate.main.command.SubmitReportAction;
+import co.animalMate.mypage.command.BookmarkAction;
 import co.animalMate.mypage.command.JoblistUpdateAction;
 import co.animalMate.mypage.command.MemberForm;
 import co.animalMate.mypage.command.MemberFormUpdateAction;
@@ -139,7 +143,7 @@ public class FrontController extends HttpServlet {
      map.put("/resetPw.do", new ResetPwAction()); //비밀번호 변경 액션
      map.put("/idoverlapcheck.do", new idOverlapCheck()); //아이디중복확인 찾기 액션
      map.put("/memberUpdate.do", new MemberFormUpdateAction()); // 회원정보수정 액션
-      
+     map.put("/ajax/bookmark.do", new BookmarkAction()); // 즐겨찾기 추가
    
 
       
@@ -175,6 +179,10 @@ public class FrontController extends HttpServlet {
      map.put("/sitterinsert.do",new SitterInsertlistAction());
      map.put("/questionrewrite.do",new QuestionRewriteAction());
      map.put("/questionanswer.do",new QuestionAnswerAction());
+     map.put("/ajax/sitterSearch.do",new SitterSearchAction());
+     map.put("/reviewinsert.do",new ReviewInsertAction());
+     map.put("reviewlist.do",new ReviewlistAction());
+
 
      
       
