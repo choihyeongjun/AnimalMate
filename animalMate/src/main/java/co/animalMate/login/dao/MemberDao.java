@@ -9,12 +9,14 @@ import java.util.List;
 
 import co.animalMate.common.DAO;
 import co.animalMate.vo.MemberVO;
+import co.animalMate.vo.bookMarkVO;
 
 
 public class MemberDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
 	private ResultSet rs; //select 후 결과셋 받기
 	private MemberVO vo;
+	private bookMarkVO bomvo;
 	
 	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
 	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ? ";
@@ -24,9 +26,9 @@ public class MemberDao extends DAO {
 	private final String FINDPW ="SELECT PW FROM MEMBERS WHERE ID=? AND NAME=? AND EMAIL=?";
 	private final String OVERLAPID = "SELECT ID FROM MEMBERS WHERE ID = ?";
 	private final String UPDATELIST = "UPDATE MEMBERS SET NNAME=?, TEL=?, LOCATION1=?,LOCATION2=?,EMAIL=?,PIC=? WHERE ID=?";
-	private final String MARKLIST = "SELECT * FROM MEMBERS WHERE NAME=?, ZOOMIN1=?, LOCATION=?";
-	
-	
+	private final String MARK = "INSERT INTO BOOKMARK(ID,MARKID) VALUES(?,?)";
+			
+
 	public List<MemberVO> selectAll(){ //멤버리스트 전체를 가져오는 메소드
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
@@ -206,25 +208,21 @@ public class MemberDao extends DAO {
 					}
 					return n;
 				}   
-		//마이페이지에서 보는 즐겨찾기
-				   public MemberVO mark(MemberVO vo){
-					   try {
-				         psmt = conn.prepareStatement(MARKLIST);
-				         psmt.setString(1, vo.getId());
-				         rs = psmt.executeQuery();
-				         if(rs.next()) {
-				            vo.setId(rs.getString("id"));
-				            vo.setName(rs.getString("name"));
-				            vo.setZoomin1(rs.getInt("zoomin1"));
-				            vo.setLocation1(rs.getString("location1"));          
-				         }
-				      } catch (SQLException e) {
-				         e.printStackTrace();
-				      } finally {
-				         close();
-				      }
-				      return vo;
-				  }
+		//즐겨찾기 추가
+				public int mark(bookMarkVO vo) { 
+					int n = 0;
+					try {
+						psmt = conn.prepareStatement(MARK);
+						psmt.setString(1, vo.getId());
+						psmt.setString(2, vo.getMarkId());
+						n = psmt.executeUpdate();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					} finally {
+						close();
+					}
+					return n;
+				}
 	private void close() { //DB연결을 끊어준다
 		try {
 			if(rs != null) rs.close();

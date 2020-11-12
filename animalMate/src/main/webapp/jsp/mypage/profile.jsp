@@ -13,11 +13,8 @@
 	</div>
 	<div>
 	<form>
-		<button type="submit" formaction="${pageContext.request.contextPath}/goMypagePage.do">즐겨찾기</button>
-			<input type="hidden" value="${user.id}" name="id" id="id">
-			<input type="hidden" value="${user.name}" name="name" id="name">
-			<input type="hidden" value="${user.zoomin1}" name="zoomin1" id="zoomin1">
-			<input type="hidden" value="${user.location1}" name="location1" id="location1">
+		<button type="submit" formaction="${pageContext.request.contextPath}/bookmark.do">즐겨찾기</button>
+			<input type="hidden" value="${user.id}" name="markid" id="markid">
 	</form>
 	</div>
 	<div class="row">

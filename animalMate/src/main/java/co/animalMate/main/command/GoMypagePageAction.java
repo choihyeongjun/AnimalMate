@@ -49,12 +49,7 @@ public class GoMypagePageAction implements Action {
 		tbVo.setBuyer(id);
 		tbVo.setSeller(id);
 		tbVo = myDao.tradeCount(tbVo);
-
-		//마이페이지에 즐찾 리스트 출력
-		MemberDao dao = new MemberDao();
-		memVo = dao.mark(memVo);
-		memVo.setId(id);
-		
+	
 		// 나이 구하기!
 		int birthYear = Integer.parseInt(String.valueOf(memVo.getZoomin1()).substring(0, 2));
 		Calendar cal = Calendar.getInstance();
@@ -65,9 +60,10 @@ public class GoMypagePageAction implements Action {
 		} else {
 			age = year;
 		}
+		
 		request.setAttribute("age", age);
 				
-		request.setAttribute("mark", memVo);
+
 		request.setAttribute("tcount", tbVo);
 		request.setAttribute("pets", list);
 		request.setAttribute("user", memVo);
