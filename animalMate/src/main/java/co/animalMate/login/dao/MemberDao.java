@@ -24,6 +24,8 @@ public class MemberDao extends DAO {
 	private final String FINDPW ="SELECT PW FROM MEMBERS WHERE ID=? AND NAME=? AND EMAIL=?";
 	private final String OVERLAPID = "SELECT ID FROM MEMBERS WHERE ID = ?";
 	private final String UPDATELIST = "UPDATE MEMBERS SET NNAME=?, TEL=?, LOCATION1=?,LOCATION2=?,EMAIL=?,PIC=? WHERE ID=?";
+	private final String MARKLIST = "SELECT * FROM MEMBERS WHERE NAME=?, ZOOMIN1=?, LOCATION=?";
+	
 	
 	public List<MemberVO> selectAll(){ //멤버리스트 전체를 가져오는 메소드
 		List<MemberVO> list = new ArrayList<MemberVO>();
@@ -204,6 +206,25 @@ public class MemberDao extends DAO {
 					}
 					return n;
 				}   
+		//마이페이지에서 보는 즐겨찾기
+				   public MemberVO mark(MemberVO vo){
+					   try {
+				         psmt = conn.prepareStatement(MARKLIST);
+				         psmt.setString(1, vo.getId());
+				         rs = psmt.executeQuery();
+				         if(rs.next()) {
+				            vo.setId(rs.getString("id"));
+				            vo.setName(rs.getString("name"));
+				            vo.setZoomin1(rs.getInt("zoomin1"));
+				            vo.setLocation1(rs.getString("location1"));          
+				         }
+				      } catch (SQLException e) {
+				         e.printStackTrace();
+				      } finally {
+				         close();
+				      }
+				      return vo;
+				  }
 	private void close() { //DB연결을 끊어준다
 		try {
 			if(rs != null) rs.close();

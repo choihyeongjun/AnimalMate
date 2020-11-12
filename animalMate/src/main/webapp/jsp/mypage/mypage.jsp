@@ -87,9 +87,9 @@
 					<td>상세정보</td>
 				</tr>
 				<tr>
-					<td>김돌돌</td>
-					<td>32살</td>
-					<td>대구 동구 신천동</td>
+					<td>${mark.name}</td>
+					<td>${age}</td>
+					<td>${mark.location1}</td>
 					<td><button onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=id3'">더보기</button></td>	
 				</tr>
 			</table>
