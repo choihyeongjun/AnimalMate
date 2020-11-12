@@ -6,14 +6,14 @@ import javax.servlet.http.HttpSession;
 
 import co.animalMate.common.Action;
 import co.animalMate.login.dao.MemberDao;
-import co.animalMate.vo.bookMarkVO;
+import co.animalMate.vo.BookMarkVO;
 
 public class BookmarkAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		MemberDao dao = new MemberDao();
-		bookMarkVO vo = new bookMarkVO();
+		BookMarkVO vo = new BookMarkVO();
 		
 		HttpSession session = request.getSession();
 		String id = (String) session.getAttribute("id");

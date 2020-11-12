@@ -8,15 +8,16 @@ import java.util.List;
 
 
 import co.animalMate.common.DAO;
+import co.animalMate.vo.CommentsVO;
 import co.animalMate.vo.MemberVO;
-import co.animalMate.vo.bookMarkVO;
+import co.animalMate.vo.BookMarkVO;
 
 
 public class MemberDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
 	private ResultSet rs; //select 후 결과셋 받기
 	private MemberVO vo;
-	private bookMarkVO bomvo;
+	private BookMarkVO bomvo;
 	
 	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
 	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ? ";
@@ -27,8 +28,9 @@ public class MemberDao extends DAO {
 	private final String OVERLAPID = "SELECT ID FROM MEMBERS WHERE ID = ?";
 	private final String UPDATELIST = "UPDATE MEMBERS SET NNAME=?, TEL=?, LOCATION1=?,LOCATION2=?,EMAIL=?,PIC=? WHERE ID=?";
 	private final String MARK = "INSERT INTO BOOKMARK(ID,MARKID) VALUES(?,?)";
-			
-
+	private final String SELECT_MYPAGE_BOOKMARK = "SELECT * FROM BOOKMARK WHERE ID = ?";
+	 private final String SELECT_SEARCH="SELECT * FROM MEMBERS WHERE ID=?";
+	
 	public List<MemberVO> selectAll(){ //멤버리스트 전체를 가져오는 메소드
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
@@ -60,7 +62,71 @@ public class MemberDao extends DAO {
 		}
 		return list;
 	}
+	public List<MemberVO> selectSearch(MemberVO vo){
+	      List<MemberVO> list = new ArrayList<MemberVO>();
+	      try {
+	         
+	         psmt=conn.prepareStatement(SELECT_SEARCH);
+	         psmt.setString(1, vo.getId());
+	         rs=psmt.executeQuery();
+	         while(rs.next()) {
+	            vo = new MemberVO();
+	            vo.setId(rs.getString("id"));
+	            vo.setPw(rs.getString("pw"));
+	            vo.setName(rs.getString("name"));
+	            vo.setNName(rs.getString("nname"));
+	            vo.setTel(rs.getString("tel"));
+	            vo.seteDate(rs.getString("edate"));
+	            vo.setAuthor(rs.getString("author"));
+	            vo.setPoint(rs.getInt("point"));
+	            vo.setStatus(rs.getString("status"));
+	            vo.setLocation1(rs.getString("location1"));
+	            vo.setLocation2(rs.getString("location2"));
+	            vo.setEmail(rs.getString("email"));
+	            vo.setPic(rs.getString("pic"));
+	            vo.setZoomin1(rs.getInt("zoomin1"));
+	            vo.setZoomin2(rs.getInt("zoomin2"));
+	            list.add(vo);
+	         }
+	         
+	      } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }finally{
+	         close();
+	      }
+	      return list;
+	   }
 	
+	//아이디로 단 건 조회
+	   public MemberVO selectById(MemberVO vo) { 
+	      try {
+	         psmt = conn.prepareStatement("SELECT * FROM MEMBERS WHERE ID = ?");
+	         psmt.setString(1, vo.getId());
+	         rs = psmt.executeQuery();
+	         if(rs.next()) {
+	            vo.setName(rs.getString("name"));
+	            vo.setNName(rs.getString("nname"));
+	            vo.setTel(rs.getString("tel"));
+	            vo.seteDate(rs.getString("edate"));
+	            vo.setAuthor(rs.getString("author"));
+	            vo.setPoint(rs.getInt("point"));
+	            vo.setStatus(rs.getString("status"));
+	            vo.setLocation1(rs.getString("location1"));
+	            vo.setLocation2(rs.getString("location2"));
+	            vo.setEmail(rs.getString("email"));
+	            vo.setPic(rs.getString("pic"));
+	            vo.setZoomin1(rs.getInt("zoomin1"));
+	            vo.setZoomin2(rs.getInt("zoomin2"));
+	         }
+	      } catch (SQLException e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      return vo;
+	   }
+		 
 	//한 행을 검색할 때
 	public MemberVO select(MemberVO mvo) { 
 		MemberVO vo = null;
@@ -209,7 +275,7 @@ public class MemberDao extends DAO {
 					return n;
 				}   
 		//즐겨찾기 추가
-				public int mark(bookMarkVO vo) { 
+				public int mark(BookMarkVO vo) { 
 					int n = 0;
 					try {
 						psmt = conn.prepareStatement(MARK);
@@ -223,6 +289,7 @@ public class MemberDao extends DAO {
 					}
 					return n;
 				}
+						
 	private void close() { //DB연결을 끊어준다
 		try {
 			if(rs != null) rs.close();
