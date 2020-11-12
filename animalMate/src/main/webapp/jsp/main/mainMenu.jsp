@@ -7,13 +7,7 @@
 <meta charset="UTF-8">
 <title>메인</title>
 <style type="text/css">
-	.dd {
-		width: 100%; 
-		height: auto;
-	
-	}
-	
-
+	.dd {width: 100%; height: auto;margin-top: 60px;}
 </style>
 <script>
 	document.getElementById("video").play();	

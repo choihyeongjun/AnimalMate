@@ -43,6 +43,12 @@
 .col3_comm {
 	height: 300px;
 }
+.btn_sumit{margin: 30px 350px;}
+.btn_sumit .btn_send {margin-right:20px; background-color: #ff7d21; width: 100px;height: 50px;}
+.btn_sumit .btn_result {margin-right: 20px;background-color: #ff7d21;width: 100px;height: 50px;}
+.btn_sumit .btn_cancle {margin-right: 20px;background-color: #bbb;width: 100px;height: 50px;}
+.sec06 li {margin-bottom: 15px;}
+.proBtn {background-color: #d3cbc5;border-radius: 3px; width: 140px;}
 </style>
 
 <script type="text/javascript">
@@ -181,7 +187,7 @@
 
 						<tr>
 							<th>반려인</th>
-							<td>${tradeBoardVO.buyer}<button>프로필 상세보기</button></td>
+							<td>${tradeBoardVO.buyer}<button class="proBtn">프로필 상세보기</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -206,7 +212,7 @@
 			</div>
 
 			<br>
-			<div id="sec06" class="">
+			<div id="sec06" class="sec06">
 				<h2 class="cont_tit">유의사항</h2>
 				<ul>
 					<li>○ 배드, 사료, 산책용품등은 의뢰자께서 준비해주세요.</li>
@@ -219,15 +225,10 @@
 
 			<br>
 			<div class="btn_sumit">
-				<button type="button" data-toggle="modal"
+				<button class="btn_send" type="button" data-toggle="modal"
 					data-target="#exampleModal1">쪽지보내기</button>
-				&nbsp;&nbsp;
-				<button type="submit"
-					onclick="window.open('${pageContext.request.contextPath}/boardTradePet.do'">신청하기</button>
-				&nbsp;&nbsp;
-				<button type="reset"
-					onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
-				&nbsp;&nbsp;
+				<button type="submit" class="btn_result" onclick="window.open('${pageContext.request.contextPath}/boardTradePet.do'">신청하기</button>
+				<button type="reset" class="btn_cancle" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
 			</div>
 
 		</div>
