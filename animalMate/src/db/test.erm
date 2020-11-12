@@ -11,8 +11,8 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
-	<x>0</x>
-	<y>131</y>
+	<x>490</x>
+	<y>126</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2020-10-27 13:10:09</creation_date>
-			<updated_date>2020-11-12 11:15:31</updated_date>
+			<updated_date>2020-11-12 12:22:50</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -979,7 +979,7 @@
 			<binary>false</binary>
 			<args></args>
 			<char_semantics>false</char_semantics>
-			<description>1: 거래 미정&#x0D;&#x0A;2: 거래 대상 확정&#x0D;&#x0A;3: 입금 후&#x0D;&#x0A;4: 반려인 미확인&#x0D;&#x0A;5: 후기 미작성&#x0D;&#x0A;6: 거래 완료&#x0D;&#x0A;</description>
+			<description>1: 거래 미정&#x0D;&#x0A;2: 거래 대상 확정&#x0D;&#x0A;3: 입금 후(시터가 일 하기 전)&#x0D;&#x0A;4: 반려인 미확인(시터가 일 한 후)&#x0D;&#x0A;-&gt; 돈 넘겨줌&#x0D;&#x0A;5: 후기 미작성&#x0D;&#x0A;6: 거래 완료&#x0D;&#x0A;</description>
 			<logical_name>거래상태</logical_name>
 			<physical_name>status</physical_name>
 			<type>varchar(n)</type>

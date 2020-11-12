@@ -49,7 +49,6 @@
 		$(()=>{
 			$("#submitBtn").on({
 				"click"  :function(){
-					console.log("aa")
 					messageFrm.submit();
 				}
 			})
@@ -65,8 +64,8 @@
 		<!-- s:title -->
 		<div class="title">
 			<h1>돌봐주세요 - (예약page)</h1>
-			<p>${borders[0].title}</p>
-			<p id="code">${borders[0].code}</p>
+			<p>${tradeBoardVO.title}</p>
+			<p id="code">${tradeBoardVO.code}</p>
 		</div>
 		<!-- e:title -->
 
@@ -75,11 +74,11 @@
 
 			<div id="sec01" class="sitter_info">
 				<h2 class="cont_tit">펫정보</h2>
-				<c:forEach var="border" items="${borders}">
+				<c:forEach var="v" items="${petList}">
 					<div class="cont_area">
 						<div class="info_img">
 							<img class="info_img"
-								src="${pageContext.request.contextPath}/images/pet_pic/${border.pic}"
+								src="${pageContext.request.contextPath}/images/pet_pic/${v.pic}"
 								alt="펫 이미지" height="100px" width="100px">
 						</div>
 
@@ -100,27 +99,27 @@
 								<tbody>
 									<tr>
 										<td>펫 이름</td>
-										<td>${border.name}</td>
+										<td>${v.name}</td>
 									</tr>
 
 									<tr>
 										<td>펫 나이</td>
-										<td>${border.age}</td>
+										<td>${v.age}</td>
 									</tr>
 
 									<tr>
 										<td>펫 성별</td>
-										<td>${border.gender}</td>
+										<td>${v.gender}</td>
 									</tr>
 
 									<tr>
 										<td>펫 종류</td>
-										<td>${border.type}</td>
+										<td>${v.type}</td>
 									</tr>
 
 									<tr>
 										<td>중성화 유무</td>
-										<td>${border.cut}</td>
+										<td>${v.cut}</td>
 									</tr>
 								</tbody>
 
@@ -150,18 +149,18 @@
 					<tbody>
 						<tr>
 							<th>근무지역</th>
-							<td>${borders[0].location1}</td>
+							<td>${tradeBoardVO.location1}</td>
 						</tr>
 						<tr>
 							<th>상세지역</th>
-							<td>${borders[0].location2}</td>
+							<td>${tradeBoardVO.location2}</td>
 						</tr>
 						<tr>
 							<th>근무날짜</th>
 							<td>
 								<div>
-									<span class="datepickerview">${borders[0].sdate} <span>~</span>
-										<span class="datepickerview">${borders[0].edate}
+									<span class="datepickerview">${tradeBoardVO.sdate} <span>~</span>
+										<span class="datepickerview">${tradeBoardVO.edate}
 								</div>
 							</td>
 						</tr>
@@ -170,19 +169,19 @@
 							<th>근무시간</th>
 							<td>
 								<div class="calendar">
-									<span>${borders[0].stime}</span> <span>~</span> <span>${borders[0].etime}</span>
+									<span>${tradeBoardVO.stime}</span> <span>~</span> <span>${tradeBoardVO.etime}</span>
 								</div>
 							</td>
 						</tr>
 
 						<tr>
 							<th>돌봄 요청 금액</th>
-							<td>${borders[0].price}원</td>
+							<td>${tradeBoardVO.price}원</td>
 						</tr>
 
 						<tr>
 							<th>반려인</th>
-							<td>${borders[0].buyer}<button>프로필 상세보기</button></td>
+							<td>${tradeBoardVO.buyer}<button>프로필 상세보기</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -203,7 +202,7 @@
 			<br>
 			<div id="sec05" class="">
 				<h2 class="cont_tit">세부사항</h2>
-				<textarea>${borders[0].comm}</textarea>
+				<textarea>${tradeBoardVO.comm}</textarea>
 			</div>
 
 			<br>
@@ -262,7 +261,7 @@
 								<tr>
 									<td class="col1_target">받을 사람</td>
 									<td><input class="col2_target" type="text" id="receive"
-										name="receive" value="${borders[0].buyer}"></td>
+										name="receive" value="${tradeBoardVO.buyer}"></td>
 								</tr>
 								<tr>
 									<td class="col3_comm">내용</td>

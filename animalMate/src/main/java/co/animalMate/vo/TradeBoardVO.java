@@ -19,6 +19,18 @@ public class TradeBoardVO {
 	private String location1;
 	private String location2;
 	
+	PetVO petVO;
+	
+	
+	
+	public PetVO getPetVO() {
+		return petVO;
+	}
+
+	public void setPetVO(PetVO petVO) {
+		this.petVO = petVO;
+	}
+
 	public TradeBoardVO() {}
 
 	public int getCode() {

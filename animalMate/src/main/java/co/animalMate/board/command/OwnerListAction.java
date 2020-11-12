@@ -2,6 +2,7 @@ package co.animalMate.board.command;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,23 +21,10 @@ public class OwnerListAction implements Action {
 		
 		//데이터 설렉해오기
 		PetDao petDao = new PetDao();
-		List<PetVO> petList = new ArrayList<PetVO>();
-		petList = petDao.selectOwnerList();
+				
+		List<TradeBoardVO> petList = petDao.selectOwnerList();
 		
-		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
-		List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
-		tradeBoardList = tradeBoardDAO.selectOwnerList();
-		
-		//리스트에 담아서 보내기
-		List<Object> VOlist = new ArrayList<Object>();
-		List<Object> Superlist = new ArrayList<Object>();
-		for(int i=0; i<petList.size(); i++) {
-			VOlist = new ArrayList<Object>();
-			VOlist.add(petList.get(i));
-			VOlist.add(tradeBoardList.get(i));
-			Superlist.add(VOlist);
-		}
-		request.setAttribute("Superlist", Superlist);
+		request.setAttribute("Superlist", petList);
 				
 		return "jsp/board/ownerList.jsp";
 	}

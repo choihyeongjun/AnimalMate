@@ -117,36 +117,36 @@ $(()=>{
 			<!-- Boxes -->
 			<div class="thumbnails" align="center">
 
-				<c:forEach var="v" items="${Superlist}">
+				<c:forEach var="v" items="${Superlist}" >
 						<div class="box">
-							<input class="sitterListCode" type="hidden" value="${v[1].code}">
+							<input class="sitterListCode" type="hidden" value="${v.code}">
 							<img class="image fit"
-								src="${pageContext.request.contextPath}/images/pet_pic/${v[0].pic}"
+								src="${pageContext.request.contextPath}/images/pet_pic/${v.petVO.pic}"
 								alt="" />
 							<div>
 								<dl>
 									<dt>분&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;류</dt>
-									<dd>${v[0].type}</dd>
+									<dd>${v.petVO.type}</dd>
 								</dl>
 								<dl>
 									<dt>돌봄지역</dt>
-									<dd>${v[1].location1}</dd>
+									<dd>${v.location1}</dd>
 								</dl>
 								<dl>
 									<dt>돌봄날짜</dt>
-									<dd>${v[1].sdate}~ ${v[1].edate}</dd>
+									<dd>${v.sdate}~ ${v.edate}</dd>
 								</dl>
 								<dl>
 									<dt>돌봄시간</dt>
-									<dd>${v[1].stime}~ ${v[1].etime}</dd>
+									<dd>${v.stime}~ ${v.etime}</dd>
 								</dl>
 								<dl>
 									<dt>돌봄금액</dt>
-									<dd>${v[1].price}</dd>
+									<dd>${v.price}</dd>
 								</dl>
 								<dl>
 									<dt>거래상태</dt>
-									<dd>${v[1].status}</dd>
+									<dd>${v.status}</dd>
 								</dl>
 							</div>
 						</div>
