@@ -88,7 +88,7 @@
 				</tr>
 				<c:forEach items="${memberlist}" var="v">
 				<tr>
-					<input type="hidden" value="${user.id}" name="id" id="id">
+					<td><input type="hidden" value="${user.id}" name="id" id="id"></td>
 					<td>${v.name}</td>
 					<td>${v.zoomin1}</td>
 					<td>${v.location1}</td>
