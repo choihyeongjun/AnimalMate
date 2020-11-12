@@ -1,10 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>유저 프로필 거래내역/후기</title>
+<script type="text/javascript">
+	$(()=>{
+		$("#profileBtn").on({
+			"click" : function() {
+				var markIdVal = $("#markId").val();
+				$.ajax({
+					url:'${pageContext.request.contextPath}/ajax/bookmark.do',
+					data : {markId : markIdVal},
+					dataType:'json',
+					error:function(xhr,status,msg){
+						alert("상태값 :" + status + " Http에러메시지 :"+msg);
+					},
+					success:function(messageVO){
+						alert(messageVO.markId + "님을 즐겨찾기 목록에 추가했습니다.")
+					}
+				})
+			}
+		})
+	});
+</script>
 </head>
 <body>
 	<br>
@@ -13,8 +34,8 @@
 	</div>
 	<div>
 	<form>
-		<button type="submit" formaction="${pageContext.request.contextPath}/bookmark.do">즐겨찾기</button>
-			<input type="hidden" value="${user.id}" name="markid" id="markid">
+		<button type="button" id="profileBtn"}/bookmark.do">즐겨찾기</button>
+		<input type="hidden" value="${user.id}" name="markId" id="markId">
 	</form>
 	</div>
 	<div class="row">

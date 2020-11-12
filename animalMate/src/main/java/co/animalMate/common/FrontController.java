@@ -63,6 +63,7 @@ import co.animalMate.main.command.SitterInsertAction;
 import co.animalMate.main.command.SubmitMessageAction;
 import co.animalMate.main.command.SubmitNoticeAction;
 import co.animalMate.main.command.SubmitReportAction;
+import co.animalMate.mypage.command.BookmarkAction;
 import co.animalMate.mypage.command.MemberForm;
 import co.animalMate.mypage.command.MemberFormUpdateAction;
 import co.animalMate.mypage.command.MypetDeleteAction;
@@ -137,7 +138,7 @@ public class FrontController extends HttpServlet {
      map.put("/resetPw.do", new ResetPwAction()); //비밀번호 변경 액션
      map.put("/idoverlapcheck.do", new idOverlapCheck()); //아이디중복확인 찾기 액션
      map.put("/memberUpdate.do", new MemberFormUpdateAction()); // 회원정보수정 액션
-      
+     map.put("/ajax/bookmark.do", new BookmarkAction()); // 즐겨찾기 추가
    
 
       
