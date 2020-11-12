@@ -20,7 +20,7 @@ public class SitterDAO extends DAO  {
 	public List<SitterVO> selectSitterList(){ 
 		List<SitterVO> list = new ArrayList<SitterVO>();
 		try {
-			psmt = conn.prepareStatement("SELECT B.* FROM MEMBERS A, SITTER B, TRADEBOARD C WHERE C.SELLER = B.ID and A.ID = B.ID and C.SELLER = A.ID and C.ttype = '돌봐줄게요'");
+			psmt = conn.prepareStatement("SELECT B.* FROM MEMBERS A, SITTER B, TRADEBOARD C WHERE C.SELLER = B.ID and A.ID = B.ID and C.SELLER = A.ID and C.ttype = '돌봐줄게요' order by C.CODE desc");
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				vo = new SitterVO();

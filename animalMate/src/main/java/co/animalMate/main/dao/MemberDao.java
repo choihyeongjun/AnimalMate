@@ -180,7 +180,7 @@ public class MemberDao extends DAO {
 	public List<MemberVO> selectSitterList(){ 
 		List<MemberVO> list = new ArrayList<MemberVO>();
 		try {
-			psmt = conn.prepareStatement("SELECT A.* FROM MEMBERS A, SITTER B, TRADEBOARD C WHERE C.SELLER = B.ID and A.ID = B.ID and C.SELLER = A.ID and C.ttype = '돌봐줄게요'");
+			psmt = conn.prepareStatement("SELECT A.* FROM MEMBERS A, SITTER B, TRADEBOARD C WHERE C.SELLER = B.ID and A.ID = B.ID and C.SELLER = A.ID and C.ttype = '돌봐줄게요' order by C.CODE desc");
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				vo = new MemberVO();

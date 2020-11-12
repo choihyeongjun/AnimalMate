@@ -27,91 +27,21 @@
 
 
 <style>
-#_chatbox{
-position: fixed;
-	top:350px;
-	right:4.5%;
-	width:200px;
-	hegiht:40px;
-}
-.chat{
-		position: fixed;
-		margin-top: 531px;
-		right:5%;
-		width:200px;
-		hegiht:40px;
-}
-
-#textMessage {
-width: 230px;
-height: 100px;
-border-radius: 0 0 10px 10px;
-border: #ff7d21 4px solid;
-
-}
-
-#user{
-    width: 230px;
-    background-color: #ff7d21;
-    border: none;
-    border-radius: 10px 10px 0 0;
-  padding-left: 10px;
-    font-weight: bold;
-}
-	#bigcat {
-		float: left;
-		width: 150px;
-		height: 150px;
-	}
-	
-	#bigbigcat {
-		width: 300px;
-		height: 300px;
-		display: inline;
-		float: left;
-	}
-	
-	#footerDiv {
-		padding: 20px;
-		margin: 200px;
-	}
-	
-	.navbar a {
-	color : black;
-	}
-	
-	#footicon{
-		float: left;
-		width: 300px;
-		height: 300px;
-		margin-right: 90px; 
-	}
-	
-	button {
-	background-color: rgb(255,136,38);
-	font-weight: bold;
-	color : black;
-    border : none;
-	}
-	
-	.sendbtn {
-	background-color: #ff7d21;
-    border-radius: 10px;
-    border: none;
-    font-size: 18px;
-    color : white;
-    margin-top: 10px;
-    margin-left: 188px;
-}
-	#messageTextArea {
-    width: 230px;
-    border-radius: 10px;
-    border: #ff7d21 4px solid;
-    text-align: left;
-    font-weight: bold;	
-    }
-
-
+#_chatbox{position: fixed;top:350px;right:4.5%;width:200px;hegiht:40px;}
+.chat{position: fixed;margin-top: 531px;right:5%;width:200px;hegiht:40px;}
+#textMessage {width: 230px;height: 100px;border-radius: 0 0 10px 10px;border: #ff7d21 4px solid;}
+#user{width: 230px;background-color: #ff7d21;border: none;border-radius: 10px 10px 0 0;padding-left: 10px;font-weight: bold;}
+#bigcat {float: left;width: 150px;height: 150px;}
+#bigbigcat {width: 300px;height: 300px;display: inline;float: left;}
+#footerDiv {padding: 20px;margin: 200px;}
+.navbar {margin-top: 20px;}
+.navbar a {color : black;}
+#footicon{float: left;width: 300px;height: 300px;margin-right: 90px;}
+button {background-color: rgb(255,136,38);font-weight: bold;color : black;border : none;}
+.sendbtn {background-color: #ff7d21; border-radius: 10px;
+		border: none;font-size: 18px;color : white;margin-top: 10px;margin-left: 188px;}
+#messageTextArea { width: 230px; border-radius: 10px;border: #ff7d21 4px solid;text-align: left;font-weight: bold;}
+.menuBtn button {border-radius: 8px;}
 </style>
 
 <script type="text/javascript">
@@ -172,7 +102,7 @@ border: #ff7d21 4px solid;
 	<a class="logoImage" href="${pageContext.request.contextPath}/main.do">
 		<img id="bigcat" alt="사진이없어용" src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG">
 	</a>
-	<div align="right" style="margin-top: 50px">
+	<div class="menuBtn" align="right" style="margin-top: 50px">
 	<c:if test="${sessionScope.id ne null}">
 		<button id="QuestionbdBtn" class="">1:1문의내역</button>
 	</c:if>

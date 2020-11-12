@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import co.animalMate.common.DAO;
+import co.animalMate.vo.PetCodeVO;
 import co.animalMate.vo.PetVO;
+import co.animalMate.vo.TradeBoardVO;
 
 public class PetDao extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
@@ -51,11 +53,12 @@ public class PetDao extends DAO {
 		return list;
 	}
 	
-	//오너리스트 설렉하기
-	public List<PetVO> selectOwnerList() {
+	//petcode의 code기반으로 pet찾기
+	public List<PetVO> selectAllByTradeCode(PetCodeVO Cvo) { //매개변수 펫코드 vo임!
 		List<PetVO> list = new ArrayList<PetVO>();
 		try {
-			psmt = conn.prepareStatement("select P.* from tradeboard T, pet P,(SELECT code,petcode FROM(SELECT code,petcode ,ROW_NUMBER() OVER(PARTITION BY code ORDER BY code,petcode) RM FROM petcode GROUP BY code, petcode) WHERE RM <= 1) C where T.ttype = '돌봐주세요' and T.code = C.code and P.code = C.petcode");
+			psmt = conn.prepareStatement("select P.* from tradeboard T, petcode C, pet P where T.code = ? and C.code = T.code and P.code = C.petcode");
+			psmt.setInt(1, Cvo.getCode());
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				vo = new PetVO();
@@ -78,6 +81,84 @@ public class PetDao extends DAO {
 		}
 		return list;
 	}
+	
+//	//오너리스트 설렉하기
+//	public List<PetVO> selectOwnerList() {
+//		List<PetVO> list = new ArrayList<PetVO>();
+//		try {
+//			psmt = conn.prepareStatement("select P.* from tradeboard T, pet P,(SELECT code,petcode FROM(SELECT code,petcode ,ROW_NUMBER() OVER(PARTITION BY code ORDER BY code,petcode) RM FROM petcode GROUP BY code, petcode) WHERE RM <= 1) C where T.ttype = '돌봐주세요' and T.code = C.code and P.code = C.petcode");
+//			rs = psmt.executeQuery();
+//			while (rs.next()) {
+//				vo = new PetVO();
+//				vo.setCode(rs.getString("code"));
+//				vo.setName(rs.getString("name"));
+//				vo.setAge(rs.getInt("age"));
+//				vo.setGender(rs.getString("gender"));
+//				vo.setType(rs.getString("type"));
+//				vo.setDetailType(rs.getString("detailType"));
+//				vo.setCut(rs.getString("cut"));
+//				vo.setComm(rs.getString("comm"));
+//				vo.setId(rs.getString("id"));
+//				vo.setPic(rs.getString("pic"));
+//				list.add(vo);
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		} finally {
+//			close();
+//		}
+//		return list;
+//	}
+	
+	//오너리스트 설렉하기
+			public List<TradeBoardVO> selectOwnerList() {
+				
+				List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
+				
+				try {
+					psmt = conn.prepareStatement("select t.*, p.code as pcode, p.name, p.age, p.gender, p.type, p.detailType, p.cut , p.comm as pcomm , p.id , p.pic from tradeboard T, pet P,(SELECT code,petcode FROM(SELECT code,petcode ,ROW_NUMBER() OVER(PARTITION BY code ORDER BY code,petcode) RM FROM petcode GROUP BY code, petcode) WHERE RM <= 1) C where T.ttype = '돌봐주세요' and T.code = C.code and P.code = C.petcode");
+					rs = psmt.executeQuery();
+					while (rs.next()) {
+						vo = new PetVO();
+						vo.setCode(rs.getString("pcode"));
+						vo.setName(rs.getString("name"));
+						vo.setAge(rs.getInt("age"));
+						vo.setGender(rs.getString("gender"));
+						vo.setType(rs.getString("type"));
+						vo.setDetailType(rs.getString("detailType"));
+						vo.setCut(rs.getString("cut"));
+						vo.setComm(rs.getString("pcomm"));
+						vo.setId(rs.getString("id"));
+						vo.setPic(rs.getString("pic"));
+					
+						
+						TradeBoardVO tvo = new TradeBoardVO();
+						tvo.setPetVO(vo);
+						tvo.setCode(rs.getInt("code"));
+						tvo.setComm(rs.getString("comm"));
+						tvo.setEtime(rs.getString("etime"));
+						tvo.setLocation1(rs.getString("location1"));
+						tvo.setLocation2(rs.getString("location2"));
+						tvo.setPrice(rs.getInt("price"));
+						tvo.setSeller(rs.getString("seller"));
+						tvo.setBuyer(rs.getString("buyer"));
+						tvo.setStatus(rs.getString("status"));
+						tvo.setStime(rs.getString("stime"));
+						tvo.setTitle(rs.getString("title"));
+						tvo.setTtime(rs.getString("ttime"));
+						tvo.setTtype(rs.getString("ttype"));
+						tvo.setSdate(rs.getString("sdate").substring(5, 10));
+						tvo.setEdate(rs.getNString("edate").substring(5, 10));
+						tradeBoardList.add(tvo);
+					}
+					
+				} catch (SQLException e) {
+					e.printStackTrace();
+				} finally {
+					close();
+				}
+				return tradeBoardList;
+			}	
 	
 	// User 자기 펫 전체조회
 	public List<PetVO> selectPets(PetVO vo) {
