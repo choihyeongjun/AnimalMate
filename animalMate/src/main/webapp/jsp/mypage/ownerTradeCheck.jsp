@@ -6,6 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>돌봐주세요 게시판 거래</title>
+<script>
+var Category1 = $('#id');
+
+function formCheck(){
+	var myup = document.myupAction;
+	if ($(':radio[name="Category"]:checked').length < 1) {
+		 alert('돌봄이을 선택해주세요!');                        
+		return false;
+	}
+	return true;   
+}
+</script>
 </head>
 <body>
 	<br>
@@ -90,7 +102,7 @@
 		<h3>신청자 리스트</h3>
 	</div>
 	<div class="ownerFormCheckButton">
-		<form action="${pageContext.request.contextPath}/ownerTradeCheckAction.do" method="get">
+			  <form id="otcAction" name= "otcAction" action="${pageContext.request.contextPath}/ownerTradeCheckAction.do" method="get" onsubmit="return formCheck()">
 			<div class = "row">
 				<button class = "mypetListButton">거래 수락</button><br>
 				<div style="visibility: hidden;">
