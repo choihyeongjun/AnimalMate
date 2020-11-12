@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>돌봐주세요 게시판 거래</title>
+<title>돌봐주세요  거래 상세정보 페이지</title>
 </head>
 <body>
 <br>
-	<h1>돌봐주세요 게시판 거래</h1>
+	<h1>돌봐주세요 거래 게시판 상세정보</h1>
 <br>
 	
 	<h3>${tbs.title}</h3>
@@ -136,7 +136,7 @@
 			</table>
 		</div>
 	</div>
-
+	
 	<div class="ownerFormCheckButton">
 		<button type="submit">거래완료</button>
 	</div>

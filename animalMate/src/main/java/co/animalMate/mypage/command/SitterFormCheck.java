@@ -23,8 +23,6 @@ public class SitterFormCheck implements Action {
 		// 세션 아이디 정보
 		HttpSession session = request.getSession(false);
 		String sid = (String) session.getAttribute("id");
-		
-
 		request.setAttribute("sid", sid);
 
 		// 펫, 거래 게시판 정보 호출

@@ -44,7 +44,7 @@ public void updateR(QuestionVO vo) {
 		try {
 			psmt=conn.prepareStatement(UPDATE);
 			psmt.setString(1,vo.getAnswer());
-			psmt.setString(2, vo.getSend());
+			psmt.setString(2,vo.getSend());
 			psmt.setString(3,vo.getTitle());
 			psmt.setString(4,vo.getComm());
 			psmt.executeUpdate();
@@ -69,6 +69,7 @@ public void updateR(QuestionVO vo) {
 				vo.setComm(rs.getString("comm"));
 				vo.setStatus(rs.getString("status"));
 				vo.setTtime(rs.getString("ttime"));
+				vo.setAnswer(rs.getString("answer"));
 				
 			}
 		} catch (SQLException e) {
@@ -95,6 +96,7 @@ public void updateR(QuestionVO vo) {
 				vo1.setComm(rs.getString("comm"));
 				vo1.setStatus(rs.getString("status"));
 				vo1.setTtime(rs.getString("ttime"));
+				vo1.setAnswer(rs.getString("answer"));
 				list.add(vo1);
 			}
 		} catch (SQLException e) {
@@ -120,7 +122,7 @@ public void updateR(QuestionVO vo) {
 				vo.setComm(rs.getString("comm"));
 				vo.setStatus(rs.getString("status"));
 				vo.setTtime(rs.getString("ttime"));
-				
+				vo.setAnswer(rs.getString("answer"));
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -148,7 +150,8 @@ public void updateR(QuestionVO vo) {
 				vo1.setComm(rs.getString("comm"));
 				vo1.setStatus(rs.getString("status"));
 				vo1.setTtime(rs.getString("ttime"));
-				list.add(vo);
+				vo1.setAnswer(rs.getString("answer"));
+				list.add(vo1);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

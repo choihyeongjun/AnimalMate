@@ -21,7 +21,6 @@ public class QuestionAnswerAction implements Action {
 		
 		String id=request.getParameter("id");
 		String title=request.getParameter("title");
-		String ttype=request.getParameter("ttype");
 		String comm=request.getParameter("comm");
 		String answer=request.getParameter("answer");
 		
@@ -29,19 +28,12 @@ public class QuestionAnswerAction implements Action {
 		QuestionDAO dao=new QuestionDAO();
 		vo.setSend(id);
 		vo.setTitle(title);
-		vo.setTtype(ttype);
 		vo.setComm(comm);
 		vo.setAnswer(answer);
 		dao.update(vo);
-		try {
-			response.sendRedirect(request.getContextPath()+"/questionlist.do");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
 		
-		return null;
+		return "/questionlist.do";
 	}
 
 }
