@@ -29,6 +29,7 @@ public class QuestionselectAction implements Action {
 		request.setAttribute("ttype",vo.getTtype());
 		request.setAttribute("answer",vo.getAnswer());
 		
+		
 		return "/jsp/admin/test/questionform.jsp";
 	}
 
