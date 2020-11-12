@@ -115,9 +115,6 @@
 	
 <br>
 
-	<div class="ownerFormCheckButton">
-		<button type="submit">거래 수락</button>
-	</div>
 <hr>
 	
 	<div class="row">

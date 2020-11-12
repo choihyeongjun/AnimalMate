@@ -53,10 +53,8 @@ public class TradeBoardDAO extends DAO {
 	//오너리스트 설렉하기
 	public List<TradeBoardVO> selectOwnerList(){ 
 		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
-		
-
 		try {
-			psmt = conn.prepareStatement("select T.* from TRADEBOARD T, PET P where T.BUYER = P.ID and T.TTYPE = '돌봐주세요'");
+			psmt = conn.prepareStatement("select T.* from tradeboard T, pet P,(SELECT code,petcode FROM(SELECT code,petcode ,ROW_NUMBER() OVER(PARTITION BY code ORDER BY code,petcode) RM FROM petcode GROUP BY code, petcode) WHERE RM <= 1) C where T.ttype = '돌봐주세요' and T.code = C.code and P.code = C.petcode");
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				vo = new TradeBoardVO();

@@ -6,13 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+
+var Category1 = $('#code');
+	
+function formCheck(){
+	var myup = document.myupAction;
+	if ($(':radio[name="Category"]:checked').length < 1) {
+		 alert('동물을 선택해주세요!');                        
+		return false;
+	}
+	return true;   
+}
+</script>
 </head>
 <body>
 	<br>
 	<h1>마이 펫</h1><br>
 	<button class = "mypetListButton" onclick="window.location.href='${pageContext.request.contextPath}/mypetForm.do'">펫 등록</button>
 	<div class="mypetListButton" style="background-color: white; width: 10px;">&nbsp;</div>
-	<form action="${pageContext.request.contextPath}/mypetUpdate.do" method="get">
+	<form id="myupAction" name= "myupAction" action="${pageContext.request.contextPath}/mypetUpdate.do" method="get" onsubmit="return formCheck()">	
 		<button class = "mypetListButton">수정</button><br>
 		
 			<div class = "mypetListView">

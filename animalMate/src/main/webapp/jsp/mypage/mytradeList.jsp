@@ -62,9 +62,9 @@
 									<td>${tb.ttype}</td>
 									<td>${tb.buyer}</td>
 									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
 								</tr>
 							</c:if>
@@ -75,9 +75,9 @@
 									<td>${tb.ttype}</td>
 									<td>${tb.buyer}</td>
 									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
 								</tr>
 							</c:if>
@@ -90,9 +90,9 @@
 									<td>${tb.ttype}</td>
 									<td>${tb.buyer}</td>
 									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
 								</tr>
 							</c:if>
@@ -104,9 +104,9 @@
 									<td>${tb.ttype}</td>
 									<td>${tb.buyer}</td>
 									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
 								</tr>
 							</c:if>
