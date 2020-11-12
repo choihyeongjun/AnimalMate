@@ -36,72 +36,72 @@ public class SitterFormViewAction implements Action {
 	    String id = tradeBoardVO.getSeller(); //id값에 seller넣음
 	    request.setAttribute("tradeBoard", tradeBoardVO);
 	    
-	      //멤버테이블 정보 보내기
-	      MemberDao dao = new MemberDao();
-	      MemberVO vo = new MemberVO();
-	      vo.setId(id);
-	      vo = dao.selectById(vo);
-	      request.setAttribute("members", vo);
+	    //멤버테이블 정보 보내기
+	    MemberDao dao = new MemberDao();
+	    MemberVO vo = new MemberVO();
+	    vo.setId(id);
+	    vo = dao.selectById(vo);
+	    request.setAttribute("members", vo);
+	    
+	    //시터테이블 정보 보내기
+	    SitterDAO sitterDAO = new SitterDAO();
+	    SitterVO sitterVO = new SitterVO();
+	    sitterVO.setId(id);
+	    sitterVO = sitterDAO.selectById(sitterVO);
+	    request.setAttribute("sitter", sitterVO);
 	      
-	      //시터테이블 정보 보내기
-	      SitterDAO sitterDAO = new SitterDAO();
-	      SitterVO sitterVO = new SitterVO();
-	      sitterVO.setId(id);
-	      sitterVO = sitterDAO.selectById(sitterVO);
-	      request.setAttribute("sitter", sitterVO);
+	    //나이 구하기!
+	    int birthYear = Integer.parseInt(String.valueOf(vo.getZoomin1()).substring(0, 2));
+	    Calendar cal = Calendar.getInstance();
+	    int year = cal.get(Calendar.YEAR)-2000;
+	    int age;
+	    if(birthYear > year) {
+	       age = year + (100-birthYear) +1; //1더하면 한국나이
+	    } else {
+	       age = year;
+	    }
+	    request.setAttribute("age", age);
 	      
-	      //나이 구하기!
-	      int birthYear = Integer.parseInt(String.valueOf(vo.getZoomin1()).substring(0, 2));
-	      Calendar cal = Calendar.getInstance();
-	      int year = cal.get(Calendar.YEAR)-2000;
-	      int age;
-	      if(birthYear > year) {
-	         age = year + (100-birthYear) +1; //1더하면 한국나이
-	      } else {
-	         age = year;
-	      }
-	      request.setAttribute("age", age);
+	    //성별 구하기!
+	    String zoo2 = String.valueOf(vo.getZoomin2()).substring(0, 1);
+	    String gender;
+	    if(zoo2.equals("1") || zoo2.equals("3")) {
+	       gender = "남성";
+	     } else {
+	       gender = "여성";
+	    }
+	    request.setAttribute("gender", gender);
 	      
-	      //성별 구하기!
-	      String zoo2 = String.valueOf(vo.getZoomin2()).substring(0, 1);
-	      String gender;
-	      if(zoo2.equals("1") || zoo2.equals("3")) {
-	         gender = "남성";
-	      } else {
-	         gender = "여성";
-	      }
-	      request.setAttribute("gender", gender);
+	    //평점이랑 거래횟수 구하기!
+	    tradeBoardDAO = new TradeBoardDAO();
+	    tradeBoardVO = new TradeBoardVO();
+	    List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
+	    tradeBoardVO.setSeller(id);
+	    tradeBoardList = tradeBoardDAO.selectById(tradeBoardVO);
+	    int career = tradeBoardList.size(); //거래완료 횟수
+	    request.setAttribute("career", career);
 	      
-	      //평점이랑 거래횟수 구하기!
-	      tradeBoardDAO = new TradeBoardDAO();
-	      tradeBoardVO = new TradeBoardVO();
-	      List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
-	      tradeBoardVO.setSeller(id);
-	      tradeBoardList = tradeBoardDAO.selectById(tradeBoardVO);
-	      int career = tradeBoardList.size(); //거래완료 횟수
-	      request.setAttribute("career", career);
+	    CommentsVO commentsVO = new CommentsVO();
+	    CommentsDAO commentsDAO = new CommentsDAO();
+	    int score = 0;
+	    for(TradeBoardVO tempt : tradeBoardList) {
+	       commentsVO.setCode(tempt.getCode());
+	       commentsVO = commentsDAO.selectByCode(commentsVO);
+	       score += commentsVO.getScore();
+	    }
+	    if(career!=0) {
+	     request.setAttribute("score", score/career);
+	    } else {
+	     request.setAttribute("score", "거래내역 없음");
+	    }
 	      
-	      CommentsVO commentsVO = new CommentsVO();
-	      CommentsDAO commentsDAO = new CommentsDAO();
-	      int score = 0;
-	      for(TradeBoardVO tempt : tradeBoardList) {
-	         commentsVO.setCode(tempt.getCode());
-	         commentsVO = commentsDAO.selectByCode(commentsVO);
-	         score += commentsVO.getScore();
-	      }
-	      if(career!=0) {
-	    	  request.setAttribute("score", score/career);
-	      } else {
-	    	  request.setAttribute("score", "거래내역 없음");
-	      }
-	      
-	      //돌봄환경 사진 구하기!
-	      PictureDAO pictureDAO = new PictureDAO();  
-	      PictureVO pictureVO = new PictureVO();  
-	      pictureVO.setId(id);
-	      List<PictureVO> pictureList = new ArrayList<PictureVO>();
-	      pictureList = pictureDAO.selectById(pictureVO);
-	      request.setAttribute("pictureList", pictureList);
+	    //돌봄환경 사진 구하기!
+	    PictureDAO pictureDAO = new PictureDAO();  
+	    PictureVO pictureVO = new PictureVO();  
+	    pictureVO.setId(id);
+	    List<PictureVO> pictureList = new ArrayList<PictureVO>();
+	    pictureList = pictureDAO.selectById(pictureVO);
+	    request.setAttribute("pictureList", pictureList);
 	      
 
 		

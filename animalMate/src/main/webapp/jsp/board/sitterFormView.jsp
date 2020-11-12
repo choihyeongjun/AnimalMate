@@ -39,12 +39,40 @@
 .calendar span {
 	display: inline;
 }
+.col1_title, .col1_target, .col3_comm {width: 20px;}
+.col2_title, .col2_target, .col3_comm {width: 300px;}	
+.col3_comm {height: 300px;}
 .btn_sumit{margin: 30px 350px;}
 .btn_sumit .btn_send {margin-right:20px; background-color: #ff7d21; width: 100px;height: 50px;}
 .btn_sumit .btn_result {margin-right: 20px;background-color: #ff7d21;width: 100px;height: 50px;}
 .btn_sumit .btn_cancle {margin-right: 20px;background-color: #bbb;width: 100px;height: 50px;}
 .sec06 li {margin-bottom: 15px;}
 </style>
+<script type="text/javascript">
+		$(()=>{
+			$("#submitBtn").on({
+				"click"  :function(){
+					messageFrm.submit();
+				}
+			})
+			
+			$("#sitterFormApplyBtn").on({
+				"click"  :function(){
+					$.ajax({
+						url:'${pageContext.request.contextPath}/ajax/ownerFormApply.do',
+						data : {code : ${tradeBoard.code}},
+						dataType:'json',
+						error:function(xhr,status,msg){
+	    					alert("상태값 :" + status + " Http에러메시지 :"+msg);
+	    				},
+	    				success:function(msg){
+	    					alert("예약이 완료되었습니다.")
+	    				}
+					})
+				}
+			})
+		})
+</script>
 </head>
 
 <body>
@@ -168,7 +196,7 @@
 							</tr>
 
 							<tr>
-								<td>거래금액</td>
+								<td>돌봄금액</td>
 								<td>${tradeBoard.price}원</td>
 							</tr>
 
@@ -200,7 +228,7 @@
 				</div>
 
 				<div id="sec05" class="">
-					<h2 class="cont_tit">세부내용</h2>
+					<h2 class="cont_tit">세부사항</h2>
 					<textarea>${tradeBoard.comm}</textarea>
 				</div>
 		
@@ -218,8 +246,8 @@
 
 
 			<div class="btn_sumit">
-				<button type="submit" class="btn_send">쪽지보내기</button>
-				<button type="submit" class="btn_result ">예약하기</button>
+				<button class="btn_send" type="button" data-toggle="modal" data-target="#exampleModal1">쪽지보내기</button>
+				<button type="submit" class="btn_result" id="sitterFormApplyBtn">예약하기</button>
 				<button type="reset" class="btn_cancle "
 					onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do'">취소</button>
 			</div>
@@ -230,5 +258,51 @@
 	</div>
 	<!-- s:container -->
 
+	<!-- Modal1쪽지쓰기 -->
+	<div class="modal fade" id="exampleModal1" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<p class="modal-title" id="exampleModalLabel">쪽지 보내기</p>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="reportDiv" align="center">
+						<form id="messageFrm" name="messageFrm" method="post"
+							action="${pageContext.request.contextPath}/submitMessage.do">
+							<table class="reportTd">
+								<tr>
+									<td class="col1_title">제목</td>
+									<td><input class="col2_title" type="text" id="title"
+										name="title" value="RE: ${tradeBoard.title}"></td>
+								</tr>
+								<tr>
+									<td class="col1_target">받을 사람</td>
+									<td><input class="col2_target" type="text" id="receive"
+										name="receive" value="${tradeBoard.seller}"></td>
+								</tr>
+								<tr>
+									<td class="col3_comm">내용</td>
+									<td><textarea rows="20" cols="50" class="col3_comm"
+											id="comm" name="comm"></textarea></td>
+								</tr>
+							</table>
+							<br>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" id="submitBtn" class="btn btn-primary">보내기</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal1쪽지쓰기 -->
 </body>
 </html>

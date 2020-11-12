@@ -86,8 +86,7 @@
     				success:function(msg){
     					$("#receiveTitle").val(msg.title);
     					$("#receivecomm").val(msg.comm);
-    					$("#receive").val(msg.receive);
-    					$("#title").val('RE:'+msg.title);
+    					$("#receiveID").val(msg.receive);
     				}
 				})
 			}
@@ -162,7 +161,7 @@
 							</tr>
 							<tr>
 								<td class="col1_target">받은 사람</td>
-								<td><input class="col2_target" type="text" id="receive"
+								<td><input class="col2_target" type="text" id="receiveID"
 									name="receive" readonly="readonly"></td>
 							</tr>
 							<tr>
@@ -176,11 +175,12 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">취소</button>
+						data-dismiss="modal">닫기</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- Modal1 보낸 쪽지 내용 -->
 
 	<!-- Modal2 쪽지쓰기 -->
 	<div class="modal fade" id="exampleModal2" tabindex="-1"
@@ -227,6 +227,7 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- Modal2 쪽지쓰기 -->
+	
 </body>
 </html>

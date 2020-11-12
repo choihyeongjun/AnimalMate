@@ -16,14 +16,15 @@ public class TradeBoardDAO extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
 	private ResultSet rs; // select 후 결과셋 받기
 	private TradeBoardVO vo;
-	
-	//시터리스트 설렉하기
-	public List<TradeBoardVO> selectSitterList(){ 
+
+	// 시터리스트 설렉하기
+	public List<TradeBoardVO> selectSitterList() {
 		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
 		try {
-			psmt = conn.prepareStatement("SELECT C.* FROM MEMBERS A, SITTER B, TRADEBOARD C WHERE C.SELLER = B.ID and A.ID = B.ID and C.SELLER = A.ID and C.ttype = '돌봐줄게요' order by C.CODE desc");
+			psmt = conn.prepareStatement(
+					"SELECT C.* FROM MEMBERS A, SITTER B, TRADEBOARD C WHERE C.SELLER = B.ID and A.ID = B.ID and C.SELLER = A.ID and C.ttype = '돌봐줄게요' order by C.CODE desc");
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				vo = new TradeBoardVO();
 				vo.setCode(rs.getInt("code"));
 				vo.setComm(rs.getString("code"));
@@ -49,14 +50,15 @@ public class TradeBoardDAO extends DAO {
 		}
 		return list;
 	}
-	
-	//오너리스트 설렉하기
-	public List<TradeBoardVO> selectOwnerList(){ 
+
+	// 오너리스트 설렉하기
+	public List<TradeBoardVO> selectOwnerList() {
 		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
 		try {
-			psmt = conn.prepareStatement("select T.* from tradeboard T, pet P,(SELECT code,petcode FROM(SELECT code,petcode ,ROW_NUMBER() OVER(PARTITION BY code ORDER BY code,petcode) RM FROM petcode GROUP BY code, petcode) WHERE RM <= 1) C where T.ttype = '돌봐주세요' and T.code = C.code and P.code = C.petcode");
+			psmt = conn.prepareStatement(
+					"select T.* from tradeboard T, pet P,(SELECT code,petcode FROM(SELECT code,petcode ,ROW_NUMBER() OVER(PARTITION BY code ORDER BY code,petcode) RM FROM petcode GROUP BY code, petcode) WHERE RM <= 1) C where T.ttype = '돌봐주세요' and T.code = C.code and P.code = C.petcode");
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				vo = new TradeBoardVO();
 				vo.setCode(rs.getInt("code"));
 				vo.setComm(rs.getString("code"));
@@ -82,38 +84,38 @@ public class TradeBoardDAO extends DAO {
 		}
 		return list;
 	}
-	
-	//id로 select하기
-	public List<TradeBoardVO> selectById(TradeBoardVO vo){
+
+	// id로 select하기
+	public List<TradeBoardVO> selectById(TradeBoardVO vo) {
 		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
 		try {
-			psmt=conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE SELLER = ? and status = '거래완료'");
+			psmt = conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE SELLER = ? and status = '거래완료'");
 			psmt.setString(1, vo.getSeller());
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				vo = new TradeBoardVO();
 				vo.setCode(rs.getInt("code"));
 				list.add(vo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			close();
 		}
 		return list;
 	}
-	
-	//code로 select하기
-	public TradeBoardVO selectByCode(TradeBoardVO vo){
+
+	// code로 select하기
+	public TradeBoardVO selectByCode(TradeBoardVO vo) {
 		try {
-			psmt=conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE CODE = ?");
+			psmt = conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE CODE = ?");
 			psmt.setInt(1, vo.getCode());
 			rs = psmt.executeQuery();
 			rs.next();
 			vo = new TradeBoardVO();
 			vo.setComm(rs.getNString("comm"));
-			vo.setEdate(rs.getString("edate"));
-			vo.setSdate(rs.getString("sdate"));
+			vo.setEdate((rs.getString("edate")).substring(0, 10));
+			vo.setSdate((rs.getString("sdate")).substring(0, 10));
 			vo.setStime(rs.getString("stime"));
 			vo.setEtime(rs.getString("etime"));
 			vo.setLocation1(rs.getString("location1"));
@@ -127,20 +129,21 @@ public class TradeBoardDAO extends DAO {
 			vo.setCode(rs.getInt("code"));
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			close();
 		}
 		return vo;
 	}
-	
-	//오너폼뷰
-	public List<TradeBoardVO> selectAllByCode(TradeBoardVO vo){
+
+	// 오너폼뷰
+	public List<TradeBoardVO> selectAllByCode(TradeBoardVO vo) {
 		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
 		try {
-			psmt=conn.prepareStatement("select T.* from tradeboard T, petcode C, pet P where T.code = ? and C.code = T.code and P.code = C.petcode");
+			psmt = conn.prepareStatement(
+					"select T.* from tradeboard T, petcode C, pet P where T.code = ? and C.code = T.code and P.code = C.petcode");
 			psmt.setInt(1, vo.getCode());
 			rs = psmt.executeQuery();
-			while(rs.next()) {
+			while (rs.next()) {
 				vo = new TradeBoardVO();
 				vo.setComm(rs.getNString("comm"));
 				vo.setEdate(rs.getString("edate"));
@@ -159,27 +162,27 @@ public class TradeBoardDAO extends DAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally{
+		} finally {
 			close();
 		}
 		return list;
 	}
-	
-	//오너 인서트
-	public int ownerInsert(TradeBoardVO vo) { 
+
+	// 오너 인서트
+	public int ownerInsert(TradeBoardVO vo) {
 		int n = 0;
 		try {
-			//시퀀스 조회
+			// 시퀀스 조회
 			psmt = conn.prepareStatement("select tradeboard_code.nextval from dual");
 			ResultSet rs = psmt.executeQuery();
 			rs.next();
-			int code = rs.getInt(1); //설렉트해온 첫 번째 컬럼
+			int code = rs.getInt(1); // 설렉트해온 첫 번째 컬럼
 			vo.setCode(code);
-			
-			//인서트 쿼리
-			psmt = conn.prepareStatement("INSERT INTO TRADEBOARD " + 
-					"(CODE, BUYER, TITLE, TTIME, PRICE, COMM, SDATE, EDATE, STIME, ETIME, TTYPE, LOCATION1, LOCATION2) VALUES " + 
-					"(?, ?, ?, SYSDATE, ?, ?, ?, ?, ?, ?, '돌봐주세요', ?, ?)");
+
+			// 인서트 쿼리
+			psmt = conn.prepareStatement("INSERT INTO TRADEBOARD "
+					+ "(CODE, BUYER, TITLE, TTIME, PRICE, COMM, SDATE, EDATE, STIME, ETIME, TTYPE, LOCATION1, LOCATION2) VALUES "
+					+ "(?, ?, ?, SYSDATE, ?, ?, ?, ?, ?, ?, '돌봐주세요', ?, ?)");
 			psmt.setInt(1, vo.getCode());
 			psmt.setString(2, vo.getBuyer());
 			psmt.setString(3, vo.getTitle());
@@ -199,22 +202,22 @@ public class TradeBoardDAO extends DAO {
 		}
 		return n;
 	}
-	
-	//오너 인서트
-	public int sitterInsert(TradeBoardVO vo) { 
+
+	// 시터 인서트
+	public int sitterInsert(TradeBoardVO vo) {
 		int n = 0;
 		try {
-			//시퀀스 조회
+			// 시퀀스 조회
 			psmt = conn.prepareStatement("select tradeboard_code.nextval from dual");
 			ResultSet rs = psmt.executeQuery();
 			rs.next();
-			int code = rs.getInt(1); //설렉트해온 첫 번째 컬럼
+			int code = rs.getInt(1); // 설렉트해온 첫 번째 컬럼
 			vo.setCode(code);
-			
-			//인서트 쿼리
-			psmt = conn.prepareStatement("INSERT INTO TRADEBOARD " + 
-					"(CODE, SELLER, TITLE, TTIME, PRICE, COMM, SDATE, EDATE, STIME, ETIME, TTYPE, LOCATION1, LOCATION2) VALUES " + 
-					"(?, ?, ?, SYSDATE, ?, ?, ?, ?, ?, ?, '돌봐주세요', ?, ?)");
+
+			// 인서트 쿼리
+			psmt = conn.prepareStatement("INSERT INTO TRADEBOARD "
+					+ "(CODE, SELLER, TITLE, TTIME, PRICE, COMM, SDATE, EDATE, STIME, ETIME, TTYPE, LOCATION1, LOCATION2) VALUES "
+					+ "(?, ?, ?, SYSDATE, ?, ?, ?, ?, ?, ?, '돌봐주세요', ?, ?)");
 			psmt.setInt(1, vo.getCode());
 			psmt.setString(2, vo.getSeller());
 			psmt.setString(3, vo.getTitle());
@@ -234,13 +237,32 @@ public class TradeBoardDAO extends DAO {
 		}
 		return n;
 	}
-
-
-	private void close() { //DB연결을 끊어준다
+	
+	//트레이드 보드에 코드 값 기반으로 seller넣기
+	public int insertSeller(TradeBoardVO vo) {
+		int n = 0;
 		try {
-			if(rs != null) rs.close();
-			if(psmt != null) psmt.close();
-			if(conn != null) conn.close();
+			psmt = conn.prepareStatement("insert into APPLYTRADE(id, code) values (?,?)");
+			psmt.setString(1, vo.getSeller());
+			psmt.setInt(2, vo.getCode());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return n;
+		
+	}
+
+	private void close() { // DB연결을 끊어준다
+		try {
+			if (rs != null)
+				rs.close();
+			if (psmt != null)
+				psmt.close();
+			if (conn != null)
+				conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -85,8 +85,8 @@
     				success:function(msg){
     					$("#receiveTitle").val(msg.title);
     					$("#receivecomm").val(msg.comm);
-    					$("#receive").val(msg.send);
-    					$("#title").val('RE:'+msg.title);
+    					$("#receiveID").val(msg.send);
+    					$("#returntitle").val('RE:'+msg.title);
     				}
 				})
 			}
@@ -99,7 +99,7 @@
 	<h3 style="display: inline;">받은 쪽지함</h3>
 	<span class="btnSpan">
 		<button type="button" class="writeMessage" id="writeMessage"
-			data-toggle="modal" data-target="#exampleModal2">쪽지 쓰기</button>
+			data-toggle="modal" data-target="#exampleModal3">쪽지 쓰기</button>
 		&nbsp;&nbsp;
 		<button class="sendMessageBtn" id="sendMessageBtn" type="button">보낸
 			쪽지함</button>
@@ -178,9 +178,57 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal1 받은 쪽지 내용 -->
 
-	<!-- Modal2 쪽지쓰기 -->
+	<!-- Modal2 답장하기 -->
 	<div class="modal fade" id="exampleModal2" tabindex="-1"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<p class="modal-title" id="exampleModalLabel">쪽지 보내기</p>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="reportDiv" align="center">
+						<form id="messageFrm" name="messageFrm" method="post"
+							action="${pageContext.request.contextPath}/submitMessage.do">
+							<table class="reportTd">
+								<tr>
+									<td class="col1_title">제목</td>
+									<td><input class="col2_title" type="text" id="returntitle"
+										name="title"></td>
+								</tr>
+								<tr>
+									<td class="col1_target">받을 사람</td>
+									<td><input class="col2_target" type="text" id="receiveID"
+										name="receive"></td>
+								</tr>
+								<tr>
+									<td class="col3_comm">내용</td>
+									<td><textarea rows="20" cols="50" class="col3_comm"
+											id="comm" name="comm"></textarea></td>
+								</tr>
+							</table>
+							<br>
+						</form>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" id="submitBtn" class="btn btn-primary">보내기</button>
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">취소</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Modal2 답장하기 -->
+
+	<!-- Modal3 쪽지쓰기 -->
+	<div class="modal fade" id="exampleModal3" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -224,7 +272,7 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- Modal3 쪽지쓰기 -->
 
 </body>
 </html>

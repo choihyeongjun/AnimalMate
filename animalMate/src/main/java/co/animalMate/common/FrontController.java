@@ -50,6 +50,7 @@ import co.animalMate.login.command.ResetPwAction;
 import co.animalMate.login.command.idOverlapCheck;
 import co.animalMate.main.command.AdminLoginAction;
 import co.animalMate.main.command.AjaxMessageInfoAction;
+import co.animalMate.main.command.AjaxOwnerFormApplyAction;
 import co.animalMate.main.command.AjaxPetInfoAction;
 import co.animalMate.main.command.GoBlackBoardPageAction;
 import co.animalMate.main.command.GoLoginPageAction;
@@ -120,6 +121,7 @@ public class FrontController extends HttpServlet {
       	//아작스
       map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
       map.put("/ajax/messageInfo.do", new AjaxMessageInfoAction()); //펫 목록 화면 호출
+      map.put("/ajax/ownerFormApply.do", new AjaxOwnerFormApplyAction()); //오너폼에서 지원하기 버튼 클릭
       
       
       

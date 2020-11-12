@@ -28,21 +28,12 @@
 
 <!-- css -->
 <style>
-#code {
-	display: none;
-}
+#code {display: none;}
+.col1_title, .col1_target, .col3_comm {width: 20px;}
+.col2_title, .col2_target, .col3_comm {width: 300px;}	
+.col3_comm {height: 300px;}
+	
 
-.col1_title, .col1_target, .col3_comm {
-	width: 20px;
-}
-
-.col2_title, .col2_target, .col3_comm {
-	width: 300px;
-}
-
-.col3_comm {
-	height: 300px;
-}
 .btn_sumit{margin: 30px 350px;}
 .btn_sumit .btn_send {margin-right:20px; background-color: #ff7d21; width: 100px;height: 50px;}
 .btn_sumit .btn_result {margin-right: 20px;background-color: #ff7d21;width: 100px;height: 50px;}
@@ -58,7 +49,25 @@
 					messageFrm.submit();
 				}
 			})
+			
+			$("#ownerFormApplyBtn").on({
+				"click"  :function(){
+					$.ajax({
+						url:'${pageContext.request.contextPath}/ajax/ownerFormApply.do',
+						data : {code : ${tradeBoardVO.code}},
+						dataType:'json',
+						error:function(xhr,status,msg){
+	    					alert("상태값 :" + status + " Http에러메시지 :"+msg);
+	    				},
+	    				success:function(msg){
+	    					alert("지원이 완료되었습니다.")
+	    				}
+					})
+				}
+			})
 		})
+		
+		
 </script>
 
 </head>
@@ -154,7 +163,7 @@
 
 					<tbody>
 						<tr>
-							<th>근무지역</th>
+							<th>돌봄지역</th>
 							<td>${tradeBoardVO.location1}</td>
 						</tr>
 						<tr>
@@ -162,7 +171,7 @@
 							<td>${tradeBoardVO.location2}</td>
 						</tr>
 						<tr>
-							<th>근무날짜</th>
+							<th>돌봄날짜</th>
 							<td>
 								<div>
 									<span class="datepickerview">${tradeBoardVO.sdate} <span>~</span>
@@ -172,7 +181,7 @@
 						</tr>
 
 						<tr>
-							<th>근무시간</th>
+							<th>돌봄시간</th>
 							<td>
 								<div class="calendar">
 									<span>${tradeBoardVO.stime}</span> <span>~</span> <span>${tradeBoardVO.etime}</span>
@@ -227,7 +236,7 @@
 			<div class="btn_sumit">
 				<button class="btn_send" type="button" data-toggle="modal"
 					data-target="#exampleModal1">쪽지보내기</button>
-				<button type="submit" class="btn_result" onclick="window.open('${pageContext.request.contextPath}/boardTradePet.do'">신청하기</button>
+				<button type="submit" class="btn_result" id="ownerFormApplyBtn">지원하기</button>
 				<button type="reset" class="btn_cancle" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
 			</div>
 
@@ -257,7 +266,7 @@
 								<tr>
 									<td class="col1_title">제목</td>
 									<td><input class="col2_title" type="text" id="title"
-										name="title"></td>
+										name="title" value="RE: ${tradeBoardVO.title}"></td>
 								</tr>
 								<tr>
 									<td class="col1_target">받을 사람</td>
