@@ -48,6 +48,7 @@ import co.animalMate.login.command.idOverlapCheck;
 import co.animalMate.main.command.AdminLoginAction;
 import co.animalMate.main.command.AjaxMessageInfoAction;
 import co.animalMate.main.command.AjaxPetInfoAction;
+import co.animalMate.main.command.BookmarkSearch2Action;
 import co.animalMate.main.command.GoBlackBoardPageAction;
 import co.animalMate.main.command.GoLoginPageAction;
 import co.animalMate.main.command.GoMessageFormAction;
@@ -106,6 +107,7 @@ public class FrontController extends HttpServlet {
       map.put("/adminLogin.do", new AdminLoginAction()); // 로그인 창에서 admin으로 로그인 했을 때
       map.put("/goNoticeForm.do", new GoNoticeFormAction()); // 공지사항 페이지에서 글쓰기 버튼 눌렀을 때
       map.put("/goMessageForm.do", new GoMessageFormAction()); // 메세지 리스트에서 메세지를 눌렀을 때
+      map.put("/bookmarkSearch2.do", new BookmarkSearch2Action());//즐겨찾기 아이디 찾기
          //제출하기
       map.put("/submitReport.do", new SubmitReportAction()); // 신고폼 페이지에서 제출버튼 눌렀을 때
       map.put("/submitNotice.do", new SubmitNoticeAction()); // 공지사항폼 페이지에서 제출버튼 눌렀을 때
