@@ -32,7 +32,7 @@ public class MypageDao extends DAO {
 	private JoblistVO jobVo;
 
 	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ?";
-	private final String TRADE_COUNT = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE (STATUS IN('거래 대상 확정', '입금 후', '반려인 미확인')) AND (BUYER = ? OR SELLER= ?)";
+	private final String TRADE_COUNT = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE (STATUS IN('거래미정','거래 대상 확정', '입금 후', '반려인 미확인')) AND (BUYER = ? OR SELLER= ?)";
 	private final String SELECT_USER_TRADES = "SELECT TB.*, P.* FROM PETCODE T LEFT OUTER JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) LEFT OUTER JOIN PET P ON (T.PETCODE = P.CODE) WHERE TB.BUYER = ? OR TB.SELLER = ? ORDER BY TB.CODE DESC";
 	private final String SELECT_USER_TRADE = "SELECT TB.*, P.* FROM PETCODE T LEFT OUTER JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) LEFT OUTER JOIN PET P ON (T.PETCODE = P.CODE) WHERE TB.code = ? ";
 	private final String SELECT_COMMENTS = "SELECT C.* FROM COMMENTS C JOIN TRADEBOARD TB ON (C.CODE=TB.CODE) WHERE TB.SELLER = ? ";
@@ -47,7 +47,7 @@ public class MypageDao extends DAO {
 	private final String UPDATE_TRADE_STATUS_FINISH = "UPDATE TRADEBOARD SET STATUS = '거래 완료' WHERE CODE= ?";
 	private final String SELECT_JOBLIST = "SELECT * FROM JOBLIST WHERE CODE = ?";
 	private final String UPDATE_JOBLIST = "UPDATE JOBLIST SET PIC = ? WHERE CODE = ? AND COMM = ?";
-
+	private final String UPDATE_TRADE_USER_POINT = "UPDATE MEMBERS SET POINT = POINT - (SELECT PRICE FROM TRADEBOARD WHERE CODE = ?) WHERE ID = ?";
 	
 	// 체크리스트 시터가 올린 사진들 업데이트
 	public int updateJoblist(JoblistVO jobVo) {
@@ -130,6 +130,11 @@ public class MypageDao extends DAO {
 			psmt.setString(1, atId);
 			psmt.setInt(2, atCode);
 			n = psmt.executeUpdate();
+			
+			psmt = conn.prepareStatement(UPDATE_TRADE_USER_POINT);
+			psmt.setInt(1, atCode);
+			psmt.setString(2, atId);
+			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -203,6 +208,11 @@ public class MypageDao extends DAO {
 			psmt = conn.prepareStatement(UPDATE_BUYER_TRADEBOARD);
 			psmt.setString(1, atId);
 			psmt.setInt(2, atCode);
+			n = psmt.executeUpdate();
+			
+			psmt = conn.prepareStatement(UPDATE_TRADE_USER_POINT);
+			psmt.setInt(1, atCode);
+			psmt.setString(2, atId);
 			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
