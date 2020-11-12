@@ -8,53 +8,29 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-
-/* Box */
-.thumbnails {
-	display: flex;
-	flex-wrap: wrap;
-	margin: 0 auto;
-}
-
-.thumbnails .box {
-	margin: 0 1em 2em 1em;
-	width: 20%;
-}
-
-/* Box */
-.box {
-	border-radius: 10px;
-	background: rgb(15, 162, 226);
-	text-align: center;
-	font-size: 10px;
-}
-
-.box dt, dd {
-	color: white;
-	float: left;
-	width: 50%;
-}
-
-.Image.fit {
-	border-radius: 4px 4px 0 0;
-}
-
-/* Image */
-.image.fit {
-	display: block;
-	margin: 0 0 2em 0;
-	width: 100%;
-	height: 150px;
-}
-
-/* 검색창과 썸네일 간격  */
-#main {
-	padding: 4em 0 2em 0;
-}
-
-.code_dl {
-	display: none;
-}
+	/* Box */
+	.thumbnails {display: flex;flex-wrap: wrap;margin: 0 auto;}
+	.thumbnails .box {margin: 0 1em 2em 1em;width: 20%;}
+	/* Box */
+	.box {border-radius: 10px;background: #FF8826;text-align: center;font-size: 10px;}
+	.box dt, dd {color: white;float: left;width: 50%;}
+	/* Image */
+	.image.fit {display: block;width: 100%;height: 150px;border-radius: 10px 10px 0 0;border: 2px solid #FF8826;}
+	/* 검색창과 썸네일 간격  */
+	#main {padding: 4em 0 2em 0;}
+	.code_dl {display: none;}
+	table span { position: relative;float: left;}
+	.tsearch {margin: 0 0 20px 36px;}
+	.ttitle {width: 80px;text-align: center;font-weight: bold;}
+	.tbottom {text-align: center; width: 180px;height: 30px;} 
+	.tbottom .minPrice {width:92px;position: relative;float: left;margin: 2px;height: 30px;}
+	.tbottom .datein {width:80px;position: relative;float: left;margin: 1.75px;height: 30px;}
+	.tbottom .timein {width: 80px; position: relative;float: left;height: 30px;}
+	.tbottom .statusin {position: relative;float: left;width: 100%;height: 30px;}
+	.tbottom .typein {position: relative;float: left;width: 100%;height: 30px;}
+	.tbtn {height: 60px;margin-left: 30px;width:100px;border-radius: 10px;}
+	.regiBtn {height: 60px; margin-left: 30px;width: 100px; border-radius: 10px;}
+	.boardtitle {margin-left: 460px;margin-bottom: 41px;}
 </style>
 
 <script>
@@ -70,47 +46,74 @@ $(()=>{
 <body id="top">
 	<br>
 	<div>
-		<h3>돌봐주세요 게시판</h3>
+		<h3 class="boardtitle">돌봐주세요 게시판</h3>
 	</div>
 	<br>
 	
 	<div>
 		<form id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerListSearch.do">
-			<label for="type">분류</label> 
-			<select id="type" name="type">
-				<option>선택하세요</option>
-				<option value="고양이">고양이</option>
-				<option value="대형견">대형견</option>
-				<option value="중형견">중형견</option>
-				<option value="소형견">소형견</option>
-			</select> &nbsp;&nbsp;
-			거래 상태
-			<select id="status" name="status">
-				<option>선택하세요</option>
-				<option value="거래 미정">거래 미정</option>
-				<option value="거래 대상 확정">거래 대상 확정</option>
-				<option value="입금 후">입금 완료</option>
-				<option value="반려인 미확인">반려인 미확인</option>
-				<option value="거래 완료">거래 완료</option>
-			</select> &nbsp;&nbsp;
-			<label for="location1">돌봄지역</label> <input placeholder="돌봄지역을 입력하세요" type="text" id="location1" name="location1">&nbsp;&nbsp;
-			<br>
-			돌봄금액
-			<input id="minPrice" name="minPrice" type="number" step="1000" placeholder="최소금액">~
-			<input id="maxPrice" name="maxPrice" type="number" step="1000" placeholder="최대금액">
-			<br>
-			돌봄날짜<input type="date" id="sDate" name="sDate">~<input type="date" id="eDate" name="eDate">&nbsp;&nbsp;
-			<br>
-			돌봄시간<input type="time" id="sTime" name="sTime">~<input type="time" id="eTime" name="eTime">&nbsp;&nbsp;
-			<br><br>
-			<button type="submit">검색하기</button>&nbsp;&nbsp;
-			<button type="button" onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글등록</button>
+		<table class="tsearch">
+		<tr>
+			<td class="ttitle" colspan="2">분류</td> 
+			<td class="tbottom" colspan="10">
+				<select class="typein" id="type" name="type">
+					<option>선택하세요</option>
+					<option value="고양이">고양이</option>
+					<option value="대형견">대형견</option>
+					<option value="중형견">중형견</option>
+					<option value="소형견">소형견</option>
+				</select>
+			</td>
+			<td class="ttitle" colspan="2">거래상태</td>
+			<td class="tbottom" colspan="4">
+				<select class="statusin" id="status" name="status">
+					<option>선택하세요</option>
+					<option value="거래 미정">거래 미정</option>
+					<option value="거래 대상 확정">거래 대상 확정</option>
+					<option value="입금 후">입금 완료</option>
+					<option value="반려인 미확인">반려인 미확인</option>
+					<option value="거래 완료">거래 완료</option>
+				</select>
+			</td>
+			<td class="ttitle" colspan="2">돌봄지역<td> 
+			<td class="tbottom" colspan="7">
+				<input placeholder="돌봄지역을 입력하세요" type="text" id="location1" name="location1">
+			</td>
+			<td rowspan="2">
+				<button class="tbtn" type="submit">검색</button>
+			</td>
+			<td rowspan="2">
+				<button class="regiBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글등록</button>
+			</td>
+		</tr>
+		<tr>
+		<td class="ttitle" colspan="2">돌봄날짜</td>
+		<td class="tbottom" colspan="10">
+			<input class="datein" type="date" id="sDate" name="sDate">
+			<span>~</span>
+			<input class="datein" type="date" id="eDate" name="eDate">
+		</td>
+		<td class="ttitle" colspan="2">돌봄시간</td>
+		<td class="tbottom" colspan="4">
+			<input class="timein" type="time" id="sTime" name="sTime">
+			<span>~</span>
+			<input class="timein" type="time" id="eTime" name="eTime">
+		</td>
+		<td class="ttitle" colspan="2">돌봄금액</td>
+		<td class="tbottom" colspan="10">
+			<input class="minPrice" id="minPrice" name="minPrice" type="number" step="1000" placeholder="최소금액">
+			<span>~</span>
+			<input class="minPrice" id="maxPrice" name="maxPrice" type="number" step="1000" placeholder="최대금액">
+		</td>
+		
+		</tr>
+		</table>
 		</form>
 	</div>
 
 	<div id="main" align="center">
 		<div class="inner" align="center">
-
+	
 			<!-- Boxes -->
 			<div class="thumbnails" align="center">
 
