@@ -117,29 +117,68 @@
 
 <hr>
 	
-	<div class="row">
-		<div class="checkDetail">
-			<h3>체크리스트</h3>
-			<table class="table">
-				<tr>
-					<th>체크리스트1</th>
-					<td>멍뭉이 밥 123g만 주기</td>
-					<td><img src="${pageContext.request.contextPath}/images/user.png"></td>
-					<td><button>완료</button></td>
-				</tr>
-				<tr>
-					<th>체크리스트2</th>
-					<td>산책 1시간 시키기</td>
-					<td><img src="${pageContext.request.contextPath}/images/user.png"></td>
-					<td><button>완료</button></td>
-				</tr>
-			</table>
+	<form id="frm" name="frm" action="${pageContext.request.contextPath}/joblistUpdateAction.do" method="post" enctype="multipart/form-data">	
+		<div class="row">
+			<div class="checkDetail">
+				<h3>체크리스트</h3>
+				<div class="row">
+					<c:forEach items="${jobs}" var="job" varStatus="i">
+						<div class = "checkDetailBox">
+							<table class="table" >
+								<tr>
+									<td>${job.comm}</td>
+								</tr>
+								<tr>
+									<td>
+										<img src="${pageContext.request.contextPath}/images/joblist_pic/${job.pic}" alt="이미지가 없습니다.">
+										<c:if test="${tbs.buyer ne sid}">
+											<br>
+											<div class="ownerFormCheckButton">
+												<input type="file" id="pic" name="pic${i.index}">
+											</div>
+										</c:if>
+									</td>
+								</tr>
+							</table>
+							<br>
+							<div style="visibility: hidden;">
+								<input type="text" id="comm" name="comm" value="${job.comm}">
+								<input type="text" id="code" name="code" value="${job.code}">
+							</div>
+						</div>
+					</c:forEach>
+					
+				</div>
+			</div>
 		</div>
-	</div>
 	
-	<div class="ownerFormCheckButton">
-		<button type="submit">거래완료</button>
-	</div>
+		<c:if test="${tbs.buyer ne sid}">
+			<div class="ownerFormCheckButton">
+				<button type="submit">체크리스트 저장</button>
+			</div>
+		</c:if>
+	</form>
+	
+
+	<c:if test="${tbs.buyer eq sid and tbs.status ne '거래 완료'}">
+		<form id="frm" name="frm" action="${pageContext.request.contextPath}/mytradeFinishAction.do" method="post">	
+			<div style="visibility: hidden;">
+				<input type="text" id="code" name="code" value="${tbs.code}">
+				<input type="text" id="id" name="id" value="${tbs.seller}">
+			</div>
+			<br>
+			<div class="ownerFormCheckButton">
+				<button type = "submit">거래완료</button>
+			</div>
+		</form>
+	</c:if>
+
+	<c:if test="${tbs.status eq '거래 완료'}">
+		<div class="ownerFormCheckButton">
+			<h3>거래가 종료되었습니다.</h3>
+		</div>
+	</c:if>
+	
 	
 </body>
 </html>

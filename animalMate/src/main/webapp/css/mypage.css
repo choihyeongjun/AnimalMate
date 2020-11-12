@@ -65,7 +65,6 @@
 	justify-content: center;
 	align-items: center;
 	margin: 50px auto;
-	float: right;
 }
 
 .mypageTrade div {
@@ -139,6 +138,24 @@
 	heigth: 150px;
 	margin: 20px 10px 20px 10px;
 }
+.checkDetail {
+	padding: 20px;
+	margin: 10px auto;
+	width: 100%;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	background-color: #f9f9f9;
+}
+.checkDetailBox {
+	padding: 20px;
+	margin: 10px auto;
+	width: 30%;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+}
+
 
 /*ownerTradeCheck*/
 .ownerTradeCheckView h3{

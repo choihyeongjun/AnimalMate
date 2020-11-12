@@ -117,21 +117,24 @@
 		</div>
 	</div>
 	
-	
-	
-	<c:choose>
-		<c:when test="${tbs.seller eq sid}">
-			<div class="ownerFormCheckButton">
-				<button type="submit">업무저장하기</button>
+
+	<c:if test="${tbs.buyer eq sid and tbs.status ne '거래 완료'}">
+		<form id="frm" name="frm" action="${pageContext.request.contextPath}/mytradeFinishAction.do" method="post">	
+			<div style="visibility: hidden;">
+				<input type="text" id="code" name="code" value="${tbs.code}">
+				<input type="text" id="id" name="id" value="${tbs.seller}">
 			</div>
-		</c:when>
-		<c:otherwise>
+			<br>
 			<div class="ownerFormCheckButton">
-				<button type="submit">업무없음</button>
+				<button type = "submit">거래완료</button>
 			</div>
-		</c:otherwise>
-	</c:choose>
-	
-	
+		</form>
+	</c:if>
+
+	<c:if test="${tbs.status eq '거래 완료'}">
+		<div class="ownerFormCheckButton">
+			<h3>거래가 종료되었습니다.</h3>
+		</div>
+	</c:if>
 </body>
 </html>

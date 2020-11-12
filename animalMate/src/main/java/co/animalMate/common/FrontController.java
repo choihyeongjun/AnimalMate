@@ -63,6 +63,7 @@ import co.animalMate.main.command.SitterInsertAction;
 import co.animalMate.main.command.SubmitMessageAction;
 import co.animalMate.main.command.SubmitNoticeAction;
 import co.animalMate.main.command.SubmitReportAction;
+import co.animalMate.mypage.command.JoblistUpdateAction;
 import co.animalMate.mypage.command.MemberForm;
 import co.animalMate.mypage.command.MemberFormUpdateAction;
 import co.animalMate.mypage.command.MypetDeleteAction;
@@ -71,6 +72,7 @@ import co.animalMate.mypage.command.MypetFormAction;
 import co.animalMate.mypage.command.MypetList;
 import co.animalMate.mypage.command.MypetUpdate;
 import co.animalMate.mypage.command.MypetUpdateAction;
+import co.animalMate.mypage.command.MytradeFinishAction;
 import co.animalMate.mypage.command.MytradeList;
 import co.animalMate.mypage.command.OwnerFormCheck;
 import co.animalMate.mypage.command.OwnerTradeCheck;
@@ -240,8 +242,8 @@ public class FrontController extends HttpServlet {
      map.put("/ownerTradeCheckAction.do", new OwnerTradeCheckAction()); // 돌봐주세요 거래 선택후 체결 액션
      map.put("/sitterTradeCheck.do", new SitterTradeCheck()); // 돌봐줄게요 거래 체결 화면 호출
      map.put("/sitterTradeCheckAction.do", new SitterTradeCheckAction()); // 돌봐주세요 거래 선택후 체결 액션 
-      
-      
+     map.put("/mytradeFinishAction.do", new MytradeFinishAction()); // 거래종료와 시터에게 돈주는 액션
+     map.put("/joblistUpdateAction.do", new JoblistUpdateAction()); // 거래종료와 시터에게 돈주는 액션
       
       
 

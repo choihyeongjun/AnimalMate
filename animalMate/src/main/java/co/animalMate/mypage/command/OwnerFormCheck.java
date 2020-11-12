@@ -13,6 +13,7 @@ import co.animalMate.common.Action;
 import co.animalMate.main.dao.CommentsDAO;
 import co.animalMate.main.dao.TradeBoardDAO;
 import co.animalMate.vo.CommentsVO;
+import co.animalMate.vo.JoblistVO;
 import co.animalMate.vo.MemberVO;
 import co.animalMate.vo.TradeBoardVO;
 import co.animalMate.vo.TradeListVO;
@@ -36,6 +37,14 @@ public class OwnerFormCheck implements Action {
 		tlVo.setCode(code);// 거래번호 클릭시
 		tlVo = myDao.selectUserTrade(tlVo);
 		request.setAttribute("tbs", tlVo);
+		
+		//체크리스트 출력
+		myDao = new MypageDao();
+		JoblistVO jobVo = new JoblistVO();
+		List<JoblistVO> joblist = new ArrayList<JoblistVO>();
+		jobVo.setCode(code);
+		joblist = myDao.selectJoblist(jobVo);
+		request.setAttribute("jobs", joblist);
 		
 		// 상대 시터정보 호출
 		myDao = new MypageDao();
@@ -71,26 +80,34 @@ public class OwnerFormCheck implements Action {
 
 		
 		
-//		// 거래완료 횟수
-//		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
-//		TradeBoardVO tradeBoardVO = new TradeBoardVO();
-//		List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
-//		tradeBoardVO.setSeller(sid);//바꿔줘야함
-//		tradeBoardList = tradeBoardDAO.selectById(tradeBoardVO);
-//		int career = tradeBoardList.size(); 
-//		request.setAttribute("career", career);
+		// 거래완료 횟수
+		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
+		TradeBoardVO tradeBoardVO = new TradeBoardVO();
+		List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
+		tradeBoardVO.setSeller(sid);//바꿔줘야함
+		tradeBoardList = tradeBoardDAO.selectById(tradeBoardVO);
+		int career = tradeBoardList.size(); 
+		request.setAttribute("career", career);
 		
-//		// 경력
-//		CommentsVO commentsVO = new CommentsVO();
-//		CommentsDAO commentsDAO = new CommentsDAO();
-//		int score = 0;
-//		for (TradeBoardVO tempt : tradeBoardList) {
-//			commentsVO.setCode(tempt.getCode());
-//			commentsVO = commentsDAO.selectByCode(commentsVO);
-//			score += commentsVO.getScore();
-//		}
-//		request.setAttribute("score", score / career);
-
+		// 경력
+		CommentsVO commentsVO = new CommentsVO();
+		CommentsDAO commentsDAO = new CommentsDAO();
+		int score = 0;
+		for (TradeBoardVO tempt : tradeBoardList) {
+			commentsVO.setCode(tempt.getCode());
+			commentsVO = commentsDAO.selectByCode(commentsVO);
+			score += commentsVO.getScore();
+		}
+		if (career != 0) {
+			request.setAttribute("score", score / career);
+		} else {
+			request.setAttribute("score", "거래내역 없음");
+		}
+		
+		
+		
+		
+		
 		return "jsp/mypage/ownerFormCheck.jsp";
 	}
 
