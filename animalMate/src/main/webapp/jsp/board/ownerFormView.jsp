@@ -46,7 +46,7 @@
 </style>
 
 <script type="text/javascript">
-		(()=>{
+		$(()=>{
 			$("#submitBtn").on({
 				"click"  :function(){
 					console.log("aa")
