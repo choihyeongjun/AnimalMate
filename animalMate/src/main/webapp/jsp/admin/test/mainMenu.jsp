@@ -7,6 +7,8 @@
 	<nav id="topMenu" >
 		<ul>
 			<c:if test="${author ne 'admin'}">
+			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/admin.jsp"><img src="${pageContext.request.contextPath}/jsp/admin/test/logo.png" height="100px" width="100px"></a></li>
+		
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/trade.jsp">거래내역</a></li>
 			<li>|</li>
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/goNoticeBoardPage.do">공지사항 등록 및 수정</a></li>
@@ -21,8 +23,10 @@
 			<li>|</li>
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/adminchat.jsp" target="_blank">실시간문의</a></li>
 			<li>|</li>
-			<li><a class="menuLink" href="logout.do">로그아웃</a></li>
+			<li><a class="menuLink" href="${pageContext.request.contextPath}/main.do">로그아웃</a></li>
+			<br/><br/>
 			</c:if>
+			<br/>
 		</ul>
 	</nav>
 	</div>

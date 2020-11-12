@@ -15,8 +15,9 @@
 	<div>
 		<table border="1">
 			<tr>
+			<br/>
+			<br/>
 				<h1>관리자님 환영합니다</h1>
-				
 			</tr>
 		</table>
 	</div>
