@@ -131,6 +131,7 @@ button{width: 50px;
 <jsp:include page="mainMenu.jsp"/>
 <hr>
 <div align="center">
+<br/>
 	<div><h1>회원목록 정보</h1></div>
 	<div>
 		<form>

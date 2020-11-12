@@ -150,13 +150,7 @@ border: #ff7d21 4px solid;
 				location.href="${pageContext.request.contextPath}/adminLogin.do";
 			}
 		})
-		//1:1문의버튼
-		$("#QuestionBtn").on({
-			"click" : function() {
-				location.href="${pageContext.request.contextPath}/jsp/admin/test/question.jsp";
-			
-			}
-		})
+	
 		//1:1 문의내역버튼
 		$("#QuestionbdBtn").on({
 			"click" : function() {
@@ -182,9 +176,7 @@ border: #ff7d21 4px solid;
 	<c:if test="${sessionScope.id ne null}">
 		<button id="QuestionbdBtn" class="">1:1문의내역</button>
 	</c:if>
-	<c:if test="${sessionScope.id ne null}">
-		<button id="QuestionBtn" class="">1:1문의</button>
-	</c:if>
+	
 	<button id="tradeListBtn" class="">요청알림</button>
 	<button id="messageListBtn" class="">쪽지</button>
 	<c:if test="${sessionScope.id eq null}">

@@ -9,8 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import co.animalMate.board.dao.MypageDao;
 import co.animalMate.common.Action;
-import co.animalMate.vo.MemberTradeListVO;
-import co.animalMate.vo.PetVO;
 import co.animalMate.vo.SitterTradeCheckListVO;
 import co.animalMate.vo.TradeListVO;
 
@@ -21,7 +19,6 @@ public class SitterTradeCheck implements Action {
 		// 돌봐주세요 화면 호출
 		MypageDao myDao = new MypageDao();
 		TradeListVO tlVo = new TradeListVO();
-		PetVO petvo = new PetVO();
 		SitterTradeCheckListVO stclVo = new SitterTradeCheckListVO();
 		
 		// 세션 아이디 정보
