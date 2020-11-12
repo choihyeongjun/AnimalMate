@@ -20,9 +20,7 @@ public class TradeBoardVO {
 	private String location2;
 	
 	PetVO petVO;
-	
-	
-	
+
 	public PetVO getPetVO() {
 		return petVO;
 	}

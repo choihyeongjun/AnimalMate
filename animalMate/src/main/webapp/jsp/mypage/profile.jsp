@@ -59,11 +59,11 @@
 				</tr>
 				<tr>
 					<th>평점</th>
-					<td>★☆☆☆☆</td>
+					<td>${score}</td>
 				</tr>
 				<tr>
 					<th>경력</th>
-					<td>DBVALUE</td>
+					<td>${career}회</td>
 				</tr>
 				<tr>
 					<th>신고횟수</th>

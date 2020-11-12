@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.board.dao.MypageDao;
 import co.animalMate.common.Action;
+import co.animalMate.main.dao.CommentsDAO;
+import co.animalMate.main.dao.TradeBoardDAO;
 import co.animalMate.vo.CommentsVO;
 import co.animalMate.vo.MemberVO;
+import co.animalMate.vo.TradeBoardVO;
 
 public class Profile implements Action {
 
@@ -56,6 +59,37 @@ public class Profile implements Action {
 		comVo.setComm(id);
 		list = myDao.selectComments(comVo);
 		request.setAttribute("comms", list);
+		
+		//평점이랑 거래횟수 구하기!
+	      TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
+	      TradeBoardVO tradeBoardVO = new TradeBoardVO();
+	      List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
+	      tradeBoardVO.setSeller(id);
+	      tradeBoardList = tradeBoardDAO.selectById(tradeBoardVO);
+	      int career = tradeBoardList.size(); //거래완료 횟수
+	      request.setAttribute("career", career);
+	      
+	      CommentsVO commentsVO = new CommentsVO();
+	      CommentsDAO commentsDAO = new CommentsDAO();
+	      int score = 0;
+	      for(TradeBoardVO tempt : tradeBoardList) {
+	         commentsVO.setCode(tempt.getCode());
+	         commentsVO = commentsDAO.selectByCode(commentsVO);
+	         score += commentsVO.getScore();
+	      }
+	      if(career!=0) {
+	    	  int avgScore = Math.round(score/career);
+		      String stars = "";
+		      for(int i=0; i<avgScore; i++) {
+		    	  stars += "★";
+		      }
+		      for(int i=0; i<(5-avgScore); i++) {
+		    	  stars += "☆";
+		      }
+	    	  request.setAttribute("score", stars);
+	      } else {
+	    	  request.setAttribute("score", "거래내역 없음");
+	      }
 
 		return "jsp/mypage/profile.jsp";
 
