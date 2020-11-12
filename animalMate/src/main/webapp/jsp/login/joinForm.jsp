@@ -24,24 +24,6 @@ function id_input_check(){
 	var location1 = document.querySelector('#location1');
 	var location2 = document.querySelector('#location2');
 	
-function formCheck(){
-	if(!pwCheck()){
-		return false;
-	}
-	if(!nameCheck()){
-		return false; 
-	}
-	if(!emailCheck()){
-		return false; 
-	}
-	if(!zoominCheck()){
-		return false; 
-	}
-	if(!telCheck()){
-		return false; 
-	}
-	
-}
 	
 function pwCheck(){
 	if(pw1.value == "" || pw1.value == "null"){

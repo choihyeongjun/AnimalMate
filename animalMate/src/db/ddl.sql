@@ -3,7 +3,6 @@
 
 DROP TABLE applytrade CASCADE CONSTRAINTS;
 DROP TABLE black CASCADE CONSTRAINTS;
-DROP TABLE bookMark CASCADE CONSTRAINTS;
 DROP TABLE comments CASCADE CONSTRAINTS;
 DROP TABLE joblist CASCADE CONSTRAINTS;
 DROP TABLE message CASCADE CONSTRAINTS;
@@ -26,8 +25,7 @@ CREATE TABLE applytrade
 	code number(10) NOT NULL,
 	id varchar2(100) NOT NULL,
 	tdate date DEFAULT sysdate,
-	status varchar2(100) DEFAULT '수락대기',
-	PRIMARY KEY (code, id)
+	status varchar2(100)
 );
 
 
@@ -40,14 +38,6 @@ CREATE TABLE black
 	comm varchar2(4000),
 	dtime date,
 	PRIMARY KEY (code)
-);
-
-
-CREATE TABLE bookMark
-(
-	id varchar2(100) NOT NULL,
-	markid varchar2(100) NOT NULL,
-	PRIMARY KEY (id, markid)
 );
 
 
@@ -102,8 +92,8 @@ CREATE TABLE message
 	receive varchar2(100),
 	title varchar2(100),
 	comm varchar2(4000),
-	status varchar2(100) DEFAULT '''미확인''',
-	ttime date DEFAULT sysdate,
+	status varchar2(100),
+	ttime date,
 	PRIMARY KEY (code)
 );
 
@@ -139,8 +129,7 @@ CREATE TABLE pet
 CREATE TABLE petcode
 (
 	code number(10) NOT NULL,
-	petcode number NOT NULL,
-	PRIMARY KEY (code, petcode)
+	petcode number
 );
 
 
@@ -161,8 +150,7 @@ CREATE TABLE question
 	ttype varchar2(100),
 	comm varchar2(4000),
 	status varchar2(100),
-	ttime date DEFAULT sysdate,
-	answer varchar2(4000) DEFAULT '''아직 답변이 되지 않았습니다.''',
+	ttime date,
 	PRIMARY KEY (code)
 );
 
@@ -219,26 +207,14 @@ ALTER TABLE black
 ;
 
 
-ALTER TABLE bookMark
-	ADD FOREIGN KEY (id)
-	REFERENCES members (id)
-;
-
-
-ALTER TABLE bookMark
-	ADD FOREIGN KEY (markid)
+ALTER TABLE message
+	ADD FOREIGN KEY (send)
 	REFERENCES members (id)
 ;
 
 
 ALTER TABLE message
 	ADD FOREIGN KEY (receive)
-	REFERENCES members (id)
-;
-
-
-ALTER TABLE message
-	ADD FOREIGN KEY (send)
 	REFERENCES members (id)
 ;
 
@@ -257,13 +233,13 @@ ALTER TABLE sitter
 
 
 ALTER TABLE tradeBoard
-	ADD FOREIGN KEY (buyer)
+	ADD FOREIGN KEY (seller)
 	REFERENCES members (id)
 ;
 
 
 ALTER TABLE tradeBoard
-	ADD FOREIGN KEY (seller)
+	ADD FOREIGN KEY (buyer)
 	REFERENCES members (id)
 ;
 
@@ -313,9 +289,6 @@ COMMENT ON COLUMN black.fromUser IS '신고당한사람';
 COMMENT ON COLUMN black.title IS '제목';
 COMMENT ON COLUMN black.comm IS '신고내용';
 COMMENT ON COLUMN black.dtime IS '신고일자';
-COMMENT ON TABLE bookMark IS '즐겨찾기';
-COMMENT ON COLUMN bookMark.id IS '내 아이디';
-COMMENT ON COLUMN bookMark.markid IS '즐겨찾기 대상 id';
 COMMENT ON TABLE comments IS '후기';
 COMMENT ON COLUMN comments.code IS '거래번호';
 COMMENT ON COLUMN comments.score IS '별점';
@@ -385,7 +358,6 @@ COMMENT ON COLUMN question.ttype IS '분류';
 COMMENT ON COLUMN question.comm IS '내용';
 COMMENT ON COLUMN question.status IS '상태';
 COMMENT ON COLUMN question.ttime IS '발송시간';
-COMMENT ON COLUMN question.answer IS '답글';
 COMMENT ON TABLE sitter IS '시터';
 COMMENT ON COLUMN sitter.id IS '아이디';
 COMMENT ON COLUMN sitter.maxP IS '펫 수용 수';

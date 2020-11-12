@@ -32,11 +32,11 @@ $(".modifytel").on("click",function(){
 	$("#over_tel").hide();
 	});
 
+});	
+
 function changepw(){
 	window.open("${pageContext.request.contextPath}/jsp/login/pwReset.jsp", "비밀번호 찾기", "width=1000, height=900"); 
 }
-});	
-
 </script>
 </head>
 <body>
@@ -104,11 +104,11 @@ function changepw(){
 						</tr>		
 					</table>
 					<div class="btn_area">
-						<button class="btn_cancel" type="button" formaction="${pageContext.request.contextPath}/goMypagePage.do">취소</button>
+						<button class="btn_cancel" type="button" onclick="window.location.href='${pageContext.request.contextPath}/goMypagePage.do'">취소</button>
 						<button class="btn_submit" type="submit" formaction="${pageContext.request.contextPath}/memberUpdate.do">수정</button>
 					</div>
 				</div>	
 			</div>
 		</form>
-</body>
+	</body>
 </html>

@@ -43,18 +43,13 @@
 .col3_comm {
 	height: 300px;
 }
-.btn_sumit{margin: 30px 350px;}
-.btn_sumit .btn_send {margin-right:20px; background-color: #ff7d21; width: 100px;height: 50px;}
-.btn_sumit .btn_result {margin-right: 20px;background-color: #ff7d21;width: 100px;height: 50px;}
-.btn_sumit .btn_cancle {margin-right: 20px;background-color: #bbb;width: 100px;height: 50px;}
-.sec06 li {margin-bottom: 15px;}
-.proBtn {background-color: #d3cbc5;border-radius: 3px; width: 140px;}
 </style>
 
 <script type="text/javascript">
 		$(()=>{
 			$("#submitBtn").on({
 				"click"  :function(){
+					console.log("aa")
 					messageFrm.submit();
 				}
 			})
@@ -70,8 +65,8 @@
 		<!-- s:title -->
 		<div class="title">
 			<h1>돌봐주세요 - (예약page)</h1>
-			<p>${tradeBoardVO.title}</p>
-			<p id="code">${tradeBoardVO.code}</p>
+			<p>${borders[0].title}</p>
+			<p id="code">${borders[0].code}</p>
 		</div>
 		<!-- e:title -->
 
@@ -80,11 +75,11 @@
 
 			<div id="sec01" class="sitter_info">
 				<h2 class="cont_tit">펫정보</h2>
-				<c:forEach var="v" items="${petList}">
+				<c:forEach var="border" items="${borders}">
 					<div class="cont_area">
 						<div class="info_img">
 							<img class="info_img"
-								src="${pageContext.request.contextPath}/images/pet_pic/${v.pic}"
+								src="${pageContext.request.contextPath}/images/pet_pic/${border.pic}"
 								alt="펫 이미지" height="100px" width="100px">
 						</div>
 
@@ -105,27 +100,27 @@
 								<tbody>
 									<tr>
 										<td>펫 이름</td>
-										<td>${v.name}</td>
+										<td>${border.name}</td>
 									</tr>
 
 									<tr>
 										<td>펫 나이</td>
-										<td>${v.age}</td>
+										<td>${border.age}</td>
 									</tr>
 
 									<tr>
 										<td>펫 성별</td>
-										<td>${v.gender}</td>
+										<td>${border.gender}</td>
 									</tr>
 
 									<tr>
 										<td>펫 종류</td>
-										<td>${v.type}</td>
+										<td>${border.type}</td>
 									</tr>
 
 									<tr>
 										<td>중성화 유무</td>
-										<td>${v.cut}</td>
+										<td>${border.cut}</td>
 									</tr>
 								</tbody>
 
@@ -155,18 +150,18 @@
 					<tbody>
 						<tr>
 							<th>근무지역</th>
-							<td>${tradeBoardVO.location1}</td>
+							<td>${borders[0].location1}</td>
 						</tr>
 						<tr>
 							<th>상세지역</th>
-							<td>${tradeBoardVO.location2}</td>
+							<td>${borders[0].location2}</td>
 						</tr>
 						<tr>
 							<th>근무날짜</th>
 							<td>
 								<div>
-									<span class="datepickerview">${tradeBoardVO.sdate} <span>~</span>
-										<span class="datepickerview">${tradeBoardVO.edate}
+									<span class="datepickerview">${borders[0].sdate} <span>~</span>
+										<span class="datepickerview">${borders[0].edate}
 								</div>
 							</td>
 						</tr>
@@ -175,19 +170,19 @@
 							<th>근무시간</th>
 							<td>
 								<div class="calendar">
-									<span>${tradeBoardVO.stime}</span> <span>~</span> <span>${tradeBoardVO.etime}</span>
+									<span>${borders[0].stime}</span> <span>~</span> <span>${borders[0].etime}</span>
 								</div>
 							</td>
 						</tr>
 
 						<tr>
 							<th>돌봄 요청 금액</th>
-							<td>${tradeBoardVO.price}원</td>
+							<td>${borders[0].price}원</td>
 						</tr>
 
 						<tr>
 							<th>반려인</th>
-							<td>${tradeBoardVO.buyer}<button class="proBtn">프로필 상세보기</button></td>
+							<td>${borders[0].buyer}<button>프로필 상세보기</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -208,11 +203,11 @@
 			<br>
 			<div id="sec05" class="">
 				<h2 class="cont_tit">세부사항</h2>
-				<textarea>${tradeBoardVO.comm}</textarea>
+				<textarea>${borders[0].comm}</textarea>
 			</div>
 
 			<br>
-			<div id="sec06" class="sec06">
+			<div id="sec06" class="">
 				<h2 class="cont_tit">유의사항</h2>
 				<ul>
 					<li>○ 배드, 사료, 산책용품등은 의뢰자께서 준비해주세요.</li>
@@ -225,10 +220,15 @@
 
 			<br>
 			<div class="btn_sumit">
-				<button class="btn_send" type="button" data-toggle="modal"
+				<button type="button" data-toggle="modal"
 					data-target="#exampleModal1">쪽지보내기</button>
-				<button type="submit" class="btn_result" onclick="window.open('${pageContext.request.contextPath}/boardTradePet.do'">신청하기</button>
-				<button type="reset" class="btn_cancle" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
+				&nbsp;&nbsp;
+				<button type="submit"
+					onclick="window.open('${pageContext.request.contextPath}/boardTradePet.do'">신청하기</button>
+				&nbsp;&nbsp;
+				<button type="reset"
+					onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
+				&nbsp;&nbsp;
 			</div>
 
 		</div>
@@ -262,7 +262,7 @@
 								<tr>
 									<td class="col1_target">받을 사람</td>
 									<td><input class="col2_target" type="text" id="receive"
-										name="receive" value="${tradeBoardVO.buyer}"></td>
+										name="receive" value="${borders[0].buyer}"></td>
 								</tr>
 								<tr>
 									<td class="col3_comm">내용</td>

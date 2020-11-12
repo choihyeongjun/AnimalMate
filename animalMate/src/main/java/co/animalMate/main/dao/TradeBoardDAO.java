@@ -132,38 +132,6 @@ public class TradeBoardDAO extends DAO {
 		return vo;
 	}
 	
-	//오너폼뷰
-	public List<TradeBoardVO> selectAllByCode(TradeBoardVO vo){
-		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
-		try {
-			psmt=conn.prepareStatement("select T.* from tradeboard T, petcode C, pet P where T.code = ? and C.code = T.code and P.code = C.petcode");
-			psmt.setInt(1, vo.getCode());
-			rs = psmt.executeQuery();
-			while(rs.next()) {
-				vo = new TradeBoardVO();
-				vo.setComm(rs.getNString("comm"));
-				vo.setEdate(rs.getString("edate"));
-				vo.setSdate(rs.getString("sdate"));
-				vo.setStime(rs.getString("stime"));
-				vo.setEtime(rs.getString("etime"));
-				vo.setLocation1(rs.getString("location1"));
-				vo.setLocation2(rs.getString("location2"));
-				vo.setPrice(rs.getInt("price"));
-				vo.setStatus(rs.getString("status"));
-				vo.setTitle(rs.getString("title"));
-				vo.setTtime(rs.getString("ttime"));
-				vo.setSeller(rs.getString("seller"));
-				vo.setCode(rs.getInt("code"));
-				list.add(vo);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally{
-			close();
-		}
-		return list;
-	}
-	
 	//오너 인서트
 	public int ownerInsert(TradeBoardVO vo) { 
 		int n = 0;

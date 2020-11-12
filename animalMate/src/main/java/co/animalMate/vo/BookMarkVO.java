@@ -1,10 +1,10 @@
 package co.animalMate.vo;
 
-public class bookMarkVO {
+public class BookMarkVO {
 	private String id;
 	private String markId;
 	
-	public bookMarkVO() {}
+	public BookMarkVO() {}
 
 	public String getId() {
 		return id;

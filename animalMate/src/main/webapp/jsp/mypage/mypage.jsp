@@ -86,13 +86,15 @@
 					<td>지역</td>
 					<td>상세정보</td>
 				</tr>
+				<c:forEach items="${memberlist}" var="v">
 				<tr>
 					<input type="hidden" value="${user.id}" name="id" id="id">
-					<td>${user.name}</td>
-					<td>${age}</td>
-					<td>${user.location1}</td>
+					<td>${v.name}</td>
+					<td>${v.zoomin1}</td>
+					<td>${v.location1}</td>
 					<td><button onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=${user.id}'">더보기</button></td>	
 				</tr>
+				</c:forEach>
 			</table>
 		</div>
 	</div>
