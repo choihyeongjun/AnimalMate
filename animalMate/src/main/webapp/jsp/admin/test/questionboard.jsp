@@ -42,6 +42,16 @@ a{
     font-weight: bold;
 }
 </style>
+<script type="text/javascript">
+$(()=>{
+	$("#QuestionBtn").on({
+		"click" : function() {
+			location.href="${pageContext.request.contextPath}/jsp/admin/test/question.jsp";
+		
+		}
+	});
+});
+</script>
 </head>
 <body>
 <c:if test="${sessionScope.id eq 'admin'}" >
@@ -99,7 +109,7 @@ a{
       
       
       <div align="right">
-         <button>수정하기</button>
+         <button id="QuestionBtn" class="">1:1문의</button>
       </div>
    </div>
 </body>
