@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.List;
 
@@ -51,7 +52,23 @@ public class MypageDao extends DAO {
 	private final String SELECT_MYTRADE_SELLER = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE SELLER = ? AND STATUS != '거래 완료'";
 	private final String SELECT_MYTRADE_BUYER = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE BUYER = ? AND STATUS != '거래 완료'";
 	private final String SELECT_TRADE_USER_POINT = "SELECT POINT FROM MEMBERS WHERE ID = ?";
-
+	private final String UPDATE_STATUS_JOBLIST = "UPDATE TRADEBOARD SET STATUS = '반려인 미확인' WHERE CODE = ?";
+	
+	
+	
+	// 체크리스트 시터가 올린 사진들 업데이트
+	public int updateStatusJoblist(TradeBoardVO tbVo) {
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(UPDATE_STATUS_JOBLIST);
+			psmt.setInt(1, tbVo.getCode());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
 	// User 동물 맡기는 거래 진행 수
 	public TradeBoardVO selectMytradeBuyerCount(TradeBoardVO tbVo) {
 		try {
@@ -222,10 +239,35 @@ public class MypageDao extends DAO {
 				stclVo.setLocation2(rs.getString("location2"));
 				stclVo.setEmail(rs.getString("email"));
 				stclVo.setPic(rs.getString("pic"));
-				stclVo.setZoomin1(rs.getInt("zoomin1"));
-				stclVo.setZoomin2(rs.getInt("zoomin2"));
+				//stclVo.setZoomin1(rs.getInt("zoomin1"));
+				//stclVo.setZoomin2(rs.getInt("zoomin2"));
 				// 나이,성별 넣어줘야함
+				
+				int birthYear = Integer.parseInt(String.valueOf(rs.getInt("zoomin1")).substring(0, 2));
+				Calendar cal = Calendar.getInstance();
+				int year = cal.get(Calendar.YEAR) - 2000;
+				int age;
+				if (birthYear > year) {
+					age = year + (100 - birthYear) + 1; // 1더하면 한국나이
+				} else {
+					age = year;
+				}
+				stclVo.setAge(age);
 
+				// 성별 구하기!
+				String zoo2 = String.valueOf(rs.getInt("zoomin2")).substring(0, 1);
+				String gender;
+				if (zoo2.equals("1") || zoo2.equals("3")) {
+					gender = "남성";
+				} else {
+					gender = "여성";
+				}
+				stclVo.setGender(gender);
+				
+				
+				
+				
+				
 				stclVo.setpCode(rs.getString("code_1"));
 				stclVo.setpName(rs.getString("name_1"));
 				stclVo.setpAge(rs.getInt("age_1"));
@@ -328,9 +370,35 @@ public class MypageDao extends DAO {
 				memtlVo.setLocation2(rs.getString("location2"));
 				memtlVo.setEmail(rs.getString("email"));
 				memtlVo.setPic(rs.getString("pic"));
-				memtlVo.setZoomin1(rs.getInt("zoomin1"));
-				memtlVo.setZoomin2(rs.getInt("zoomin2"));
+				//memtlVo.setZoomin1(rs.getInt("zoomin1"));
+				//memtlVo.setZoomin2(rs.getInt("zoomin2"));
 				// 나이 성별 넣어야함
+								
+				int birthYear = Integer.parseInt(String.valueOf(rs.getInt("zoomin1")).substring(0, 2));
+				Calendar cal = Calendar.getInstance();
+				int year = cal.get(Calendar.YEAR) - 2000;
+				int age;
+				if (birthYear > year) {
+					age = year + (100 - birthYear) + 1; // 1더하면 한국나이
+				} else {
+					age = year;
+				}
+				memtlVo.setAge(age);
+
+				// 성별 구하기!
+				String zoo2 = String.valueOf(rs.getInt("zoomin2")).substring(0, 1);
+				String gender;
+				if (zoo2.equals("1") || zoo2.equals("3")) {
+					gender = "남성";
+				} else {
+					gender = "여성";
+				}
+				memtlVo.setGender(gender);
+				
+				
+				
+				
+				
 				list.add(memtlVo);
 			}
 		} catch (SQLException e) {

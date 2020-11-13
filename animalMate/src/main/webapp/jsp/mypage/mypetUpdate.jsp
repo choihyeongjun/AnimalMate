@@ -45,7 +45,16 @@
 					</tr>
 					<tr>
 						<th>펫 종 이름</th>
-						<td><input type="text" id="type" name="type" value="${pet.type}"></td>
+							
+						<td>
+							<select id="type" name="type">
+								<option value="${pet.type}">${pet.type}</option>
+								<option value="고양이">고양이</option>
+								<option value="대형견">대형견</option>
+								<option value="중형견">중형견</option>
+								<option value="소형견">소형견</option>
+							</select>
+						</td>
 						<th>펫 세부분류</th>
 						<td><input type="text" id="detailType" name="detailType" value="${pet.detailType}"></td>
 					</tr>

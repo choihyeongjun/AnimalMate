@@ -18,7 +18,7 @@ public class SitterTradeCheckListVO {
 	private String pic;
 	private int zoomin1;
 	private int zoomin2;
-	private String age;
+	private int age;
 	private String gender;
 	
 	private String pCode;
@@ -164,11 +164,11 @@ public class SitterTradeCheckListVO {
 		this.zoomin2 = zoomin2;
 	}
 
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 

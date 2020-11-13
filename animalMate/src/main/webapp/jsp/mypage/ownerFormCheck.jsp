@@ -154,6 +154,9 @@
 	
 		<c:if test="${tbs.buyer ne sid}">
 			<div class="ownerFormCheckButton">
+				<div style="visibility: hidden;">
+					<input type="text" id="cc" name="cc" value="${tbs.code}">
+				</div><br>
 				<button type="submit">체크리스트 저장</button>
 			</div>
 		</c:if>

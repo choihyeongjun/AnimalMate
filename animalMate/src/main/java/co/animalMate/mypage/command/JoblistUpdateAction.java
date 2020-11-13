@@ -14,12 +14,14 @@ import co.animalMate.common.Action;
 import co.animalMate.common.FileRenamePolicy;
 import co.animalMate.common.FileUtil;
 import co.animalMate.vo.JoblistVO;
+import co.animalMate.vo.TradeBoardVO;
 
 public class JoblistUpdateAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 시터가 돌봐주세요 게시판에서 체크리스트에서 업무사진을 올리고 저장하는 처리		
+		MypageDao myDao = new MypageDao();
 		JoblistVO jobVo = new JoblistVO();
 
 		String[] comm = request.getParameterValues("comm");
@@ -47,7 +49,7 @@ public class JoblistUpdateAction implements Action {
 					
 					jobVo.setCode(Integer.parseInt(code[i]));
 					jobVo.setComm(comm[i]);
-					MypageDao myDao = new MypageDao();
+					myDao = new MypageDao();
 					myDao.updateJoblist(jobVo);
 				}
 			}
@@ -56,6 +58,12 @@ public class JoblistUpdateAction implements Action {
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
+		
+		//잡리스트 올리면 거래 상태가 '반려인 미확인'으로 변경
+		myDao = new MypageDao();
+		TradeBoardVO tbVo = new TradeBoardVO();
+		tbVo.setCode(Integer.parseInt(request.getParameter("cc")));
+		myDao.updateStatusJoblist(tbVo);
 
 		return "mytradeList.do";
 	}

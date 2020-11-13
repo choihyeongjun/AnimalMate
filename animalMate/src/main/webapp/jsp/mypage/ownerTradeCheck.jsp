@@ -132,8 +132,8 @@ function formCheck(){
 							<td><input type="radio" id="id" name="id" value="${suser.id}"></td>
 							<td><img src="${pageContext.request.contextPath}/images/pet_pic/${suser.pic}" alt="사진을 넣어주세요" width="100px" height="100px"></td>
 							<td>${suser.name}</td>
-							<td>DBvalue</td>
-							<td>DBvalue</td>
+							<td>${suser.age}</td>
+							<td>${suser.gender}</td>
 							<td>DBvalue</td>
 							<td>DBvalue</td>
 							<td>					
