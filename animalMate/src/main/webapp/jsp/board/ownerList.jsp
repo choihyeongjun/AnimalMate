@@ -55,12 +55,12 @@ $(()=>{
 	<br>
 	
 	<div>
-		<form class="frm" id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerListSearch.do">
+		<form class="frm" id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerList.do">
 		<table class="tsearch">
 		<tr>
 			<td class="ttitle" colspan="2">분류</td> 
 			<td class="tbottom" colspan="10">
-				<select class="typein" id="type" name="type">
+				<select class="typein" id="ttype" name="ttype">
 					<option>선택하세요</option>
 					<option value="고양이">고양이</option>
 					<option value="대형견">대형견</option>
