@@ -48,6 +48,10 @@ function pwCheck(){
 	<div class="pw_reset-main" align="center">
 		 <form class="join_form" action="${pageContext.request.contextPath}/resetPw.do" method="post" 
 		 onsubmit="return pwCheck()">
+		  <!-- ID -->
+			 <div>
+                  <input type="hidden;" id="id" class="int" name="id" maxlength="20" value="${param.id}">             
+              </div> 
 		  <!-- PW1 -->
 			 <div>
                     <h3>비밀번호</h3>
