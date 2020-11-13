@@ -14,7 +14,6 @@ public class FindPwAction implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		MemberDao dao = new MemberDao();
 		MemberVO vo = new MemberVO();
-		HttpSession session = request.getSession(false);
 		
 		 vo.setId(request.getParameter("id"));
 		 vo.setName(request.getParameter("name"));
@@ -32,9 +31,7 @@ public class FindPwAction implements Action {
 			return page;
 		}else {
 			
-			session.setAttribute("id", vo.getId());
-			session.setAttribute("name", vo.getName());
-			session.setAttribute("email", vo.getEmail());
+			request.setAttribute("vo", vo);
 		}
 		return page;
 	}
