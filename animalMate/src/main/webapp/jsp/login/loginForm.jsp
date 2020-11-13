@@ -26,7 +26,7 @@ function formCheck() {
 	}
 	
 	if(pw.value == ""){
-		alert("패스워드를 입력하세요");
+		alert("비밀번호를 입력하세요");
 		pw.focus();
 		return false;
 	}

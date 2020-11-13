@@ -14,12 +14,10 @@ public class ResetPwAction implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		MemberDao dao = new MemberDao();
 		MemberVO vo = new MemberVO();
-		HttpSession session = request.getSession(false);
 		
 		 vo.setPw(request.getParameter("pw"));
 
 		 dao.resetPw(vo);
-		 session.invalidate();
 		 return null;
 	}
 }

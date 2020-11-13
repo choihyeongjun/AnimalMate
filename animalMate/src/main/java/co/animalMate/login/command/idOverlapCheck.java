@@ -1,8 +1,9 @@
 package co.animalMate.login.command;
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import co.animalMate.common.Action;
 import co.animalMate.login.dao.MemberDao;
@@ -14,24 +15,22 @@ public class idOverlapCheck implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		MemberDao dao = new MemberDao();
 		MemberVO vo = new MemberVO();
-		HttpSession session = request.getSession(false);
-		
-		
+
+
+		int result = 0;
 		vo.setId(request.getParameter("id"));
-		
-		String msg1 = "";
-		String page;
-		vo = dao.findPw(vo);
-		String id = vo.getId();
-		page = "jsp/login/overlapIdCheckResult.jsp";
-		if(vo.getId().equals(request.getParameter("id"))==false) {
-			msg1 = "아이디가 일치하지 않습니다.";
-			page= "jsp/login/overlapIdCheck.jsp";
-			return page;
-		}else {
-			page = "jsp/login/overlapIdCheckResult.jsp?id="+id;
+		vo = dao.select(vo);
+		if(vo==null) {
+			result = 1;
 		}
-		return page;
+		
+		try {
+			response.getWriter().print(result);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

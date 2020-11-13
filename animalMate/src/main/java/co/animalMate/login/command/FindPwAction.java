@@ -21,32 +21,21 @@ public class FindPwAction implements Action {
 	     vo.setEmail(request.getParameter("email"));
 		
 		String page;
-		String msg = "";
-
 		vo = dao.findPw(vo);
 		page = "jsp/login/pwReset.jsp";
 		
-		if(vo.getId().equals(request.getParameter("id"))==false) {
-			msg = "일치하는 회원 정보가 없습니다.";
+		if(vo.getId()!=(request.getParameter("id")) && 
+		vo.getName()!=(request.getParameter("name")) &&
+			vo.getEmail()!=(request.getParameter("email"))) {
+			
 			page= "jsp/login/findpw.jsp";
-		}else if
-		(vo.getName().equals(request.getParameter("name"))==false){
-			msg = "일치하는 회원 정보가 없습니다.";
-			page= "jsp/login/findpw.jsp";
-		}else if
-			(vo.getEmail().equals(request.getParameter("email"))==false){
-			msg = "일치하는 회원 정보가 없습니다.";
-			page= "jsp/login/findpw.jsp";
+			return page;
 		}else {
+			
 			session.setAttribute("id", vo.getId());
-			session.setAttribute("pw", vo.getPw());
 			session.setAttribute("name", vo.getName());
 			session.setAttribute("email", vo.getEmail());
-			page= "jsp/login/pwReset.jsp";
 		}
-	
-		request.setAttribute("msg", msg);
-		request.setAttribute("vo", vo);
 		return page;
 	}
 }

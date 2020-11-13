@@ -8,10 +8,46 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/joinform.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-function id_input_check(){
-	window.open("${pageContext.request.contextPath}/jsp/login/overlapIdCheck.jsp", "아이디 중복 확인", "width=600, height=400"); 
-}
+var chkyn = 0;
+$(function(){
+	$("#id").change(function(){
+		chkyn = 0;
+		$("#error_msg").text("");
+		
+	})
+	
+	$("#idchk").click(function(){
+	var id = $("#id").val();
+	
+	$.ajax({
+		async:true,
+		url:'${pageContext.request.contextPath}/ajax/idoverlapcheck.do',
+		type: 'get',
+		data: {id: id},
+		dataType:'json',
+		error:function(error){
+			alert("error :" + error);
+		},
+		success:function(data){
+			chkyn = data;
+			if(data == 0 ){
+				$("#error_msg").text("사용중인 아이디입니다.");
+				$("#error_msg").css("color","red");
+				$("btn_submit").attr("disabled",true);
+				id.focus();
+			}else{
+				$("#error_msg").text("사용가능한 아이디입니다.");
+				$("#error_msg").css("color","blue");
+				$("btn_submit").attr("disabled",false);
+				id.focus();
+				}
+			}
+		});
+	});
+});
 
+function formCheck(){
+	
 	var id = document.querySelector('#id');
 	var pw1 = document.querySelector('#pw1');
 	var pw2= document.querySelector('#pw2');
@@ -25,23 +61,37 @@ function id_input_check(){
 	var location2 = document.querySelector('#location2');
 	
 	
-function pwCheck(){
-	if(pw1.value == "" || pw1.value == "null"){
+	if(id.value == ""){
+		alert("아이디를 입력하세요");
+		id.focus();
+		return false;
+	}
+	
+	if(chkyn == 0){
+		alert("아이디 중복체크를 해주세요.");
+		return false;
+	}
+	if(id.value.search(/\s/) != -1){
+		alert("비밀번호는 빈 칸을 포함 할 수 없습니다.");
+		return false;
+	}
+	
+	if(pw1.value == ""){
 		alert("비밀번호를 입력하세요");
+		pw1.focus();
 		return false;
 	}
-	if(pw1.value.length<6){
+	if(pw1.value.length<8){
 		alert('비밀번호는 최소 8자리 이상 입력하세요');
-		return false;
-	}
-	if(pw1.value <"0" || id.value>"9" && id.value<"A" || id.value>"Z" && id.value <"a" || id.value >"z"){
-		alert("영문 및 숫자만 사용 가능합니다.");
+		pw1.value ="";
+		pw1.focus();
 		return false;
 	}
 	if(pw1.value.search(/\s/) != -1){
 		alert("비밀번호는 빈 칸을 포함 할 수 없습니다.");
 		return false;
 	}
+	
 	if(pw2.value == "" || pw2.value =="null"){
 		alert("비밀번호 확인칸을 입력 해주세요")
 		return false;
@@ -50,30 +100,16 @@ function pwCheck(){
 		alert("비밀번호가 일치하지 않습니다.");
 		return false;
 	}
-}
-
-function nameCheck(){
 
 	if(name.value == "" || name.value == "null"){
 		alert("이름을 입력하세요");
 		return false;
 	}
-	if(name.value <"가" || id.value>"힣" && id.value<"A" || id.value>"Z" && id.value <"a" || id.value >"z"){
-		alert("한글 및 영문 대,소문자를 사용하세요")
-		return false;
-	}
-}
-
-function emailCheck(){
-	var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/;
 	
-	if(email.value != emailPattern){
-		alert("올바른 형식의 이메일이 아닙니다.")
+	if(nname.value == "" || nname.value == "null"){
+		alert("닉네임을 입력하세요");
 		return false;
-	}
-}
-
-function zoominCheck(){
+	}	
 	if(zoomin1.value == "" || zoomin1.value == "null"){
 		alert("주민등록번호를 입력하세요");
 		return false;
@@ -82,28 +118,22 @@ function zoominCheck(){
 		alert("주민등록번호를 입력하세요");
 		return false;
 	}
-	if(zoomin1.value <"0" || zoomin1.value >"9"){
-		alert("올바른 주민등록번호 양식이 아닙니다.");
-		return false;
-	}
-	if(zoomin2.value <"0" || zoomin2.value >"9"){
-		alert("올바른 주민등록번호 양식이 아닙니다.");
-		return false;
-	}
-}
-function telCheck(){
-	var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
 	
 	if(tel.value == "" || tel.value == "null"){
 		alert("휴대폰 번호를 입력하세요");
 		return false;
 	}
-	if(tel.value != isPhoneNum){
-		alert("올바른 휴대폰 번호 양식이 아닙니다.");
+	if(location1.value == "" || location1.value == "null"){
+		alert("주소를 입력하세요");
 		return false;
 	}
+	if(location2.value == "" || location2.value == "null"){
+		alert("상세주소를 입력하세요");
+		return false;
+	}
+	return false;
 }
-
+	
 </script>
 </head>
 <body>
@@ -116,7 +146,7 @@ function telCheck(){
 	</header>
 <!-- 회원가입 입력창 -->
 
-<form class="join_form" action="${pageContext.request.contextPath}/joinInsert.do" method="post" onsubmit="return formCheck()">
+<form class="join_form" action="${pageContext.request.contextPath}/joinInsert.do" method="post" onsubmit="return formCheck();">
 
 	 <!-- wrapper -->
         <div id="wrapper">
@@ -131,7 +161,8 @@ function telCheck(){
                     <span class="box int_id">
                         <input type="text" id="id" class="int" maxlength="20"  name="id" placeholder="아이디 입력">
                       	<div align="right">
-                        <button type="button" class="id_input_check" onclick="id_input_check()" >중복확인</button>
+                      	<div align="left" id="error_msg"></div>
+                        <button type="button" id="idchk" class="id_input_check">중복확인</button>
                   		</div>
                     </span>
                 </div>
@@ -140,14 +171,14 @@ function telCheck(){
                 <div>
                     <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="text" id="pw1" class="int" maxlength="20" name="pw" placeholder="비밀번호 (8~20자리)">             
+                        <input type="password" id="pw1" class="int" maxlength="20" name="pw" placeholder="비밀번호 (8~20자리)">             
                     </span>
                 </div>
                 
 		    <!-- PW2 -->
                 <div>
                     <span class="box int_pass_check">
-                        <input type="text" id="pw2" class="int" maxlength="20" name="pw2"placeholder="비밀번호 재입력" disable;>
+                        <input type="password" id="pw2" class="int" maxlength="20" name="pw2"placeholder="비밀번호 재입력" >
                     </span>
                 </div>
                 
@@ -170,7 +201,7 @@ function telCheck(){
 			 <h3 class="join_title"><label for="zoomin">주민등록번호 </label></h3>
 				<span class="box int_zoomin">
 					<input type="text" class="zoo" name="zoomin1" id="zoomin1" maxlength="6"> -
-					<input type="text" class="zoo" name="zoomin2" id="zoomin2" maxlength="7">
+					<input type="password" class="zoo" name="zoomin2" id="zoomin2" maxlength="7">
 				</span>
 				<div align="right">
 			 <button type="button" class="id_input_check">실명인증</button>
@@ -189,7 +220,7 @@ function telCheck(){
                 <div>
                     <h3 class="join_title"><label for="phoneNo">휴대전화</label></h3>
                     <span class="box int_mobile">
-                        <input type="text" id="mobile" class="int" maxlength="20" name="tel" placeholder="전화번호 입력">
+                        <input type="tel" id="mobile" class="int" maxlength="20" name="tel" placeholder="전화번호 입력">
                     </span>   
                 </div>
 		
@@ -211,8 +242,7 @@ function telCheck(){
 		<button type="button" id="btn_cancel" onclick="window.location.href='${pageContext.request.contextPath}/main.do'">취소</button> <!-- 메인 페이지로이동 -->
 	</div><!-- 가입&취소 버튼 끝 -->
 	 		</div> 
-           <!-- content-->
-         </div> 
+           <!-- content-->         </div> 
         <!-- wrapper -->
 	</form>
 </body>
