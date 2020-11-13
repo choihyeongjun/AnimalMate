@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import co.animalMate.board.dao.MypageDao;
-import co.animalMate.board.dao.PetDao;
 import co.animalMate.common.Action;
 import co.animalMate.vo.MemberVO;
-import co.animalMate.vo.PetVO;
 import co.animalMate.vo.TradeBoardVO;
 import co.animalMate.vo.TradeListVO;
 
@@ -40,6 +38,21 @@ public class MytradeList implements Action {
 		list = myDao.selectUserTrades(tlVo);
 		request.setAttribute("tbs", list);
 		request.setAttribute("user", memVo);
+		
+		//돌봄 예약
+		myDao = new MypageDao();
+		TradeBoardVO tbVo = new TradeBoardVO();
+		tbVo.setSeller(id);
+		tbVo = myDao.selectMytradeSellerCount(tbVo);
+		request.setAttribute("countSell", tbVo.getCode());
+		
+		//맡김 예약
+		myDao = new MypageDao();
+		tbVo = new TradeBoardVO();
+		tbVo.setBuyer(id);
+		tbVo = myDao.selectMytradeBuyerCount(tbVo);
+		request.setAttribute("countBuy", tbVo.getCode());
+		
 		return "jsp/mypage/mytradeList.jsp";
 	}
 

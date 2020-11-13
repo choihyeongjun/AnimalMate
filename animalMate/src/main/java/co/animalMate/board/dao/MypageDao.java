@@ -48,11 +48,48 @@ public class MypageDao extends DAO {
 	private final String SELECT_JOBLIST = "SELECT * FROM JOBLIST WHERE CODE = ?";
 	private final String UPDATE_JOBLIST = "UPDATE JOBLIST SET PIC = ? WHERE CODE = ? AND COMM = ?";
 	private final String UPDATE_TRADE_USER_POINT = "UPDATE MEMBERS SET POINT = POINT - (SELECT PRICE FROM TRADEBOARD WHERE CODE = ?) WHERE ID = ?";
-	private final String SELECT_TRADE_USER_POINT = "SELECT POINT FROM MEMBERS WHERE = ?";
-	
-			
+	private final String SELECT_MYTRADE_SELLER = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE SELLER = ? AND STATUS != '거래 완료'";
+	private final String SELECT_MYTRADE_BUYER = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE BUYER = ? AND STATUS != '거래 완료'";
 
-	// User 거래 리스트,동물 단건 조회
+	private final String SELECT_TRADE_USER_POINT = "SELECT POINT FROM MEMBERS WHERE = ?";
+
+	// User 동물 맡기는 거래 진행 수
+	public TradeBoardVO selectMytradeBuyerCount(TradeBoardVO tbVo) {
+		try {
+			psmt = conn.prepareStatement(SELECT_MYTRADE_BUYER);
+			psmt.setString(1, tbVo.getBuyer());
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				tbVo = new TradeBoardVO();
+				tbVo.setCode(rs.getInt("COUNT(CODE)"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return tbVo;
+	}
+
+	// User 동물 돌보는 거래 진행 수
+	public TradeBoardVO selectMytradeSellerCount(TradeBoardVO tbVo) {
+		try {
+			psmt = conn.prepareStatement(SELECT_MYTRADE_SELLER);
+			psmt.setString(1, tbVo.getSeller());
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				tbVo = new TradeBoardVO();
+				tbVo.setCode(rs.getInt("COUNT(CODE)"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return tbVo;
+	}
+
+	// User 돈체크
 	public TradeListVO selectUserPoint(TradeListVO tlVo) {
 		try {
 			psmt = conn.prepareStatement(SELECT_TRADE_USER_POINT);
@@ -68,8 +105,8 @@ public class MypageDao extends DAO {
 			close();
 		}
 		return tlVo;
-	}		
-			
+	}
+
 	// 체크리스트 시터가 올린 사진들 업데이트
 	public int updateJoblist(JoblistVO jobVo) {
 		int n = 0;
@@ -84,7 +121,7 @@ public class MypageDao extends DAO {
 		}
 		return n;
 	}
-	
+
 	// 체크리스트 출력
 	public List<JoblistVO> selectJoblist(JoblistVO jobVo) {
 		List<JoblistVO> list = new ArrayList<JoblistVO>();
@@ -151,7 +188,7 @@ public class MypageDao extends DAO {
 			psmt.setString(1, atId);
 			psmt.setInt(2, atCode);
 			n = psmt.executeUpdate();
-			
+
 			psmt = conn.prepareStatement(UPDATE_TRADE_USER_POINT);
 			psmt.setInt(1, atCode);
 			psmt.setString(2, atId);
@@ -230,7 +267,7 @@ public class MypageDao extends DAO {
 			psmt.setString(1, atId);
 			psmt.setInt(2, atCode);
 			n = psmt.executeUpdate();
-			
+
 			psmt = conn.prepareStatement(UPDATE_TRADE_USER_POINT);
 			psmt.setInt(1, atCode);
 			psmt.setString(2, atId);

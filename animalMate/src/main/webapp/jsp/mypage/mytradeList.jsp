@@ -15,14 +15,14 @@
 			<div>
 				<dl>
 					<dt>돌봄 예약</dt>
-					<dd>DBvalue 건</dd>
+					<dd>${countSell} 건</dd>
 				</dl>
 
 			</div>
 			<div>
 				<dl>
 					<dt>맡김 예약</dt>
-					<dd>DBvalue 건</dd>
+					<dd>${countBuy} 건</dd>
 				</dl>
 			</div>
 			<div>
