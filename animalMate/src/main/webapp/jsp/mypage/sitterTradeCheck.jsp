@@ -14,7 +14,7 @@ function formCheck(){
 		return false;
 	}
 	return true;   
-}
+} 
 </script>
 </head>
 <body>
