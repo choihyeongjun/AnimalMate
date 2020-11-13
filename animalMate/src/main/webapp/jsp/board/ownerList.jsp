@@ -86,9 +86,11 @@ $(()=>{
 			<td rowspan="2">
 				<button class="tbtn" type="submit">검색</button>
 			</td>
-			<td rowspan="2">
-				<button class="regiBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글등록</button>
-			</td>
+			<c:if test="${sessionScope.id ne null}">
+				<td rowspan="2">
+					<button class="regiBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글등록</button>
+				</td>
+			</c:if>
 		</tr>
 		<tr>
 		<td class="ttitle" colspan="2">돌봄날짜</td>

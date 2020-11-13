@@ -69,9 +69,11 @@ $(()=>{
 			<td>
 				<button class="searchBtn" type="submit">검색하기</button>
 			</td>
-			<td>
-				<button class="searchBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/sitterForm.do'">글등록</button>
-			</td>
+			<c:if test="${sessionScope.id ne null}">
+				<td>
+					<button class="searchBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/sitterForm.do'">글등록</button>
+				</td>
+			</c:if>
 		</tr>
 		</table>
 	</form>
