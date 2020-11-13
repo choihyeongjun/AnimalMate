@@ -17,13 +17,13 @@
 .pagination a:hover:not(.active) { background-color: #ddd;}
 .pagination a, li.active {border-radius: 5px;border-bottom-left-radius: 5px;}
 a{color: red;font-weight: bold;}
-.Btn{border-radius: 4px;width: 70px; height: 25px;background-color: #5371ac;color: white;}
+.Btn{border-radius: 4px;width: 70px; height: 30px;background-color: #ff914b;color: white;}
 .title{margin: 70px 0 20px 470px;font-weight: bold;}
-.area1 {    background-color: #d2deed;border-radius: 8px;padding: 30px 30px 40px 30px;
+.area1 { border-radius: 8px;padding: 30px 30px 40px 30px;
 }
 button {background-color: rgb(255,136,38); font-weight:bold; color : black;border : none;}
-.tr1 {border-top: 3px solid #5371ac;}
-.sel {border: 3px solid #5371ac;border-radius: 4px;height: 29px;}
+.tr1 {border-top: 3px solid #ff914b;}
+.sel {border: 3px solid #ff914b;border-radius: 4px;height: 29px;}
 .table {font-size:16px;font-weight: bold;}
 .table td, table th {width : 10px;}
 </style>

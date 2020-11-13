@@ -6,16 +6,16 @@
 <title>Web Socket Example</title>
 <style>
 /* 여러 채팅창 간의 간격과 배열 위치*/
-.float-left {float: left; margin: 25px 175px 55px 15px;border: 5px solid #c6470b;padding: 30px;border-radius: 10px;}
-.console{border: 5px solid #ff8826; border-radius: 10px;font-size: 13px;font-weight: bold;color: black;height: 200px;}
+.float-left {float: left; margin: 25px 175px 55px 15px;padding: 30px;border-radius: 10px;background-color: #ff8826;}
+.console{border: 5px solid #ff8826; border-radius: 10px;font-size: 13px;font-weight: bold;color: black;height: 200px;background-color: white;font-family: unset;}
 .message{width: 340px;height: 20px;border: 4px solid #ff8826; border-radius: 10px;}
-.sendBtn {height: 27px;width: 55px; background-color: #FF7726;border-radius: 10px;border: none;font-size: 15px;}
+.sendBtn {height: 27px;width: 55px; background-color: #ffdb2b;border-radius: 10px;border: none;font-size: 15px;font-weight: bold;}
 .templage {border: 1px solid black;}
 .message:focus {outline:none;}
-.atitle {    margin: 50px 0 70px 811px;display: inline;color: #692707;}
+.atitle {margin: 50px 0 70px 811px;display: inline;color: #692707;}
 .aimg {width : 70px; height: 70px;margin-left: 22px;}
 .titlediv {margin-bottom: 30px;}
-
+html {background-color: #f3b600db; padding-left: 120px;}
 </style>
 </head>
 <body>

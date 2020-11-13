@@ -10,23 +10,31 @@
 <title>Insert title here</title>
 <style>
 /* Box */
-.thumbnails {display: flex;flex-wrap: wrap;margin: 0 auto;}
-.thumbnails .box {margin: 0 1em 2em 1em;width: 20%;}
-/* Box */
-.box {border-radius: 10px;background: #FF8826;text-align: center;font-size: 10px;}
-.box dt, dd {color: white;float: left;width: 50%;}
-.image.fit {display: block;width: 100%;height: 150px;border-radius: 10px 10px 0 0;border: 3.2px solid #FF8826;}
-/* Image */
-.image.fit {display: block;margin: 0 0 2em 0;width: 100%;height : 150px;}
-/* 검색창과 썸네일 간격  */
-#main {padding: 4em 0 2em 0;}
-.code_dl {display: none;}
-.boardtitle {margin: 40px 0 41px 460px;}
-.tsearch {margin: 10px 0 0 200px;}
-.tsearch td{padding-right: 13px;}
-.searchBtn {height: 43px;border-radius: 10px;}
-.boardimg{width: 1110px;height: 140px;}
-.frm {margin-top: 50px;}
+	.thumbnails {display: flex;flex-wrap: wrap;margin: 0 auto;}
+	.thumbnails .box {margin: 0 21px 2em 19px;width: 330px;height: 430px;}
+	/* Box */
+	.box {border-radius: 10px;background: #FF8826;text-align: center;font-size: 14px;}
+	.box dt, dd {color: white;float: left;width: 50%;text-shadow: 1px 1px 1px #00000073;font-weight: bold;}
+	/* Image */
+	.image.fit {display: block;width: 100%;height: 240px;border-radius: 10px 10px 10px 10px;border: 3.2px solid #FF8826;}
+	/* 검색창과 썸네일 간격  */
+	#main {padding: 4em 0 2em 0;}
+	.code_dl {display: none;}
+	.boardtitle {margin: 40px 0 41px 460px;}
+	.tsearch {width: 1000px;}
+	.boardimg{width: 1110px;height: 140px;}
+	.frm {margin: 50px 0 0 71px;}
+	.datein {position:relative;float:left;}
+	.minPrice {position:relative;float:left;width: 161px;}
+	span{position:relative;float:left;}
+	.tbtn {background-color: rgb(255,136,38);font-weight: bold;color: black;
+	    border: none;width: 100px; border-radius: 4px; height: 30px; margin-left: 10px;}
+	 .regiBtn {background-color: rgb(255,136,38);font-weight: bold;color: black;
+	    border: none;width: 100px; border-radius: 4px; height: 30px; margin-left: 10px;}
+	.tbtn1 {background-color: rgb(179 173 167); font-weight: bold;color: black;
+	    border: none;width: 100px; border-radius: 4px; height: 30px;margin-left: 10px;}
+	.ttitle {width: 80px;text-align: center;font-weight: bold;}
+	.ttitle td {margin-bottom: 20px;}
 </style>
 <script>
 $(()=>{
@@ -49,7 +57,7 @@ $(()=>{
 		<table class="tsearch">
 		<tr>
 			<td class="ttitle" colspan="2">펫수용수</td> 
-			<td class="tbottom" colspan="10">
+			<td class="tbottom" colspan="4">
 				<c:if test="${maxp == null}">
 					<input type="number" max="5" min="1" value=1 name="maxp">마리 이상
 				</c:if>
@@ -57,7 +65,13 @@ $(()=>{
 					<input type="number" max="5" min="1" value=${maxp} name="maxp">마리 이상
 				</c:if>
 			</td>
-			<td class="ttitle" colspan="2">거래상태</td>
+			<td class="ttitle" colspan="2">돌봄날짜</td>
+		<td class="tbottom" colspan="10">
+			<input class="datein" type="date" id="sDate" name="sDate" <c:if test="${param.sDate != null}">value="${param.sDate}"</c:if>>
+			<span>~</span>
+			<input class="datein" type="date" id="eDate" name="eDate" <c:if test="${param.eDate != null}">value="${param.eDate}"</c:if>>
+		</td>
+		<td class="ttitle" colspan="2">거래상태</td>
 			<td class="tbottom" colspan="4">
 				<select class="statusin" id="status" name="status">
 					<option>선택하세요</option>
@@ -69,9 +83,12 @@ $(()=>{
 					<option value="거래 완료" <c:if test="${status == '거래 완료'}">selected="selected"</c:if>>거래 완료</option>
 				</select>
 			</td>
-			<td class="ttitle" colspan="2">돌봄지역<td> 
-			<td class="tbottom" colspan="7">
-				<select id="location1" name="location1" class="typein">
+		</tr>
+		<tr>
+		
+			<td class="ttitle" colspan="1">돌봄지역<td> 
+			<td class="tbottom" colspan="4">
+				<select id="location1" name="location1" class="loactionin">
 					<option>선택하세요</option>
 					<option value="서울" <c:if test="${location1 == '서울'}">selected="selected"</c:if>>서울</option>
 					<option value="경기" <c:if test="${location1 == '경기'}">selected="selected"</c:if>>경기</option>
@@ -93,34 +110,21 @@ $(()=>{
 					<option value="제주" <c:if test="${location1 == '제주'}">selected="selected"</c:if>>제주</option>
 				</select>	
 			</td>
-			<td rowspan="2">
+		<td class="ttitle" colspan="1">돌봄금액</td>
+		<td class="tbottom" colspan="11">
+			<input class="minPrice" id="minPrice" name="minPrice" type="number" step="1000" placeholder="최소금액"<c:if test="${param.minPrice != null}">value="${param.minPrice}"</c:if>>
+			<span>~</span>
+			<input class="minPrice" id="maxPrice" name="maxPrice" type="number" step="1000" placeholder="최대금액"<c:if test="${param.maxPrice != null}">value="${param.maxPrice}"</c:if>>
+		</td>
+		<td colspan="4">
 				<button class="tbtn" type="submit">검색</button>
+				<button class="tbtn1" type="reset">검색취소</button>
 			</td>
 			<c:if test="${sessionauthor == 'usersitter'}">
 				<td rowspan="2">
 					<button class="regiBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글등록</button>
 				</td>
 			</c:if>
-		</tr>
-		<tr>
-		<td class="ttitle" colspan="2">돌봄날짜</td>
-		<td class="tbottom" colspan="10">
-			<input class="datein" type="date" id="sDate" name="sDate" <c:if test="${param.sDate != null}">value="${param.sDate}"</c:if>>
-			<span>~</span>
-			<input class="datein" type="date" id="eDate" name="eDate" <c:if test="${param.eDate != null}">value="${param.eDate}"</c:if>>
-		</td>
-		<td class="ttitle" colspan="2">돌봄시간</td>
-		<td class="tbottom" colspan="4">
-			<input class="timein" type="time" id="sTime" name="sTime">
-			<span>~</span>
-			<input class="timein" type="time" id="eTime" name="eTime">
-		</td>
-		<td class="ttitle" colspan="2">돌봄금액</td>
-		<td class="tbottom" colspan="10">
-			<input class="minPrice" id="minPrice" name="minPrice" type="number" step="1000" placeholder="최소금액"<c:if test="${param.minPrice != null}">value="${param.minPrice}"</c:if>>
-			<span>~</span>
-			<input class="minPrice" id="maxPrice" name="maxPrice" type="number" step="1000" placeholder="최대금액"<c:if test="${param.maxPrice != null}">value="${param.maxPrice}"</c:if>>
-		</td>
 		</tr>
 		</table>
 	</form>	
