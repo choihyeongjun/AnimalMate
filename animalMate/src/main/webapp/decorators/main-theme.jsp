@@ -139,7 +139,7 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
     <hr/>
     
     <div id="_chatbox" style="display: none">
-    <textarea id="messageTextArea" rows="10" cols="30"></textarea>
+    <textarea id="messageTextArea" rows="10" cols="30" readonly="readonly"></textarea>
     <br />
 	<form id=box>
 		<!-- 유저 명을 입력하는 텍스트 박스(기본 값은 anonymous(익명)) -->
