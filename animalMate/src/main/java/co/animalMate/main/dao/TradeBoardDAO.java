@@ -217,7 +217,7 @@ public class TradeBoardDAO extends DAO {
 			// 인서트 쿼리
 			psmt = conn.prepareStatement("INSERT INTO TRADEBOARD "
 					+ "(CODE, SELLER, TITLE, TTIME, PRICE, COMM, SDATE, EDATE, STIME, ETIME, TTYPE, LOCATION1, LOCATION2) VALUES "
-					+ "(?, ?, ?, SYSDATE, ?, ?, ?, ?, ?, ?, '돌봐주세요', ?, ?)");
+					+ "(?, ?, ?, SYSDATE, ?, ?, ?, ?, ?, ?, '돌봐줄게요', ?, ?)");
 			psmt.setInt(1, vo.getCode());
 			psmt.setString(2, vo.getSeller());
 			psmt.setString(3, vo.getTitle());

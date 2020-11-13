@@ -92,7 +92,7 @@ $(()=>{
 						<div>
 							<dl>
 								<dt>펫수용수</dt>
-								<dd>${v[1].maxP}</dd>
+								<dd>${v[1].maxP}마리</dd>
 							</dl>
 							<dl>
 								<dt>돌봄지역</dt>
