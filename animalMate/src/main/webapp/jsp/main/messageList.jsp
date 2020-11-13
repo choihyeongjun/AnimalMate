@@ -65,9 +65,17 @@
 			} 
 		})
 		
-		$("#submitBtn").on({
+		//답장 보내기 버튼
+		$("#submitBtn2").on({
 			"click" : function(){
-				messageFrm.submit();
+				$("#messageFrm2").submit();
+			}
+		})
+		
+		//메세지 보내기 버튼
+		$("#submitBtn3").on({
+			"click" : function(){
+				$("#messageFrm3").submit();
 			}
 		})
 		
@@ -194,7 +202,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="reportDiv" align="center">
-						<form id="messageFrm" name="messageFrm" method="post"
+						<form id="messageFrm2" name="messageFrm" method="post"
 							action="${pageContext.request.contextPath}/submitMessage.do">
 							<table class="reportTd">
 								<tr>
@@ -210,7 +218,7 @@
 								<tr>
 									<td class="col3_comm">내용</td>
 									<td><textarea rows="20" cols="50" class="col3_comm"
-											id="comm" name="comm"></textarea></td>
+											name="comm"></textarea></td>
 								</tr>
 							</table>
 							<br>
@@ -218,7 +226,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" id="submitBtn" class="btn btn-primary">보내기</button>
+					<button type="submit" id="submitBtn2" class="btn btn-primary submitBtn">보내기</button>
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">취소</button>
 				</div>
@@ -241,7 +249,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="reportDiv" align="center">
-						<form id="messageFrm" name="messageFrm" method="post"
+						<form id="messageFrm3" name="messageFrm3" method="post"
 							action="${pageContext.request.contextPath}/submitMessage.do">
 							<table class="reportTd">
 								<tr>
@@ -257,7 +265,7 @@
 								<tr>
 									<td class="col3_comm">내용</td>
 									<td><textarea rows="20" cols="50" class="col3_comm"
-											id="comm" name="comm"></textarea></td>
+											name="comm"></textarea></td>
 								</tr>
 							</table>
 							<br>
@@ -265,7 +273,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" id="submitBtn" class="btn btn-primary">보내기</button>
+					<button type="submit" id="submitBtn3" class="btn btn-primary submitBtn">보내기</button>
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">취소</button>
 				</div>

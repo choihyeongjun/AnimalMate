@@ -7,15 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>보낸쪽지함</title>
-<script type="text/javascript">
-	$(() => {
-		$("#testBtn").on({
-			"click": function() {
-				history.back();
-			}
-		})
-	});
-</script>
 <style>
 .pagination, li.active, .pagination li {
 	display: inline-block;
@@ -89,6 +80,13 @@
     					$("#receiveID").val(msg.receive);
     				}
 				})
+			}
+		})
+		
+		//메세지 보내기 버튼
+		$("#submitBtn2").on({
+			"click" : function(){
+				$("#messageFrm2").submit();
 			}
 		})
 	})
@@ -196,7 +194,7 @@
 				</div>
 				<div class="modal-body">
 					<div class="reportDiv" align="center">
-						<form id="messageFrm" name="messageFrm" method="post"
+						<form id="messageFrm2" name="messageFrm" method="post"
 							action="${pageContext.request.contextPath}/submitMessage.do">
 							<table class="reportTd">
 								<tr>
@@ -220,7 +218,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" id="submitBtn" class="btn btn-primary">보내기</button>
+					<button type="submit" id="submitBtn2" class="btn btn-primary">보내기</button>
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">취소</button>
 				</div>
