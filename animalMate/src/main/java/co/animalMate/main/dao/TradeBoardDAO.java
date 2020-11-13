@@ -85,7 +85,7 @@ public class TradeBoardDAO extends DAO {
 		return list;
 	}
 
-	// id로 select하기
+	// sellerID로 거래 완료된 것들 select하기
 	public List<TradeBoardVO> selectById(TradeBoardVO vo) {
 		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
 		try {
@@ -95,6 +95,88 @@ public class TradeBoardDAO extends DAO {
 			while (rs.next()) {
 				vo = new TradeBoardVO();
 				vo.setCode(rs.getInt("code"));
+				vo.setComm(rs.getString("code"));
+				vo.setEtime(rs.getString("etime"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setLocation2(rs.getString("location2"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setSeller(rs.getString("seller"));
+				vo.setBuyer(rs.getString("buyer"));
+				vo.setStatus(rs.getString("status"));
+				vo.setStime(rs.getString("stime"));
+				vo.setTitle(rs.getString("title"));
+				vo.setTtime(rs.getString("ttime"));
+				vo.setTtype(rs.getString("ttype"));
+				vo.setSdate(rs.getString("sdate"));
+				vo.setEdate(rs.getNString("edate"));
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return list;
+	}
+	
+	// sellerID로  select하기
+		public List<TradeBoardVO> selectBySeller(TradeBoardVO vo) {
+			List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
+			try {
+				psmt = conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE SELLER = ?");
+				psmt.setString(1, vo.getSeller());
+				rs = psmt.executeQuery();
+				while (rs.next()) {
+					vo = new TradeBoardVO();
+					vo.setCode(rs.getInt("code"));
+					vo.setComm(rs.getString("code"));
+					vo.setEtime(rs.getString("etime"));
+					vo.setLocation1(rs.getString("location1"));
+					vo.setLocation2(rs.getString("location2"));
+					vo.setPrice(rs.getInt("price"));
+					vo.setSeller(rs.getString("seller"));
+					vo.setBuyer(rs.getString("buyer"));
+					vo.setStatus(rs.getString("status"));
+					vo.setStime(rs.getString("stime"));
+					vo.setTitle(rs.getString("title"));
+					vo.setTtime(rs.getString("ttime"));
+					vo.setTtype(rs.getString("ttype"));
+					vo.setSdate(rs.getString("sdate"));
+					vo.setEdate(rs.getNString("edate"));
+					list.add(vo);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return list;
+		}
+	
+	// buyerID로 select하기
+	public List<TradeBoardVO> selectByBuyer(TradeBoardVO vo) {
+		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
+		try {
+			psmt = conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE BUYER = ?");
+			psmt.setString(1, vo.getBuyer());
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				vo = new TradeBoardVO();
+				vo.setCode(rs.getInt("code"));
+				vo.setComm(rs.getString("code"));
+				vo.setEtime(rs.getString("etime"));
+				vo.setLocation1(rs.getString("location1"));
+				vo.setLocation2(rs.getString("location2"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setSeller(rs.getString("seller"));
+				vo.setBuyer(rs.getString("buyer"));
+				vo.setStatus(rs.getString("status"));
+				vo.setStime(rs.getString("stime"));
+				vo.setTitle(rs.getString("title"));
+				vo.setTtime(rs.getString("ttime"));
+				vo.setTtype(rs.getString("ttype"));
+				vo.setSdate(rs.getString("sdate"));
+				vo.setEdate(rs.getNString("edate"));
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -105,7 +187,7 @@ public class TradeBoardDAO extends DAO {
 		return list;
 	}
 
-	// code로 select하기
+	// code로 단문 select하기
 	public TradeBoardVO selectByCode(TradeBoardVO vo) {
 		try {
 			psmt = conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE CODE = ?");
