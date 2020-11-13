@@ -1,6 +1,8 @@
 package co.animalMate.mypage.command;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -8,7 +10,11 @@ import javax.servlet.http.HttpSession;
 
 import co.animalMate.board.dao.MypageDao;
 import co.animalMate.common.Action;
+import co.animalMate.main.dao.CommentsDAO;
+import co.animalMate.main.dao.TradeBoardDAO;
+import co.animalMate.vo.CommentsVO;
 import co.animalMate.vo.MemberVO;
+import co.animalMate.vo.TradeBoardVO;
 import co.animalMate.vo.TradeListVO;
 
 public class SitterFormCheck implements Action {
@@ -33,9 +39,9 @@ public class SitterFormCheck implements Action {
 
 		// 상대 시터정보 호출
 		myDao = new MypageDao();
-		if(sid.equals(tlVo.getBuyer())) {
+		if (sid.equals(tlVo.getBuyer())) {
 			memVo.setId(tlVo.getSeller());
-		}else{			
+		} else {
 			memVo.setId(tlVo.getBuyer());
 		}
 		memVo = myDao.userInfo(memVo);
@@ -62,6 +68,30 @@ public class SitterFormCheck implements Action {
 			gender = "여성";
 		}
 		request.setAttribute("gender", gender);
+
+		// 거래완료 횟수
+		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
+		TradeBoardVO tradeBoardVO = new TradeBoardVO();
+		List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
+		tradeBoardVO.setSeller(sid);// 바꿔줘야함
+		tradeBoardList = tradeBoardDAO.selectById(tradeBoardVO);
+		int career = tradeBoardList.size();
+		request.setAttribute("career", career);
+
+		// 경력
+		CommentsVO commentsVO = new CommentsVO();
+		CommentsDAO commentsDAO = new CommentsDAO();
+		int score = 0;
+		for (TradeBoardVO tempt : tradeBoardList) {
+			commentsVO.setCode(tempt.getCode());
+			commentsVO = commentsDAO.selectByCode(commentsVO);
+			score += commentsVO.getScore();
+		}
+		if (career != 0) {
+			request.setAttribute("score", score / career);
+		} else {
+			request.setAttribute("score", "거래내역 없음");
+		}
 
 		return "jsp/mypage/sitterFormCheck.jsp";
 	}

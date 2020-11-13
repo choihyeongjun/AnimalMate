@@ -68,11 +68,11 @@
 				</tr>
 				<tr>
 					<th>평점</th>
-					<td>DBvalue</td>
+					<td>${career}</td>
 				</tr>
 				<tr>
 					<th>경력</th>
-					<td>DBvalue</td>
+					<td>${score}</td>
 				</tr>
 			</table>
 		</div>

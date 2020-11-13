@@ -7,11 +7,9 @@
 <meta charset="UTF-8">
 <title>돌봐줄게요 게시판 거래</title>
 <script>
-var Category1 = $('#id');
-
 function formCheck(){
 	var myup = document.myupAction;
-	if ($(':radio[name="Category"]:checked').length < 1) {
+	if ($(':radio[name="id"]:checked').length < 1) {
 		 alert('맡김이을 선택해주세요!');                        
 		return false;
 	}

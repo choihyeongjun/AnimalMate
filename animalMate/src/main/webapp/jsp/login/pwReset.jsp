@@ -20,26 +20,26 @@ function pwCheck(){
 		return false;
 	}
 	if(pw2.value == "" || pw2.value =="null"){
-		alert("비밀번호 확인칸을 입력 해주세요")
+		alert("비밀번호 재입력 란을 입력 해주세요")
 		return false;
 	}
 	if(pw1.value != pw2.value){
 		alert("비밀번호가 일치하지 않습니다.");
 		return false;
 	}
+	if(pw1.value.length<8){
+		alert('비밀번호는 최소 8자리 이상 입력하세요');
+		return false;
+	}
+	if(pw1.value <"0" || id.value>"9" && id.value<"A" || id.value>"Z" && id.value <"a" || id.value >"z"){
+		alert("영문 및 숫자만 사용 가능합니다.");
+		return false;
+	}
 }
 
-function submit{
-	$(".btn_submit").on("click",function(){
-		window.close();
-	});
-}
 </script>
 </head>
 <body>
-${msg1}
-${msg2}
-${msg3}
 <!-- 비번 재설정 -->
 	<div id="wrapper">
 		<h2>새로운 비밀번호를 입력해주세요.</h2>
@@ -58,7 +58,7 @@ ${msg3}
 		    <!-- PW2 -->
                 <div>
                     <span class="box int_pass_check">
-                        <input type="text" id="pswd2" class="int" maxlength="20"  placeholder="비밀번호 재입력">
+                        <input type="text" id="pw2" class="int" maxlength="20"  placeholder="비밀번호 재입력">
                     </span>
                 </div>
 			<!-- 버튼 시작 -->
