@@ -23,7 +23,7 @@
 			<li>|</li>
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/adminchat.jsp" target="_blank">실시간문의</a></li>
 			<li>|</li>
-			<li><a class="menuLink" href="${pageContext.request.contextPath}/main.do">로그아웃</a></li>
+			<li><a class="menuLink" href="${pageContext.request.contextPath}/logout.do">로그아웃</a></li>
 			<br/><br/>
 			</c:if>
 			<br/>

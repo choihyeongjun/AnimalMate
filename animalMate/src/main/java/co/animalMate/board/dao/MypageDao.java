@@ -48,7 +48,28 @@ public class MypageDao extends DAO {
 	private final String SELECT_JOBLIST = "SELECT * FROM JOBLIST WHERE CODE = ?";
 	private final String UPDATE_JOBLIST = "UPDATE JOBLIST SET PIC = ? WHERE CODE = ? AND COMM = ?";
 	private final String UPDATE_TRADE_USER_POINT = "UPDATE MEMBERS SET POINT = POINT - (SELECT PRICE FROM TRADEBOARD WHERE CODE = ?) WHERE ID = ?";
+	private final String SELECT_TRADE_USER_POINT = "SELECT POINT FROM MEMBERS WHERE = ?";
 	
+			
+
+	// User 거래 리스트,동물 단건 조회
+	public TradeListVO selectUserPoint(TradeListVO tlVo) {
+		try {
+			psmt = conn.prepareStatement(SELECT_TRADE_USER_POINT);
+			psmt.setString(1, tlVo.getBuyer());
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				tlVo = new TradeListVO();
+				tlVo.setCode(rs.getInt("point"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return tlVo;
+	}		
+			
 	// 체크리스트 시터가 올린 사진들 업데이트
 	public int updateJoblist(JoblistVO jobVo) {
 		int n = 0;

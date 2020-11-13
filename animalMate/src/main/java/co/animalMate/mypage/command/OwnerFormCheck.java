@@ -77,8 +77,6 @@ public class OwnerFormCheck implements Action {
 			gender = "여성";
 		}
 		request.setAttribute("gender", gender);
-
-		
 		
 		// 거래완료 횟수
 		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
@@ -103,10 +101,6 @@ public class OwnerFormCheck implements Action {
 		} else {
 			request.setAttribute("score", "거래내역 없음");
 		}
-		
-		
-		
-		
 		
 		return "jsp/mypage/ownerFormCheck.jsp";
 	}

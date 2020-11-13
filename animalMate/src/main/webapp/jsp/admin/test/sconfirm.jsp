@@ -36,8 +36,8 @@ $(function(){
 function userUpdate() {
    //업데이트 버튼 클릭
    $('body').on('click','#btnSave',function(){
-      var userId = $(this).parent().parent().prev().prev().prev().prev().prev().prev().prev().children().find('#id').val();
-      var userAuthor = $(this).parent().parent().prev().prev().prev().find('#author').val();
+      var userId = $(this).parent().parent().prev().prev().prev().prev().prev().prev().prev().prev().prev().children().find('#id').val();
+      var userAuthor = $(this).parent().parent().prev().prev().prev().prev().prev().find('#author').val();
       console.log(userAuthor);
       var result = confirm(userId +" 사용자를 업데이트 하시겠습니까?"+
             userAuthor+"권한업데이트할래?");
