@@ -24,6 +24,23 @@
 					<td>${user.name}</td>
 				</tr>
 				<tr>
+					<th>권한</th>
+					<c:choose>
+						<c:when test="${user.author eq 'users'}">
+							<td>일반유저</td>
+						</c:when>
+						<c:when test="${user.author eq 'sitterwait'}">
+							<td>시터허가 대기중</td>
+						</c:when>
+						<c:when test="${user.author eq 'usersitter'}">
+							<td>시터허가</td>
+						</c:when>
+						<c:when test="${user.author eq 'black'}">
+							<td>불량유저</td>
+						</c:when>
+					</c:choose>
+				</tr>
+				<tr>
 					<th>전화번호</th>
 					<td>${user.tel}</td>
 				</tr>
@@ -81,9 +98,9 @@
 			<h1>즐겨찾기</h1>
 			<table class="table">
 				<tr>
+					<td width = 1></td>
 					<td>이름</td>
 					<td>나이</td>
-					<td>지역</td>
 					<td>상세정보</td>
 				</tr>
 				<c:forEach items="${memberlist}" var="v">
@@ -91,7 +108,6 @@
 					<td><input type="hidden" value="${user.id}" name="id" id="id"></td>
 					<td>${v.name}</td>
 					<td>${v.zoomin1}</td>
-					<td>${v.location1}</td>
 					<td><button onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=${user.id}'">더보기</button></td>	
 				</tr>
 				</c:forEach>
