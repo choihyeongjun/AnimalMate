@@ -237,7 +237,9 @@
 				<button class="btn_send" type="button" data-toggle="modal"
 					data-target="#exampleModal1">쪽지보내기</button>
 				<c:if test="${sessionauthor == 'usersitter'}">	
-					<button type="submit" class="btn_result" id="ownerFormApplyBtn">지원하기</button>
+					<c:if test="${tradeBoardVO.status == '거래 완료'}">
+						<button type="submit" class="btn_result" id="ownerFormApplyBtn">지원하기</button>
+					</c:if>
 				</c:if>
 				<button type="reset" class="btn_cancle" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
 			</div>
