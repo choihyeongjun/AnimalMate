@@ -86,9 +86,7 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 			"click" : function() {
 				location.href="${pageContext.request.contextPath}/questionlist.do";
 			}
-		})
-		
-		
+		})	
 	})
 		
 		
@@ -131,7 +129,12 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
         <c:if test="${sessionScope.sessionauthor eq 'users'}">
         <a class="navbar-brand" href="${pageContext.request.contextPath}/jsp/main/wannabeSitter.jsp"><b>시터신청</b></a>
         </c:if>
-        <a class="navbar-brand" href="${pageContext.request.contextPath}/goMypagePage.do"><b>마이페이지</b></a>
+        <c:if test="${sessionScope.id eq null}">
+        	<a class="navbar-brand" id="main-themeMypageBtn" href="${pageContext.request.contextPath}/goLoginPage.do"><b>마이페이지</b></a>
+        </c:if>
+        <c:if test="${sessionScope.id ne null}">
+        	<a class="navbar-brand" id="main-themeMypageBtn" href="${pageContext.request.contextPath}/goMypagePage.do"><b>마이페이지</b></a>
+        </c:if>
 	</nav>
     <hr/>
     
