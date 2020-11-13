@@ -30,22 +30,28 @@
 </head>
 <body>
 	<br>
-	<div>
-		<h1>프로필</h1>
+	<div class = "row">
+		<div>
+			<h1>프로필</h1>
+		</div>
+		<div>
+			<form>
+				<c:if test="${user.id ne sid}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" id="profileBtn"}/bookmark.do">즐겨찾기</button>
+					<input type="hidden" value="${user.id}" name="markId" id="markId">
+				</c:if>
+			</form>
+		</div>
 	</div>
-	<div>
-	<form>
-		<button type="button" id="profileBtn"}/bookmark.do">즐겨찾기</button>
-		<input type="hidden" value="${user.id}" name="markId" id="markId">
-	</form>
-	</div>
+	
 	<div class="row">
 		<div class="profileUser">
 			<h3>유저 정보</h3>
 			<table class="table">
 				<tr>
-					<td rowspan="6"><img
-						src="${pageContext.request.contextPath}/images/muncat.jpg"></td>
+					<td rowspan="5" width = 40%><img
+						src="${pageContext.request.contextPath}/images/members_pic/${user.pic}"
+						alt="사진을 넣어주세요" style = "width:240px; height:240px; border-radius: 100%;"></td>
 					<th>이름</th>
 					<td>${user.name}</td>
 				</tr>
@@ -66,21 +72,17 @@
 					<th>경력</th>
 					<td>${career}회</td>
 				</tr>
-				<tr>
-					<th>신고횟수</th>
-					<td>DBVALUE</td>
-				</tr>
 			</table>
 		</div>
 	</div>
-
+	<br>
+	<br>
 
 
 	<div class="row">
-		<div>
-			<h1>후기</h1>
-		</div>
-		<table class="table">
+		<h1>후기</h1>
+		<div class = mypageTradeList>
+			<table class="table">
 			<tr>
 				<th>거래번호</th>
 				<th>제목</th>
@@ -99,8 +101,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		</div>
 	</div>
-
-
 </body>
 </html>

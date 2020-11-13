@@ -49,7 +49,13 @@
 					<td>${user.location1} ${user.location2}</td>
 				</tr>
 			</table>
-			<button onclick="window.location.href='${pageContext.request.contextPath}/memberForm.do'">수정</button>
+			<div class = "row">
+				<div class= "ownerFormCheckButton">
+					<button onclick="window.location.href='${pageContext.request.contextPath}/memberForm.do'">정보수정</button>
+				&nbsp;&nbsp;
+					<button onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=${user.id}'">내 후기</button>
+				</div>
+			</div>
 		</div>
 
 		<div class="mypagebox">

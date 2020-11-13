@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import co.animalMate.admin.command.CommentDao;
 import co.animalMate.board.dao.MypageDao;
@@ -30,6 +31,11 @@ public class Profile implements Action {
 		memVo.setId(id);
 		memVo = myDao.userInfo(memVo);
 		request.setAttribute("user", memVo);
+
+		// 세션 아이디 정보
+		HttpSession session = request.getSession(false);
+		String sid = (String) session.getAttribute("id");
+		request.setAttribute("sid", sid);
 
 		// 나이 구하기!
 		int birthYear = Integer.parseInt(String.valueOf(memVo.getZoomin1()).substring(0, 2));

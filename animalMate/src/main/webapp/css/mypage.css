@@ -180,7 +180,14 @@
 
 /* profile 화면 */
 .profileUser {
+	padding: 20px;
+	margin: 10px auto;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
 	width: 80%;
-	heigth: 500px;
-	float: left;
+	background-color: #f9f9f9;
+}
+.profileUser th {
+	background-color: #f0f0f0;
 }
