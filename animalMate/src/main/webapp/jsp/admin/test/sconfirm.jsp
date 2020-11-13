@@ -13,15 +13,22 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <style>
-button{width:50px;
-}
-.row{
-margin-right:100px;
-}
-
-.container {
-    width: 810px;
-}
+button{width:50px;}
+.row{margin-right:100px;}
+.container {width: 810px;}
+.title{font-size: 1.75rem;margin: 10px 0 71px 520px;font-weight: bold;color: #1230ab;}
+.table{border-radius: 10px; background-color: #d2deed;font-weight: bold;margin-left: 15px;}
+#btnSelect {border: none; background-color:#5371ac;font-weight: bold;height: 26px;border-radius: 5px;
+   			 color: white;text-align: center;font-family: initial;}
+#tr1 {border-bottom: 3px solid #5371ac;}
+.table2 {border: none;background-color: #d2deed;border-radius: 10px;}   		
+.table2 th {text-align: center;}
+#btnSave, #btnC {border: none; background-color:#5371ac;font-weight: bold;height: 26px;border-radius: 5px;
+   			 color: white;text-align: center;font-family: initial;margin: 2px 2px 2px 22px;} 
+.table2 tr ,.table2 td {width: 753px;padding: 12px 2px 12px 12px;}
+.searchin {border-radius: 6px;}
+.searchin:focus {outline:none;}
+#maxp,#comm,#author { border : 3px solid #5371ac; border-radius: 6px;}
 </style>
 <script>
 
@@ -127,13 +134,13 @@ function userUpdate() {
 <br/>
 <br/>
 
-<br/><h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시터승인 관리</h3>
+<br/><h3 class="title">시터승인 관리</h3>
    <div  class="row" >
       <div class="col">
       <div>
          <table id="search" class="table text-center">
             <thead>
-               <tr>
+               <tr id="tr1">
                   <th width="100" class="text-center">아이디</th>
                   <th class="text-center">이  름</th>
                   <th class="text-center">주  소</th>
@@ -150,25 +157,25 @@ function userUpdate() {
       </div>
       <div class="container">
          <form id="frm" name="frm" method="post" >
-            <table border="1">
+            <table class="table2" border="1">
                <tr>
-                  <th width="150">아이디 :</th>
-                  <td width="500"><input type="text" id="id" name="id" disabled></td>
+                  <th width="150">아이디</th>
+                  <td width="500"><input class="searchin" type="text" id="id" name="id" disabled></td>
                </tr>
                <tr>
-                  <th width="150">이름 :</th>
-                  <td><input type="text" id="name" name="name" disabled></td>
+                  <th width="150">이름</th>
+                  <td><input type="text" class="searchin" id="name" name="name" disabled></td>
                </tr>
                <tr>
-                  <th width="150">주소 :</th>
-                  <td><input type="text" id="location" name="location" disabled></td>
+                  <th width="150">주소</th>
+                  <td><input type="text" class="searchin" id="location" name="location" disabled></td>
                </tr>
                <tr>
-                  <th width="150">전화번호 :</th>
-                  <td><input type="text" id="tel" name="tel" size="20" disabled></td>
+                  <th width="150">전화번호</th>
+                  <td><input type="text" class="searchin" id="tel" name="tel" size="20" disabled></td>
                </tr>
                <tr>
-                  <th width="150">권한 :</th>
+                  <th width="150">권한</th>
                   <td>
                   <select id="author">
                   <option>선택하기</option>
@@ -182,25 +189,25 @@ function userUpdate() {
                   </td>
                </tr>
                <tr>
-                  <th width="150">가입일자 :</th>
-                  <td><input type="text" id="edate" name="edate" disabled></td>
+                  <th width="150">가입일자</th>
+                  <td><input class="searchin" type="text" id="edate" name="edate" disabled></td>
                </tr>
                <tr>
-                  <th width="150">사진 :</th>
+                  <th width="150">사진</th>
                   <td><img id="sconfirmImg" alt="이미지 없다" src="#"></td>
                </tr>
                <tr>
-                  <th width="150">최대펫수용수 :</th>
-                  <td><input type="text" id="maxp" name="maxp" readyonly="readonly"></td>
+                  <th width="150">최대펫수용수</th>
+                  <td><input class="searchin" type="text" id="maxp" name="maxp" readyonly="readonly"></td>
                </tr>
                <tr>
-                  <th width="150">신청내용 :</th>
-                  <td><input type="text" id="comm" name="comm" readyonly="readonly"></td>
+                  <th width="150">신청내용</th>
+                  <td><input class="searchin" type="text" id="comm" name="comm" readyonly="readonly"></td>
                </tr>
                <tr>
-                  <td colspan="2" align="center"><input type="button"
-                     id="btnSave" value="승인">&nbsp;&nbsp; <input
-                     type="reset" value="취소"></td>
+                  <td colspan="2" align="center">
+                  <input type="button" id="btnSave" value="승인">
+                  <input type="reset" id="btnC" value="취소"></td>
                </tr>
                
             </table>

@@ -12,8 +12,10 @@
 
 
 <style>
-button{width: 50px;
-}
+button{width: 50px;}
+.title1,.title2 {margin: 70px -20px 40px 0px;color: #1230ab;font-weight: bold;}
+.area .area1 {background-color: #d2deed;border-radius: 8px;width: 1220px;padding: 40px;}
+.area .area2 {background-color: #d2deed;border-radius: 8px;width: 1220px;padding: 40px;}
 </style>
 <script>
 	$(function(){
@@ -130,8 +132,10 @@ button{width: 50px;
 <body>
 <jsp:include page="mainMenu.jsp"/>
 <hr>
-<div align="center">
-	<div><h1>블랙리스트 목록 정보</h1></div>
+<div class="area" align="center">
+	<div><h1 class="title1">블랙리스트 목록 정보</h1></div>
+	
+	<div class="area1">
 	<div>
 		<form>
 		<table>
@@ -159,8 +163,11 @@ button{width: 50px;
 		</table>
 		</div>
 	</div>
+	</div>
+	
 	<div class="container">
-	<h2>블랙리스트 목록</h2>
+	<h2 class="title2" >블랙리스트 목록</h2>
+	<div class="area2">
 		<table class="table text-center">
 		<thead>
 			<tr>
@@ -176,6 +183,7 @@ button{width: 50px;
 		<tbody id="members">
 		</tbody>
 		</table>
+		</div>
 	</div>
 	
 </div>

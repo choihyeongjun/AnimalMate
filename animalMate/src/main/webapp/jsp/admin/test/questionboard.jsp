@@ -11,37 +11,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style>
-.pagination, li.active, .pagination li {
-   display: inline-block;
+.pagination, li.active, .pagination li {display: inline-block;}
+.pagination a, li.active { color: black; padding: 8px 16px;text-decoration: none;border: 1px solid #ddd;}
+.pagination li.active {background-color: #4CAF50;color: white;border: 1px solid #4CAF50;}
+.pagination a:hover:not(.active) { background-color: #ddd;}
+.pagination a, li.active {border-radius: 5px;border-bottom-left-radius: 5px;}
+a{color: red;font-weight: bold;}
+.Btn{border-radius: 4px;width: 70px; height: 25px;background-color: #5371ac;color: white;}
+.title{margin: 70px 0 20px 470px;font-weight: bold;}
+.area1 {    background-color: #d2deed;border-radius: 8px;padding: 30px 30px 40px 30px;
 }
-
-.pagination a, li.active {
-   color: black;
-   padding: 8px 16px;
-   text-decoration: none;
-   border: 1px solid #ddd;
-}
-
-.pagination li.active {
-   background-color: #4CAF50;
-   color: white;
-   border: 1px solid #4CAF50;
-}
-
-.pagination a:hover:not(.active) {
-   background-color: #ddd;
-}
-
-.pagination a, li.active {
-   border-radius: 5px;
-   border-bottom-left-radius: 5px;
-}
-
-a{
-    color: red;
-    font-weight: bold;
-}
+button {background-color: rgb(255,136,38); font-weight:bold; color : black;border : none;}
+.tr1 {border-top: 3px solid #5371ac;}
+.sel {border: 3px solid #5371ac;border-radius: 4px;height: 29px;}
+.table {font-size:16px;font-weight: bold;}
+.table td, table th {width : 10px;}
 </style>
+
 <script type="text/javascript">
 $(()=>{
 	$("#QuestionBtn").on({
@@ -59,17 +45,18 @@ $(()=>{
 </c:if>
 
   <br><br>
-   <h3>1:1문의내역</h3>
+   <h3 class="title">1:1문의내역</h3>
    <hr />
+   <div class="area1">
    <div align="right">
       <form id="filterFrm" name="filterFrm" action="goQuestionBoard.do"
          method="get">
-         <select id="type" name="status">
+         <select class="sel" id="type" name="status">
             <option value="">분류
             <option value="공개">공개
             <option value="비공개">비공개
          </select> 
-         <button id="filterBtn">검색</button>
+         <button class="Btn" id="filterBtn">검색</button>
       </form>
    </div>
    <br>
@@ -78,7 +65,7 @@ $(()=>{
 
       <table class="table text-center">
       <thead>
-            <tr>
+            <tr class="tr1">
                <th class="text-center">번호</th>
                <th class="text-center">제목</th>
                <th class="text-center">작성자</th>
@@ -109,8 +96,9 @@ $(()=>{
       
       
       <div align="right">
-         <button id="QuestionBtn" class="">1:1문의</button>
+         <button id="QuestionBtn" class="Btn">1:1문의</button>
       </div>
+   </div>
    </div>
 </body>
 </html>

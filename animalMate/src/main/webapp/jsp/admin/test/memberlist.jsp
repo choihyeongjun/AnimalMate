@@ -14,17 +14,20 @@
 button{width: 50px;}
 .title1{color: #1230ab;font-weight: bold;margin-bottom: 50px;}
 .title2{color: #1230ab;font-weight: bold;margin-bottom: 50px;}
-.area1 {width: 1230px;background-color: #d2deed;height: 190px;padding-top: 10px;border-radius: 10px;}
+.area1 {width: 1230px;background-color: #d2deed;height: 280px;padding-top: 10px;border-radius: 10px;}
 .frm1 {margin: 20px 0 20px 0;border-radius: 10px;}
 .table text-center {width: 100%;max-width: 100%;margin-bottom: 20px;margin: 10px 0 70px 0;}
 .area2{margin:0;}
 .tr1 {border-top: 3px solid #5371ac;}
+#search {font-weight: bold;}
 .searchin {margin: 0 8px 0 20px;border: 3px solid #5371ac;border-radius: 6px;}
+.searchin:focus {outline:none;}
 .searchBtn {border: none; background-color:#5371ac;font-weight: bold;height: 26px;border-radius: 5px;
    			 color: white;text-align: center;font-family: initial;}
 #container2 {background-color: #d2deed;margin-top: 40px;width: 1230px;border-radius: 10px;font-weight: bold;}
 #btnSelect, #btnUpdate {border: none; background-color:#5371ac;font-weight: bold;height: 26px;border-radius: 5px;
    			 color: white;text-align: center;font-family: initial;}
+.author {width: 90px; height: 25px; border-radius: 5px;}
 </style>
 
 <script>
@@ -56,7 +59,7 @@ button{width: 50px;}
 			.append($('<td>').html(item.location1))
 			.append($('<td>').html(item.tel))
 			.append($('<td>').html(item.edate))
-			.append($('<td>').html('<select id=\'author\'> '+
+			.append($('<td>').html('<select id=\'author\' class=\'author\'> '+
 			'<option selected value='+item.author+'>'+item.author+'</option>'+
 			'<option value="sitter">sitter</option>'+
 			'<option >sitterwait</option>'+
@@ -119,7 +122,7 @@ button{width: 50px;}
 			.append($('<td>').html(item.location1))
 			.append($('<td>').html(item.tel))
 			.append($('<td>').html(item.edate))
-			.append($('<td>').html('<select id=\'author\'> '+
+			.append($('<td>').html('<select id=\'author\' class=\'author\'> '+
 			'<option selected value='+item.author+'>'+item.author+'</option>'+
 			'<option >sitter</option>'+
 			'<option >sittersait</option>'+
@@ -145,9 +148,10 @@ button{width: 50px;}
 <div align="center">
 <br/>
 	<div><h1 class="title2">회원목록 정보</h1></div>
-	<h2 class="title1">사용자 상세</h2>
+	
 	<div class="area1">
 	<div class="area2">
+	<h2 class="title1">사용자 상세</h2>
 		<form class="frm1">
 		<table>
 			<tr>
