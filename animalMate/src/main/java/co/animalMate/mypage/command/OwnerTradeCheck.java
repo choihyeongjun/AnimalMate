@@ -49,6 +49,13 @@ public class OwnerTradeCheck implements Action {
 		petlist = myDao.selectTradepets(petvo);
 		request.setAttribute("tpet", petlist);
 		
+		//유저 돈 체크
+		myDao = new MypageDao();
+		tlVo = new TradeListVO();
+		tlVo.setBuyer(sid);
+		tlVo = myDao.selectUserPoint(tlVo);
+		request.setAttribute("userP", tlVo.getPrice());
+		
 		return "jsp/mypage/ownerTradeCheck.jsp";
 	}
 }

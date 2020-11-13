@@ -38,11 +38,11 @@ function formCheck(){
 				</tr>
 				<tr>
 					<th>근무날짜</th>
-					<td>${tbs.sdate}~ ${tbs.edate}</td>
+					<td>${tbs.sdate} ~ ${tbs.edate}</td>
 				</tr>
 				<tr>
 					<th>근무시간</th>
-					<td>${tbs.stime}~ ${tbs.etime}</td>
+					<td>${tbs.stime} ~ ${tbs.etime}</td>
 				</tr>
 				<tr>
 					<th>거래금액</th>

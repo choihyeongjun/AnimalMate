@@ -9,11 +9,18 @@
 <script>
 function formCheck(){
 	var myup = document.myupAction;
+	var userp = ${userP};
+	var price = ${tbs.price};
+	
 	if ($(':radio[name="id"]:checked').length < 1) {
 		 alert('돌봄이을 선택해주세요!');                        
 		return false;
+	}else if(userp < price){
+		alert('포인트 부족');  
+		return false;
+	}else{
+		return true;   		
 	}
-	return true;   
 }
 </script>
 </head>
@@ -71,11 +78,11 @@ function formCheck(){
 				</tr>
 				<tr>
 					<th>근무날짜</th>
-					<td>${tbs.sdate}~ ${tbs.edate}</td>
+					<td>${tbs.sdate} ~ ${tbs.edate}</td>
 				</tr>
 				<tr>
 					<th>근무시간</th>
-					<td>${tbs.stime}~ ${tbs.etime}</td>
+					<td>${tbs.stime} ~ ${tbs.etime}</td>
 				</tr>
 				<tr>
 					<th>거래금액</th>

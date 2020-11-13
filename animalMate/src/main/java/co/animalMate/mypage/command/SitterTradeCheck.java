@@ -20,7 +20,7 @@ public class SitterTradeCheck implements Action {
 		MypageDao myDao = new MypageDao();
 		TradeListVO tlVo = new TradeListVO();
 		SitterTradeCheckListVO stclVo = new SitterTradeCheckListVO();
-		
+
 		// 세션 아이디 정보
 		HttpSession session = request.getSession(false);
 		String sid = (String) session.getAttribute("id");
@@ -39,6 +39,14 @@ public class SitterTradeCheck implements Action {
 		stclVo.setCode(codeString);
 		uplist = myDao.selectSitterTradeList(stclVo);
 		request.setAttribute("ups", uplist);
+
+		// 유저 돈 체크
+		myDao = new MypageDao();
+		String buyer = tlVo.getBuyer();
+		tlVo = new TradeListVO();
+		tlVo.setBuyer(buyer);
+		tlVo = myDao.selectUserPoint(tlVo);
+		request.setAttribute("userP", tlVo.getPrice());
 
 		return "jsp/mypage/sitterTradeCheck.jsp";
 	}

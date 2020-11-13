@@ -50,8 +50,7 @@ public class MypageDao extends DAO {
 	private final String UPDATE_TRADE_USER_POINT = "UPDATE MEMBERS SET POINT = POINT - (SELECT PRICE FROM TRADEBOARD WHERE CODE = ?) WHERE ID = ?";
 	private final String SELECT_MYTRADE_SELLER = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE SELLER = ? AND STATUS != '거래 완료'";
 	private final String SELECT_MYTRADE_BUYER = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE BUYER = ? AND STATUS != '거래 완료'";
-
-	private final String SELECT_TRADE_USER_POINT = "SELECT POINT FROM MEMBERS WHERE = ?";
+	private final String SELECT_TRADE_USER_POINT = "SELECT POINT FROM MEMBERS WHERE ID = ?";
 
 	// User 동물 맡기는 거래 진행 수
 	public TradeBoardVO selectMytradeBuyerCount(TradeBoardVO tbVo) {
@@ -97,7 +96,7 @@ public class MypageDao extends DAO {
 			rs = psmt.executeQuery();
 			if (rs.next()) {
 				tlVo = new TradeListVO();
-				tlVo.setCode(rs.getInt("point"));
+				tlVo.setPrice(rs.getInt("point"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
