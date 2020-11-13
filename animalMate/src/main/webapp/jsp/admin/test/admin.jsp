@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
+.title{margin-left: 660px;}
 </style>
 <jsp:include page="mainMenu.jsp"/>
 </head>
@@ -17,7 +18,7 @@
 			<tr>
 			<br/>
 			<br/>
-				<h1>관리자님 환영합니다</h1>
+				<h1 class="title">관리자님 환영합니다</h1>
 			</tr>
 		</table>
 	</div>

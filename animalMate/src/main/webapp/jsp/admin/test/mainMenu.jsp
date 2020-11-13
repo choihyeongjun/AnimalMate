@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mainmenu.css">
+<style>
+#topMenu .menuLink{color:#1b58bc;font-size: 13px;font-family: ui-monospace;}
+</style>
 <div align="center">
 	<div>
 	<nav id="topMenu" >
@@ -16,7 +19,7 @@
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/questionlist.do">1:1문의내역</a></li>
 			<li>|</li>
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/blacklist.jsp">블랙리스트</a></li>
-			<li>|</li>
+			<li></li>
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/memberlist.jsp">회원관리</a></li>
 			<li>|</li>
 			<li><a class="menuLink" href="${pageContext.request.contextPath}/jsp/admin/test/sconfirm.jsp">시터승인페이지</a></li>

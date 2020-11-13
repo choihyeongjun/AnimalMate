@@ -11,8 +11,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style>
-button{width: 50px;
-}
+button{width: 50px;}
+.title1{color: #1230ab;font-weight: bold;margin-bottom: 50px;}
+.title2{color: #1230ab;font-weight: bold;margin-bottom: 50px;}
+.area1 {width: 1230px;background-color: #d2deed;height: 190px;padding-top: 10px;border-radius: 10px;}
+.frm1 {margin: 20px 0 20px 0;border-radius: 10px;}
+.table text-center {width: 100%;max-width: 100%;margin-bottom: 20px;margin: 10px 0 70px 0;}
+.area2{margin:0;}
+.tr1 {border-top: 3px solid #5371ac;}
+.searchin {margin: 0 8px 0 20px;border: 3px solid #5371ac;border-radius: 6px;}
+.searchBtn {border: none; background-color:#5371ac;font-weight: bold;height: 26px;border-radius: 5px;
+   			 color: white;text-align: center;font-family: initial;}
+#container2 {background-color: #d2deed;margin-top: 40px;width: 1230px;border-radius: 10px;font-weight: bold;}
+#btnSelect, #btnUpdate {border: none; background-color:#5371ac;font-weight: bold;height: 26px;border-radius: 5px;
+   			 color: white;text-align: center;font-family: initial;}
 </style>
 
 <script>
@@ -132,23 +144,23 @@ button{width: 50px;
 <hr>
 <div align="center">
 <br/>
-	<div><h1>회원목록 정보</h1></div>
-	<div>
-		<form>
+	<div><h1 class="title2">회원목록 정보</h1></div>
+	<h2 class="title1">사용자 상세</h2>
+	<div class="area1">
+	<div class="area2">
+		<form class="frm1">
 		<table>
 			<tr>
-				<th>아이디:</th><td><input id="hidden_userId" type="text" value=""></td>
-				<td><button type="button" id="btnSelect">검색</button>
+				<th>아이디:</th><td><input class="searchin" id="hidden_userId" type="text" value=""></td>
+				<td><button class="searchBtn" type="button" id="btnSelect">검색</button>
 			</tr>
 		</table>
 		</form>
 	</div>
 	<div>
 		<div class="container">
-		
 		<table class="table text-center">
-				<tr>
-			
+				<tr class="tr1">
 					<th class="text-center">아이디</th>
 					<th class="text-center">이  름</th>
 					<th class="text-center">별  명</th>
@@ -163,11 +175,12 @@ button{width: 50px;
 		</table>
 		</div>
 	</div>
-	<div class="container">
-	<h2>사용자 목록</h2>
+	</div>
+	<div class="container" id="container2">
+	<h2 class="title1">사용자 목록</h2>
 		<table class="table text-center">
 		<thead>
-			<tr>
+			<tr class="tr1">
 				<th class="text-center">아이디</th>
 				<th class="text-center">이  름</th>
 				<th class="text-center">별  명</th>
