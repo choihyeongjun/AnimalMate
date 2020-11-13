@@ -229,7 +229,7 @@
 
 				<div id="sec05" class="">
 					<h2 class="cont_tit">세부사항</h2>
-					<textarea>${tradeBoard.comm}</textarea>
+					<textarea readonly="readonly">${tradeBoard.comm}</textarea>
 				</div>
 		
 			<div id="sec06" class="sec06">

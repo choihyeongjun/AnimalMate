@@ -39,15 +39,15 @@
             <table class="reportTd">
             <tr>
                <td class="col1_title">작성자</td>
-               <td><input class="col2_target" type="text" id="id" name="id" value="${requestid}"></td>
+               <td><input class="col2_target" type="text" id="id" name="id" <c:if test="${sessionScope.id ne requestid }">readonly="readonly"</c:if> value="${requestid}"></td>
             </tr>
             <tr>
                <td class="col1_title">제목</td>
-               <td><input class="col2_target" type="text" id="title" name="title"  value="${title}"></td>
+               <td><input class="col2_target" type="text" id="title" name="title" <c:if test="${sessionScope.id ne requestid }">readonly="readonly"</c:if> value="${title}"></td>
             </tr>
             <tr>
                <td class="col1_target">분류</td>
-               <td><input class="col2_target" type="text" id="type" name="type"  value="${ttype}">
+               <td><input class="col2_target" type="text" id="type" name="type" <c:if test="${sessionScope.id ne requestid }">readonly="readonly"</c:if> value="${ttype}">
                </td>
             </tr>
             <tr>

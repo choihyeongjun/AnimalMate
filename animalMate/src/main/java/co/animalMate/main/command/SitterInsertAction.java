@@ -42,7 +42,7 @@ public class SitterInsertAction implements Action {
 		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
 		tradeBoardDAO.sitterInsert(tradeBoardVO);
 		
-		return "jsp/board/sitterFormView.jsp";
+		return "/sitterFormSelect.do?code="+tradeBoardVO.getCode();
 	}
 
 }

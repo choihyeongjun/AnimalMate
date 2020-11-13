@@ -68,7 +68,7 @@ public class OwnerInsertAction implements Action {
 				joblistDAO.ownerInsert(joblistVO);
 			}
 		
-		return "jsp/board/ownerFormView.jsp";
+		return "/ownerFormSelect.do?code="+tradeBoardVO.getCode();
 	}
 
 }
