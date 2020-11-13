@@ -104,6 +104,9 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 	</a>
 	<div class="menuBtn" align="right" style="margin-top: 50px">
 	<c:if test="${sessionScope.id ne null}">
+	${id}님 환영합니다. 
+	</c:if>
+	<c:if test="${sessionScope.id ne null}">
 		<button id="QuestionbdBtn" class="">1:1문의내역</button>
 	</c:if>
 	
