@@ -61,7 +61,7 @@
                <tr>
                <c:if test="${id ne 'admin'}">
                <td class="col2_target">답글</td>
-                  <td><textarea rows="5" cols="118" id="answer" name="answer" readonly="readonly" placeholder="아직 답글이 달리지 않았습니다..">${answer}</textarea>
+                  <td><textarea rows="5" cols="118" id="answer" name="answer" readonly="readonly" placeholder='아직 답글이 달리지 않았습니다..'>${answer}</textarea>
                   </td>
                </c:if>
                <c:if test="${id eq 'admin'}">

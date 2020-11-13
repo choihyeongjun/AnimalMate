@@ -70,6 +70,7 @@ $(()=>{
                <th class="text-center">제목</th>
                <th class="text-center">작성자</th>
                <th class="text-center">공개여부</th>
+                <th class="text-center">답글여부</th>
                <th class="text-center">게시날짜</th>
             </tr>
             </thead>
@@ -88,6 +89,12 @@ $(()=>{
             </c:if>
             <td>${l.send}</td>
             <td>${l.status}</td>
+            <c:if test="${empty l.answer}">
+            <td>아니요</td>
+            </c:if>
+            <c:if test="${not empty l.answer }">
+            <td>예</td>
+            </c:if>
             <td>${l.ttime}</td>
             </tr>
          </c:forEach>
