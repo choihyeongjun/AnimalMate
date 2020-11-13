@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import co.animalMate.admin.command.CommentDao;
 import co.animalMate.board.dao.MypageDao;
 import co.animalMate.common.Action;
 import co.animalMate.main.dao.CommentsDAO;
@@ -53,12 +54,12 @@ public class Profile implements Action {
 		
 		
 		// 해당 사람의 거래 후기 리스트 출력
-		myDao = new MypageDao();
-		List<CommentsVO> list = new ArrayList<CommentsVO>();
-		CommentsVO comVo = new CommentsVO();
-		comVo.setComm(id);
-		list = myDao.selectComments(comVo);
-		request.setAttribute("comms", list);
+		  myDao = new MypageDao();
+	      List<CommentsVO> list = new ArrayList<CommentsVO>();
+	      CommentsVO comVo = new CommentsVO();
+	      comVo.setComm(id);
+	      list = myDao.selectComments(comVo);
+	      request.setAttribute("comms", list);
 
 		//평점이랑 거래횟수 구하기!
 	      TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();

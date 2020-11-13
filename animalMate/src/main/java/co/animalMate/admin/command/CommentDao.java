@@ -8,6 +8,7 @@ import java.util.List;
 
 import co.animalMate.common.DAO;
 import co.animalMate.vo.CommentsVO;
+import co.animalMate.vo.MemberVO;
 import co.animalMate.vo.PetVO;
 import co.animalMate.vo.QuestionVO;
 import co.animalMate.vo.TradeBoardVO;
@@ -18,10 +19,13 @@ public class CommentDao extends DAO {
 	private PetVO vo;
 	
 	private final String INSERT="INSERT INTO COMMENTS VALUES(?,?,?,?,?)";
-	private final String SELECT="SELECT C.CODE,C.TITLE,C.SCORE,C.COMM,C.PIC,T.BUYER,T.SELLER FROM COMMENTS C,TRADEBOARD T WHERE T.CODE=C.CODE";
-	public List<Object>select(){
+	private final String SELECT="SELECT C.CODE,C.TITLE,C.SCORE,C.COMM,C.PIC,T.BUYER,T.SELLER FROM COMMENTS C,TRADEBOARD T WHERE T.CODE=C.CODE"
+			+ " AND T.BUYER=? || T.SELLER=?";
+	public List<Object>select(MemberVO vo1){
 		List<Object>list=new ArrayList<>();
 		try {
+			psmt.setString(1,vo1.getId());
+			psmt.setString(2,vo1.getId());
 			psmt=conn.prepareStatement(SELECT);
 			rs=psmt.executeQuery();
 			while(rs.next()) {

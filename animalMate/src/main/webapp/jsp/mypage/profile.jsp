@@ -76,7 +76,7 @@
 
 	<div class="row">
 		<div>
-			<h1>거래내역/후기</h1>
+			<h1>후기</h1>
 		</div>
 		<table class="table">
 			<tr>
@@ -89,11 +89,11 @@
 			</tr>
 			<c:forEach var="comm" items="${comms}">
 				<tr>
-					<td>${comm[0].code}</td>
-					<td>${comm[0].title}</td>
-					<td>${comm[1].buyer}</td>
-					<td>${comm[1].seller}</td>
-					<td>${comm[0].score}</td>
+					<td>${comm.code}</td>
+					<td>${comm.title}</td>
+					<td>${comm.buyer}</td>
+					<td>${comm.seller}</td>
+					<td>${comm.score}</td>
 				</tr>
 			</c:forEach>
 		</table>

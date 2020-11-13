@@ -106,9 +106,9 @@
 				<c:forEach items="${memberlist}" var="v">
 				<tr>
 					<td><input type="hidden" value="${user.id}" name="id" id="id"></td>
-					<td>${v.name}</td>
+					<td>${v.id}</td>
 					<td>${v.zoomin1}</td>
-					<td><button onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=${user.id}'">더보기</button></td>	
+					<td><button onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=${v.id}'">더보기</button></td>	
 				</tr>
 				</c:forEach>
 			</table>

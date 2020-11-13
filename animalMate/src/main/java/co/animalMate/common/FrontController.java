@@ -183,7 +183,7 @@ public class FrontController extends HttpServlet {
      map.put("/questionanswer.do",new QuestionAnswerAction());
      map.put("/ajax/sitterSearch.do",new SitterSearchAction());
      map.put("/reviewinsert.do",new ReviewInsertAction());
-     map.put("reviewlist.do",new ReviewlistAction());
+     map.put("/reviewlist.do",new ReviewlistAction());
 
 
      

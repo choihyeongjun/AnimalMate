@@ -21,8 +21,8 @@ public class ReviewlistAction implements Action {
 		CommentDao dao=new CommentDao();
 		List<Object>list=new ArrayList<>();
 		
-		list.add(dao.select());
-		request.setAttribute("comms",list);
+		
+		request.setAttribute("list",list);
 		
 		return "/jsp/mypage/profile.jsp";
 	}

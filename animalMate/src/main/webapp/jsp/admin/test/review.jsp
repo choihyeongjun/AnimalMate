@@ -18,6 +18,7 @@ width:100px;
 	border : 0.5px solid ;
 }
 </style>
+
 </head>
 <body>
    <div  class="row" >
@@ -27,7 +28,7 @@ width:100px;
             <table class="table" >
                <tr>
                   <th width="150">거래번호 :</th>
-                  <td><input type="text" id="code" name="code" readonly="readonly"></td>
+                  <td><input type="text" id="code" name="code" readonly="readonly" value="${param.code}"></td>
                </tr>
                <tr>
                   <th width="150">제목 :</th>
@@ -35,11 +36,11 @@ width:100px;
                </tr>
                <tr>
                   <th width="150">위탁자 :</th>
-                  <td><input type="text" id="buyer" name="buyer" disabled></td>
+                  <td><input type="text" id="buyer" name="buyer" disabled value="${param.buyer}"></td>
                </tr>
                <tr>
                   <th width="150">시터 :</th>
-                  <td><input type="text" id="seller" name="seller" size="20" disabled></td>
+                  <td><input type="text" id="seller" name="seller" size="20" disabled value="${param.seller}"></td>
                </tr>
                <tr>
                   <th width="150">별점 :</th>
@@ -63,7 +64,7 @@ width:100px;
          		<td><textarea rows="10" cols="100%" id="comm" name="comm"></textarea></td>
          		</tr>
                <tr>
-                  <td colspan="2" align="center"><input class="cc" type="button"
+                  <td colspan="2" align="center"><input class="cc" type="submit"
                      id="btnSave" value="등록">&nbsp;&nbsp; <input class="cc"
                      type="reset" value="취소"></td>
                </tr>

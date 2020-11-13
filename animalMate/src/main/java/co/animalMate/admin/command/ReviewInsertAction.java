@@ -38,7 +38,7 @@ public class ReviewInsertAction implements Action {
 	
 		
 		try {
-			response.sendRedirect(request.getContextPath()+"/reviewlist.do");
+			response.sendRedirect(request.getContextPath()+"/goMypagePage.do");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

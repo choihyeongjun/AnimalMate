@@ -272,7 +272,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기쓰기</a>
+											<a href="${pageContext.request.contextPath}/jsp/admin/test/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
 										</c:if>
 									</td>
 								</tr>

@@ -34,7 +34,7 @@
 <body>
    <div class="reportDiv" align="center">
    <h1>&lt;1:1문의 내용&gt;</h1><br> 
-      <form id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/questionrewrite.do">
+      <form id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/.do">
          
             <table class="reportTd">
             <tr>
