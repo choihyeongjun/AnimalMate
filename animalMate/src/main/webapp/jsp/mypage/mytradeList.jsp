@@ -39,6 +39,74 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	<hr>
+	<br>
+	<h3>예약 승인 대기</h3>
+	<div class="row">
+		<div class="mypageTradeList">
+			<table class="table">
+				<tr>
+					<th width = 8%>거래코드</th>
+					<th>게시판분류</th>
+					<th>상대</th>
+					<th>거래금액</th>
+					<th>예약시간</th>
+					<th>거래상태</th>
+				</tr>
+				<c:forEach items="${tradeBoardApplyList}" var="tb">
+					<c:choose>
+						<c:when test="${tb.ttype eq '돌봐줄게요'}">
+						<!-- 돌봐줄게요 게시판 -->
+							<!-- 내가 반려인(신청자)이고 상대방이 나를 선택하지 않았을 때 -->
+							<c:if test="${tb.buyer eq sid and tb.seller eq null}">
+								<tr onclick="location.href='${pageContext.request.contextPath}/*.do?code=${tb.code}';"
+									style='cursor: pointer;'>
+									<td>${tb.code}</td>
+									<td>${tb.ttype}</td>
+									<td>${tb.buyer}</td>
+									<td>${tb.price}p</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.status}</td>
+								</tr>
+							</c:if>
+							
+						</c:when>
+						<c:otherwise>
+							<!-- 돌봐주세요 게시판 -->
+							<!-- 내가 시터(신청자)이고 반려인이 나를 선택하지 않았을때 -->
+							<c:if test="${tb.seller eq sid and tb.buyer eq null}">
+								<tr onclick="location.href='${pageContext.request.contextPath}/*.do?code=${tb.code}';"
+									style='cursor: pointer;'>
+									<td>${tb.code}</td>
+									<td>${tb.ttype}</td>
+									<td>${tb.seller}</td>
+									<td>${tb.price}p</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.status}</td>
+								
+								</tr>
+							</c:if>
+							
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	<h3>내가 동물을 맡아주는 거래</h3>
 	<div class="row">
 		<div class="mypageTradeList">
@@ -47,39 +115,18 @@
 					<th width = 8%>거래코드</th>
 					<th>게시판분류</th>
 					<th>맡김이</th>
-					<th>펫종류</th>
 					<th>거래금액</th>
 					<th>예약시간</th>
 					<th>거래상태</th>
 					<th>후기</th>
 				</tr>
-				<c:forEach items="${tbs}" var="tb">
+				
+				
+				<c:forEach items="${tradeBoardSellerList}" var="tb">
 					<c:choose>
 						<c:when test="${tb.ttype eq '돌봐줄게요'}">
 						<!-- 돌봐줄게요 게시판 -->
-						<!-- 내가 시터(글쓴이)이고 상대방이 정해지지 않았을때 -->
-							<c:if test="${tb.seller eq sid and tb.buyer eq null}">
-								<tr onclick="location.href='${pageContext.request.contextPath}/sitterTradeCheck.do?code=${tb.code}';"
-									style='cursor: pointer;'>
-									<td>${tb.code}</td>
-									<td>${tb.ttype}</td>
-									<td>
-										${tb.buyer}
-										<c:if test="${tb.buyer eq null}">
-											<font color="red">선택해주세요</font>
-										</c:if>
-									</td>
-									<td>${tb.type} ${tb.detailType}</td>
-									<td>${tb.price}p</td>
-									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
-									<td>
-										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a>
-										</c:if>
-									</td>
-								</tr>
-							</c:if>
+						
 						<!-- 내가 시터(글쓴이)이고 상대방이 정해졌을때 -->
 							<c:if test="${tb.seller eq sid and tb.buyer ne null}">
 								<tr onclick="location.href='${pageContext.request.contextPath}/sitterFormCheck.do?code=${tb.code}';"
@@ -92,7 +139,6 @@
 											<font color="red">선택해주세요</font>
 										</c:if>
 									</td>
-									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
@@ -106,31 +152,7 @@
 						</c:when>
 						<c:otherwise>
 							<!-- 돌봐주세요 게시판 -->
-							<!-- 내가 시터(신청자)이고 반려인이 나를 선택하지 않았을때 /구현못할듯 -->
-							<c:if test="${tb.seller eq sid and tb.buyer eq null}">
-								<tr onclick="location.href='${pageContext.request.contextPath}/*.do?code=${tb.code}';"
-									style='cursor: pointer;'>
-									<td>${tb.code}</td>
-									<td>${tb.ttype}</td>
-									<td>
-										${tb.buyer}
-										<c:if test="${tb.buyer eq null}">
-											<font color="red">선택해주세요</font>
-										</c:if>
-									</td>
-									<td>${tb.type} ${tb.detailType}</td>
-									<td>${tb.price}p</td>
-									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
-									<td>
-										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a>
-										</c:if>
-									</td>
-								</tr>
-							</c:if>
-							
-							<!-- 내가 시터(신청자)이고 반려인이 나를 선택했을때 /구현가능?-->
+							<!-- 내가 시터(신청자)이고 반려인이 나를 선택했을때 -->
 							<c:if test="${tb.seller eq sid and tb.buyer ne null}">
 								<tr onclick="location.href='${pageContext.request.contextPath}/ownerFormCheck.do?code=${tb.code}';"
 									style='cursor: pointer;'>
@@ -142,7 +164,6 @@
 											<font color="red">선택해주세요</font>
 										</c:if>
 									</td>
-									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
@@ -153,7 +174,28 @@
 									</td>
 								</tr>
 							</c:if>
-							
+							<!-- 내가 시터(글쓴이)이고 상대방이 정해지지 않았을때 -->
+							<c:if test="${tb.seller eq sid and tb.buyer eq null}">
+								<tr onclick="location.href='${pageContext.request.contextPath}/sitterTradeCheck.do?code=${tb.code}';"
+									style='cursor: pointer;'>
+									<td>${tb.code}</td>
+									<td>${tb.ttype}</td>
+									<td>
+										${tb.buyer}
+										<c:if test="${tb.buyer eq null}">
+											<font color="red">선택해주세요</font>
+										</c:if>
+									</td>
+									<td>${tb.price}p</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.status}</td>
+									<td>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a>
+										</c:if>
+									</td>
+								</tr>
+							</c:if>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -171,39 +213,15 @@
 					<th width = 8%>거래코드</th>
 					<th>게시판분류</th>
 					<th>돌봄이</th>
-					<th>펫종류</th>
 					<th>거래금액</th>
 					<th>예약시간</th>
 					<th>거래상태</th>
 					<th>후기</th>
 				</tr>
-				<c:forEach items="${tbs}" var="tb">
+				<c:forEach items="${tradeBoardBuyerList}" var="tb">
 					<c:choose>
 						<c:when test="${tb.ttype eq '돌봐줄게요'}">
 						<!-- 돌봐줄게요 게시판 -->
-						<!-- 내가 반려인(신청자)이고 상대방이 나를 선택하지 않았을 때 / 구현못함 -->
-							<c:if test="${tb.buyer eq sid and tb.seller eq null}">
-								<tr onclick="location.href='${pageContext.request.contextPath}/*.do?code=${tb.code}';"
-									style='cursor: pointer;'>
-									<td>${tb.code}</td>
-									<td>${tb.ttype}</td>
-									<td>
-										${tb.seller}
-										<c:if test="${tb.seller eq null}">
-											<font color="red">선택해주세요</font>
-										</c:if>
-									</td>
-									<td>${tb.type} ${tb.detailType}</td>
-									<td>${tb.price}p</td>
-									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
-									<td>
-										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기쓰기</a>
-										</c:if>
-									</td>
-								</tr>
-							</c:if>
 						<!-- 내가 반려인(신청자)이고 상대방이 나를 선택했을때 / 구현못함 -->
 							<c:if test="${tb.buyer eq sid and tb.seller ne null}">
 								<tr onclick="location.href='${pageContext.request.contextPath}/sitterFormCheck.do?code=${tb.code}';"
@@ -216,7 +234,6 @@
 											<font color="red">선택해주세요</font>
 										</c:if>
 									</td>
-									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
@@ -243,7 +260,6 @@
 											<font color="red">선택해주세요</font>
 										</c:if>
 									</td>
-									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
@@ -266,7 +282,6 @@
 											<font color="red">선택해주세요</font>
 										</c:if>
 									</td>
-									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
@@ -283,7 +298,7 @@
 			</table>
 		</div>
 	</div>
-	
+
 	
 </body>
 </html>
