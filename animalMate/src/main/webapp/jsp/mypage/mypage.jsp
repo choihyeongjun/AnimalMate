@@ -98,14 +98,12 @@
 			<h1>즐겨찾기</h1>
 			<table class="table">
 				<tr>
-					<td width = 1></td>
 					<td>이름</td>
 					<td>나이</td>
 					<td>상세정보</td>
 				</tr>
 				<c:forEach items="${memberlist}" var="v">
 				<tr>
-					<td><input type="hidden" value="${user.id}" name="id" id="id"></td>
 					<td>${v.id}</td>
 					<td>${v.zoomin1}</td>
 					<td><button onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=${v.id}'">더보기</button></td>	

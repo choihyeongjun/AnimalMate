@@ -17,6 +17,7 @@ import co.animalMate.vo.MemberVO;
 import co.animalMate.vo.PetVO;
 import co.animalMate.vo.SitterTradeCheckListVO;
 import co.animalMate.vo.TradeBoardVO;
+import co.animalMate.vo.TradeCommentsVO;
 import co.animalMate.vo.TradeListVO;
 
 public class MypageDao extends DAO {
@@ -31,12 +32,13 @@ public class MypageDao extends DAO {
 	private ApplytradeVO atVo;
 	private SitterTradeCheckListVO stclVo;
 	private JoblistVO jobVo;
+	private TradeCommentsVO tcVo;
 
 	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ?";
 	private final String TRADE_COUNT = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE (STATUS != '거래 완료') AND (BUYER = ? OR SELLER= ?)";
 	private final String SELECT_USER_TRADES = "SELECT TB.*, P.* FROM PETCODE T LEFT OUTER JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) LEFT OUTER JOIN PET P ON (T.PETCODE = P.CODE) WHERE TB.BUYER = ? OR TB.SELLER = ? ORDER BY TB.CODE DESC";
 	private final String SELECT_USER_TRADE = "SELECT TB.*, P.* FROM PETCODE T LEFT OUTER JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) LEFT OUTER JOIN PET P ON (T.PETCODE = P.CODE) WHERE TB.code = ? ";
-	private final String SELECT_COMMENTS = " =  ";
+	private final String SELECT_COMMENTS = "SELECT * FROM COMMENTS C JOIN TRADEBOARD TB ON (C.CODE=TB.CODE) WHERE C.CODE IN (SELECT CODE FROM TRADEBOARD WHERE SELLER = ?)";
 	private final String SELECT_APPLYTRADES = "SELECT M.* FROM MEMBERS M JOIN APPLYTRADE AT ON (M.ID = AT.ID) WHERE AT.CODE = ?";
 	private final String SELECT_TRADEPETS = "SELECT P.* FROM PETCODE TP JOIN PET P ON (TP.PETCODE = P.CODE) WHERE TP.CODE = ?";
 	private final String UPDATE_APPLYTRADES1 = "UPDATE APPLYTRADE SET STATUS = '수락완료' WHERE CODE = ? AND ID = ?";
@@ -410,20 +412,23 @@ public class MypageDao extends DAO {
 	}
 
 	// 프로필에 거래후기 리스트 뿌리기
-	public List<CommentsVO> selectComments(CommentsVO comVo) {
-		List<CommentsVO> list = new ArrayList<CommentsVO>();
+	public List<TradeCommentsVO> selectComments(TradeCommentsVO tcVo) {
+		List<TradeCommentsVO> list = new ArrayList<TradeCommentsVO>();
 		try {
 			psmt = conn.prepareStatement(SELECT_COMMENTS);
-			psmt.setString(1, comVo.getComm());
+			psmt.setString(1, tcVo.getSeller());
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				comVo = new CommentsVO();
-				comVo.setCode(rs.getInt("code"));
-				comVo.setScore(rs.getInt("score"));
-				comVo.setComm(rs.getString("comm"));
-				comVo.setPic(rs.getString("pic"));
-				comVo.setTitle(rs.getString("title"));
-				list.add(comVo);
+				tcVo = new TradeCommentsVO();
+				tcVo.setCode(rs.getInt("code"));
+				tcVo.setScore(rs.getInt("score"));
+				tcVo.setComm(rs.getString("comm"));
+				tcVo.setPic(rs.getString("pic"));
+				tcVo.setTitle(rs.getString("title"));
+				
+				tcVo.setBuyer(rs.getString("buyer"));
+				tcVo.setSeller(rs.getString("seller"));
+				list.add(tcVo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
