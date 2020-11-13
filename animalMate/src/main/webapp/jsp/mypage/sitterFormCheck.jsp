@@ -112,7 +112,7 @@
 		<div class="ownerFormCheckView">
 			<h3>세부내용</h3>
 			<div class="ownerFormCheckText">
-				${tbs.comm} ${tbs.buyer}
+				${tbs.comm}
 			</div>
 		</div>
 	</div>
