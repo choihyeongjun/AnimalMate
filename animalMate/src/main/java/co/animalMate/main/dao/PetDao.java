@@ -147,8 +147,8 @@ public class PetDao extends DAO {
 						tvo.setTitle(rs.getString("title"));
 						tvo.setTtime(rs.getString("ttime"));
 						tvo.setTtype(rs.getString("ttype"));
-						tvo.setSdate(rs.getString("sdate").substring(5, 10));
-						tvo.setEdate(rs.getNString("edate").substring(5, 10));
+						tvo.setSdate(rs.getString("sdate"));
+						tvo.setEdate(rs.getNString("edate"));
 						tradeBoardList.add(tvo);
 					}
 					

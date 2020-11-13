@@ -39,8 +39,8 @@ public class TradeBoardDAO extends DAO {
 				vo.setTitle(rs.getString("title"));
 				vo.setTtime(rs.getString("ttime"));
 				vo.setTtype(rs.getString("ttype"));
-				vo.setSdate(rs.getString("sdate").substring(5, 10));
-				vo.setEdate(rs.getNString("edate").substring(5, 10));
+				vo.setSdate(rs.getString("sdate"));
+				vo.setEdate(rs.getNString("edate"));
 				list.add(vo);
 			}
 		} catch (SQLException e) {
