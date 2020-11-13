@@ -27,14 +27,14 @@
 			</div>
 			<div>
 				<dl>
-					<dt>쪽지</dt>
-					<dd>DBvalue 건</dd>
+					<dt>내 포인트</dt>
+					<dd>${user.point}p</dd>
 				</dl>
 			</div>
 			<div>
 				<dl>
-					<dt>내 포인트</dt>
-					<dd>${user.point}p</dd>
+					<dt>포인트 충전</dt>
+					<dd>구현못해</dd>
 				</dl>
 			</div>
 		</div>
@@ -47,7 +47,6 @@
 					<th width = 8%>거래코드</th>
 					<th>게시판분류</th>
 					<th>맡김이</th>
-					<th>돌봄이</th>
 					<th>펫종류</th>
 					<th>거래금액</th>
 					<th>예약시간</th>
@@ -64,13 +63,21 @@
 									style='cursor: pointer;'>
 									<td>${tb.code}</td>
 									<td>${tb.ttype}</td>
-									<td>${tb.buyer}</td>
-									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>
+										${tb.buyer}
+										<c:if test="${tb.buyer eq null}">
+											<font color="red">선택해주세요</font>
+										</c:if>
+									</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
-									<td><a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a></td>
+									<td>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a>
+										</c:if>
+									</td>
 								</tr>
 							</c:if>
 						<!-- 내가 시터(글쓴이)이고 상대방이 정해졌을때 -->
@@ -79,13 +86,21 @@
 									style='cursor: pointer;'>
 									<td>${tb.code}</td>
 									<td>${tb.ttype}</td>
-									<td>${tb.buyer}</td>
-									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>
+										${tb.buyer}
+										<c:if test="${tb.buyer eq null}">
+											<font color="red">선택해주세요</font>
+										</c:if>
+									</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
-									<td><a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a></td>
+									<td>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a>
+										</c:if>
+									</td>								
 								</tr>
 							</c:if>
 						</c:when>
@@ -97,13 +112,21 @@
 									style='cursor: pointer;'>
 									<td>${tb.code}</td>
 									<td>${tb.ttype}</td>
-									<td>${tb.buyer}</td>
-									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>
+										${tb.buyer}
+										<c:if test="${tb.buyer eq null}">
+											<font color="red">선택해주세요</font>
+										</c:if>
+									</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
-									<td><a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a></td>
+									<td>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a>
+										</c:if>
+									</td>
 								</tr>
 							</c:if>
 							
@@ -113,13 +136,21 @@
 									style='cursor: pointer;'>
 									<td>${tb.code}</td>
 									<td>${tb.ttype}</td>
-									<td>${tb.buyer}</td>
-									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>
+										${tb.buyer}
+										<c:if test="${tb.buyer eq null}">
+											<font color="red">선택해주세요</font>
+										</c:if>
+									</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
-									<td><a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a></td>
+									<td>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기보기</a>
+										</c:if>
+									</td>
 								</tr>
 							</c:if>
 							
@@ -139,7 +170,6 @@
 				<tr>
 					<th width = 8%>거래코드</th>
 					<th>게시판분류</th>
-					<th>맡김이</th>
 					<th>돌봄이</th>
 					<th>펫종류</th>
 					<th>거래금액</th>
@@ -157,13 +187,21 @@
 									style='cursor: pointer;'>
 									<td>${tb.code}</td>
 									<td>${tb.ttype}</td>
-									<td>${tb.buyer}</td>
-									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>
+										${tb.seller}
+										<c:if test="${tb.seller eq null}">
+											<font color="red">선택해주세요</font>
+										</c:if>
+									</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
-									<td><a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기</a></td>
+									<td>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기쓰기</a>
+										</c:if>
+									</td>
 								</tr>
 							</c:if>
 						<!-- 내가 반려인(신청자)이고 상대방이 나를 선택했을때 / 구현못함 -->
@@ -172,13 +210,21 @@
 									style='cursor: pointer;'>
 									<td>${tb.code}</td>
 									<td>${tb.ttype}</td>
-									<td>${tb.buyer}</td>
-									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>
+										${tb.seller}
+										<c:if test="${tb.seller eq null}">
+											<font color="red">선택해주세요</font>
+										</c:if>
+									</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
-									<td><a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기쓰기</a></td>
+									<td>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기쓰기</a>
+										</c:if>
+									</td>
 								</tr>
 							</c:if>
 							
@@ -191,13 +237,21 @@
 									style='cursor: pointer;'>
 									<td>${tb.code}</td>
 									<td>${tb.ttype}</td>
-									<td>${tb.buyer}</td>
-									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>
+										${tb.seller}
+										<c:if test="${tb.seller eq null}">
+											<font color="red">선택해주세요</font>
+										</c:if>
+									</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
-									<td><a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기</a></td>
+									<td>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기쓰기</a>
+										</c:if>
+									</td>
 								</tr>
 							</c:if>
 							<!-- 내가 반려인(글쓴이)이고 상대방이 정해졌을때 -->
@@ -206,13 +260,21 @@
 									style='cursor: pointer;'>
 									<td>${tb.code}</td>
 									<td>${tb.ttype}</td>
-									<td>${tb.buyer}</td>
-									<td>${tb.seller}</td>
-									<td>${tb.type}${tb.detailType}</td>
+									<td>
+										${tb.seller}
+										<c:if test="${tb.seller eq null}">
+											<font color="red">선택해주세요</font>
+										</c:if>
+									</td>
+									<td>${tb.type} ${tb.detailType}</td>
 									<td>${tb.price}p</td>
-									<td>${tb.sdate}${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
+									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
 									<td>${tb.status}</td>
-									<td><a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기</a></td>
+									<td>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/*.do?code=${tb.code}">후기쓰기</a>
+										</c:if>
+									</td>
 								</tr>
 							</c:if>
 						</c:otherwise>

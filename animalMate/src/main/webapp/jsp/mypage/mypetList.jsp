@@ -7,12 +7,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-
-var Category1 = $('#code');
-	
 function formCheck(){
 	var myup = document.myupAction;
-	if ($(':radio[name="Category"]:checked').length < 1) {
+	if ($(':radio[name="code"]:checked').length < 1) {
 		 alert('동물을 선택해주세요!');                        
 		return false;
 	}
