@@ -82,25 +82,34 @@
 	<div class="row">
 		<h1>후기</h1>
 		<div class = mypageTradeList>
-			<table class="table">
-			<tr>
-				<th>거래번호</th>
-				<th>제목</th>
-				<th>위탁자</th>
-				<th>시터</th>
-				<th>별점</th>
-				<th>상세내용</th>
-			</tr>
-			<c:forEach var="comm" items="${comms}">
+			<c:if test="${comm.code ne null}">
+				<table class="table">
 				<tr>
-					<td>${comm.code}</td>
-					<td>${comm.title}</td>
-					<td>${comm.buyer}</td>
-					<td>${comm.seller}</td>
-					<td>${comm.score}</td>
+					<th>거래번호</th>
+					<th>제목</th>
+					<th>위탁자</th>
+					<th>시터</th>
+					<th>별점</th>
+					<th>상세내용</th>
 				</tr>
-			</c:forEach>
-		</table>
+					<c:forEach var="comm" items="${comms}">
+						<tr>
+							<td>${comm.code}</td>
+							<td>${comm.title}</td>
+							<td>${comm.buyer}</td>
+							<td>${comm.seller}</td>
+							<td>${comm.score}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:if>
+			<c:if test="${comm.code eq null}">
+					<br>
+					<br>
+					<h4>등록된 후기가 없습니다.</h4>
+					<br>
+					<br>
+			</c:if>
 		</div>
 	</div>
 </body>
