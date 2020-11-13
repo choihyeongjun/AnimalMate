@@ -69,7 +69,7 @@ $(()=>{
 			<td>
 				<button class="searchBtn" type="submit">검색하기</button>
 			</td>
-			<c:if test="${sessionScope.id ne null}">
+			<c:if test="${sessionauthor == 'usersitter'}">
 				<td>
 					<button class="searchBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/sitterForm.do'">글등록</button>
 				</td>

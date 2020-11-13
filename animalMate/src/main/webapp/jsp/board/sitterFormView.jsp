@@ -247,7 +247,9 @@
 
 			<div class="btn_sumit">
 				<button class="btn_send" type="button" data-toggle="modal" data-target="#exampleModal1">쪽지보내기</button>
-				<button type="submit" class="btn_result" id="sitterFormApplyBtn">예약하기</button>
+				<c:if test="${id ne null && sessionauthor ne 'black'}">			
+					<button type="submit" class="btn_result" id="sitterFormApplyBtn">예약하기</button>
+				</c:if>
 				<button type="reset" class="btn_cancle "
 					onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do'">취소</button>
 			</div>
