@@ -116,7 +116,7 @@ public class PetDao extends DAO {
 				List<TradeBoardVO> tradeBoardList = new ArrayList<TradeBoardVO>();
 				
 				try {
-					psmt = conn.prepareStatement("select t.*, p.code as pcode, p.name, p.age, p.gender, p.type, p.detailType, p.cut , p.comm as pcomm , p.id , p.pic from tradeboard T, pet P,(SELECT code,petcode FROM(SELECT code,petcode ,ROW_NUMBER() OVER(PARTITION BY code ORDER BY code,petcode) RM FROM petcode GROUP BY code, petcode) WHERE RM <= 1) C where T.ttype = '돌봐주세요' and T.code = C.code and P.code = C.petcode");
+					psmt = conn.prepareStatement("select t.*, p.code as pcode, p.name, p.age, p.gender, p.type, p.detailType, p.cut , p.comm as pcomm , p.id , p.pic from tradeboard T, pet P,(SELECT code,petcode FROM(SELECT code,petcode ,ROW_NUMBER() OVER(PARTITION BY code ORDER BY code,petcode) RM FROM petcode GROUP BY code, petcode) WHERE RM <= 1) C where T.ttype = '돌봐주세요' and T.code = C.code and P.code = C.petcode order by T.code desc");
 					rs = psmt.executeQuery();
 					while (rs.next()) {
 						vo = new PetVO();
