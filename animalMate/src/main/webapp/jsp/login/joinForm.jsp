@@ -34,12 +34,12 @@ $(function(){
 				$("#error_msg").text("사용중인 아이디입니다.");
 				$("#error_msg").css("color","red");
 				$("btn_submit").attr("disabled",true);
-				id.focus();
+				$("#id").focus();
 			}else{
 				$("#error_msg").text("사용가능한 아이디입니다.");
 				$("#error_msg").css("color","blue");
 				$("btn_submit").attr("disabled",false);
-				id.focus();
+				$("#id").focus();
 				}
 			}
 		});
@@ -203,11 +203,7 @@ function formCheck(){
 					<input type="text" class="zoo" name="zoomin1" id="zoomin1" maxlength="6"> -
 					<input type="password" class="zoo" name="zoomin2" id="zoomin2" maxlength="7">
 				</span>
-				<div align="right">
-			 <button type="button" class="id_input_check">실명인증</button>
-			 	</div>
 		</div> 	
-              
                 <!-- EMAIL -->
                 <div>
                     <h3 class="join_title"><label for="email">이메일<span class="optional"></span></label></h3>
