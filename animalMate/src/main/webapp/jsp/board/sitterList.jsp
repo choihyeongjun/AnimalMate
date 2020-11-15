@@ -16,7 +16,8 @@
 	.box {border-radius: 10px;background: #FF8826;text-align: center;font-size: 14px;}
 	.box dt, dd {color: white;float: left;width: 50%;text-shadow: 1px 1px 1px #00000073;font-weight: bold;}
 	/* Image */
-	.image.fit {display: block;width: 100%;height: 240px;border-radius: 10px 10px 10px 10px;border: 3.2px solid #FF8826;}
+	.image.fit {display: block;width: 100%;height: 240px;border-radius: 20px 20px 20px 20px;border: 8px solid #FF8826;}
+	.image.fit:hover {}
 	/* 검색창과 썸네일 간격  */
 	#main {padding: 4em 0 2em 0;}
 	.code_dl {display: none;}
