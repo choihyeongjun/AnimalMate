@@ -378,6 +378,23 @@ public class TradeBoardDAO extends DAO {
 		}
 		return n;
 	}
+	
+	//----------------딜리트----------------
+		//code로 딜리트하기
+		public int deleteByCode(int code) {
+			int n = 0;
+			int cnt = 1;
+			try {
+				psmt = conn.prepareStatement("delete tradeboard where code = ?");
+				psmt.setInt(cnt++, code);
+				n = psmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return n;
+		}
 
 	private void close() { // DB연결을 끊어준다
 		try {

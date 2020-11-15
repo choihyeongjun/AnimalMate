@@ -81,6 +81,14 @@
 				}
 			})
 			//삭제하기 버튼
+			$("#deleteBtn").on({
+				"click"  :function(){
+					if(confirm("정말로 삭제하시겠습니까?")){
+						location.href = "${pageContext.request.contextPath}/sitterDelete.do?code="+${param.code};	
+					}
+				}
+			})
+			
 			
 		})
 </script>

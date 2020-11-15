@@ -11,7 +11,7 @@
 	</page_setting>
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
-	<x>0</x>
+	<x>482</x>
 	<y>97</y>
 	<default_color>
 		<r>128</r>
@@ -135,7 +135,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2020-10-27 13:10:09</creation_date>
-			<updated_date>2020-11-15 09:36:44</updated_date>
+			<updated_date>2020-11-15 20:02:39</updated_date>
 			<model_property>
 				<name>프로젝트명</name>
 				<value></value>
@@ -5632,7 +5632,7 @@
 					<parent_cardinality>1</parent_cardinality>
 					<reference_for_pk>true</reference_for_pk>
 					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
+					<on_delete_action>CASCADE</on_delete_action>
 					<on_update_action>RESTRICT</on_update_action>
 					<referenced_column>null</referenced_column>
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>
@@ -5654,7 +5654,7 @@
 					<parent_cardinality>1</parent_cardinality>
 					<reference_for_pk>true</reference_for_pk>
 					<name></name>
-					<on_delete_action>RESTRICT</on_delete_action>
+					<on_delete_action>CASCADE</on_delete_action>
 					<on_update_action>RESTRICT</on_update_action>
 					<referenced_column>null</referenced_column>
 					<referenced_complex_unique_key>null</referenced_complex_unique_key>

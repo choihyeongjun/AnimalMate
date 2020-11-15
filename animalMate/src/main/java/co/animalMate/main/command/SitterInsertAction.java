@@ -49,7 +49,6 @@ public class SitterInsertAction implements Action {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 		return null;
 	}
 
