@@ -47,6 +47,7 @@ import co.animalMate.login.command.LoginAction;
 import co.animalMate.login.command.LoginForm;
 import co.animalMate.login.command.LogoutAction;
 import co.animalMate.login.command.ResetPwAction;
+import co.animalMate.login.command.SitterDeleteAction;
 import co.animalMate.login.command.idOverlapCheck;
 import co.animalMate.main.command.AdminLoginAction;
 import co.animalMate.main.command.AjaxMessageInfoAction;
@@ -63,7 +64,10 @@ import co.animalMate.main.command.GoOwnerListPageAction;
 import co.animalMate.main.command.GoSendMessageListPageAction;
 import co.animalMate.main.command.GoSitterListPageAction;
 import co.animalMate.main.command.GotradeListPageAction;
+import co.animalMate.main.command.OwnerDeleteAction;
+import co.animalMate.main.command.OwnerUpdateAction;
 import co.animalMate.main.command.SitterInsertAction;
+import co.animalMate.main.command.SitterUpdateAction;
 import co.animalMate.main.command.SubmitMessageAction;
 import co.animalMate.main.command.SubmitNoticeAction;
 import co.animalMate.main.command.SubmitReportAction;
@@ -116,16 +120,17 @@ public class FrontController extends HttpServlet {
          //제출하기
       map.put("/submitReport.do", new SubmitReportAction()); // 신고폼 페이지에서 제출버튼 눌렀을 때
       map.put("/submitNotice.do", new SubmitNoticeAction()); // 공지사항폼 페이지에서 제출버튼 눌렀을 때
-      map.put("/sitterInsert.do", new SitterInsertAction()); // 시터폼에서 제출하기 눌렀을 때 
+      map.put("/sitterInsert.do", new SitterInsertAction()); // 시터폼에서 제출하기 눌렀을 때
+      map.put("/sitterUpdate.do", new SitterUpdateAction()); // 시터폼에서 수정하기 눌렀을 때
+      map.put("/sitterDelete.do", new SitterDeleteAction()); // 시터폼뷰에서 삭제하기 눌렀을 때
       map.put("/submitMessage.do", new SubmitMessageAction()); // 메세지 보내기폼에서 제출하기 눌렀을 때
+      map.put("/ownerUpdate.do", new OwnerUpdateAction()); // 오너폼에서 수정하기 눌렀을 때
+      map.put("/ownerDelete.do", new OwnerDeleteAction()); // 오너폼뷰에서 삭제하기 버튼 눌렀을 때
       	//아작스
       map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
       map.put("/ajax/messageInfo.do", new AjaxMessageInfoAction()); //펫 목록 화면 호출
       map.put("/ajax/ownerFormApply.do", new AjaxOwnerFormApplyAction()); //오너폼에서 지원하기 버튼 클릭
-      
-      
-      
-      
+
       
       
       
@@ -143,21 +148,11 @@ public class FrontController extends HttpServlet {
      map.put("/id_find.do", new FindIdAction()); //아이디 찾기 액션
      map.put("/findpw.do", new FindPwAction()); //비밀번호 찾기 액션
      map.put("/resetPw.do", new ResetPwAction()); //비밀번호 변경 액션
-     map.put("/idoverlapcheck.do", new idOverlapCheck()); //아이디중복확인 찾기 액션
+     map.put("/ajax/idoverlapcheck.do", new idOverlapCheck()); //아이디중복확인 찾기 액션
      map.put("/memberUpdate.do", new MemberFormUpdateAction()); // 회원정보수정 액션
      map.put("/ajax/bookmark.do", new BookmarkAction()); // 즐겨찾기 추가
    
 
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       
       
       
@@ -186,20 +181,7 @@ public class FrontController extends HttpServlet {
      map.put("/reviewlist.do",new ReviewlistAction());
 
 
-     
-      
 
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
       
       
       
@@ -219,18 +201,7 @@ public class FrontController extends HttpServlet {
      map.put("/sitterListSearch.do", new SitterListSearhAction()); //sitterList에서 검색 
      map.put("/boardTradePet.do", new boardTradePetAction()); //ownerForm 에서 거래신청
 
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+
       
       
       
