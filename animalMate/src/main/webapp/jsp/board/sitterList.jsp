@@ -38,10 +38,18 @@
 </style>
 <script>
 $(()=>{
+	//박스 클릭하면 이동
 	$(".box").on("click",function() {
 		var code = $(this).children().eq(0).val();
 		location.href="${pageContext.request.contextPath}/sitterFormSelect.do?code="+code;
 	});
+	
+	//검색 취소 버튼
+	$("#resetBtn").on({
+		"click" : function() {
+			location.href="${pageContext.request.contextPath}/sitterList.do";			
+		}
+	})
 })
 </script>
 </head>
@@ -59,10 +67,10 @@ $(()=>{
 			<td class="ttitle" colspan="2">펫수용수</td> 
 			<td class="tbottom" colspan="4">
 				<c:if test="${maxp == null}">
-					<input type="number" max="5" min="1" value=1 name="maxp">마리 이상
+					<input type="number" max="5" min="1" value=1 name="maxp" class="sitterListMaxp">마리 이상
 				</c:if>
 				<c:if test="${maxp != null}">
-					<input type="number" max="5" min="1" value=${maxp} name="maxp">마리 이상
+					<input type="number" max="5" min="1" value=${maxp} name="maxp" class="sitterListMaxp">마리 이상
 				</c:if>
 			</td>
 			<td class="ttitle" colspan="2">돌봄날짜</td>
@@ -118,11 +126,11 @@ $(()=>{
 		</td>
 		<td colspan="4">
 				<button class="tbtn" type="submit">검색</button>
-				<button class="tbtn1" type="reset">검색취소</button>
+				<button class="tbtn1" type="reset" id="resetBtn">검색취소</button>
 			</td>
 			<c:if test="${sessionauthor == 'usersitter'}">
 				<td rowspan="2">
-					<button class="regiBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글등록</button>
+					<button class="regiBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/sitterForm.do'">글등록</button>
 				</td>
 			</c:if>
 		</tr>

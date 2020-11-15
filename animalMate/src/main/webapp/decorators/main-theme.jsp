@@ -114,6 +114,7 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 	</c:if>
 	<c:if test="${sessionScope.id eq null}">
 		<button id="loginBtn" class="">로그인</button>
+		<button type="button" onclick="location.href='${pageContext.request.contextPath}/jsp/login/joinCheck.jsp'">회원가입</button>
 	</c:if>
 	
 	

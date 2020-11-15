@@ -21,13 +21,14 @@ public class JoinInsertAction implements Action {
 		vo.setNName(request.getParameter("nName"));
 		vo.setEmail(request.getParameter("email"));
 		vo.setTel(request.getParameter("tel"));
-		vo.setZoomin1(Integer.valueOf(request.getParameter("zoomin1")));
-		vo.setZoomin2(Integer.valueOf(request.getParameter("zoomin2")));
+		vo.setZoomin1(Integer.parseInt(request.getParameter("zoomin1")));
+		vo.setZoomin2(Integer.parseInt(request.getParameter("zoomin2")));
 		vo.setLocation1(request.getParameter("location1"));
 		vo.setLocation2(request.getParameter("location2"));
+
+		dao.insert(vo);
 		
-		
-		int n = dao.insert(vo); //insert하고 n값을 반환해준다.
+		request.setAttribute("joinsuccess", request.getParameter("id"));
 	 
 		return "jsp/login/loginForm.jsp";
 	}

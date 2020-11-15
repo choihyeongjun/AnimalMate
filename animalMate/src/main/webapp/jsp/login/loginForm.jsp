@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/loginform.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+//회원가입 성공시 메세지
+
 function FindId(){
 	window.open("${pageContext.request.contextPath}/jsp/login/findId.jsp", "아이디 찾기", "width=1000, height=750"); 
 }
@@ -40,7 +42,7 @@ function formCheck() {
 <div class="login-wrapper" align="center">
 <!-- 회원가입창 상단로고 //클릭하면 메인페이지로 이동 -->
 	<header class="header">	
-			<a href="${pageContext.request.contextPath}/jsp/main/mainMenu.jsp" target="_blank">
+			<a href="${pageContext.request.contextPath}/jsp/main/mainMenu.jsp">
 				<image src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG" id="logo" ></image>
 			</a>
 	</header>

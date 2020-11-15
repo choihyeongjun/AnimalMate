@@ -50,12 +50,14 @@
 </style>
 <script type="text/javascript">
 		$(()=>{
+			//제출하기 버튼
 			$("#submitBtn").on({
 				"click"  :function(){
 					messageFrm.submit();
 				}
 			})
 			
+			//지원하기 버튼
 			$("#sitterFormApplyBtn").on({
 				"click"  :function(){
 					$.ajax({
@@ -65,12 +67,21 @@
 						error:function(xhr,status,msg){
 	    					alert("상태값 :" + status + " Http에러메시지 :"+msg);
 	    				},
-	    				success:function(msg){
+	    				success:function(){
 	    					alert("예약이 완료되었습니다.")
 	    				}
 					})
 				}
 			})
+			
+			//수정하기 버튼
+			$("#updateBtn").on({
+				"click"  :function(){
+					location.href = "${pageContext.request.contextPath}/sitterForm.do?code="+${param.code};
+				}
+			})
+			//삭제하기 버튼
+			
 		})
 </script>
 </head>
@@ -215,7 +226,7 @@
 						<li>
 							<div>
 								<c:if test="${fn:length(pictureList) eq 0}">
-									<img class="sitterEnvironment" alt="이미지가 없습니다." src="${pageContext.request.contextPath}/images/picture/${v.pic}">
+									<img class="sitterEnvironment" alt="이미지가 없습니다." src="${pageContext.request.contextPath}/images/picture/noImage.png">
 								</c:if>
 								<c:forEach items="${pictureList}" var="v">
                                 	<img class="sitterEnvironment" alt="이미지없다!" src="${pageContext.request.contextPath}/images/picture/${v.pic}">
@@ -246,11 +257,17 @@
 
 
 			<div class="btn_sumit">
-				<button class="btn_send" type="button" data-toggle="modal" data-target="#exampleModal1">쪽지보내기</button>
+				<c:if test="${tradeBoard.seller == id && tradeBoard.buyer == null}">
+					<button class="btn_send" type="button" id="updateBtn">수정하기</button>
+					<button class="btn_send" type="button" id="deleteBtn">삭제하기</button>
+				</c:if>
+				<c:if test="${tradeBoard.seller != id}">
+					<button class="btn_send" type="button" data-toggle="modal" data-target="#exampleModal1">쪽지보내기</button>
 				<c:if test="${sessionauthor ne 'black'}">
-					<c:if test="${tradeBoard.status ne '거래 완료'}">	
+					<c:if test="${tradeBoard.status == '거래 미정'}">	
 						<button type="submit" class="btn_result" id="sitterFormApplyBtn">예약하기</button>
 					</c:if>
+				</c:if>
 				</c:if>
 				<button type="reset" class="btn_cancle "
 					onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do'">취소</button>

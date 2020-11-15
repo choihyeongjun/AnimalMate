@@ -119,7 +119,7 @@ public class TradeBoardDAO extends DAO {
 		return list;
 	}
 	
-	// sellerID로  select하기
+	//sellerID로  select하기
 		public List<TradeBoardVO> selectBySeller(TradeBoardVO vo) {
 			List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
 			try {
@@ -187,6 +187,8 @@ public class TradeBoardDAO extends DAO {
 		return list;
 	}
 
+	//---------------단문조회---------------//
+	
 	// code로 단문 select하기
 	public TradeBoardVO selectByCode(TradeBoardVO vo) {
 		try {
@@ -249,7 +251,9 @@ public class TradeBoardDAO extends DAO {
 		}
 		return list;
 	}
-
+	
+	//----------------인서트----------------
+	
 	// 오너 인서트
 	public int ownerInsert(TradeBoardVO vo) {
 		int n = 0;
@@ -335,6 +339,44 @@ public class TradeBoardDAO extends DAO {
 		}
 		return n;
 		
+	}
+	
+	//----------------업데이트----------------
+	// 시터 업데이트
+	public int sitterUpdate(TradeBoardVO vo) {
+		int n = 0;
+		int cnt = 1;
+		try {
+			// 인서트 쿼리
+			psmt = conn.prepareStatement("update TRADEBOARD set "
+					+ "TITLE =?, "
+					+ "TTIME =sysdate, "
+					+ "PRICE =?, "
+					+ "COMM =?, "
+					+ "SDATE =?, "
+					+ "EDATE =?, "
+					+ "STIME =?, "
+					+ "ETIME =?, "
+					+ "LOCATION1 =?, "
+					+ "LOCATION2 =? "
+					+ "where code = ?");
+			psmt.setString(cnt++, vo.getTitle());
+			psmt.setInt(cnt++, vo.getPrice());
+			psmt.setString(cnt++, vo.getComm());
+			psmt.setString(cnt++, vo.getSdate());
+			psmt.setString(cnt++, vo.getEdate());
+			psmt.setString(cnt++, vo.getStime());
+			psmt.setString(cnt++, vo.getEtime());
+			psmt.setString(cnt++, vo.getLocation1());
+			psmt.setString(cnt++, vo.getLocation2());
+			psmt.setInt(cnt++, vo.getCode());			
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return n;
 	}
 
 	private void close() { // DB연결을 끊어준다

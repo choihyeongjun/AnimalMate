@@ -10,6 +10,7 @@
 .tbl_write__list tbody tr th{text-align:center; border-bottom:1px solid #e6e6e6;}
 
 .tbl_write__list input{max-width:400px; text-align:center;}
+.tbl_write__list select{max-width:400px; text-align:center;}
 
 
 /* button */

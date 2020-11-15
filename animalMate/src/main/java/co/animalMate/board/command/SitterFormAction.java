@@ -86,7 +86,6 @@ public class SitterFormAction implements Action {
     	  request.setAttribute("score", "거래내역 없음");
       }
       
-      
       //돌봄환경 사진 구하기!
       PictureDAO pictureDAO = new PictureDAO();  
       PictureVO pictureVO = new PictureVO();  
@@ -94,7 +93,16 @@ public class SitterFormAction implements Action {
       List<PictureVO> pictureList = new ArrayList<PictureVO>();
       pictureList = pictureDAO.selectById(pictureVO);
       request.setAttribute("pictureList", pictureList);
-
+      
+      //수정하기 일 때 code기반 tradeboard정보 뿌리기
+      if(request.getParameter("code") != null) {
+    	  int code = Integer.parseInt(request.getParameter("code"));
+    	  tradeBoardDAO = new TradeBoardDAO();
+          tradeBoardVO = new TradeBoardVO();
+          tradeBoardVO.setCode(code);
+          tradeBoardVO = tradeBoardDAO.selectByCode(tradeBoardVO);
+          request.setAttribute("tradeBoardVO", tradeBoardVO);
+      }
       
       return  "jsp/board/sitterForm.jsp";
    }

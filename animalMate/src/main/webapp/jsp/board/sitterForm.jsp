@@ -29,6 +29,7 @@
 				height: 200px;
 			}
         </style>
+        
     </head>
 
     <body>
@@ -38,7 +39,7 @@
             <!-- s:title -->
             <div class="title">
                 <h1>돌봐줄께요- (글등록 Form)</h1>
-                <input type="text" name="title" placeholder="제목을 입력하세요"></input>
+                <input type="text" name="title" placeholder="제목을 입력하세요" value="${tradeBoardVO.title}"></input>
             </div>
             <!-- e:title -->
 
@@ -104,7 +105,8 @@
 
                 <div id="sec02" class="">
                     <h2 class="cont_tit">세부조건</h2>
-
+				
+				
                     <table class="tbl_write__list">
                         <colgroup>
                             <col width="40%">
@@ -121,11 +123,33 @@
                         <tbody>
                             <tr>
                                 <td>돌봄지역</td>
-                                <td><input type="text" name="location1" placeholder="돌봐주실 지역을 입력하세요"></td>
+                                <td>
+                                	<select name="location1">
+										<option >선택하세요</option>
+										<option value="서울" <c:if test="${tradeBoardVO.location1 == '서울'}">selected="selected"</c:if>>서울</option>
+										<option value="경기" <c:if test="${tradeBoardVO.location1 == '경기'}">selected="selected"</c:if>>경기</option>
+										<option value="인천" <c:if test="${tradeBoardVO.location1 == '인천'}">selected="selected"</c:if>>인천</option>
+										<option value="대전" <c:if test="${tradeBoardVO.location1 == '대전'}">selected="selected"</c:if>>대전</option>
+										<option value="대구" <c:if test="${tradeBoardVO.location1 == '대구'}">selected="selected"</c:if>>대구</option>
+										<option value="부산" <c:if test="${tradeBoardVO.location1 == '부산'}">selected="selected"</c:if>>부산</option>
+										<option value="울산" <c:if test="${tradeBoardVO.location1 == '울산'}">selected="selected"</c:if>>울산</option>
+										<option value="광주" <c:if test="${tradeBoardVO.location1 == '광주'}">selected="selected"</c:if>>광주</option>
+										<option value="강원" <c:if test="${tradeBoardVO.location1 == '강원'}">selected="selected"</c:if>>강원</option>
+										<option value="세종" <c:if test="${tradeBoardVO.location1 == '세종'}">selected="selected"</c:if>>세종</option>
+										<option value="충북" <c:if test="${tradeBoardVO.location1 == '충북'}">selected="selected"</c:if>>충북</option>
+										<option value="충남" <c:if test="${tradeBoardVO.location1 == '충남'}">selected="selected"</c:if>>충남</option>
+										<option value="경북" <c:if test="${tradeBoardVO.location1 == '경북'}">selected="selected"</c:if>>경북</option>
+										<option value="경남" <c:if test="${tradeBoardVO.location1 == '경남'}">selected="selected"</c:if>>경남</option>
+										<option value="전북" <c:if test="${tradeBoardVO.location1 == '전북'}">selected="selected"</c:if>>전북</option>
+										<option value="경남" <c:if test="${tradeBoardVO.location1 == '경남'}">selected="selected"</c:if>>경남</option>
+										<option value="전남" <c:if test="${tradeBoardVO.location1 == '전남'}">selected="selected"</c:if>>전남</option>
+										<option value="제주" <c:if test="${tradeBoardVO.location1 == '제주'}">selected="selected"</c:if>>제주</option>
+									</select> 
+                               </td>
                             </tr>
                             <tr>
                                 <td>상세지역</td>
-                                <td><input type="text" name="location2" placeholder="돌봐주실 세부지역을 입력하세요"></td>
+                                <td><input type="text" name="location2" placeholder="돌봐주실 세부지역을 입력하세요" value="${tradeBoardVO.location2}"></td>
                             </tr>
                             
                             <tr>
@@ -133,9 +157,9 @@
                                 <td>
                                     <!-- jQuery datepicker 연결하면 됨-->
                                     <div class="calendar">
-                                        <input type="date" class="datepicker" name="sdate" value="" placeholder="시작일" onchange="">
+                                        <input type="date" class="datepicker" name="sdate" value="${tradeBoardVO.sdate}" placeholder="시작일">
                                         <span>~</span>
-                                        <input type="date" class="datepicker" name="edate" value="" placeholder="종료일" onchange="">
+                                        <input type="date" class="datepicker" name="edate" value="${tradeBoardVO.edate}" placeholder="종료일">
                                     </div>
                                 </td>
                             </tr>
@@ -144,16 +168,16 @@
                                 <td>돌봄시간</td>
                                 <td>
                                     <div class="calendar">
-                                        <input type="time" name="stime" id="stime">
+                                        <input type="time" name="stime" id="stime" value="${tradeBoardVO.stime}">
                                         <span>~</span>
-                                        <input type="time" name="etime" id="etime">
+                                        <input type="time" name="etime" id="etime" value="${tradeBoardVO.etime}">
                                     </div>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td>거래금액</td>
-                                <td><input type="text" name="price" placeholder="돌봄서비스 금액을 입력하세요" class="txt-r" >원</td>
+                                <td><input type="text" name="price" placeholder="돌봄서비스 금액을 입력하세요" class="txt-r" value="${tradeBoardVO.price}">원</td>
                             </tr>
                         </tbody>
                     </table>
@@ -166,7 +190,7 @@
                         <li>
                             <div>
                             	<c:if test="${fn:length(pictureList) eq 0}">
-									<img class="sitterEnvironment" alt="이미지가 없습니다." src="${pageContext.request.contextPath}/images/picture/${v.pic}">
+									<img class="sitterEnvironment" alt="이미지가 없습니다." src="${pageContext.request.contextPath}/images/picture/noImage.png">
 								</c:if>
                                 <c:forEach items="${pictureList}" var="v">
                                 	<img class="sitterEnvironment" alt="이미지없다!" src="${pageContext.request.contextPath}/images/picture/${v.pic}">
@@ -180,6 +204,7 @@
                     <h2 class="cont_tit">세부내용</h2>
 
                     <textarea name="comm">
+                    	${tradeBoardVO.comm}
                     </textarea>
                 </div>
 
@@ -195,10 +220,16 @@
                     </ul>
                 </div>
 
-
-                <div class="btn_sumit">
-                    <button type="submit" class="btn_blue">지원하기</button>
-                    <button type="reset" class="btn_gray" onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do'">취소</button>
+                <div class="btn_group btn_submit btn_l">
+                	<input type="hidden" name="code" <c:if test="${param.code != null}">value="${param.code}"</c:if> >
+                	<c:if test="${param.code == null}">
+                    	<button type="submit" class="c_orange">글등록</button>
+                    </c:if>
+                    <c:if test="${tradeBoardVO.seller == id && tradeBoard.buyer == null}">
+                    	<button type="submit" class="c_orange" id="updateBtn" formaction="${pageContext.request.contextPath}/sitterUpdate.do">수정하기</button>
+                    </c:if>
+                    	<button type="reset" class="c_gray" onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do'">취소</button>
+                    
                 </div>
 
             </div>

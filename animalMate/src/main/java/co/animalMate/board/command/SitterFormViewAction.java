@@ -89,11 +89,19 @@ public class SitterFormViewAction implements Action {
 	       commentsVO = commentsDAO.selectByCode(commentsVO);
 	       score += commentsVO.getScore();
 	    }
-	    if(career!=0) {
-	     request.setAttribute("score", score/career);
-	    } else {
-	     request.setAttribute("score", "거래내역 없음");
-	    }
+	    if (career != 0) {
+			int avgScore = Math.round(score / career);
+			String stars = "";
+			for (int i = 0; i < avgScore; i++) {
+				stars += "★";
+			}
+			for (int i = 0; i < (5 - avgScore); i++) {
+				stars += "☆";
+			}
+			request.setAttribute("score", stars);
+		} else {
+			request.setAttribute("score", "거래내역 없음");
+		}
 	      
 	    //돌봄환경 사진 구하기!
 	    PictureDAO pictureDAO = new PictureDAO();  

@@ -8,9 +8,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import co.animalMate.board.dao.JobListDao;
 import co.animalMate.common.Action;
+import co.animalMate.main.dao.MemberDao;
 import co.animalMate.main.dao.PetDao;
 import co.animalMate.main.dao.TradeBoardDAO;
 import co.animalMate.vo.JoblistVO;
+import co.animalMate.vo.MemberVO;
 import co.animalMate.vo.PetCodeVO;
 import co.animalMate.vo.PetVO;
 import co.animalMate.vo.TradeBoardVO;
@@ -27,6 +29,13 @@ public class OwnerFormViewAction implements Action {
 		tradeBoardVO.setCode(code);
 		tradeBoardVO = tradeBoardDAO.selectByCode(tradeBoardVO);
 		request.setAttribute("tradeBoardVO", tradeBoardVO);
+		
+		//members테이블
+		MemberDao memberDao = new MemberDao();
+		MemberVO memberVO = new MemberVO();
+		memberVO.setId(tradeBoardVO.getSeller());
+		memberVO = memberDao.selectById(memberVO);
+		request.setAttribute("memberVO", memberVO);
 		
 		//pet테이블
 		PetDao petDAO = new PetDao();

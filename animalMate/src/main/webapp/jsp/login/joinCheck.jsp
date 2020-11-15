@@ -10,8 +10,10 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#agreeMsg").hide();
-	$("#all_chk").prop("checked",false);
-		setCheck();	
+	
+	$("#all_chk").click(function(){
+			setCheck();			
+	});
 		
 	$("#service").click(function(){
 		 checked();
@@ -67,7 +69,7 @@ $(document).ready(function() {
 <div class="wrraper" align="center">
 <!-- 회원가입창 상단로고 //클릭하면 메인페이지로 이동 -->
 	<header class="header">	
-			<a href="${pageContext.request.contextPath}/jsp/main/mainMenu.jsp" target="_blank">
+			<a href="${pageContext.request.contextPath}/jsp/main/mainMenu.jsp">
 				<image src="${pageContext.request.contextPath}/jsp/main/images/newlogo.JPG" id="logo" >
 				</image>
 			</a>

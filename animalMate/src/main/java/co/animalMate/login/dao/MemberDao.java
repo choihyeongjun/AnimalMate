@@ -21,7 +21,7 @@ public class MemberDao extends DAO {
 	
 	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
 	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ? ";
-	private final String INSERT = "INSERT INTO MEMBERS(ID, PW, NAME,NNAME,ZOOMIN1,ZOOMIN2, EMAIL,TEL, LOCATION1,LOCATION2) VALUES (?,?,?,?,?,?,?,?,?,?)";
+	private final String INSERT = "";
 	private final String RESETPW = "UPDATE MEMBERS SET PW = ?";
 	private final String FINDID ="SELECT ID FROM MEMBERS WHERE NAME=? AND EMAIL=?";
 	private final String FINDPW ="SELECT PW FROM MEMBERS WHERE ID=? AND NAME=? AND EMAIL=?";
@@ -163,20 +163,18 @@ public class MemberDao extends DAO {
 	public int insert(MemberVO vo) { 
 		int n = 0;
 		try {
-			psmt = conn.prepareStatement(INSERT);
+			psmt = conn.prepareStatement("INSERT INTO MEMBERS(ID, PW, NAME,NNAME,ZOOMIN1,ZOOMIN2, EMAIL,TEL, LOCATION1,LOCATION2) VALUES(?,?,?,?,?,?,?,?,?,?)");
 			psmt.setString(1, vo.getId());
 			psmt.setString(2, vo.getPw());
 			psmt.setString(3, vo.getName());
 			psmt.setString(4, vo.getNname());
-			psmt.setString(5, vo.getEmail());
-			psmt.setString(6, vo.getTel() );
-			psmt.setInt(7, vo.getZoomin1());
-			psmt.setInt(8, vo.getZoomin2());
+			psmt.setInt(5, vo.getZoomin1());
+			psmt.setInt(6, vo.getZoomin2());
+			psmt.setString(7, vo.getEmail());
+			psmt.setString(8, vo.getTel());
 			psmt.setString(9, vo.getLocation1());
 			psmt.setString(10, vo.getLocation2());
-
-			
-			n = psmt.executeUpdate();
+			psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

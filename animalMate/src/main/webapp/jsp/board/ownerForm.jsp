@@ -140,7 +140,7 @@
 					<div class="cont_area">
 						<div class="info_img">
 							<img class="info_img"
-								src="${pageContext.request.contextPath}/images/muncat.jpg"
+								src="${pageContext.request.contextPath}/images/pet_pic/muncat.jpg"
 								alt="시터 이미지" height="100px" width="100px">
 						</div>
 
@@ -215,8 +215,29 @@
 							<tbody>
 								<tr>
 									<th>돌봄지역</th>
-									<td><input type="text" name="location1"
-										placeholder="돌봄 지역을 입력하세요"></td>
+									<td>
+										<select name="location1">
+											<option>선택하세요</option>
+											<option value="서울" <c:if test="${location1 == '서울'}">selected="selected"</c:if>>서울</option>
+											<option value="경기" <c:if test="${location1 == '경기'}">selected="selected"</c:if>>경기</option>
+											<option value="인천" <c:if test="${location1 == '인천'}">selected="selected"</c:if>>인천</option>
+											<option value="대전" <c:if test="${location1 == '대전'}">selected="selected"</c:if>>대전</option>
+											<option value="대구" <c:if test="${location1 == '대구'}">selected="selected"</c:if>>대구</option>
+											<option value="부산" <c:if test="${location1 == '부산'}">selected="selected"</c:if>>부산</option>
+											<option value="울산" <c:if test="${location1 == '울산'}">selected="selected"</c:if>>울산</option>
+											<option value="광주" <c:if test="${location1 == '광주'}">selected="selected"</c:if>>광주</option>
+											<option value="강원" <c:if test="${location1 == '강원'}">selected="selected"</c:if>>강원</option>
+											<option value="세종" <c:if test="${location1 == '세종'}">selected="selected"</c:if>>세종</option>
+											<option value="충북" <c:if test="${location1 == '충북'}">selected="selected"</c:if>>충북</option>
+											<option value="충남" <c:if test="${location1 == '충남'}">selected="selected"</c:if>>충남</option>
+											<option value="경북" <c:if test="${location1 == '경북'}">selected="selected"</c:if>>경북</option>
+											<option value="경남" <c:if test="${location1 == '경남'}">selected="selected"</c:if>>경남</option>
+											<option value="전북" <c:if test="${location1 == '전북'}">selected="selected"</c:if>>전북</option>
+											<option value="경남" <c:if test="${location1 == '경남'}">selected="selected"</c:if>>경남</option>
+											<option value="전남" <c:if test="${location1 == '전남'}">selected="selected"</c:if>>전남</option>
+											<option value="제주" <c:if test="${location1 == '제주'}">selected="selected"</c:if>>제주</option>
+										</select> 
+									</td>
 								</tr>
 								<tr>
 									<th>상세지역</th>

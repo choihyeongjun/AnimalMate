@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	/* Box */
+/* Box */
 	.thumbnails {display: flex;flex-wrap: wrap;margin: 0 auto;}
 	.thumbnails .box {margin: 0 21px 2em 19px;width: 330px;height: 430px;}
 	/* Box */
@@ -20,28 +20,37 @@
 	/* 검색창과 썸네일 간격  */
 	#main {padding: 4em 0 2em 0;}
 	.code_dl {display: none;}
-	table span { position: relative;float: left;}
-	.tsearch {margin: 0 0 20px 36px;}
-	.ttitle {width: 80px;text-align: center;font-weight: bold;}
-	.tbottom {text-align: center; width: 180px;height: 30px;} 
-	.tbottom .minPrice {width:92px;position: relative;float: left;margin: 2px;height: 30px;}
-	.tbottom .datein {width:80px;position: relative;float: left;margin: 1.75px;height: 30px;}
-	.tbottom .timein {width: 80px; position: relative;float: left;height: 30px;}
-	.tbottom .statusin {position: relative;float: left;width: 100%;height: 30px;}
-	.tbottom .typein {position: relative;float: left;width: 100%;height: 30px;}
-	.tbtn {height: 60px;margin-left: 30px;width:100px;border-radius: 10px;}
-	.regiBtn {height: 60px; margin-left: 30px;width: 100px; border-radius: 10px;}
-	.boardtitle {margin-left: 460px;margin-bottom: 41px;}
+	.boardtitle {margin: 40px 0 41px 460px;}
+	.tsearch {width: 1000px;}
 	.boardimg{width: 1110px;height: 140px;}
-	.frm {margin-top: 50px;}
+	.frm {margin: 50px 0 0 71px;}
+	.datein {position:relative;float:left;}
+	.minPrice {position:relative;float:left;width: 161px;}
+	span{position:relative;float:left;}
+	.tbtn {background-color: rgb(255,136,38);font-weight: bold;color: black;
+	    border: none;width: 100px; border-radius: 4px; height: 30px; margin-left: 10px;}
+	 .regiBtn {background-color: rgb(255,136,38);font-weight: bold;color: black;
+	    border: none;width: 100px; border-radius: 4px; height: 30px; margin-left: 10px;}
+	.tbtn1 {background-color: rgb(179 173 167); font-weight: bold;color: black;
+	    border: none;width: 100px; border-radius: 4px; height: 30px;margin-left: 10px;}
+	.ttitle {width: 80px;text-align: center;font-weight: bold;}
+	.ttitle td {margin-bottom: 20px;}
 </style>
 
 <script>
 $(()=>{
+	//박스 클릭하면 이동
 	$(".box").on("click",function() {
 		var code = $(this).children().eq(0).val();
 		location.href="${pageContext.request.contextPath}/ownerFormSelect.do?code="+code;
 	});
+	
+	//검색 취소 버튼
+	$("#resetBtn").on({
+		"click" : function() {
+			location.href="${pageContext.request.contextPath}/ownerList.do";			
+		}
+	})
 })
 </script>
 </head>
@@ -55,12 +64,12 @@ $(()=>{
 	</div>
 	<br>
 	
-	<div>
-		<form class="frm" id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerList.do">
+	
+	<form class="frm" id="frm" name="frm" method="get" action="${pageContext.request.contextPath}/ownerList.do">
 		<table class="tsearch">
 		<tr>
 			<td class="ttitle" colspan="2">분류</td> 
-			<td class="tbottom" colspan="10">
+			<td class="tbottom" colspan="4">
 				<select class="typein" id="ttype" name="ttype">
 					<option>선택하세요</option>
 					<option value="고양이" <c:if test="${ttype == '고양이'}">selected="selected"</c:if>>고양이</option>
@@ -69,7 +78,13 @@ $(()=>{
 					<option value="소형견" <c:if test="${ttype == '소형견'}">selected="selected"</c:if>>소형견</option>
 				</select>
 			</td>
-			<td class="ttitle" colspan="2">거래상태</td>
+			<td class="ttitle" colspan="2">돌봄날짜</td>
+		<td class="tbottom" colspan="10">
+			<input class="datein" type="date" id="sDate" name="sDate" <c:if test="${param.sDate != null}">value="${param.sDate}"</c:if>>
+			<span>~</span>
+			<input class="datein" type="date" id="eDate" name="eDate" <c:if test="${param.eDate != null}">value="${param.eDate}"</c:if>>
+		</td>
+		<td class="ttitle" colspan="2">거래상태</td>
 			<td class="tbottom" colspan="4">
 				<select class="statusin" id="status" name="status">
 					<option>선택하세요</option>
@@ -81,9 +96,12 @@ $(()=>{
 					<option value="거래 완료" <c:if test="${status == '거래 완료'}">selected="selected"</c:if>>거래 완료</option>
 				</select>
 			</td>
-			<td class="ttitle" colspan="2">돌봄지역<td> 
-			<td class="tbottom" colspan="7">
-				<select id="location1" name="location1" class="typein">
+		</tr>
+		<tr>
+		
+			<td class="ttitle" colspan="1">돌봄지역<td> 
+			<td class="tbottom" colspan="4">
+				<select id="location1" name="location1" class="loactionin">
 					<option>선택하세요</option>
 					<option value="서울" <c:if test="${location1 == '서울'}">selected="selected"</c:if>>서울</option>
 					<option value="경기" <c:if test="${location1 == '경기'}">selected="selected"</c:if>>경기</option>
@@ -105,39 +123,25 @@ $(()=>{
 					<option value="제주" <c:if test="${location1 == '제주'}">selected="selected"</c:if>>제주</option>
 				</select>	
 			</td>
-			<td rowspan="2">
+		<td class="ttitle" colspan="1">돌봄금액</td>
+		<td class="tbottom" colspan="11">
+			<input class="minPrice" id="minPrice" name="minPrice" type="number" step="1000" placeholder="최소금액"<c:if test="${param.minPrice != null}">value="${param.minPrice}"</c:if>>
+			<span>~</span>
+			<input class="minPrice" id="maxPrice" name="maxPrice" type="number" step="1000" placeholder="최대금액"<c:if test="${param.maxPrice != null}">value="${param.maxPrice}"</c:if>>
+		</td>
+		<td colspan="4">
 				<button class="tbtn" type="submit">검색</button>
+				<button class="tbtn1" type="reset" id="resetBtn">검색취소</button>
 			</td>
-			<c:if test="${sessionauthor != null && sessionauthor != 'black'}">
+			<c:if test="${sessionauthor != 'black'}">
 				<td rowspan="2">
 					<button class="regiBtn" type="button" onclick="window.location.href='${pageContext.request.contextPath}/ownerForm.do'">글등록</button>
 				</td>
 			</c:if>
 		</tr>
-		<tr>
-		<td class="ttitle" colspan="2">돌봄날짜</td>
-		<td class="tbottom" colspan="10">
-			<input class="datein" type="date" id="sDate" name="sDate" <c:if test="${param.sDate != null}">value="${param.sDate}"</c:if>>
-			<span>~</span>
-			<input class="datein" type="date" id="eDate" name="eDate" <c:if test="${param.eDate != null}">value="${param.eDate}"</c:if>>
-		</td>
-		<td class="ttitle" colspan="2">돌봄시간</td>
-		<td class="tbottom" colspan="4">
-			<input class="timein" type="time" id="sTime" name="sTime" >
-			<span>~</span>
-			<input class="timein" type="time" id="eTime" name="eTime">
-		</td>
-		<td class="ttitle" colspan="2">돌봄금액</td>
-		<td class="tbottom" colspan="10">
-			<input class="minPrice" id="minPrice" name="minPrice" type="number" step="1000" placeholder="최소금액"<c:if test="${param.minPrice != null}">value="${param.minPrice}"</c:if>>
-			<span>~</span>
-			<input class="minPrice" id="maxPrice" name="maxPrice" type="number" step="1000" placeholder="최대금액"<c:if test="${param.maxPrice != null}">value="${param.maxPrice}"</c:if>>
-		</td>
-		
-		</tr>
 		</table>
-		</form>
-	</div>
+	</form>	
+	
 
 	<div id="main" align="center">
 		<div class="inner" align="center">

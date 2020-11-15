@@ -10,7 +10,7 @@ import co.animalMate.common.Action;
 import co.animalMate.main.dao.TradeBoardDAO;
 import co.animalMate.vo.TradeBoardVO;
 
-public class SitterInsertAction implements Action {
+public class SitterUpdateAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -28,6 +28,7 @@ public class SitterInsertAction implements Action {
 		String etime = request.getParameter("etime");
 		int price = Integer.parseInt(request.getParameter("price"));
 		String comm = request.getParameter("comm");
+		int code = Integer.parseInt(request.getParameter("code"));
 		
 		tradeBoardVO.setSeller(seller);
 		tradeBoardVO.setTitle(title);
@@ -39,10 +40,11 @@ public class SitterInsertAction implements Action {
 		tradeBoardVO.setEtime(etime);
 		tradeBoardVO.setPrice(price);
 		tradeBoardVO.setComm(comm);
+		tradeBoardVO.setCode(code);
 		
 		TradeBoardDAO tradeBoardDAO = new TradeBoardDAO();
-		tradeBoardDAO.sitterInsert(tradeBoardVO);
-		
+		tradeBoardDAO.sitterUpdate(tradeBoardVO);
+
 		try {
 			response.sendRedirect(request.getContextPath() + "/sitterFormSelect.do?code="+tradeBoardVO.getCode());
 			return null;
@@ -51,6 +53,8 @@ public class SitterInsertAction implements Action {
 		}
 		
 		return null;
+		
+		
 	}
 
 }
