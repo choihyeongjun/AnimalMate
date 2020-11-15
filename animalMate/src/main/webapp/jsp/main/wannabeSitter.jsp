@@ -52,7 +52,13 @@ input[type=submit]:hover {
 .wannabeSitterSubmit {
 	margin-bottom: 100px;
 }
-
+.OBtn {border-radius: 4px;height: 40px; width: 100px;}
+.CBtn {border-radius: 4px;height: 40px; width: 100px;background-color: #a7a7a7d1;}
+.idin {width: 831px;border-radius: 8px;}
+.maxsel{border-radius: 8px;}
+.textin {height: 420px;border-radius: 8px;}
+.tlabel {    font-weight: bold; font-size: 17px;position: relative; float: right;margin-right: 30px;}
+.title{    margin: 80px 0 60px 0;font-weight: bold;}
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -87,23 +93,23 @@ input[type=submit]:hover {
 </head>
 <body>
 
-<div align="center"><h2>시터 지원하기</h2></div>
+<div align="center"><h2 class="title" >시터 지원하기</h2></div>
 <br>
 
 <div class="container">
   <form action="${pageContext.request.contextPath}/sitterinsert.do">
   <div class="row">
   <div class="col-25">
-      <label >id</label>
+      <label class="tlabel" >id</label>
     </div>
     <div class="col-75">
-    <td><input text="type" readonly="readonly" name="id" value="${sessionScope.id}"></td>
+    <td><input class="idin" text="type" readonly="readonly" name="id" value="${sessionScope.id}"></td>
     </div>
     <div class="col-25">
-      <label >최대 돌봄 마리 수</label>
+      <label class="tlabel">최대 돌봄 마리 수</label>
     </div>
     <div class="col-75">
-      <select id="pet" name="pet">
+      <select class="maxsel" id="pet" name="pet">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -114,19 +120,18 @@ input[type=submit]:hover {
   </div>
   <div class="row">
     <div class="col-25">
-      <label >지원내용</label>
+      <label class="tlabel">지원내용</label>
     </div>
     <div class="col-75">
-      <textarea id="comm" name="comm" placeholder="Write something.." style="height:200px"></textarea>
+      <textarea class="textin" id="comm" name="comm" placeholder="" style="height:200px" ></textarea>
     </div>
   </div>
   <br>
   <div class="wannabeSitterSubmit" align="right">
-    <button>제출하기</button>
+   <button class="CBtn">취소</button>
+    <button class="OBtn">제출하기</button>
   </div>
-    <div class="calcel" align="right">
-    <button>취소</button>
-  </div>
+  
   </form>
 </div>
 
