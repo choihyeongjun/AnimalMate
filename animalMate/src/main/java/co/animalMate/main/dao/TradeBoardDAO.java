@@ -342,7 +342,7 @@ public class TradeBoardDAO extends DAO {
 	}
 	
 	//----------------업데이트----------------
-	// 시터 업데이트
+	// 코드로 시터, 오너 업데이트
 	public int sitterUpdate(TradeBoardVO vo) {
 		int n = 0;
 		int cnt = 1;
@@ -378,6 +378,7 @@ public class TradeBoardDAO extends DAO {
 		}
 		return n;
 	}
+
 	
 	//----------------딜리트----------------
 		//code로 딜리트하기

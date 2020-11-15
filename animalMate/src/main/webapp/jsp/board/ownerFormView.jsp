@@ -44,12 +44,14 @@
 
 <script type="text/javascript">
 		$(()=>{
+			//메세지 보내기 버튼
 			$("#submitBtn").on({
 				"click"  :function(){
 					messageFrm.submit();
 				}
 			})
 			
+			//지원하기 버튼
 			$("#ownerFormApplyBtn").on({
 				"click"  :function(){
 					$.ajax({
@@ -63,6 +65,21 @@
 	    					alert("지원이 완료되었습니다.")
 	    				}
 					})
+				}
+			})
+			
+			//수정하기 버튼
+			$("#updateBtn").on({
+				"click"  :function(){
+					location.href = "${pageContext.request.contextPath}/ownerForm.do?code="+${param.code};
+				}
+			})
+			//삭제하기 버튼
+			$("#deleteBtn").on({
+				"click"  :function(){
+					if(confirm("정말로 삭제하시겠습니까?")){
+						location.href = "${pageContext.request.contextPath}/ownerDelete.do?code="+${param.code};	
+					}
 				}
 			})
 		})
@@ -196,7 +213,7 @@
 
 						<tr>
 							<th>반려인</th>
-						<td>${tradeBoardVO.buyer}<button class="proBtn">프로필 상세보기</button></td>
+						<td>${tradeBoardVO.buyer}<button class="proBtn"><a href="${pageContext.request.contextPath}/profile.do?id=${tradeBoardVO.buyer}" target="blank"> 프로필 상세보기</a></button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -234,11 +251,17 @@
 
 			<br>
 			<div class="btn_sumit">
-				<button class="btn_send" type="button" data-toggle="modal"
+				<c:if test="${tradeBoardVO.buyer == id && tradeBoardVO.seller == null}">
+					<button class="btn_send" type="button" id="updateBtn">수정하기</button>
+					<button class="btn_send" type="button" id="deleteBtn">삭제하기</button>
+				</c:if>
+				<c:if test="${tradeBoardVO.buyer != id}">
+					<button class="btn_send" type="button" data-toggle="modal"
 					data-target="#exampleModal1">쪽지보내기</button>
-				<c:if test="${sessionauthor == 'usersitter'}">	
-					<c:if test="${tradeBoardVO.status == '거래 완료'}">
-						<button type="submit" class="btn_result" id="ownerFormApplyBtn">지원하기</button>
+					<c:if test="${sessionauthor == 'usersitter'}">	
+						<c:if test="${tradeBoardVO.status == '거래 미정'}">
+							<button type="submit" class="btn_result" id="ownerFormApplyBtn">지원하기</button>
+						</c:if>
 					</c:if>
 				</c:if>
 				<button type="reset" class="btn_cancle" onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>

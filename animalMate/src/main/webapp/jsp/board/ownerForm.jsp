@@ -58,6 +58,12 @@
     text-align: left;
 }
 
+.ownerFormChkbox{
+	display : inline;
+	width: 20px;
+	max-width: 20px;
+}
+
 
 </style>
 <script
@@ -111,6 +117,8 @@
 			} //end of change function
 		})//end of on
 	});
+	
+	
 </script>
 
 </head>
@@ -127,7 +135,7 @@
 			<div class="title">
 				<!-- <h1>돌봐주세요- (글등록 Form)</h1> -->
 				<h2 class="cont_tit">제목</h2> <input class="titleinput" type="text" name="title"
-					placeholder="제목을 입력하세요">
+					placeholder="제목을 입력하세요" value="${tradeBoardVO.title}">
 			</div>
 			<br>
 			<!-- e:title -->
@@ -137,62 +145,66 @@
 				<div id="sec01" class="sitter_info">
 					<h2 class="cont_tit">펫 정보</h2>
 
-					<div class="cont_area">
-						<div class="info_img">
-							<img class="info_img"
-								src="${pageContext.request.contextPath}/images/pet_pic/muncat.jpg"
-								alt="시터 이미지" height="100px" width="100px">
+					<c:forEach items="${petList}" var="v">
+						<div class="cont_area">
+							<div class="info_img">
+								<img class="info_img"
+									src="${pageContext.request.contextPath}/images/pet_pic/${v.pic}"
+									alt="펫 이미지" height="100px" width="100px">
+							</div>
+	
+							<div class="info_table">
+								<table class="tbl_write__list">
+									<colgroup>
+										<col width="40%">
+										<col width="60%">
+									</colgroup>
+	
+									<thead>
+										<tr>
+											<th>펫 정보</th>
+											<th>상세 내용</th>
+										</tr>
+									</thead>
+	
+									<tbody>
+										<tr>
+											<td>펫 이름</td>
+											<td>
+												${v.name} 
+												<input type="checkbox" class="ownerFormChkbox" value="${v.code}" name="petCode" 
+													<c:forEach var="a" items="${petCodeList}">
+														<c:if test="${v.code == a.petCode}">checked="checked"</c:if>
+													</c:forEach>
+												>
+											 </td>
+										</tr>
+	
+										<tr>
+											<td>나이</td>
+											<td id="ageTD">${v.age}</td>
+										</tr>
+	
+										<tr>
+											<td>성별</td>
+											<td id="genderTD">${v.gender}</td>
+										</tr>
+	
+										<tr>
+											<td>종류</td>
+											<td id="typeTD">${v.type}</td>
+										</tr>
+	
+										<tr>
+											<td>중성화 유무</td>
+											<td id="cutTD">${v.cut}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
 						</div>
-
-						<div class="info_table">
-							<table class="tbl_write__list">
-								<colgroup>
-									<col width="40%">
-									<col width="60%">
-								</colgroup>
-
-								<thead>
-									<tr>
-										<th>펫 정보</th>
-										<th>상세 내용</th>
-									</tr>
-								</thead>
-
-								<tbody>
-									<tr>
-										<td>펫 이름</td>
-										<td><select id="name" name="name">
-												<c:forEach items="${petList}" var="v">
-													<option value="">펫을 선택해주세요</option>
-													<option value="${v.name}">${v.name}</option>
-												</c:forEach>
-										</select></td>
-									</tr>
-
-									<tr>
-										<td>나이</td>
-										<td id="ageTD">DBVALUE</td>
-									</tr>
-
-									<tr>
-										<td>성별</td>
-										<td id="genderTD">DBVALUE</td>
-									</tr>
-
-									<tr>
-										<td>종류</td>
-										<td id="typeTD">DBVALUE</td>
-									</tr>
-
-									<tr>
-										<td>중성화 유무</td>
-										<td id="cutTD">DBVALUE</td>
-									</tr>
-								</tbody>
-							</table>
-							<input type="hidden" id="petCode" name="petCode" value="">
-						</div>
-					</div>
+					</c:forEach>
+					
 				</div>
 
 				<div id="sec02" class="layout_2ea">
@@ -218,40 +230,40 @@
 									<td>
 										<select name="location1">
 											<option>선택하세요</option>
-											<option value="서울" <c:if test="${location1 == '서울'}">selected="selected"</c:if>>서울</option>
-											<option value="경기" <c:if test="${location1 == '경기'}">selected="selected"</c:if>>경기</option>
-											<option value="인천" <c:if test="${location1 == '인천'}">selected="selected"</c:if>>인천</option>
-											<option value="대전" <c:if test="${location1 == '대전'}">selected="selected"</c:if>>대전</option>
-											<option value="대구" <c:if test="${location1 == '대구'}">selected="selected"</c:if>>대구</option>
-											<option value="부산" <c:if test="${location1 == '부산'}">selected="selected"</c:if>>부산</option>
-											<option value="울산" <c:if test="${location1 == '울산'}">selected="selected"</c:if>>울산</option>
-											<option value="광주" <c:if test="${location1 == '광주'}">selected="selected"</c:if>>광주</option>
-											<option value="강원" <c:if test="${location1 == '강원'}">selected="selected"</c:if>>강원</option>
-											<option value="세종" <c:if test="${location1 == '세종'}">selected="selected"</c:if>>세종</option>
-											<option value="충북" <c:if test="${location1 == '충북'}">selected="selected"</c:if>>충북</option>
-											<option value="충남" <c:if test="${location1 == '충남'}">selected="selected"</c:if>>충남</option>
-											<option value="경북" <c:if test="${location1 == '경북'}">selected="selected"</c:if>>경북</option>
-											<option value="경남" <c:if test="${location1 == '경남'}">selected="selected"</c:if>>경남</option>
-											<option value="전북" <c:if test="${location1 == '전북'}">selected="selected"</c:if>>전북</option>
-											<option value="경남" <c:if test="${location1 == '경남'}">selected="selected"</c:if>>경남</option>
-											<option value="전남" <c:if test="${location1 == '전남'}">selected="selected"</c:if>>전남</option>
-											<option value="제주" <c:if test="${location1 == '제주'}">selected="selected"</c:if>>제주</option>
+											<option value="서울" <c:if test="${tradeBoardVO.location1 == '서울'}">selected="selected"</c:if>>서울</option>
+										<option value="경기" <c:if test="${tradeBoardVO.location1 == '경기'}">selected="selected"</c:if>>경기</option>
+										<option value="인천" <c:if test="${tradeBoardVO.location1 == '인천'}">selected="selected"</c:if>>인천</option>
+										<option value="대전" <c:if test="${tradeBoardVO.location1 == '대전'}">selected="selected"</c:if>>대전</option>
+										<option value="대구" <c:if test="${tradeBoardVO.location1 == '대구'}">selected="selected"</c:if>>대구</option>
+										<option value="부산" <c:if test="${tradeBoardVO.location1 == '부산'}">selected="selected"</c:if>>부산</option>
+										<option value="울산" <c:if test="${tradeBoardVO.location1 == '울산'}">selected="selected"</c:if>>울산</option>
+										<option value="광주" <c:if test="${tradeBoardVO.location1 == '광주'}">selected="selected"</c:if>>광주</option>
+										<option value="강원" <c:if test="${tradeBoardVO.location1 == '강원'}">selected="selected"</c:if>>강원</option>
+										<option value="세종" <c:if test="${tradeBoardVO.location1 == '세종'}">selected="selected"</c:if>>세종</option>
+										<option value="충북" <c:if test="${tradeBoardVO.location1 == '충북'}">selected="selected"</c:if>>충북</option>
+										<option value="충남" <c:if test="${tradeBoardVO.location1 == '충남'}">selected="selected"</c:if>>충남</option>
+										<option value="경북" <c:if test="${tradeBoardVO.location1 == '경북'}">selected="selected"</c:if>>경북</option>
+										<option value="경남" <c:if test="${tradeBoardVO.location1 == '경남'}">selected="selected"</c:if>>경남</option>
+										<option value="전북" <c:if test="${tradeBoardVO.location1 == '전북'}">selected="selected"</c:if>>전북</option>
+										<option value="경남" <c:if test="${tradeBoardVO.location1 == '경남'}">selected="selected"</c:if>>경남</option>
+										<option value="전남" <c:if test="${tradeBoardVO.location1 == '전남'}">selected="selected"</c:if>>전남</option>
+										<option value="제주" <c:if test="${tradeBoardVO.location1 == '제주'}">selected="selected"</c:if>>제주</option>
 										</select> 
 									</td>
 								</tr>
 								<tr>
 									<th>상세지역</th>
 									<td><input type="text" name="location2"
-										placeholder="돌봄 세부지역을 입력하세요"></td>
+										placeholder="돌봄 세부지역을 입력하세요" value="${tradeBoardVO.location2}"></td>
 								</tr>
 								<tr>
 									<th>돌봄날짜</th>
 									<td>
 										<!-- jQuery datepicker 연결하면 됨-->
 										<div class="calendar">
-											<input type="date" name="sdate" id="sdate" placeholder="시작일">
-											<span>~</span> <input type="date" name="edate" id="edate"
-												placeholder="종료일">
+											<input type="date" name="sdate" id="sdate" placeholder="시작일" value="${tradeBoardVO.sdate}">
+											<span>~</span> 
+											<input type="date" name="edate" id="edate" placeholder="종료일" value="${tradeBoardVO.edate}">
 										</div>
 									</td>
 								</tr>
@@ -260,8 +272,8 @@
 									<th>돌봄시간</th>
 									<td>
 										<div class="calendar">
-											<input type="time" name="stime" id="stime"> <span>~</span>
-											<input type="time" name="etime" id="etime">
+											<input type="time" name="stime" id="stime" value="${tradeBoardVO.stime}"> <span>~</span>
+											<input type="time" name="etime" id="etime" value="${tradeBoardVO.etime}">
 										</div>
 									</td>
 								</tr>
@@ -269,7 +281,7 @@
 								<tr>
 									<th>거래금액</th>
 									<td class="amount"><input type="text" name="price"
-										id="price" placeholder="서비스 비용을 입력하세요">원</td>
+										id="price" placeholder="서비스 비용을 입력하세요" value="${tradeBoardVO.price}">원</td>
 								</tr>
 							</tbody>
 						</table>
@@ -281,19 +293,23 @@
 							<button class="checkAddBtn btn_xs c_gray_line" type="button">추가</button>
 						</div>
 
-						<div class="checkList1 check_input_2ea">
-							<input type="text" id="joblistComm" name="joblistComm"
-								placeholder="업무 체크리스트를 입력해주세요">
-							<button class="checkDelBtn btn_xs c_red" type="button">삭제</button>
-							<!-- class명 바꿔야함 삭제로(checkAddBtn) -->
-						</div>
+						<c:forEach items="${joblistList}" var="v">
+							<div class="checkList1 check_input_2ea">
+								<input type="text" id="joblistComm" name="joblistComm"
+									placeholder="업무 체크리스트를 입력해주세요" value="${v.comm}">
+								<button class="checkDelBtn btn_xs c_red" type="button">삭제</button>
+								<!-- class명 바꿔야함 삭제로(checkAddBtn) -->
+							</div>
+						</c:forEach>
 					</div>
 				</div>
 
 				<div id="sec05" class="">
 					<h2 class="cont_tit">세부내용</h2>
 
-					<textarea name="comm" id="comm" placeholder="세부내용을 입력해 주세요"></textarea>
+					<textarea name="comm" id="comm" placeholder="세부내용을 입력해 주세요">
+						${tradeBoardVO.comm}
+					</textarea>
 				</div>
 
 				<div id="sec06" class="sitter_caution">
@@ -311,7 +327,12 @@
 			<!-- e:contents -->
 
 			<div class="btn_group btn_submit btn_l">
-				<button type="submit" class="c_orange">글등록</button>
+				<c:if test="${param.code == null}">
+					<button type="submit" class="c_orange">글등록</button>
+				</c:if>
+				<c:if test="${tradeBoardVO.buyer == id && tradeBoardVO.seller == null}">
+                    <button type="submit" class="c_orange" formaction="${pageContext.request.contextPath}/ownerUpdate.do?code=${param.code}">수정하기</button>
+                 </c:if>
 				<button type="reset" class="c_gray"
 					onclick="window.location.href='${pageContext.request.contextPath}/ownerList.do'">취소</button>
 			</div>

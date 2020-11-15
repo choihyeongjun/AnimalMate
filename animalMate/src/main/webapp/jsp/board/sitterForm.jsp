@@ -203,7 +203,7 @@
                 <div id="sec05" class="">
                     <h2 class="cont_tit">세부내용</h2>
 
-                    <textarea name="comm">
+                    <textarea name="comm" placeholder="세부내용을 입력해 주세요">
                     	${tradeBoardVO.comm}
                     </textarea>
                 </div>
@@ -221,15 +221,13 @@
                 </div>
 
                 <div class="btn_group btn_submit btn_l">
-                	<input type="hidden" name="code" <c:if test="${param.code != null}">value="${param.code}"</c:if> >
                 	<c:if test="${param.code == null}">
                     	<button type="submit" class="c_orange">글등록</button>
                     </c:if>
                     <c:if test="${tradeBoardVO.seller == id && tradeBoard.buyer == null}">
-                    	<button type="submit" class="c_orange" id="updateBtn" formaction="${pageContext.request.contextPath}/sitterUpdate.do">수정하기</button>
+                    	<button type="submit" class="c_orange" formaction="${pageContext.request.contextPath}/sitterUpdate.do?code=${param.code}">수정하기</button>
                     </c:if>
-                    	<button type="reset" class="c_gray" onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do'">취소</button>
-                    
+                    <button type="reset" class="c_gray" onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do?">취소</button>        
                 </div>
 
             </div>

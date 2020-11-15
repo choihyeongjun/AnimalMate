@@ -57,7 +57,7 @@
 				}
 			})
 			
-			//지원하기 버튼
+			//예약하기 버튼
 			$("#sitterFormApplyBtn").on({
 				"click"  :function(){
 					$.ajax({
@@ -88,8 +88,6 @@
 					}
 				}
 			})
-			
-			
 		})
 </script>
 </head>
@@ -271,11 +269,11 @@
 				</c:if>
 				<c:if test="${tradeBoard.seller != id}">
 					<button class="btn_send" type="button" data-toggle="modal" data-target="#exampleModal1">쪽지보내기</button>
-				<c:if test="${sessionauthor ne 'black'}">
-					<c:if test="${tradeBoard.status == '거래 미정'}">	
-						<button type="submit" class="btn_result" id="sitterFormApplyBtn">예약하기</button>
+					<c:if test="${sessionauthor ne 'black'}">
+						<c:if test="${tradeBoard.status == '거래 미정'}">	
+							<button type="submit" class="btn_result" id="sitterFormApplyBtn">예약하기</button>
+						</c:if>
 					</c:if>
-				</c:if>
 				</c:if>
 				<button type="reset" class="btn_cancle "
 					onclick="window.location.href='${pageContext.request.contextPath}/sitterList.do'">취소</button>
