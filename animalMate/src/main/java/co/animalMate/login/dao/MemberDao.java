@@ -163,7 +163,7 @@ public class MemberDao extends DAO {
 	public int insert(MemberVO vo) { 
 		int n = 0;
 		try {
-			psmt = conn.prepareStatement("INSERT INTO MEMBERS(ID, PW, NAME,NNAME,ZOOMIN1,ZOOMIN2, EMAIL,TEL, LOCATION1,LOCATION2) VALUES(?,?,?,?,?,?,?,?,?,?)");
+			psmt = conn.prepareStatement("INSERT INTO MEMBERS(ID, PW, NAME,NNAME,ZOOMIN1,ZOOMIN2, EMAIL,TEL, LOCATION1,LOCATION2, PIC) VALUES(?,?,?,?,?,?,?,?,?,?,?)");
 			psmt.setString(1, vo.getId());
 			psmt.setString(2, vo.getPw());
 			psmt.setString(3, vo.getName());
@@ -174,6 +174,7 @@ public class MemberDao extends DAO {
 			psmt.setString(8, vo.getTel());
 			psmt.setString(9, vo.getLocation1());
 			psmt.setString(10, vo.getLocation2());
+			psmt.setString(11, vo.getPic());
 			psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

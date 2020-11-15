@@ -9,7 +9,7 @@ public class LoginForm implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		return "jsp/main/loginForm.jsp";
+		return "jsp/login/loginForm.jsp";
 	}
 
 }
