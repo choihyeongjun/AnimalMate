@@ -16,7 +16,7 @@
 
 </style>
 <script>
-	document.getElementById("video").play();	
+	
 </script>
 </head>
 <body>

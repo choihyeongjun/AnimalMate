@@ -46,6 +46,22 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 
 <script type="text/javascript">
 	$(()=> {
+		//
+		$(document).ready(function() {
+			$.ajax({
+				url:'${pageContext.request.contextPath}/ajax/howMuchMessage.do',
+				data : {code : "a"},
+				dataType:'json',
+				error:function(xhr,status,msg){
+					alert("상태값 :" + status + " Http에러메시지 :"+msg);
+				},
+				success:function(a){
+					var messageText =  $("#messageListBtn").text();
+					$("#messageListBtn").text(messageText+"("+a+")");
+				}
+			})
+		})
+		
 		//로그인버튼
 		$("#loginBtn").on({
 			"click" : function() {

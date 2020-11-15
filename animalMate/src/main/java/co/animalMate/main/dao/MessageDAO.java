@@ -42,6 +42,24 @@ public class MessageDAO extends DAO {
 //		}
 //		return list;
 //	}
+	
+	// receive로 읽지 않은 메세지 갯수 조회하기
+	public int countByReceive(MessageVO vo) {
+		int count = 0;
+		try {
+			psmt = conn.prepareStatement("SELECT * FROM MESSAGE WHERE RECEIVE = ? AND STATUS = '미확인'");
+			psmt.setString(1, vo.getReceive());
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				count++;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return count;
+	}
 
 	// receive로 전체조회(페이징)
 	public List<MessageVO> selectByReceive(MessageVO vo) { // 멤버리스트 전체를 가져오는 메소드
