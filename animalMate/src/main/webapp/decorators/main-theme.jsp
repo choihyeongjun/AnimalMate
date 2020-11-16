@@ -48,6 +48,7 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 	$(()=> {
 		//
 		$(document).ready(function() {
+			//쪽지 갯수
 			$.ajax({
 				url:'${pageContext.request.contextPath}/ajax/howMuchMessage.do',
 				data : {code : "a"},
@@ -59,6 +60,8 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 					$("#messageListBtn").text(messageText+"("+a+")");
 				}
 			})
+			
+			
 		})
 		
 		//로그인버튼
@@ -85,7 +88,7 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 		//요청알림버튼
 		$("#tradeListBtn").on({
 			"click" : function() {
-				location.href="${pageContext.request.contextPath}/gotradeListPage.do";
+				location.href="${pageContext.request.contextPath}/mytradeList.do";
 			}
 		})
 		
