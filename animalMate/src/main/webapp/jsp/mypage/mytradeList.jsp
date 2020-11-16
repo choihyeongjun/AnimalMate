@@ -35,7 +35,7 @@
 				<dl>
 					<dt>포인트 충전</dt>
 					<dd>
-						<button onclick="window.location.href='${pageContext.request.contextPath}/pointChargingView.do">충전하기</button>
+						<button onclick="window.location.href='${pageContext.request.contextPath}/pointChargingView.do'">정보수정</button>
 					</dd>
 				</dl>
 			</div>
