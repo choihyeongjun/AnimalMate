@@ -51,6 +51,7 @@ import co.animalMate.login.command.SitterDeleteAction;
 import co.animalMate.login.command.idOverlapCheck;
 import co.animalMate.main.command.AdminLoginAction;
 import co.animalMate.main.command.AjaxHowMuchMessageAction;
+import co.animalMate.main.command.AjaxHowMuchQuestionAction;
 import co.animalMate.main.command.AjaxMessageInfoAction;
 import co.animalMate.main.command.AjaxOwnerFormApplyAction;
 import co.animalMate.main.command.AjaxPetInfoAction;
@@ -87,8 +88,6 @@ import co.animalMate.mypage.command.MytradeList;
 import co.animalMate.mypage.command.OwnerFormCheck;
 import co.animalMate.mypage.command.OwnerTradeCheck;
 import co.animalMate.mypage.command.OwnerTradeCheckAction;
-import co.animalMate.mypage.command.PointChargingAction;
-import co.animalMate.mypage.command.PointChargingView;
 import co.animalMate.mypage.command.Profile;
 import co.animalMate.mypage.command.SitterFormCheck;
 import co.animalMate.mypage.command.SitterTradeCheck;
@@ -134,6 +133,7 @@ public class FrontController extends HttpServlet {
       map.put("/ajax/messageInfo.do", new AjaxMessageInfoAction()); //메세지 리스트에서 메세지 눌렀을 때
       map.put("/ajax/ownerFormApply.do", new AjaxOwnerFormApplyAction()); //오너폼에서 지원하기 버튼 클릭
       map.put("/ajax/howMuchMessage.do", new AjaxHowMuchMessageAction()); //메인테마 메세지 갯수 표시
+      map.put("/ajax/howMuchQuestion.do", new AjaxHowMuchQuestionAction()); //메인테마 메세지 갯수 표시
 
       
       
@@ -229,8 +229,7 @@ public class FrontController extends HttpServlet {
      map.put("/sitterTradeCheckAction.do", new SitterTradeCheckAction()); // 돌봐주세요 거래 선택후 체결 액션 
      map.put("/mytradeFinishAction.do", new MytradeFinishAction()); // 거래종료와 시터에게 돈주는 액션
      map.put("/joblistUpdateAction.do", new JoblistUpdateAction()); // 거래종료와 시터에게 돈주는 액션
-     map.put("/pointChargingView.do", new PointChargingView()); // 포인트 화면 가기
-     map.put("/pointChargingAction.do", new PointChargingAction()); // 포인트 충전 액션
+      
       
 
    }
