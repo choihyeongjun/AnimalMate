@@ -9,7 +9,9 @@ import javax.servlet.http.HttpSession;
 
 import co.animalMate.board.dao.MypageDao;
 import co.animalMate.common.Action;
+import co.animalMate.vo.MemberTradeListVO;
 import co.animalMate.vo.SitterTradeCheckListVO;
+import co.animalMate.vo.TradeBoardVO;
 import co.animalMate.vo.TradeListVO;
 
 public class SitterTradeCheck implements Action {
@@ -27,18 +29,20 @@ public class SitterTradeCheck implements Action {
 		request.setAttribute("sid", sid);
 
 		// 거래 게시판 정보 호출
+		TradeBoardVO tbVo = new TradeBoardVO();
 		String codeString = request.getParameter("code");
 		int code = Integer.parseInt(request.getParameter("code"));// 클릭한 거래게시판 번호
-		tlVo.setCode(code);// 거래번호 클릭시
-		tlVo = myDao.selectUserTrade(tlVo);
-		request.setAttribute("tbs", tlVo);
+		tbVo.setCode(code);// 거래번호 클릭시
+		tbVo = myDao.selectUserTrade2(tbVo);
+		request.setAttribute("tbs", tbVo);
 
-		// 거래 사람 + 동물리스트 호출
-		List<SitterTradeCheckListVO> uplist = new ArrayList<SitterTradeCheckListVO>();
+		// 거래 요청리스트 호출
+		MemberTradeListVO memtlVo = new MemberTradeListVO();
+		List<MemberTradeListVO> memlist = new ArrayList<MemberTradeListVO>();
 		myDao = new MypageDao();
-		stclVo.setCode(codeString);
-		uplist = myDao.selectSitterTradeList(stclVo);
-		request.setAttribute("ups", uplist);
+		memtlVo.setId(codeString);
+		memlist = myDao.selectApplyTradeList(memtlVo);
+		request.setAttribute("subUser", memlist);
 
 		// 유저 돈 체크
 		myDao = new MypageDao();
