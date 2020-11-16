@@ -43,7 +43,7 @@
             </tr>
             <tr>
                <td class="col1_title">제목</td>
-               <td><input class="col2_target" type="text" id="title" name="title" <c:if test="${sessionScope.id ne requestid }">readonly="readonly"</c:if> value="${title}"></td>
+               <td><input class="col2_target" type="text" id="title" name="title" readonly="readonly" value="${title}"></td>
             </tr>
             <tr>
                <td class="col1_target">분류</td>
