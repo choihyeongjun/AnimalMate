@@ -58,7 +58,7 @@ public class MypageDao extends DAO {
 	private final String SELECT_TRADE_USER_POINT = "SELECT POINT FROM MEMBERS WHERE ID = ?";
 	private final String UPDATE_STATUS_JOBLIST = "UPDATE TRADEBOARD SET STATUS = '반려인 미확인' WHERE CODE = ?";
 	private final String SELECT_APPLY_TRADES = "SELECT * FROM TRADEBOARD WHERE CODE IN (SELECT CODE FROM APPLYTRADE WHERE ID = ?)";
-	private final String UPDATE_POINT = "update members set point = ? + point where id = ?";
+	private final String UPDATE_POINT = "UPDATE MEMBERS SET POINT = ? + POINT WHERE ID = ?";
 	
 	// 체크리스트 시터가 올린 사진들 업데이트
 		public int updateStatusJoblist(MemberVO memVo) {
@@ -66,7 +66,7 @@ public class MypageDao extends DAO {
 			try {
 				psmt = conn.prepareStatement(UPDATE_POINT);
 				psmt.setInt(1, memVo.getPoint());
-				psmt.setString(1, memVo.getId());
+				psmt.setString(2, memVo.getId());
 				n = psmt.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
