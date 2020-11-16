@@ -37,7 +37,9 @@ public class MypageDao extends DAO {
 	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ?";
 	private final String TRADE_COUNT = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE (STATUS != '거래 완료') AND (BUYER = ? OR SELLER= ?)";
 	private final String SELECT_USER_TRADES = "SELECT TB.*, P.* FROM PETCODE T LEFT OUTER JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) LEFT OUTER JOIN PET P ON (T.PETCODE = P.CODE) WHERE TB.BUYER = ? OR TB.SELLER = ? ORDER BY TB.CODE DESC";
+	private final String SELECT_USER_TRADES2 = "SELECT * FROM TRADEBOARD WHERE BUYER = ? OR SELLER = ? ORDER BY CODE DESC";
 	private final String SELECT_USER_TRADE = "SELECT TB.*, P.* FROM PETCODE T LEFT OUTER JOIN TRADEBOARD TB ON (T.CODE = TB.CODE) LEFT OUTER JOIN PET P ON (T.PETCODE = P.CODE) WHERE TB.code = ? ";
+	private final String SELECT_USER_TRADE2 = "SELECT * FROM TRADEBOARD WHERE CODE = ?";
 	private final String SELECT_COMMENTS = "SELECT * FROM COMMENTS C JOIN TRADEBOARD TB ON (C.CODE=TB.CODE) WHERE C.CODE IN (SELECT CODE FROM TRADEBOARD WHERE SELLER = ?)";
 	private final String SELECT_APPLYTRADES = "SELECT M.* FROM MEMBERS M JOIN APPLYTRADE AT ON (M.ID = AT.ID) WHERE AT.CODE = ?";
 	private final String SELECT_TRADEPETS = "SELECT P.* FROM PETCODE TP JOIN PET P ON (TP.PETCODE = P.CODE) WHERE TP.CODE = ?";
@@ -55,8 +57,41 @@ public class MypageDao extends DAO {
 	private final String SELECT_MYTRADE_BUYER = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE BUYER = ? AND STATUS != '거래 완료'";
 	private final String SELECT_TRADE_USER_POINT = "SELECT POINT FROM MEMBERS WHERE ID = ?";
 	private final String UPDATE_STATUS_JOBLIST = "UPDATE TRADEBOARD SET STATUS = '반려인 미확인' WHERE CODE = ?";
+	private final String SELECT_APPLY_TRADES = "SELECT * FROM TRADEBOARD WHERE CODE IN (SELECT CODE FROM APPLYTRADE WHERE ID = ?)";
 	
-	
+	// User 거래 리스트 모두 출력
+		public List<TradeBoardVO> selectapplyTrades(TradeBoardVO tbVo) {
+			List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
+			try {
+				psmt = conn.prepareStatement(SELECT_APPLY_TRADES);
+				psmt.setString(1, tbVo.getBuyer());
+				rs = psmt.executeQuery();
+				while (rs.next()) {
+					tbVo = new TradeBoardVO();
+					tbVo.setCode(rs.getInt("code"));
+					tbVo.setBuyer(rs.getString("buyer"));
+					tbVo.setSeller(rs.getString("seller"));
+					tbVo.setTitle(rs.getString("title"));
+					tbVo.setTtime(rs.getString("ttime"));
+					tbVo.setPrice(rs.getInt("price"));
+					tbVo.setStatus(rs.getString("status"));
+					tbVo.setStime(rs.getString("stime"));
+					tbVo.setEtime(rs.getString("etime"));
+					tbVo.setSdate((rs.getString("sdate")).substring(0, 10));
+					tbVo.setEdate((rs.getString("edate")).substring(0, 10));
+					tbVo.setTtype(rs.getString("ttype"));
+					tbVo.setLocation1(rs.getString("location1"));
+					tbVo.setLocation2(rs.getString("location2"));
+
+					list.add(tbVo);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return list;
+		}
 	
 	// 체크리스트 시터가 올린 사진들 업데이트
 	public int updateStatusJoblist(TradeBoardVO tbVo) {
@@ -350,6 +385,8 @@ public class MypageDao extends DAO {
 		return list;
 	}
 
+	
+	
 	// 돌봐주세요 게시판 거래수락
 	public List<MemberTradeListVO> selectApplyTradeList(MemberTradeListVO memtlVo) {
 		List<MemberTradeListVO> list = new ArrayList<MemberTradeListVO>();
@@ -396,11 +433,7 @@ public class MypageDao extends DAO {
 					gender = "여성";
 				}
 				memtlVo.setGender(gender);
-				
-				
-				
-				
-				
+
 				list.add(memtlVo);
 			}
 		} catch (SQLException e) {
@@ -439,41 +472,32 @@ public class MypageDao extends DAO {
 	}
 
 	// User 거래 리스트 모두 출력
-	public List<TradeListVO> selectUserTrades(TradeListVO tlVo) {
-		List<TradeListVO> list = new ArrayList<TradeListVO>();
+	public List<TradeBoardVO> selectUserTrades(TradeBoardVO tbVo) {
+		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
 		try {
-			psmt = conn.prepareStatement(SELECT_USER_TRADES);
-			String sbid = tlVo.getBuyer();
+			psmt = conn.prepareStatement(SELECT_USER_TRADES2);
+			String sbid = tbVo.getBuyer();
 			psmt.setString(1, sbid);
 			psmt.setString(2, sbid);
 			rs = psmt.executeQuery();
 			while (rs.next()) {
-				tlVo = new TradeListVO();
-				tlVo.setCode(rs.getInt("code"));
-				tlVo.setBuyer(rs.getString("buyer"));
-				tlVo.setSeller(rs.getString("seller"));
-				tlVo.setTitle(rs.getString("title"));
-				tlVo.setTtime(rs.getString("ttime"));
-				tlVo.setPrice(rs.getInt("price"));
-				tlVo.setStatus(rs.getString("status"));
-				tlVo.setStime(rs.getString("stime"));
-				tlVo.setEtime(rs.getString("etime"));
-				tlVo.setSdate((rs.getString("sdate")).substring(0, 10));
-				tlVo.setEdate((rs.getString("edate")).substring(0, 10));
-				tlVo.setTtype(rs.getString("ttype"));
-				tlVo.setLocation1(rs.getString("location1"));
-				tlVo.setLocation2(rs.getString("location2"));
+				tbVo = new TradeBoardVO();
+				tbVo.setCode(rs.getInt("code"));
+				tbVo.setBuyer(rs.getString("buyer"));
+				tbVo.setSeller(rs.getString("seller"));
+				tbVo.setTitle(rs.getString("title"));
+				tbVo.setTtime(rs.getString("ttime"));
+				tbVo.setPrice(rs.getInt("price"));
+				tbVo.setStatus(rs.getString("status"));
+				tbVo.setStime(rs.getString("stime"));
+				tbVo.setEtime(rs.getString("etime"));
+				tbVo.setSdate((rs.getString("sdate")).substring(0, 10));
+				tbVo.setEdate((rs.getString("edate")).substring(0, 10));
+				tbVo.setTtype(rs.getString("ttype"));
+				tbVo.setLocation1(rs.getString("location1"));
+				tbVo.setLocation2(rs.getString("location2"));
 
-				tlVo.setName(rs.getString("name"));
-				tlVo.setAge(rs.getInt("age"));
-				tlVo.setGender(rs.getString("gender"));
-				tlVo.setType(rs.getString("type"));
-				tlVo.setDetailType(rs.getString("detailtype"));
-				tlVo.setCut(rs.getString("cut"));
-				tlVo.setId(rs.getString("id"));
-				tlVo.setPic(rs.getString("pic"));
-
-				list.add(tlVo);
+				list.add(tbVo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -483,13 +507,50 @@ public class MypageDao extends DAO {
 		return list;
 	}
 
+	
+	// User 거래 리스트 조회
+		public TradeBoardVO selectUserTrade2(TradeBoardVO tbVo) {
+			try {
+				psmt = conn.prepareStatement(SELECT_USER_TRADE2);
+				psmt.setInt(1, tbVo.getCode());
+				rs = psmt.executeQuery();
+				if (rs.next()) {
+					tbVo = new TradeBoardVO();
+					tbVo.setCode(rs.getInt("code"));
+					tbVo.setBuyer(rs.getString("buyer"));
+					tbVo.setSeller(rs.getString("seller"));
+					tbVo.setTitle(rs.getString("title"));
+					tbVo.setTtime(rs.getString("ttime"));
+					tbVo.setPrice(rs.getInt("price"));
+					tbVo.setStatus(rs.getString("status"));
+					tbVo.setComm(rs.getString("comm"));
+					tbVo.setStime(rs.getString("stime"));
+					tbVo.setEtime(rs.getString("etime"));
+					tbVo.setSdate((rs.getString("sdate")).substring(0, 10));
+					tbVo.setEdate((rs.getString("edate")).substring(0, 10));
+					tbVo.setTtype(rs.getString("ttype"));
+					tbVo.setLocation1(rs.getString("location1"));
+					tbVo.setLocation2(rs.getString("location2"));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				close();
+			}
+			return tbVo;
+		}
+	
+	
+	
+	
+	
 	// User 거래 리스트,동물 단건 조회
 	public TradeListVO selectUserTrade(TradeListVO tlVo) {
 		try {
 			psmt = conn.prepareStatement(SELECT_USER_TRADE);
 			psmt.setInt(1, tlVo.getCode());
 			rs = psmt.executeQuery();
-			while (rs.next()) {
+			if (rs.next()) {
 				tlVo = new TradeListVO();
 				tlVo.setCode(rs.getInt("code"));
 				tlVo.setBuyer(rs.getString("buyer"));
