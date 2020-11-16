@@ -292,7 +292,15 @@
 							<h2 class="cont_tit">체크리스트(선택사항)</h2>
 							<button class="checkAddBtn btn_xs c_gray_line" type="button">추가</button>
 						</div>
-
+						
+						<c:if test="${joblistList == null}">
+							<div class="checkList1 check_input_2ea">
+								<input type="text" id="joblistComm" name="joblistComm"
+									placeholder="업무 체크리스트를 입력해주세요" value="${v.comm}">
+								<button class="checkDelBtn btn_xs c_red" type="button">삭제</button>
+								<!-- class명 바꿔야함 삭제로(checkAddBtn) -->
+							</div>
+						</c:if>
 						<c:forEach items="${joblistList}" var="v">
 							<div class="checkList1 check_input_2ea">
 								<input type="text" id="joblistComm" name="joblistComm"
