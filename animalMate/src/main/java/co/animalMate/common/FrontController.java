@@ -87,6 +87,8 @@ import co.animalMate.mypage.command.MytradeList;
 import co.animalMate.mypage.command.OwnerFormCheck;
 import co.animalMate.mypage.command.OwnerTradeCheck;
 import co.animalMate.mypage.command.OwnerTradeCheckAction;
+import co.animalMate.mypage.command.PointChargingAction;
+import co.animalMate.mypage.command.PointChargingView;
 import co.animalMate.mypage.command.Profile;
 import co.animalMate.mypage.command.SitterFormCheck;
 import co.animalMate.mypage.command.SitterTradeCheck;
@@ -227,7 +229,8 @@ public class FrontController extends HttpServlet {
      map.put("/sitterTradeCheckAction.do", new SitterTradeCheckAction()); // 돌봐주세요 거래 선택후 체결 액션 
      map.put("/mytradeFinishAction.do", new MytradeFinishAction()); // 거래종료와 시터에게 돈주는 액션
      map.put("/joblistUpdateAction.do", new JoblistUpdateAction()); // 거래종료와 시터에게 돈주는 액션
-      
+     map.put("/pointChargingView.do", new PointChargingView()); // 포인트 화면 가기
+     map.put("/pointChargingAction.do", new PointChargingAction()); // 포인트 충전 액션
       
 
    }
