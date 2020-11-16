@@ -53,7 +53,6 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 				data : {code : "a"},
 				dataType:'json',
 				error:function(xhr,status,msg){
-					alert("상태값 :" + status + " Http에러메시지 :"+msg);
 				},
 				success:function(a){
 					var messageText =  $("#messageListBtn").text();
