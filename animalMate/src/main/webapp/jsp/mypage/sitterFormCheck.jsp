@@ -121,8 +121,8 @@
 	<c:if test="${tbs.buyer eq sid and tbs.status ne '거래 완료'}">
 		<form id="frm" name="frm" action="${pageContext.request.contextPath}/mytradeFinishAction.do" method="post">	
 			<div style="visibility: hidden;">
-				<input type="text" id="code" name="code" value="${tbs.code}">
-				<input type="text" id="id" name="id" value="${tbs.seller}">
+				<input type="text" id="tcode" name="tcode" value="${tbs.code}">
+				<input type="text" id="tid" name="tid" value="${tbs.seller}">
 			</div>
 			<br>
 			<div class="ownerFormCheckButton">

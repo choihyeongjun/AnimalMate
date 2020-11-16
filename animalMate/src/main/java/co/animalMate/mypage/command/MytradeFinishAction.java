@@ -15,9 +15,9 @@ public class MytradeFinishAction implements Action {
 		TradeBoardVO tbVo = new TradeBoardVO();
 		MypageDao myDao = new MypageDao();
 		
-		// 거래상태변경 액션
-		tbVo.setCode(Integer.parseInt(request.getParameter("code")));
-		tbVo.setSeller(request.getParameter("id"));
+		// 거래상태변경 액션 / 시터 돈 주기
+		tbVo.setCode(Integer.parseInt(request.getParameter("tcode")));
+		tbVo.setSeller(request.getParameter("tid"));
 		myDao.updateTradeFinish(tbVo);
 
 		return "mytradeList.do";

@@ -9,6 +9,7 @@
 <script>
 function formCheck(){
 	var myup = document.myupAction;
+	
 	if ($(':radio[name="id"]:checked').length < 1) {
 		 alert('맡김이을 선택해주세요!');                        
 		return false;

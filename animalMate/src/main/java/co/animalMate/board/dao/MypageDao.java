@@ -59,54 +59,55 @@ public class MypageDao extends DAO {
 	private final String UPDATE_STATUS_JOBLIST = "UPDATE TRADEBOARD SET STATUS = '반려인 미확인' WHERE CODE = ?";
 	private final String SELECT_APPLY_TRADES = "SELECT * FROM TRADEBOARD WHERE CODE IN (SELECT CODE FROM APPLYTRADE WHERE ID = ?)";
 	private final String UPDATE_POINT = "UPDATE MEMBERS SET POINT = ? + POINT WHERE ID = ?";
+	private final String DELETE_PETCODE = "DELETE FROM PETCODE WHERE CODE = ? AND PETCODE NOT IN (SELECT PETCODE FROM PETCODE WHERE PETCODE = (SELECT CODE FROM PET WHERE ID IN (SELECT ID FROM MEMBERS WHERE ID = ?)))";
 	
 	// 체크리스트 시터가 올린 사진들 업데이트
-		public int updateStatusJoblist(MemberVO memVo) {
-			int n = 0;
-			try {
-				psmt = conn.prepareStatement(UPDATE_POINT);
-				psmt.setInt(1, memVo.getPoint());
-				psmt.setString(2, memVo.getId());
-				n = psmt.executeUpdate();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			return n;
+	public int updateStatusJoblist(MemberVO memVo) {
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(UPDATE_POINT);
+			psmt.setInt(1, memVo.getPoint());
+			psmt.setString(2, memVo.getId());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		return n;
+	}
 			
 	// User 거래 리스트 모두 출력
-		public List<TradeBoardVO> selectapplyTrades(TradeBoardVO tbVo) {
-			List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
-			try {
-				psmt = conn.prepareStatement(SELECT_APPLY_TRADES);
-				psmt.setString(1, tbVo.getBuyer());
-				rs = psmt.executeQuery();
-				while (rs.next()) {
-					tbVo = new TradeBoardVO();
-					tbVo.setCode(rs.getInt("code"));
-					tbVo.setBuyer(rs.getString("buyer"));
-					tbVo.setSeller(rs.getString("seller"));
-					tbVo.setTitle(rs.getString("title"));
-					tbVo.setTtime(rs.getString("ttime"));
-					tbVo.setPrice(rs.getInt("price"));
-					tbVo.setStatus(rs.getString("status"));
-					tbVo.setStime(rs.getString("stime"));
-					tbVo.setEtime(rs.getString("etime"));
-					tbVo.setSdate((rs.getString("sdate")).substring(0, 10));
-					tbVo.setEdate((rs.getString("edate")).substring(0, 10));
-					tbVo.setTtype(rs.getString("ttype"));
-					tbVo.setLocation1(rs.getString("location1"));
-					tbVo.setLocation2(rs.getString("location2"));
+	public List<TradeBoardVO> selectapplyTrades(TradeBoardVO tbVo) {
+		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
+		try {
+			psmt = conn.prepareStatement(SELECT_APPLY_TRADES);
+			psmt.setString(1, tbVo.getBuyer());
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				tbVo = new TradeBoardVO();
+				tbVo.setCode(rs.getInt("code"));
+				tbVo.setBuyer(rs.getString("buyer"));
+				tbVo.setSeller(rs.getString("seller"));
+				tbVo.setTitle(rs.getString("title"));
+				tbVo.setTtime(rs.getString("ttime"));
+				tbVo.setPrice(rs.getInt("price"));
+				tbVo.setStatus(rs.getString("status"));
+				tbVo.setStime(rs.getString("stime"));
+				tbVo.setEtime(rs.getString("etime"));
+				tbVo.setSdate((rs.getString("sdate")).substring(0, 10));
+				tbVo.setEdate((rs.getString("edate")).substring(0, 10));
+				tbVo.setTtype(rs.getString("ttype"));
+				tbVo.setLocation1(rs.getString("location1"));
+				tbVo.setLocation2(rs.getString("location2"));
 
-					list.add(tbVo);
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} finally {
-				close();
+				list.add(tbVo);
 			}
-			return list;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
 		}
+		return list;
+	}
 	
 	// 체크리스트 시터가 올린 사진들 업데이트
 	public int updateStatusJoblist(TradeBoardVO tbVo) {
@@ -256,8 +257,15 @@ public class MypageDao extends DAO {
 			psmt.setString(1, atId);
 			psmt.setInt(2, atCode);
 			n = psmt.executeUpdate();
-
+			
+			//유저돈 빼기
 			psmt = conn.prepareStatement(UPDATE_TRADE_USER_POINT);
+			psmt.setInt(1, atCode);
+			psmt.setString(2, atId);
+			n = psmt.executeUpdate();
+			
+			//다른 펫 코드 삭제
+			psmt = conn.prepareStatement(DELETE_PETCODE);
 			psmt.setInt(1, atCode);
 			psmt.setString(2, atId);
 			n = psmt.executeUpdate();

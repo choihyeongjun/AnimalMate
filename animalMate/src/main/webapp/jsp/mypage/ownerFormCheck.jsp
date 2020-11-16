@@ -157,7 +157,9 @@
 				<div style="visibility: hidden;">
 					<input type="text" id="cc" name="cc" value="${tbs.code}">
 				</div><br>
-				<button type="submit">체크리스트 저장</button>
+				<c:if test="${tbs.status ne '거래 완료'}">
+					<button type="submit">체크리스트 저장</button>
+				</c:if>
 			</div>
 		</c:if>
 	</form>
@@ -166,8 +168,8 @@
 	<c:if test="${tbs.buyer eq sid and tbs.status ne '거래 완료'}">
 		<form id="frm" name="frm" action="${pageContext.request.contextPath}/mytradeFinishAction.do" method="post">	
 			<div style="visibility: hidden;">
-				<input type="text" id="code" name="code" value="${tbs.code}">
-				<input type="text" id="id" name="id" value="${tbs.seller}">
+				<input type="text" id="tcode" name="tcode" value="${tbs.code}">
+				<input type="text" id="tid" name="tid" value="${tbs.seller}">
 			</div>
 			<br>
 			<div class="ownerFormCheckButton">
