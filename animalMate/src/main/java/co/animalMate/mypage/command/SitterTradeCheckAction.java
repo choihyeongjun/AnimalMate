@@ -12,7 +12,6 @@ public class SitterTradeCheckAction implements Action {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 돌봐줄게요 게시판 거래체크 화면
-
 		ApplytradeVO atVo = new ApplytradeVO();
 		MypageDao myDao = new MypageDao();
 
