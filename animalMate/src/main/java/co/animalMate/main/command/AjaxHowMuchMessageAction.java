@@ -23,7 +23,6 @@ public class AjaxHowMuchMessageAction implements Action {
 		MessageVO messageVO = new MessageVO();
 		messageVO.setReceive(receive);
 		int count = messageDAO.countByReceive(messageVO);
-		System.out.println(count);
 		try {
 			response.getWriter().print(count);
 		} catch (IOException e) {
