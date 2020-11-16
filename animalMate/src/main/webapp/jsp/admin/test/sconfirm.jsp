@@ -172,7 +172,7 @@ function userUpdate() {
                </tr>
                <tr>
                   <th width="150">전화번호</th>
-                  <td><input type="text" class="searchin" id="tel" name="tel" size="20" disabled></td>
+                  <td><input type="text" class="searchin" id="tel" name="tel" size="20" "disabled></td>
                </tr>
                <tr>
                   <th width="150">권한</th>
@@ -202,7 +202,7 @@ function userUpdate() {
                </tr>
                <tr>
                   <th width="150">신청내용</th>
-                  <td><input class="searchin" type="text" id="comm" name="comm" readyonly="readonly"></td>
+                  <td><input cols="5" row="3" class="searchin" type="text" id="comm" name="comm" style="width:300px;height:200px;readyonly="readonly"></td>
                </tr>
                <tr>
                   <td colspan="2" align="center">
