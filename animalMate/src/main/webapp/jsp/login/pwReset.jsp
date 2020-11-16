@@ -50,7 +50,7 @@ function pwCheck(){
 		 onsubmit="return pwCheck()">
 		  <!-- ID -->
 			 <div>
-                  <input type="hidden;" id="id" class="int" name="id" maxlength="20" value="${param.id}">             
+                  <input type="hidden" id="id" class="int" name="id" maxlength="20" value="${param.id}">             
               </div> 
 		  <!-- PW1 -->
 			 <div>

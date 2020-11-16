@@ -22,7 +22,7 @@ public class MemberDao extends DAO {
 	private final String SELECT_ALL = "SELECT * FROM MEMBERS";
 	private final String SELECT = "SELECT * FROM MEMBERS WHERE ID = ? ";
 	private final String INSERT = "";
-	private final String RESETPW = "UPDATE MEMBERS SET PW = ?";
+	private final String RESETPW = "UPDATE MEMBERS SET PW = ? WHERE ID =?";
 	private final String FINDID ="SELECT ID FROM MEMBERS WHERE NAME=? AND EMAIL=?";
 	private final String FINDPW ="SELECT PW FROM MEMBERS WHERE ID=? AND NAME=? AND EMAIL=?";
 	private final String OVERLAPID = "SELECT ID FROM MEMBERS WHERE ID = ?";
@@ -185,15 +185,17 @@ public class MemberDao extends DAO {
 	}
 	
 	//비번 리셋
-		public MemberVO resetPw(MemberVO vo) { 
+		public int resetPw(MemberVO vo) { 
 			int n = 0;
 			try {
 				psmt = conn.prepareStatement(RESETPW);
 				psmt.setString(1, vo.getPw());
+				psmt.setString(2, vo.getId());
+				rs = psmt.executeQuery();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			return vo;
+			return n;
 		}
 		
 	
