@@ -8,6 +8,7 @@ import java.util.List;
 
 import co.animalMate.common.DAO;
 import co.animalMate.vo.ApplytradeVO;
+import co.animalMate.vo.ApplytradeVO;
 
 public class ApplytradeDAO extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
@@ -35,6 +36,24 @@ public class ApplytradeDAO extends DAO {
 			close();
 		}
 		return list;
+	}
+	
+	//인서트
+	public int insert(ApplytradeVO vo) { 
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement("INSERT INTO APPLYTRADE " + 
+					"(CODE, ID) VALUES " + 
+					"(?, ?)");
+			psmt.setInt(1, vo.getCode());
+			psmt.setString(2, vo.getId());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return n;
 	}
 		
 	private void close() { // DB연결을 끊어준다

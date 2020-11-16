@@ -21,8 +21,7 @@
 
 <!--파비콘 -->
 <!-- <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon"> -->
-<link
-	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
 	rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/reset.css"
 	rel="stylesheet">
@@ -63,11 +62,8 @@
 	width: 20px;
 	max-width: 20px;
 }
-
-
 </style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<scriptsrc="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 	$(function() {
 		// 버튼 add function
@@ -127,8 +123,7 @@
 	<!-- s:container -->
 	<div class="container">
 		<form id="frm" name="frm"
-			action="${pageContext.request.contextPath}/ownerInsert.do"
-			method="post">
+			action="${pageContext.request.contextPath}/ownerInsert.do" method="post">
 			<!-- s:title -->
 			<img class="boardimg"
 				src="${pageContext.request.contextPath}/images/img/boardimg.jpg">

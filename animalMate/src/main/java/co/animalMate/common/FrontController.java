@@ -53,8 +53,8 @@ import co.animalMate.main.command.AdminLoginAction;
 import co.animalMate.main.command.AjaxHowMuchMessageAction;
 import co.animalMate.main.command.AjaxHowMuchQuestionAction;
 import co.animalMate.main.command.AjaxMessageInfoAction;
-import co.animalMate.main.command.AjaxOwnerFormApplyAction;
 import co.animalMate.main.command.AjaxPetInfoAction;
+import co.animalMate.main.command.ApplySitterFormAction;
 import co.animalMate.main.command.GoBlackBoardPageAction;
 import co.animalMate.main.command.GoLoginPageAction;
 import co.animalMate.main.command.GoMessageFormAction;
@@ -63,10 +63,12 @@ import co.animalMate.main.command.GoMypagePageAction;
 import co.animalMate.main.command.GoNoticeBoardPageAction;
 import co.animalMate.main.command.GoNoticeFormAction;
 import co.animalMate.main.command.GoOwnerListPageAction;
+import co.animalMate.main.command.GoPetSelectFormAction;
 import co.animalMate.main.command.GoSendMessageListPageAction;
 import co.animalMate.main.command.GoSitterListPageAction;
 import co.animalMate.main.command.GotradeListPageAction;
 import co.animalMate.main.command.OwnerDeleteAction;
+import co.animalMate.main.command.OwnerFormViewApplyAction;
 import co.animalMate.main.command.OwnerUpdateAction;
 import co.animalMate.main.command.SitterInsertAction;
 import co.animalMate.main.command.SitterUpdateAction;
@@ -106,7 +108,7 @@ public class FrontController extends HttpServlet {
     }
 
    public void init(ServletConfig config) throws ServletException { //init은 처음 실행할 때 한 번만 실행됨
-      // 요청들을 정의함
+	   // 요청들을 정의함
 	   //상민      
       map.put("/main.do", new MainAction()); // 처음 들어오는 페이지 처리 index.jsp
       map.put("/goLoginPage.do", new GoLoginPageAction()); // 헤더에서 로그인 버튼 눌렀을 때
@@ -121,6 +123,7 @@ public class FrontController extends HttpServlet {
       map.put("/adminLogin.do", new AdminLoginAction()); // 로그인 창에서 admin으로 로그인 했을 때
       map.put("/goNoticeForm.do", new GoNoticeFormAction()); // 공지사항 페이지에서 글쓰기 버튼 눌렀을 때
       map.put("/goMessageForm.do", new GoMessageFormAction()); // 메세지 리스트에서 메세지를 눌렀을 때
+      map.put("/goPetSelectForm.do", new GoPetSelectFormAction());//시터폼뷰에서 예약하기 버튼 눌렀을 때
          //제출하기
       map.put("/submitReport.do", new SubmitReportAction()); // 신고폼 페이지에서 제출버튼 눌렀을 때
       map.put("/submitNotice.do", new SubmitNoticeAction()); // 공지사항폼 페이지에서 제출버튼 눌렀을 때
@@ -130,10 +133,11 @@ public class FrontController extends HttpServlet {
       map.put("/submitMessage.do", new SubmitMessageAction()); // 메세지 보내기폼에서 제출하기 눌렀을 때
       map.put("/ownerUpdate.do", new OwnerUpdateAction()); // 오너폼에서 수정하기 눌렀을 때
       map.put("/ownerDelete.do", new OwnerDeleteAction()); // 오너폼뷰에서 삭제하기 버튼 눌렀을 때
+      map.put("/ownerFormViewApply.do", new OwnerFormViewApplyAction()); // 오너폼뷰에서 지원하기 버튼 눌렀을 때
+      map.put("/applySitterForm.do", new ApplySitterFormAction()); //petSelectForm에서 예약하기 버튼 눌렀을 때
       	//아작스
       map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
       map.put("/ajax/messageInfo.do", new AjaxMessageInfoAction()); //메세지 리스트에서 메세지 눌렀을 때
-      map.put("/ajax/ownerFormApply.do", new AjaxOwnerFormApplyAction()); //오너폼에서 지원하기 버튼 클릭
       map.put("/ajax/howMuchMessage.do", new AjaxHowMuchMessageAction()); //메인테마 메세지 갯수 표시
       map.put("/ajax/howMuchQuestion.do", new AjaxHowMuchQuestionAction()); //메인테마 메세지 갯수 표시
 

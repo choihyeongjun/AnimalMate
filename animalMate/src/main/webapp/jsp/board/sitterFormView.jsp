@@ -60,17 +60,7 @@
 			//예약하기 버튼
 			$("#sitterFormApplyBtn").on({
 				"click"  :function(){
-					$.ajax({
-						url:'${pageContext.request.contextPath}/ajax/ownerFormApply.do',
-						data : {code : ${tradeBoard.code}},
-						dataType:'json',
-						error:function(xhr,status,msg){
-	    					alert("상태값 :" + status + " Http에러메시지 :"+msg);
-	    				},
-	    				success:function(){
-	    					alert("예약이 완료되었습니다.")
-	    				}
-					})
+					location.href ="${pageContext.request.contextPath}/goPetSelectForm.do?code="+${param.code};
 				}
 			})
 			
