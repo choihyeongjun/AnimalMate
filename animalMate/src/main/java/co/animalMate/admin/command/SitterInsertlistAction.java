@@ -35,6 +35,9 @@ public class SitterInsertlistAction implements Action {
 		svo.setMaxP(maxP);
 		svo.setComm(comm);
 		sdao.insert(svo);
+		vo.setId(id);
+		vo.setAuthor("sitterwait");
+		dao.update(vo);
 		try {
 			response.sendRedirect(request.getContextPath()+"/main.do");
 		} catch (IOException e) {
