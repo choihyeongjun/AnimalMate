@@ -82,7 +82,7 @@
 	<div class="row">
 		<h1>후기</h1>
 		<div class = mypageTradeList>
-			<c:if test="${comm.code ne null}">
+			<c:if test="${comms[0].code ne null}">
 				<table class="table">
 				<tr>
 					<th>거래번호</th>
@@ -99,11 +99,12 @@
 							<td>${comm.buyer}</td>
 							<td>${comm.seller}</td>
 							<td>${comm.score}</td>
+							<td>후기보기</td>
 						</tr>
 					</c:forEach>
 				</table>
 			</c:if>
-			<c:if test="${comm.code eq null}">
+			<c:if test="${comms[0].code eq null}">
 					<br>
 					<br>
 					<h4>등록된 후기가 없습니다.</h4>
