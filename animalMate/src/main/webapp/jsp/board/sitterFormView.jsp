@@ -123,8 +123,8 @@
 
 								<tbody>
 									<tr>
-										<td>시터 닉네임</td>
-										<td>${members.getNname()}</td>
+										<td>시터 아이디</td>
+										<td>${members.id}</td>
 									</tr>
 
 									<tr>

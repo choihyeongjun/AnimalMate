@@ -60,6 +60,30 @@ public class MypageDao extends DAO {
 	private final String SELECT_APPLY_TRADES = "SELECT * FROM TRADEBOARD WHERE CODE IN (SELECT CODE FROM APPLYTRADE WHERE ID = ?)";
 	private final String UPDATE_POINT = "UPDATE MEMBERS SET POINT = ? + POINT WHERE ID = ?";
 	private final String DELETE_PETCODE = "DELETE FROM PETCODE WHERE CODE = ? AND PETCODE NOT IN (SELECT PETCODE FROM PETCODE WHERE PETCODE = (SELECT CODE FROM PET WHERE ID IN (SELECT ID FROM MEMBERS WHERE ID = ?)))";
+	private final String SELECT_COMMENT = "select * from comments where code = ?";
+	
+	
+	// 후기 단건 조회
+	public CommentsVO selectComment(CommentsVO comVo) {
+		try {
+			psmt = conn.prepareStatement(SELECT_COMMENT);
+			psmt.setInt(1, comVo.getCode());
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				comVo = new CommentsVO();
+				comVo.setCode(rs.getInt("code"));
+				comVo.setScore(rs.getInt("score"));
+				comVo.setComm(rs.getString("comm"));
+				comVo.setPic(rs.getString("pic"));
+				comVo.setTitle(rs.getString("title"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return comVo;
+	}
 	
 	// 체크리스트 시터가 올린 사진들 업데이트
 	public int updateStatusJoblist(MemberVO memVo) {
