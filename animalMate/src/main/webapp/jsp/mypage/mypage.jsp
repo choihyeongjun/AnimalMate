@@ -52,8 +52,12 @@
 			<div class = "row">
 				<div class= "ownerFormCheckButton">
 					<button onclick="window.location.href='${pageContext.request.contextPath}/memberForm.do'">정보수정</button>
-				&nbsp;&nbsp;
+					&nbsp;&nbsp;
 					<button onclick="window.location.href='${pageContext.request.contextPath}/profile.do?id=${user.id}'">내 후기</button>
+				<c:if test="${user.author eq 'usersitter'}">
+					&nbsp;&nbsp;
+					<button onclick="window.location.href='${pageContext.request.contextPath}/environmentImg.do'">돌봄환경</button>
+				</c:if>
 				</div>
 			</div>
 		</div>

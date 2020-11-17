@@ -9,6 +9,7 @@ import java.util.List;
 import co.animalMate.common.DAO;
 import co.animalMate.vo.PictureVO;
 import co.animalMate.vo.PictureVO;
+import co.animalMate.vo.PictureVO;
 
 public class PictureDAO extends DAO  {
 	private PreparedStatement psmt; //sql 명령문 실행
@@ -34,6 +35,37 @@ public class PictureDAO extends DAO  {
 			close();
 		}
 		return list;
+	}
+	
+	//인서트
+	public int insert(PictureVO vo) { 
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement("INSERT INTO PICTURE(CODE, ID, PIC) VALUES(PICTURE_CODE.NEXTVAL, ?,?)");
+			psmt.setString(1, vo.getId());
+			psmt.setString(2, vo.getPic());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return n;
+	}
+	
+	//인서트
+	public int deleteByPic(String pic) { 
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement("DELETE PICTURE WHERE PIC = ?");
+			psmt.setString(1, pic);
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return n;
 	}
 	
 	private void close() { //DB연결을 끊어준다

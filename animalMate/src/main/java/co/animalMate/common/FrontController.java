@@ -55,6 +55,8 @@ import co.animalMate.main.command.AjaxHowMuchQuestionAction;
 import co.animalMate.main.command.AjaxMessageInfoAction;
 import co.animalMate.main.command.AjaxPetInfoAction;
 import co.animalMate.main.command.ApplySitterFormAction;
+import co.animalMate.main.command.EnvironmentImgAction;
+import co.animalMate.main.command.EnvironmentImgDeleteAction;
 import co.animalMate.main.command.GoBlackBoardPageAction;
 import co.animalMate.main.command.GoLoginPageAction;
 import co.animalMate.main.command.GoMessageFormAction;
@@ -67,6 +69,7 @@ import co.animalMate.main.command.GoPetSelectFormAction;
 import co.animalMate.main.command.GoSendMessageListPageAction;
 import co.animalMate.main.command.GoSitterListPageAction;
 import co.animalMate.main.command.GotradeListPageAction;
+import co.animalMate.main.command.InsertEnvironmentImgAction;
 import co.animalMate.main.command.OwnerDeleteAction;
 import co.animalMate.main.command.OwnerFormViewApplyAction;
 import co.animalMate.main.command.OwnerUpdateAction;
@@ -124,6 +127,7 @@ public class FrontController extends HttpServlet {
       map.put("/goNoticeForm.do", new GoNoticeFormAction()); // 공지사항 페이지에서 글쓰기 버튼 눌렀을 때
       map.put("/goMessageForm.do", new GoMessageFormAction()); // 메세지 리스트에서 메세지를 눌렀을 때
       map.put("/goPetSelectForm.do", new GoPetSelectFormAction());//시터폼뷰에서 예약하기 버튼 눌렀을 때
+      map.put("/environmentImg.do", new EnvironmentImgAction());//마이페이지에서 돌봄환경 버튼 눌렀을 때
          //제출하기
       map.put("/submitReport.do", new SubmitReportAction()); // 신고폼 페이지에서 제출버튼 눌렀을 때
       map.put("/submitNotice.do", new SubmitNoticeAction()); // 공지사항폼 페이지에서 제출버튼 눌렀을 때
@@ -135,11 +139,14 @@ public class FrontController extends HttpServlet {
       map.put("/ownerDelete.do", new OwnerDeleteAction()); // 오너폼뷰에서 삭제하기 버튼 눌렀을 때
       map.put("/ownerFormViewApply.do", new OwnerFormViewApplyAction()); // 오너폼뷰에서 지원하기 버튼 눌렀을 때
       map.put("/applySitterForm.do", new ApplySitterFormAction()); //petSelectForm에서 예약하기 버튼 눌렀을 때
+      map.put("/insertEnvironmentImg.do", new InsertEnvironmentImgAction()); //돌봄환경 사진 등록하기 버튼 눌렀을 때
+      map.put("/environmentImgDelete.do", new EnvironmentImgDeleteAction()); //돌봄환경 사진 삭제하기 버튼 눌렀을 때
+      
       	//아작스
       map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
       map.put("/ajax/messageInfo.do", new AjaxMessageInfoAction()); //메세지 리스트에서 메세지 눌렀을 때
       map.put("/ajax/howMuchMessage.do", new AjaxHowMuchMessageAction()); //메인테마 메세지 갯수 표시
-      map.put("/ajax/howMuchQuestion.do", new AjaxHowMuchQuestionAction()); //메인테마 메세지 갯수 표시
+      
 
       
       
