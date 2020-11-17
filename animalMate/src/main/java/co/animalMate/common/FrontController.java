@@ -112,8 +112,8 @@ public class FrontController extends HttpServlet {
     }
 
    public void init(ServletConfig config) throws ServletException { //init은 처음 실행할 때 한 번만 실행됨
-	   // 요청들을 정의함
-	   //상민      
+      // 요청들을 정의함
+      //상민      
       map.put("/main.do", new MainAction()); // 처음 들어오는 페이지 처리 index.jsp
       map.put("/goLoginPage.do", new GoLoginPageAction()); // 헤더에서 로그인 버튼 눌렀을 때
       map.put("/gotradeListPage.do", new GotradeListPageAction()); // 헤더에서 요청알림 버튼 눌렀을 때
@@ -143,7 +143,7 @@ public class FrontController extends HttpServlet {
       map.put("/insertEnvironmentImg.do", new InsertEnvironmentImgAction()); //돌봄환경 사진 등록하기 버튼 눌렀을 때
       map.put("/environmentImgDelete.do", new EnvironmentImgDeleteAction()); //돌봄환경 사진 삭제하기 버튼 눌렀을 때
       
-      	//아작스
+         //아작스
       map.put("/ajax/petInfo.do", new AjaxPetInfoAction()); //펫 목록 화면 호출
       map.put("/ajax/messageInfo.do", new AjaxMessageInfoAction()); //메세지 리스트에서 메세지 눌렀을 때
       map.put("/ajax/howMuchMessage.do", new AjaxHowMuchMessageAction()); //메인테마 메세지 갯수 표시
