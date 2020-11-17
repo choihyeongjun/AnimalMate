@@ -8,13 +8,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/reset.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/css/layout.css" rel="stylesheet">
+
 <style>
-.sitterEnvironment {
-	width: 200px;
-	height: 200px;
-}
+.sitterEnvironment {width: 200px;height: 200px;}
+.c_orange {width: 110px;height: 50px;}
+.c_gray {width: 110px;height: 50px; background-color: #c3b8b8;}
+.cont_tit {margin: 0 0 60px 530px; font-weight: bold;}
+.imgSel {margin: 40px 0 90px 10px; width: 260px;padding: 10px 10px 10px 10px;background-color: #ff8826; border-radius: 5px;}
+.chkPic{width: 50px; height: 20px;margin-top: 20px;}
+
 </style>
 </head>
 <body>
@@ -32,7 +34,7 @@
 					<table>
 						<tr>
 							<c:forEach items="${pictureList}" var="v">
-								<td width="auto">
+								<td class="etd" width="auto" style="width: 200px;">
 									<img class="sitterEnvironment" alt="이미지없다!"
 										src="${pageContext.request.contextPath}/images/picture/${v.pic}">
 								</td>
@@ -41,17 +43,17 @@
 						<tr>
 							<c:forEach items="${pictureList}" var="v">
 								<td align="center" width="auto">
-									<input name="chkPic" id="chkPic" type="checkbox" value="${v.pic}" size="30" style="width: 50px">
+									<input class="chkPic" name="chkPic" id="chkPic" type="checkbox" value="${v.pic}" size="30" style="width: 50px">
 								</td>
 							</c:forEach>
 						</tr>
 					</table>
 				</div>
 				<br>
-					<div>
+					<div class="imgSel">
 						<input type="file" name="pic" id="pic">
 					</div>
-				<div class="btn_group btn_submit btn_l">
+				<div class="btn_group btn_submit btn_l" align="center" style="margin: 70px 0 90px 0;">
                    	<button type="submit" class="c_orange">등록하기</button>	
                    	<button type="submit" class="c_orange" formaction="${pageContext.request.contextPath}/environmentImgDelete.do">삭제하기</button>
                    	<button type="button" class="c_gray" onclick="window.location.href='${pageContext.request.contextPath}/goMypagePage.do'">취소</button>
