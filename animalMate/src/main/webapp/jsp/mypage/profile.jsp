@@ -98,7 +98,24 @@
 							<td>${comm.title}</td>
 							<td>${comm.buyer}</td>
 							<td>${comm.seller}</td>
-							<td>${comm.score}</td>
+							<c:choose>
+								<c:when test="${comm.score eq 1}">
+									<td>★☆☆☆☆</td>
+								</c:when>
+								<c:when test="${comm.score eq 2}">
+									<td>★★☆☆☆</td>
+								</c:when>
+								<c:when test="${comm.score eq 3}">
+									<td>★★★☆☆</td>
+								</c:when>
+								<c:when test="${comm.score eq 4}">
+									<td>★★★★☆</td>
+								</c:when>
+								<c:when test="${comm.score eq 5}">
+									<td>★★★★★</td>
+								</c:when>
+							</c:choose>
+							
 							<td>후기보기</td>
 						</tr>
 					</c:forEach>
