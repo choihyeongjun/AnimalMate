@@ -60,6 +60,14 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 					$("#messageListBtn").text(messageText+"("+a+")");
 				}
 			})
+			$.ajax({
+				url:'${pageContext.request.contextPath}/ajax/result.do',
+				error:function(xhr,status,msg){
+				},
+				success:function(a){
+					
+				}
+			})
 			
 			
 		})

@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 
@@ -26,7 +27,7 @@ public class SitterInsertlistAction implements Action {
 		MemberVO vo=new MemberVO();
 		SitterDAO sdao=new SitterDAO();
 		SitterVO svo=new SitterVO();
-		
+		HttpSession session = request.getSession();
 		String id=request.getParameter("id");
 		String pet=request.getParameter("pet");
 		int maxP=Integer.parseInt(pet);
@@ -37,6 +38,7 @@ public class SitterInsertlistAction implements Action {
 		sdao.insert(svo);
 		vo.setId(id);
 		vo.setAuthor("sitterwait");
+		session.setAttribute("sessionauthor", vo.getAuthor());
 		dao.update(vo);
 		try {
 			response.sendRedirect(request.getContextPath()+"/main.do");

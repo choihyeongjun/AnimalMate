@@ -79,7 +79,7 @@ input[type=submit]:hover {
 	$(()=>{
 		$("#wannabeSitterSubmit").on({
 			"click" : function(event) {
-				confirm("신청이 완료되었습니다!!");
+				alert("신청이 완료되었습니다!!");
 				location.href="${pageContext.request.contextPath}/sitterinsert.do";
 			}
 		});
