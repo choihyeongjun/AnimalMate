@@ -225,7 +225,7 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 			setTimeout(function() {
 				// 재접속
 				webSocket = connectWebSocket(
-						"ws://localhost:80/animalMate/broadsocket", message,
+						"ws://192.168.0.92/animalMate/broadsocket", message,
 						open1, close1, error1);
 			});
 		}
@@ -240,7 +240,7 @@ button {background-color: rgb(255,136,38);font-weight: bold;color : black;border
 		};
 		// 웹 소켓 생성
 		var webSocket = connectWebSocket(
-				"ws://localhost:80/animalMate/broadsocket", message, open1,
+				"ws://192.168.0.92/animalMate/broadsocket", message, open1,
 				close1, error1);
 		// Send 버튼을 누르면 호출되는 함수
 		function sendMessage() {

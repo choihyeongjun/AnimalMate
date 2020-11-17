@@ -11,11 +11,6 @@
 <link href="${pageContext.request.contextPath}/css/reset.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/layout.css" rel="stylesheet">
 <style>
-.btn_sumit{margin: 30px 350px;}
-.btn_sumit .btn_send {margin-right:20px; background-color: #ff7d21; width: 100px;height: 50px;}
-.btn_sumit .btn_result {margin-right: 20px;background-color: #ff7d21;width: 100px;height: 50px;}
-.btn_sumit .btn_cancle {margin-right: 20px;background-color: #bbb;width: 100px;height: 50px;}
-
 .sitterEnvironment {
 	width: 200px;
 	height: 200px;

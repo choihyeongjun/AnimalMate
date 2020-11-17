@@ -89,7 +89,7 @@ public class TradeBoardDAO extends DAO {
 	public List<TradeBoardVO> selectById(TradeBoardVO vo) {
 		List<TradeBoardVO> list = new ArrayList<TradeBoardVO>();
 		try {
-			psmt = conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE SELLER = ? and status = '거래완료'");
+			psmt = conn.prepareStatement("SELECT * FROM TRADEBOARD WHERE SELLER = ? and status = '거래 완료'");
 			psmt.setString(1, vo.getSeller());
 			rs = psmt.executeQuery();
 			while (rs.next()) {
