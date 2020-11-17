@@ -115,8 +115,9 @@
 									<td>★★★★★</td>
 								</c:when>
 							</c:choose>
-							
-							<td>후기보기</td>
+							<td>
+								<button onclick="window.location.href='${pageContext.request.contextPath}/commentView.do?code=${comm.code}'">후기보기</button>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>

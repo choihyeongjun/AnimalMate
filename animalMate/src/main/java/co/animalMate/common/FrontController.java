@@ -79,6 +79,7 @@ import co.animalMate.main.command.SubmitMessageAction;
 import co.animalMate.main.command.SubmitNoticeAction;
 import co.animalMate.main.command.SubmitReportAction;
 import co.animalMate.mypage.command.BookmarkAction;
+import co.animalMate.mypage.command.CommentView;
 import co.animalMate.mypage.command.JoblistUpdateAction;
 import co.animalMate.mypage.command.MemberForm;
 import co.animalMate.mypage.command.MemberFormUpdateAction;
@@ -244,8 +245,8 @@ public class FrontController extends HttpServlet {
      map.put("/joblistUpdateAction.do", new JoblistUpdateAction()); // 거래종료와 시터에게 돈주는 액션
      map.put("/pointChargingView.do", new PointChargingView()); // 포인트 화면 가기
      map.put("/pointChargingAction.do", new PointChargingAction()); // 포인트 충전 액션
-      
-      
+     map.put("/commentView.do", new CommentView()); // 리뷰 상세보기
+     
 
    }
    
