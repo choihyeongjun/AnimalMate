@@ -112,9 +112,21 @@
 				}) //end of ajax
 			} //end of change function
 		})//end of on
+		
+		
 	});
 	
-	
+	//제출하기시에 빠진 거 없나 확인
+	function formCheck() {
+		var title2 = $(".titleinput").val();
+		if(title2 == "" || title2 == null){
+			alert("제목을 입력하세요");
+			$(".titleinput").focus();
+			return false;
+		}
+		title.focus();
+		return false;
+	}
 </script>
 
 </head>
@@ -122,7 +134,7 @@
 <body>
 	<!-- s:container -->
 	<div class="container">
-		<form id="frm" name="frm"
+		<form id="frm" name="frm" onsubmit="return formCheck();"
 			action="${pageContext.request.contextPath}/ownerInsert.do" method="post">
 			<!-- s:title -->
 			<img class="boardimg"
@@ -167,7 +179,7 @@
 											<td>펫 이름</td>
 											<td>
 												${v.name} 
-												<input type="checkbox" class="ownerFormChkbox" value="${v.code}" name="petCode" 
+												<input type="checkbox" class="ownerFormChkbox" value="${v.code}" name="petCode"  
 													<c:forEach var="a" items="${petCodeList}">
 														<c:if test="${v.code == a.petCode}">checked="checked"</c:if>
 													</c:forEach>
