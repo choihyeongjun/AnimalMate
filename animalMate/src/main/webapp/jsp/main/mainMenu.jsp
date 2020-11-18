@@ -10,7 +10,6 @@
 	.cc {
 		width: 100%; 
 		height: 500px;
-	
 	}
 	.dd {
 		width: 100%; 

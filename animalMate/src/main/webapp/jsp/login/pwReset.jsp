@@ -56,13 +56,13 @@ function pwCheck(){
 			 <div>
                     <h3>비밀번호</h3>
                     <span class="box int_pass">
-                        <input type="text" id="pw1" class="int" name="pw" maxlength="20"  placeholder="비밀번호(8~20자리)">             
+                        <input type="password" id="pw1" class="int" name="pw" maxlength="20"  placeholder="비밀번호(8~20자리)">             
                     </span>
                 </div> 
 		    <!-- PW2 -->
                 <div>
                     <span class="box int_pass_check">
-                        <input type="text" id="pw2" class="int" maxlength="20"  placeholder="비밀번호 재입력">
+                        <input type="password" id="pw2" class="int" maxlength="20"  placeholder="비밀번호 재입력">
                     </span>
                 </div>
 			<!-- 버튼 시작 -->
