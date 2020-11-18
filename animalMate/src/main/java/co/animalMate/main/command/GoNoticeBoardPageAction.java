@@ -37,7 +37,7 @@ public class GoNoticeBoardPageAction implements Action {
 		// 레코드건수 조회
 		Paging paging = new Paging();
 		paging.setPageUnit(5); // 한 페이지에 출력할 레코드 수 (기본값은 10)
-		paging.setPageSize(10); // 한 페이지에 출력할 페이지 번호 수 (기본값은 10)
+		paging.setPageSize(5); // 한 페이지에 출력할 페이지 번호 수 (기본값은 10)
 		paging.setPage(p); // 현재 페이지 번호
 
 		vo.setFirst(paging.getFirst());
