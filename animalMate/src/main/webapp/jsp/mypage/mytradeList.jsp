@@ -135,7 +135,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
@@ -157,7 +157,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
 										</c:if>
 									</td>								
 								</tr>
@@ -165,7 +165,7 @@
 						</c:when>
 						<c:otherwise>
 							<!-- 돌봐주세요 게시판 -->
-							<!-- 내가 시터(신청자)이고 반려인이 나를 선택하지 않았을때 /구현못할듯 -->
+							<!-- 내가 시터(신청자)이고 반려인이 나를 선택하지 않았을때  -->
 							<c:if test="${tb.seller eq sid and tb.buyer eq null}">
 								<tr onclick="location.href='${pageContext.request.contextPath}/*.do?code=${tb.code}';"
 									style='cursor: pointer;'>
@@ -182,13 +182,13 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
 							</c:if>
 							
-							<!-- 내가 시터(신청자)이고 반려인이 나를 선택했을때 /구현가능?-->
+							<!-- 내가 시터(신청자)이고 반려인이 나를 선택했을때-->
 							<c:if test="${tb.seller eq sid and tb.buyer ne null}">
 								<tr onclick="location.href='${pageContext.request.contextPath}/ownerFormCheck.do?code=${tb.code}';"
 									style='cursor: pointer;'>
@@ -205,7 +205,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
@@ -237,7 +237,7 @@
 					<c:choose>
 						<c:when test="${tb.ttype eq '돌봐줄게요'}">
 						<!-- 돌봐줄게요 게시판 -->
-						<!-- 내가 반려인(신청자)이고 상대방이 나를 선택하지 않았을 때 / 구현못함 -->
+						<!-- 내가 반려인(신청자)이고 상대방이 나를 선택하지 않았을 때 -->
 							<c:if test="${tb.buyer eq sid and tb.seller eq null}">
 								<tr onclick="location.href='${pageContext.request.contextPath}/*.do?code=${tb.code}';"
 									style='cursor: pointer;'>
@@ -254,12 +254,12 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/jsp/admin/test/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
+											<a href="${pageContext.request.contextPath}/jsp/mypage/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
 										</c:if>
 									</td>
 								</tr>
 							</c:if>
-						<!-- 내가 반려인(신청자)이고 상대방이 나를 선택했을때 / 구현못함 -->
+						<!-- 내가 반려인(신청자)이고 상대방이 나를 선택했을때 -->
 							<c:if test="${tb.buyer eq sid and tb.seller ne null}">
 								<tr onclick="location.href='${pageContext.request.contextPath}/sitterFormCheck.do?code=${tb.code}';"
 									style='cursor: pointer;'>
@@ -276,7 +276,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/jsp/admin/test/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
+											<a href="${pageContext.request.contextPath}/jsp/mypage/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
 										</c:if>
 									</td>
 								</tr>
@@ -302,7 +302,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/jsp/admin/test/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
+											<a href="${pageContext.request.contextPath}/jsp/mypage/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
 										</c:if>
 									</td>
 								</tr>
@@ -324,7 +324,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/jsp/admin/test/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
+											<a href="${pageContext.request.contextPath}/jsp/mypage/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
 										</c:if>
 									</td>
 								</tr>
