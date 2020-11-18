@@ -135,7 +135,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>											
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
@@ -157,7 +157,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>											
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>
 										</c:if>
 									</td>								
 								</tr>
@@ -182,7 +182,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>											
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
@@ -205,7 +205,7 @@
 									<td>${tb.status}</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
-											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>											
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${td.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
