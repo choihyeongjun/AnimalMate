@@ -14,9 +14,7 @@ width:99%;
 .cc{
 width:100px;
 }
-.table{
-	border : 0.5px solid ;
-}
+
 </style>
 
 </head>
@@ -24,7 +22,7 @@ width:100px;
    <div  class="row" >
    
 		<div class="container">
-         <form id="frm" name="frm" method="post" action="${pageContext.request.contextPath}/reviewinsert.do">
+         <form id="frm" name="frm" action="${pageContext.request.contextPath}/reviewinsert.do" method="post" enctype="multipart/form-data">
             <table class="table" >
                <tr>
                   <th width="150">거래번호 :</th>
@@ -57,7 +55,7 @@ width:100px;
                </tr>
                <tr>
                   <th width="150">사진 :</th>
-                  <td><input type="file" id="img" alt="이미지 없다" src="#"></td>
+                  <td><input type="file" id="pic" name="pic"></td>
                </tr>
          		<tr>
          		 <th width="150">내용 :</th>
