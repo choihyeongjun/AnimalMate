@@ -72,10 +72,11 @@ public class SitterFormAction implements Action {
       int career = tradeBoardList.size(); //거래완료 횟수
       request.setAttribute("career", career);
       
-      CommentsVO commentsVO = new CommentsVO();
-      CommentsDAO commentsDAO = new CommentsDAO();
+      
       int score = 0;
       for(TradeBoardVO tempt : tradeBoardList) {
+    	  CommentsVO commentsVO = new CommentsVO();
+          CommentsDAO commentsDAO = new CommentsDAO();
          commentsVO.setCode(tempt.getCode());
          commentsVO = commentsDAO.selectByCode(commentsVO);
          score += commentsVO.getScore();

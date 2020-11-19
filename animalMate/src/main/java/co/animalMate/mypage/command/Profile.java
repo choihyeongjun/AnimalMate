@@ -68,16 +68,18 @@ public class Profile implements Action {
 		int career = tradeBoardList.size(); // 거래완료 횟수
 		request.setAttribute("career", career);
 
-		CommentsVO commentsVO = new CommentsVO();
-		CommentsDAO commentsDAO = new CommentsDAO();
 		int score = 0;
 		for (TradeBoardVO tempt : tradeBoardList) {
+			CommentsVO commentsVO = new CommentsVO();
+			CommentsDAO commentsDAO = new CommentsDAO();
 			commentsVO.setCode(tempt.getCode());
 			commentsVO = commentsDAO.selectByCode(commentsVO);
 			score += commentsVO.getScore();
 		}
+		
 		if (career != 0) {
-			int avgScore = Math.round(score / career);
+			int avgScore = Math.round(score/career);
+			
 			String stars = "";
 			for (int i = 0; i < avgScore; i++) {
 				stars += "★";

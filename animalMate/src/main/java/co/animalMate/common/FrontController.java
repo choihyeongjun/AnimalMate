@@ -21,6 +21,7 @@ import co.animalMate.admin.command.QuestionAnswerAction;
 import co.animalMate.admin.command.QuestionRewriteAction;
 import co.animalMate.admin.command.QuestionlistAction;
 import co.animalMate.admin.command.QuestionselectAction;
+import co.animalMate.admin.command.Result;
 import co.animalMate.admin.command.ReviewInsertAction;
 import co.animalMate.admin.command.ReviewlistAction;
 import co.animalMate.admin.command.SitterInsertlistAction;
@@ -197,6 +198,8 @@ public class FrontController extends HttpServlet {
      map.put("/ajax/sitterSearch.do",new SitterSearchAction());
      map.put("/reviewinsert.do",new ReviewInsertAction());
      map.put("/reviewlist.do",new ReviewlistAction());
+     map.put("/ajax/result.do",new Result());
+     
 
 
 

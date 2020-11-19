@@ -11,8 +11,9 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 
-import co.animalMate.board.dao.MemberDao;
+
 import co.animalMate.common.Action;
+import co.animalMate.main.dao.MemberDao;
 import co.animalMate.vo.MemberVO;
 
 public class Result implements Action {
@@ -25,10 +26,10 @@ public class Result implements Action {
 		HttpSession session = request.getSession(false);
 		
 		vo.setId((String)session.getAttribute("id"));
-		List<MemberVO> author=dao.selectSearch(vo);
-		session.setAttribute("sessionauthor",author);
+		
+		vo=dao.selectById(vo);
+		session.setAttribute("sessionauthor",vo.getAuthor());
 		
 		return null;
 	}
-
 }

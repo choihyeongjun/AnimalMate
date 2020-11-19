@@ -47,6 +47,7 @@
 .btn_sumit .btn_result {margin-right: 20px;background-color: #ff7d21;width: 100px;height: 50px;}
 .btn_sumit .btn_cancle {margin-right: 20px;background-color: #bbb;width: 100px;height: 50px;}
 .sec06 li {margin-bottom: 15px;}
+.proBtn {background-color: #d3cbc5;border-radius: 3px; width: 140px;}
 </style>
 <script type="text/javascript">
 		$(()=>{
@@ -124,7 +125,7 @@
 								<tbody>
 									<tr>
 										<td>시터 아이디</td>
-										<td>${members.id}</td>
+										<td>${members.id}<button class="proBtn"><a href="${pageContext.request.contextPath}/profile.do?id=${members.id}" target="blank"> 프로필 상세보기</a></button></td>
 									</tr>
 
 									<tr>
