@@ -23,10 +23,10 @@ public class CommentsDAO extends DAO {
 			psmt.setInt(1, vo.getCode());
 			rs = psmt.executeQuery();
 			rs.next();
-				vo.setScore(rs.getInt("score"));
-				vo.setComm(rs.getString("comm"));
-				vo.setPic(rs.getString("pic"));
-				vo.setTitle(rs.getString("title"));				
+			vo.setScore(rs.getInt("score"));
+			vo.setComm(rs.getString("comm"));
+			vo.setPic(rs.getString("pic"));
+			vo.setTitle(rs.getString("title"));				
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
