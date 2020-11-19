@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+import co.animalMate.board.dao.MypageDao;
 import co.animalMate.common.Action;
 import co.animalMate.common.FileRenamePolicy;
 import co.animalMate.common.FileUtil;
 import co.animalMate.vo.CommentsVO;
+import co.animalMate.vo.TradeBoardVO;
 
 public class ReviewInsertAction implements Action {
 
@@ -22,7 +24,6 @@ public class ReviewInsertAction implements Action {
 		CommentsVO vo=new CommentsVO();
 		
 		int code=Integer.parseInt(request.getParameter("code"));
-		String seller=request.getParameter("seller");
 		
 		vo.setCode(code);
 		vo.setComm(request.getParameter("comm"));
@@ -48,13 +49,16 @@ public class ReviewInsertAction implements Action {
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
-
-		
 		dao.insert(vo);
-	
-
 		
-		return "mytradeList.do";
+		
+		//거래 상태 '거래 완료'로 변경
+		MypageDao mydao=new MypageDao();
+		TradeBoardVO tbVo=new TradeBoardVO();
+		tbVo.setCode(code);
+		mydao.updateTradeFinish2(tbVo);
+		
+		
+		return "commentView.do?code="+code;
 	}
-
 }

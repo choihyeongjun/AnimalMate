@@ -24,6 +24,7 @@ public class OwnerTradeCheckAction implements Action {
 		// 거래상태변경 액션
 		atVo.setCode(Integer.parseInt(request.getParameter("code")));
 		atVo.setId(request.getParameter("id"));
+		atVo.setStatus(sid);
 		myDao.updateApplyTrade(atVo);
 
 		return "mytradeList.do";

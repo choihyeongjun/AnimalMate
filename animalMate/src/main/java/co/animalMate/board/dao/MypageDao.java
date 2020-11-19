@@ -49,7 +49,7 @@ public class MypageDao extends DAO {
 	private final String UPDATE_SITTER_TRADEBOARD = "UPDATE TRADEBOARD SET BUYER = ?, STATUS = '거래 대상 확정' WHERE CODE = ?";
 	private final String SELCET_SITTER_TRADE_LIST = "SELECT PC.CODE , M.*, P.* FROM PET P LEFT OUTER JOIN MEMBERS M ON (M.ID = P.ID) LEFT OUTER JOIN PETCODE PC ON (P.CODE = PC.PETCODE) WHERE PC.CODE = ?";
 	private final String UPDATE_TRADE_POINT_FINISH = "UPDATE MEMBERS SET POINT = (SELECT PRICE FROM TRADEBOARD WHERE CODE = ?)+POINT WHERE ID = ?";
-	private final String UPDATE_TRADE_STATUS_FINISH = "UPDATE TRADEBOARD SET STATUS = '거래 완료' WHERE CODE= ?";
+	private final String UPDATE_TRADE_STATUS_FINISH = "UPDATE TRADEBOARD SET STATUS = '후기 미작성' WHERE CODE= ?";
 	private final String SELECT_JOBLIST = "SELECT * FROM JOBLIST WHERE CODE = ?";
 	private final String UPDATE_JOBLIST = "UPDATE JOBLIST SET PIC = ? WHERE CODE = ? AND COMM = ?";
 	private final String UPDATE_TRADE_USER_POINT = "UPDATE MEMBERS SET POINT = POINT - (SELECT PRICE FROM TRADEBOARD WHERE CODE = ?) WHERE ID = ?";
@@ -57,11 +57,24 @@ public class MypageDao extends DAO {
 	private final String SELECT_MYTRADE_BUYER = "SELECT COUNT(CODE) FROM TRADEBOARD WHERE BUYER = ? AND STATUS != '거래 완료'";
 	private final String SELECT_TRADE_USER_POINT = "SELECT POINT FROM MEMBERS WHERE ID = ?";
 	private final String UPDATE_STATUS_JOBLIST = "UPDATE TRADEBOARD SET STATUS = '반려인 미확인' WHERE CODE = ?";
-	private final String SELECT_APPLY_TRADES = "SELECT * FROM TRADEBOARD WHERE CODE IN (SELECT CODE FROM APPLYTRADE WHERE ID = ?)";
+	private final String SELECT_APPLY_TRADES = "SELECT * FROM TRADEBOARD WHERE CODE IN (SELECT CODE FROM APPLYTRADE WHERE ID = ?) ORDER BY CODE DESC";
 	private final String UPDATE_POINT = "UPDATE MEMBERS SET POINT = ? + POINT WHERE ID = ?";
 	private final String DELETE_PETCODE = "DELETE FROM PETCODE WHERE CODE = ? AND PETCODE NOT IN (SELECT PETCODE FROM PETCODE WHERE PETCODE = (SELECT CODE FROM PET WHERE ID IN (SELECT ID FROM MEMBERS WHERE ID = ?)))";
 	private final String SELECT_COMMENT = "select * from comments where code = ?";
-	
+	private final String UPDATE_TRADE_STATUS_FINISH2 = "UPDATE TRADEBOARD SET STATUS = '거래 완료' WHERE CODE= ?";
+
+	//후기쓰고 나서 상태변화
+	public int updateTradeFinish2(TradeBoardVO tbVo) {
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(UPDATE_TRADE_STATUS_FINISH2);
+			psmt.setInt(1, tbVo.getCode());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
 	
 	// 후기 단건 조회
 	public CommentsVO selectComment(CommentsVO comVo) {
@@ -271,7 +284,7 @@ public class MypageDao extends DAO {
 			psmt.setInt(1, atCode);
 			psmt.setString(2, atId);
 			n = psmt.executeUpdate();
-
+			
 			psmt = conn.prepareStatement(UPDATE_APPLYTRADES2);
 			psmt.setInt(1, atCode);
 			psmt.setString(2, atVo.getId());
@@ -377,25 +390,28 @@ public class MypageDao extends DAO {
 		try {
 			int atCode = atVo.getCode();
 			String atId = atVo.getId();
-
+			//선택한 시터 '거래 수락'으로 상태변화
 			psmt = conn.prepareStatement(UPDATE_APPLYTRADES1);
 			psmt.setInt(1, atCode);
 			psmt.setString(2, atId);
 			n = psmt.executeUpdate();
-
+			
+			//신청한 다른 시터들 '거래 거절'로 상태변환
 			psmt = conn.prepareStatement(UPDATE_APPLYTRADES2);
 			psmt.setInt(1, atCode);
 			psmt.setString(2, atVo.getId());
 			n = psmt.executeUpdate();
-
+			
+			//seller를 거래테이블에 삽입
 			psmt = conn.prepareStatement(UPDATE_BUYER_TRADEBOARD);
 			psmt.setString(1, atId);
 			psmt.setInt(2, atCode);
 			n = psmt.executeUpdate();
-
+			
+			//내돈 빼기
 			psmt = conn.prepareStatement(UPDATE_TRADE_USER_POINT);
 			psmt.setInt(1, atCode);
-			psmt.setString(2, atId);
+			psmt.setString(2, atVo.getStatus());
 			n = psmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

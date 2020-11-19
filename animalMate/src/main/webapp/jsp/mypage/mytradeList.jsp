@@ -132,7 +132,14 @@
 									</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
+									<td>
+										<c:if test="${tb.status eq '후기 미작성'}">
+											거래 완료
+										</c:if>
+										<c:if test="${tb.status ne'후기 미작성'}">
+											${tb.status}
+										</c:if>
+									</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
 											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
@@ -154,7 +161,14 @@
 									</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
+									<td>
+										<c:if test="${tb.status eq '후기 미작성'}">
+											거래 완료
+										</c:if>
+										<c:if test="${tb.status ne'후기 미작성'}">
+											${tb.status}
+										</c:if>
+									</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
 											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
@@ -179,7 +193,14 @@
 									</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
+									<td>
+										<c:if test="${tb.status eq '후기 미작성'}">
+											거래 완료
+										</c:if>
+										<c:if test="${tb.status ne'후기 미작성'}">
+											${tb.status}
+										</c:if>
+									</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
 											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
@@ -202,7 +223,14 @@
 									</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
+									<td>
+										<c:if test="${tb.status eq '후기 미작성'}">
+											거래 완료
+										</c:if>
+										<c:if test="${tb.status ne'후기 미작성'}">
+											${tb.status}
+										</c:if>
+									</td>
 									<td>
 										<c:if test="${tb.status eq '거래 완료'}">
 											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
@@ -251,10 +279,20 @@
 									</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
 									<td>
-										<c:if test="${tb.status eq '거래 완료'}">
+										<c:if test="${tb.status eq '후기 미작성'}">
+											거래 완료
+										</c:if>
+										<c:if test="${tb.status ne'후기 미작성'}">
+											${tb.status}
+										</c:if>
+									</td>
+									<td>
+										<c:if test="${tb.status eq '후기 미작성'}">
 											<a href="${pageContext.request.contextPath}/jsp/mypage/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
+										</c:if>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
@@ -273,10 +311,20 @@
 									</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
 									<td>
-										<c:if test="${tb.status eq '거래 완료'}">
+										<c:if test="${tb.status eq '후기 미작성'}">
+											거래 완료
+										</c:if>
+										<c:if test="${tb.status ne'후기 미작성'}">
+											${tb.status}
+										</c:if>
+									</td>
+									<td>
+										<c:if test="${tb.status eq '후기 미작성'}">
 											<a href="${pageContext.request.contextPath}/jsp/mypage/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
+										</c:if>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
@@ -299,10 +347,20 @@
 									</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
 									<td>
-										<c:if test="${tb.status eq '거래 완료'}">
+										<c:if test="${tb.status eq '후기 미작성'}">
+											거래 완료
+										</c:if>
+										<c:if test="${tb.status ne'후기 미작성'}">
+											${tb.status}
+										</c:if>
+									</td>
+									<td>
+										<c:if test="${tb.status eq '후기 미작성'}">
 											<a href="${pageContext.request.contextPath}/jsp/mypage/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
+										</c:if>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
@@ -321,10 +379,20 @@
 									</td>
 									<td>${tb.price}p</td>
 									<td>${tb.sdate} ${tb.stime} ~ ${tb.edate} ${tb.etime}</td>
-									<td>${tb.status}</td>
 									<td>
-										<c:if test="${tb.status eq '거래 완료'}">
+										<c:if test="${tb.status eq '후기 미작성'}">
+											거래 완료
+										</c:if>
+										<c:if test="${tb.status ne'후기 미작성'}">
+											${tb.status}
+										</c:if>
+									</td>
+									<td>
+										<c:if test="${tb.status eq '후기 미작성'}">
 											<a href="${pageContext.request.contextPath}/jsp/mypage/review.jsp?code=${tb.code}&buyer=${tb.buyer}&seller=${tb.seller}">후기쓰기</a>
+										</c:if>
+										<c:if test="${tb.status eq '거래 완료'}">
+											<a href="${pageContext.request.contextPath}/commentView.do?code=${tb.code}">후기보기</a>
 										</c:if>
 									</td>
 								</tr>
