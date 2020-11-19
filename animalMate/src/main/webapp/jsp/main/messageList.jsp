@@ -95,6 +95,7 @@
     					$("#receivecomm").val(msg.comm);
     					$("#receiveID").val(msg.send);
     					$("#returntitle").val('RE:'+msg.title);
+    					$("#sendID").val(msg.send);
     				}
 				})
 			}
@@ -166,6 +167,11 @@
 								<td class="col1_title">제목</td>
 								<td><input class="col2_title" type="text" id="receiveTitle"
 									name="receiveTitle" readonly="readonly"></td>
+							</tr>
+							<tr>
+								<td class="col1_target">보낸 사람</td>
+								<td><input class="col2_target" type="text" id="sendID"
+									name="send"></td>
 							</tr>
 							<tr>
 								<td class="col3_comm">내용</td>
