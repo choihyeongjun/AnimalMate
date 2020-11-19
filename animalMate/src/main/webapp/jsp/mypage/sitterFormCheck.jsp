@@ -117,7 +117,7 @@
 		</div>
 	</div>
 	
-
+	<c:if test="${tbs.buyer eq sid and tbs.status ne '후기 미작성'}">
 	<c:if test="${tbs.buyer eq sid and tbs.status ne '거래 완료'}">
 		<form id="frm" name="frm" action="${pageContext.request.contextPath}/mytradeFinishAction.do" method="post">	
 			<div style="visibility: hidden;">
@@ -130,8 +130,9 @@
 			</div>
 		</form>
 	</c:if>
+	</c:if>
 
-	<c:if test="${tbs.status eq '거래 완료'}">
+	<c:if test="${tbs.status eq '거래 완료' or tbs.status eq '후기 미작성'}">
 		<div class="ownerFormCheckButton">
 			<h3>거래가 종료되었습니다.</h3>
 		</div>

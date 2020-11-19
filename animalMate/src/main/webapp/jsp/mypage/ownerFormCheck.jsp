@@ -157,14 +157,14 @@
 				<div style="visibility: hidden;">
 					<input type="text" id="cc" name="cc" value="${tbs.code}">
 				</div><br>
-				<c:if test="${tbs.status ne '거래 완료'}">
+				<c:if test="${tbs.status ne '거래 완료' and tbs.status ne '후기 미작성'}">
 					<button type="submit">체크리스트 저장</button>
 				</c:if>
 			</div>
 		</c:if>
 	</form>
 	
-
+	<c:if test="${tbs.buyer eq sid and tbs.status ne '후기 미작성'}">
 	<c:if test="${tbs.buyer eq sid and tbs.status ne '거래 완료'}">
 		<form id="frm" name="frm" action="${pageContext.request.contextPath}/mytradeFinishAction.do" method="post">	
 			<div style="visibility: hidden;">
@@ -177,8 +177,9 @@
 			</div>
 		</form>
 	</c:if>
+	</c:if>
 
-	<c:if test="${tbs.status eq '거래 완료'}">
+	<c:if test="${tbs.status eq '거래 완료' or tbs.status eq '후기 미작성'}">
 		<div class="ownerFormCheckButton">
 			<h3>거래가 종료되었습니다.</h3>
 		</div>
