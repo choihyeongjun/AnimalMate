@@ -49,7 +49,7 @@ button{width: 50px;}
 			.append($('<td>').html(item.edate))
 			.append($('<td>').html('<select id=\'author\'> '+
 			'<option selected value='+item.author+'>'+item.author+'</option>'+
-			'<option >sitter</option>'+
+			'<option >usersitter</option>'+
 			'<option >sittersait</option>'+
 			'<option >users</option>'+
 			'<option >admin</option>'+
